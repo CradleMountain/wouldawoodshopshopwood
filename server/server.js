@@ -1,0 +1,24 @@
+const path = require('path');
+const express = require('express');
+const axios = require('axios');
+const { GITHUB_API_KEY } = require('../config.js');
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded( {extended: true} ));
+
+app.use(express.static(path.join(__dirname, 'client/dist')));
+
+app.use('/*', (req, res) => {
+  axios({
+    method: req.method,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/:hr-rfe/${req.url}`,
+    data: req.body,
+    headers: {
+      'Authentication': GITHUB_API_KEY
+    }
+  })
+});
+
+app.listen(3000, () => { console.log('Listening on port 3000...'); });
