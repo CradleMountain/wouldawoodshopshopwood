@@ -19,6 +19,15 @@ app.use('/*', (req, res) => {
       'Authentication': GITHUB_API_KEY
     }
   })
+    .then((response) => {
+      res.set(response.headers)
+        .status(response.status)
+        .send(response.data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send();
+    })
 });
 
 app.listen(3000, () => { console.log('Listening on port 3000...'); });
