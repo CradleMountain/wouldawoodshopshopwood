@@ -15,12 +15,13 @@
     "url": "https://github.com/CradleMountain/wouldawoodshopshopwood/issues"
   },
   "dependencies": {
-    "react": "^18.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-  "eslint-config-airbnb": "^19.0.4"
+    "eslint-config-airbnb": "^19.0.4"
   },
   "engines": {
     "node": ">=6.13.0"
-  },
+  }
 }
