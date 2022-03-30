@@ -1,9 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, "src/index.js"),
+  entry: path.join(__dirname, "client/src/index.js"),
   output: {
-    path: path.resolve(__dirname, 'client/dist')
+    path: path.resolve(__dirname, 'client/dist'),
+    filename: "bundle.js"
   },
   module: {
     rules: [
@@ -14,6 +15,13 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react']
+            // plugins: [
+            //   ["@babel/plugin-transform-runtime",
+            //     {
+            //       "regenerator": true
+            //     }
+            //   ]
+            // ]
           }
         }
       },

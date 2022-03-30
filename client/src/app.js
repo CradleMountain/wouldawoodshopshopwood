@@ -13,7 +13,6 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <h2>HelloWorld</h2>
         <ProductOverview />
         <RelatedProducts />
         <QuestionsAnswers />

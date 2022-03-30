@@ -13,10 +13,10 @@ app.use(express.static(path.join(__dirname, 'client/dist')));
 app.use('/*', (req, res) => {
   axios({
     method: req.method,
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/:hr-rfe/${req.url}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe${req.url}`,
     data: req.body,
     headers: {
-      'Authentication': GITHUB_API_KEY
+      'Authorization': GITHUB_API_KEY
     }
   })
     .then((response) => {

@@ -14,7 +14,7 @@
     "url": "https://github.com/CradleMountain/wouldawoodshopshopwood/issues"
   },
   "scripts": {
-    "dev": "webpack serve",
+    "dev": "webpack --mode development",
     "build": "webpack"
   },
   "dependencies": {
