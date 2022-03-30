@@ -1,25 +1,26 @@
 {
-  "name": "wouldawoodshopshopwood",
+  "name": "Front End Capstone",
   "version": "1.0.0",
-  "description": "FrontEndCapstone",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
+  "description": "A Shopping Page",
+  "author": "CradleMountain",
+  "main": "app.js",
+  "homepage": "https://github.com/CradleMountain/wouldawoodshopshopwood#readme",
+  "scripts": {},
+  "license": "unlicensed",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CradleMountain/wouldawoodshopshopwood.git"
   },
-  "author": "Elfric Dexter, Cory Finkbeiner, Mark Alperin",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/CradleMountain/wouldawoodshopshopwood/issues"
   },
-  "homepage": "https://github.com/CradleMountain/wouldawoodshopshopwood#readme",
   "dependencies": {
     "react": "^18.0.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^19.0.4"
-  }
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  },
+  "engines": {
+    "node": ">=6.13.0"
+  },
 }
