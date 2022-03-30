@@ -1,17 +1,26 @@
 {
   "name": "Front End Capstone",
-  "version": "1.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "A Shopping Page",
   "author": "CradleMountain",
+  "main": "app.js",
+  "homepage": "https://github.com/CradleMountain/wouldawoodshopshopwood#readme",
+  "scripts": {},
   "license": "unlicensed",
-  "engines": {
-    "node": ">=6.13.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CradleMountain/wouldawoodshopshopwood.git"
   },
-  "scripts": {
+  "bugs": {
+    "url": "https://github.com/CradleMountain/wouldawoodshopshopwood/issues"
   },
   "dependencies": {
+    "react": "^18.0.0"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+  },
+  "engines": {
+    "node": ">=6.13.0"
+  },
 }
