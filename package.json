@@ -1,11 +1,10 @@
 {
-  "name": "Front End Capstone",
+  "name": "front_end_capstone",
   "version": "1.0.0",
   "description": "A Shopping Page",
   "author": "CradleMountain",
   "main": "app.js",
   "homepage": "https://github.com/CradleMountain/wouldawoodshopshopwood#readme",
-  "scripts": {},
   "license": "unlicensed",
   "repository": {
     "type": "git",
@@ -14,6 +13,11 @@
   "bugs": {
     "url": "https://github.com/CradleMountain/wouldawoodshopshopwood/issues"
   },
+  "scripts": {
+    "build:dev": "webpack --mode development -w",
+    "build": "webpack --mode production",
+    "start": "node server/server.js"
+  },
   "dependencies": {
     "axios": "^0.26.1",
     "express": "^4.17.3",
@@ -21,7 +25,15 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^19.0.4"
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
+    "eslint-config-airbnb": "^19.0.4",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   },
   "engines": {
     "node": ">=6.13.0"
