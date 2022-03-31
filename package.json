@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A Shopping Page",
   "author": "CradleMountain",
-  "main": "app.js",
+  "main": "index.js",
   "homepage": "https://github.com/CradleMountain/wouldawoodshopshopwood#readme",
   "license": "unlicensed",
   "repository": {
