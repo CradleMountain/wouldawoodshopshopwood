@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/*', (req, res) => {
+  req.url = req.baseUrl;
   if (req.url !== '/') {
     axios({
       method: req.method,
