@@ -11,14 +11,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/*', (req, res) => {
-  if (req.url !== '/') {
+  req.url = req.baseUrl;
+  if (req.url !== '/' && req.url !== '/favicon.ico') {
     axios({
       method: req.method,
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe${req.url}`,
       data: req.body,
       headers: {
         'Authorization': GITHUB_API_KEY
-      }
+      },
+      params: req.query
     })
       .then((response) => {
         res.set(response.headers)
@@ -27,7 +29,9 @@ app.use('/*', (req, res) => {
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).send(err);
+        res.set(err.response.headers)
+          .status(err.response.status)
+          .send();
       });
   } else {
     res.end();
