@@ -19,12 +19,12 @@ const ProductOverview = (props) => {
   ];
 
   useEffect(() => {
-    api.shout();
+    //api.shout();
     //api.get('/?page=2&count=3');
-    api.get('/37311/styles')
-    api.get('/37312/styles')
-    api.get('/37313/styles')
-    api.get('/37314/styles')
+    //api.get('/37311/styles')
+   //api.get('/37312/styles')
+    //api.get('/37313/styles')
+    //api.get('/37314/styles')
     //api.get('/37311/related')
     //api.get('/37311/styles')
     setProducts(dummyProducts);
