@@ -28,15 +28,10 @@ app.use('/*', (req, res) => {
           .send(response.data);
       })
       .catch((err) => {
-<<<<<<< HEAD
-        //console.error(err);
-        res.status(500).send(err);
-=======
         console.error(err);
         res.set(err.response.headers)
           .status(err.response.status)
           .send();
->>>>>>> f9067f524bb031e79ba467dbd4224bc642700135
       });
   } else {
     res.end();
