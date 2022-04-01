@@ -19,7 +19,7 @@ class QList extends React.Component {
   getQuestions () {
     axios({
       method: 'GET',
-      url: `/qa/questions`
+      url: `/qa/questions/?product_id=37312`
     })
       .then((data) => {
         console.log('DATA', data)
