@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/*', (req, res) => {
   req.url = req.baseUrl;
-  if (req.url !== '/') {
+  if (req.url !== '/' && req.url !== '/favicon.ico') {
     axios({
       method: req.method,
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe${req.url}`,
@@ -28,7 +28,9 @@ app.use('/*', (req, res) => {
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).send(err);
+        res.set(err.response.headers)
+          .status(err.response.status)
+          .send();
       });
   } else {
     res.end();
