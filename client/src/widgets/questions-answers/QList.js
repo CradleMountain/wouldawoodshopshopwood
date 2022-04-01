@@ -6,30 +6,32 @@ class QList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {test: []}
+    this.state = {
+      questions: []
+    }
 
     this.getQuestions = this.getQuestions.bind(this);
-  }
 
-  componentDidMount() {
-    this.getQuestions();
-    // console.log('QLIST STATE ', this.state)
   }
 
   getQuestions () {
     axios({
       method: 'GET',
-      url: `/qa/questions/?product_id=37312`
+      url: `/qa/questions/?product_id=37313`
     })
       .then((data) => {
-        console.log('DATA', data)
-        // this.setState({
-        //   test: data
-        // })
+        console.log('DATA', data.data.results)
+        this.setState({
+          questions: data.data.results
+        })
       })
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  componentDidMount() {
+    this.getQuestions();
   }
 
 
