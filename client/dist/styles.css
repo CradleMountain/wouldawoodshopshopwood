@@ -46,17 +46,9 @@ body {
 .modal {
   position: fixed;
   z-index: 50;
+
 }
 
-.test {
-  display: flex;
-  justify-content: center;
-  top: 20vh;
-  left: 5%;
-  width: 75%;
-  background-color: white;
-  padding: 1rem;
-}
 /*
 Example modal css for props.css:
 
@@ -64,6 +56,7 @@ Example modal css for props.css:
   top: 20vh;
   left: 5%;
   width: 75%;
+  border-radius: 15px;
   background-color: white;
   padding: 1rem;
 }

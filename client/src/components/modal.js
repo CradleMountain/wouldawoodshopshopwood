@@ -17,10 +17,6 @@ const ModalWrapper = (props) => {
     );
   };
 
-  const backClick = () => {
-    console.log('I AM THE BD DEMO CLICK!') // refactor below before pushibng
-  };
-
   return (
     <React.Fragment>
       {ReactDOM.createPortal(<Backdrop backClick={backClick}/>, document.getElementById('modalRoot'))}
