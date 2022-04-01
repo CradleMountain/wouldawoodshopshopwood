@@ -1,4 +1,5 @@
 import React from 'react';
+// import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import ProductOverview from './widgets/product-overview/productOverview.js';
@@ -37,16 +38,25 @@ class App extends React.Component {
       });
   }
 
+
   render() {
     return (
-      <>
-        <ProductOverview />
-        <RelatedProducts />
+
         <QuestionsAnswers />
-        <RatingsReviews />
-      </>
+
     );
   }
+
+  // render() {
+  //   return (
+  //     <>
+  //       <ProductOverview />
+  //       <RelatedProducts />
+  //       <QuestionsAnswers />
+  //       <RatingsReviews />
+  //     </>
+  //   );
+  // }
 }
 
 export default App;
