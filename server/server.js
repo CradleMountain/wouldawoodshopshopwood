@@ -19,7 +19,8 @@ app.use('/*', (req, res) => {
       data: req.body,
       headers: {
         'Authorization': GITHUB_API_KEY
-      }
+      },
+      params: req.query
     })
       .then((response) => {
         res.set(response.headers)
@@ -27,7 +28,7 @@ app.use('/*', (req, res) => {
           .send(response.data);
       })
       .catch((err) => {
-        console.error(err);
+        //console.error(err);
         res.status(500).send(err);
       });
   } else {
