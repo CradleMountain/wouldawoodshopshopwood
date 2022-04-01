@@ -12,7 +12,8 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/*', (req, res) => {
   req.url = req.baseUrl;
-  if (req.url !== '/') {
+  if (req.url !== '/' && req.url !== '/favicon.ico') {
+    console.log(req.url);
     axios({
       method: req.method,
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe${req.url}`,

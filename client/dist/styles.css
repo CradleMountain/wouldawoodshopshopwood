@@ -33,8 +33,30 @@ body {
 /************************************************************************/
 /*                          Product Overview                            */
 /************************************************************************/
+.carousel {
+  overflow: hidden;
+  width: 300px;
+  }
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+.carouselItem {
+  overflow:hidden;
+  width: 100%;
+  height: 200px;
+  display: inline-flex;
+  align-items: center;
+ 
 
-
+  border: 2px solid;
+  border-color: black;
+  color: black;
+}
+.carouselImage {
+width: 100%;
+height: 100%;
+}
 
 /************************************************************************/
 /*                         Questions & Answers                          */
