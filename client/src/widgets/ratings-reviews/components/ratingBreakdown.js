@@ -19,7 +19,7 @@ const RatingBreakdown = (props) => {
     }
   };
   var average = averageRating(props.metadata.ratings);
-  var numAvg = Number(average) || 3;
+  var numAvg = Number(average);
 
   var total = 0;
   var bars = [];
@@ -31,17 +31,19 @@ const RatingBreakdown = (props) => {
     bars = Object.keys(props.metadata.ratings).map((rating) => {
       return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} />
     });
+    var recs = props.metadata.recommended;
+    var recPct = Math.round(Number(recs.true) / (Number(recs.false) + Number(recs.true)) * 100);
   }
 
-  console.log(numAvg);
   return (
     <div className="rr-rating-breakdown">
       <div>
-        <StarRating rating={numAvg} />
+        <StarRating rating={numAvg || 3} />
         <span>{total} reviews</span>
-        <div className="rr-rb-avg-num">{average}</div>
+        <div className="rr-rb-avg-num">{average || 3.0}</div>
       </div>
       <div className="rr-rb-bars">{bars}</div>
+      <div>Recommended by {recPct || 70}% of reviews</div>
     </div>
   );
 };
