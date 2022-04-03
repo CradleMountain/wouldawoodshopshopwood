@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import StarRating from '../../../components/starRating.js';
 
-const RatingBreakdown = (props) => {
+import RatingBar from './ratingBar.js';
 
-  //console.log('Metadata:', props.metadata);
+const RatingBreakdown = (props) => {
   var averageRating = (ratings) => {
     var sum = 0;
     var qty = 0;
@@ -12,17 +12,36 @@ const RatingBreakdown = (props) => {
       qty += Number(ratings[num]);
     }
     var result = Math.round(sum / qty * 10) * 0.1;
-    console.log(result);
     if (Math.floor(result) === result) {
       return result.toString() + '.0';
     } else {
       return result.toString();
     }
   };
+  var average = averageRating(props.metadata.ratings);
+  var numAvg = Number(average) || 3;
 
+  var total = 0;
+  var bars = [];
+  var ratings = props.metadata.ratings;
+  if (ratings) {
+    for (var rating in ratings) {
+      total += Number(props.metadata.ratings[rating]);
+    }
+    bars = Object.keys(props.metadata.ratings).map((rating) => {
+      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} />
+    });
+  }
+
+  console.log(numAvg);
   return (
     <div className="rr-rating-breakdown">
-      <span className="rr-rb-rating-num">{averageRating(props.metadata.ratings)}</span>
+      <div>
+        <StarRating rating={numAvg} />
+        <span>{total} reviews</span>
+        <div className="rr-rb-avg-num">{average}</div>
+      </div>
+      <div className="rr-rb-bars">{bars}</div>
     </div>
   );
 };

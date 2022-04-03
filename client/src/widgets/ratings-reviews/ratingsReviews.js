@@ -20,7 +20,7 @@ const RatingsReviews = (props) => {
       });
   }
 
-  const [metadata, setMetadata] = useState();
+  const [metadata, setMetadata] = useState({});
 
   useEffect(() => {
     if (props.product.id && Number(metadata.product_id) !== props.product.id) {
