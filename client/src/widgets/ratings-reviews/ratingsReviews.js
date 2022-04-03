@@ -3,62 +3,46 @@ import axios from 'axios';
 
 import RatingBreakdown from './components/ratingBreakdown.js';
 
-class RatingsReviews extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      metadata: {}
-    };
-
-    this.getReviewMetadata = this.getReviewMetadata.bind(this);
-    this.getReviewMetadata(this.props.product.id);
-  }
-
-  // componentDidMount() {
-  //   this.getReviewMetadata(this.props.product.id);
-  // }
-
-  getReviewMetadata(productId) {
-    if (productId !== undefined) {
-      axios({
-        method: 'GET',
-        url: `/reviews/meta`,
-        params: {
-          'product_id': productId
-        }
+const RatingsReviews = (props) => {
+  const getMetadata = (productId) => {
+    return axios({
+      method: 'GET',
+      url: `/reviews/meta`,
+      params: {
+        'product_id': productId
+      }
+    })
+      .then(({ data }) => {
+        return data;
       })
-        .then(({ data }) => {
-          console.log(data);
-          this.setState({
-            metadata: data
-          });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+      .catch((err) => {
+        return err;
+      });
   }
 
-  render() {
-    // var metadata = this.getReviewMetadata(this.props.product.id);
-    if (Number(this.state.metadata.product_id) !== this.props.product.id) {
-      this.getReviewMetadata(this.props.product.id);
-    } else if (this.state.product.id === undefined) {
-      return (<div></div>);
+  const [metadata, setMetadata] = useState();
+
+  useEffect(() => {
+    if (props.product.id && Number(metadata.product_id) !== props.product.id) {
+      getMetadata(props.product.id)
+      .then((data) => {
+        setMetadata(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
-    console.log('PRODUCT:', this.props.product);
-    console.log('METADATA:', this.state.metadata);
-    return (
-      <div className="ratings-reviews">
-        <h2>Ratings &amp; Reviews</h2>
-        <div className="rr-breakdowns">
-          <RatingBreakdown metadata={this.state.metadata} product={this.props.product}/>
-        </div>
-        <div className="rr-reviews"></div>
+  });
+
+  return (
+    <div className="ratings-reviews">
+      <h2>Ratings &amp; Reviews</h2>
+      <div className="rr-breakdowns">
+        <RatingBreakdown metadata={metadata} product={props.product} />
       </div>
-    );
-  }
-}
+      <div className="rr-reviews"></div>
+    </div>
+  );
+};
 
 export default RatingsReviews;
