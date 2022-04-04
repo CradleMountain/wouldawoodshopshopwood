@@ -53,4 +53,16 @@ body {
 /*                           Ratings & Reviews                          */
 /************************************************************************/
 
+.rr-rb-avg-num {
+  font-size: 64px;
+}
 
+.rr-rb-bars {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-bar span {
+  width: max-content;
+  height: 5px;
+}
