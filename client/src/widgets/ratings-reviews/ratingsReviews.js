@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import RatingBreakdown from './components/ratingBreakdown.js';
+import ProductBreakdown from './components/productBreakdown.js';
 
 const RatingsReviews = (props) => {
   const getMetadata = (productId) => {
@@ -39,6 +40,7 @@ const RatingsReviews = (props) => {
       <h2>Ratings &amp; Reviews</h2>
       <div className="rr-breakdowns">
         <RatingBreakdown metadata={metadata} product={props.product} />
+        <ProductBreakdown metadata={metadata} product={props.product} />
       </div>
       <div className="rr-reviews"></div>
     </div>
