@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 
 import ProdContext from "../productOverview-context.js";
-import CarouselThumbnail from './CarouselThumbnail.js';
+import CarouselThumbnail from "./CarouselThumbnail.js";
+import ArrowIcon from "./ArrowIcon.js";
 
 const VerticalCarousel = (props) => {
   const ctx = useContext(ProdContext);
@@ -23,22 +24,26 @@ const VerticalCarousel = (props) => {
   });
 
   return (
-    <div className="verticalCarousel">
-      <div
-        className="verticalInner"
-        style={{ transform: `translateY(-${ctx.carouselIndex * 20}%)` }}
-      >
-        {selectedStyle.length > 0 &&
-          selectedStyle[0].photos.map((photoObj, index) => {
-            return (
-              <CarouselThumbnail
-                photoObj={photoObj}
-                key={index}
-                index={index}
-              />
-            );
-          })}
+    <div>
+      {ctx.carouselIndex > 0 && <ArrowIcon direction={"up"} clickHandler={upArrowClick} />}
+      <div className="verticalCarousel">
+        <div
+          className="verticalInner"
+          style={{ transform: `translateY(-${ctx.carouselIndex * 20}%)` }}
+        >
+          {selectedStyle.length > 0 &&
+            selectedStyle[0].photos.map((photoObj, index) => {
+              return (
+                <CarouselThumbnail
+                  photoObj={photoObj}
+                  key={index}
+                  index={index}
+                />
+              );
+            })}
+        </div>
       </div>
+      <ArrowIcon direction={"down"} clickHandler={downArrowClick} />
     </div>
   );
 };

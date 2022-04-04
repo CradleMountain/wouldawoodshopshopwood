@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import ProdContext from "../productOverview-context";
 import CarouselItem from "./CarouselItem.js";
-import CarouselArrow from "./CarouselArrow.js";
+import ArrowIcon from "./ArrowIcon.js";
 
 const MainCarousel = (props) => {
   const ctx = useContext(ProdContext);
@@ -23,29 +23,26 @@ const MainCarousel = (props) => {
   });
 
   return (
-    <div>
-      <div className="carousel">
-        <CarouselArrow
-          leftArrowClick={leftArrowClick}
-          rightArrowClick={rightArrowClick}
-        />
-        <div
-          className="inner"
-          style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
-        >
-          {selectedStyle.length > 0 &&
-            selectedStyle[0].photos.map((photoObj, index) => {
-              return (
-                <CarouselItem
-                  photoObj={photoObj}
-                  key={index}
-                  index={index}
-                />
-              );
-            })}
-        </div>
+    <span className="carousel">
+      {ctx.carouselIndex > 0 && (
+        <ArrowIcon direction={"left"} clickHandler={leftArrowClick} />
+      )}
+
+      <div
+        className="inner"
+        style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
+      >
+        {selectedStyle.length > 0 &&
+          selectedStyle[0].photos.map((photoObj, index) => {
+            return (
+              <CarouselItem photoObj={photoObj} key={index} index={index} />
+            );
+          })}
       </div>
-    </div>
+      {(selectedStyle.length > 0 && ctx.carouselIndex < selectedStyle[0].photos.length - 1) && (
+        <ArrowIcon direction={"right"} clickHandler={rightArrowClick} />
+      )}
+    </span>
   );
 };
 
