@@ -7,7 +7,9 @@ const ReviewImages = ({ images }) => {
 
   const enlargeImage = (e) => {
     setModalView(
-      <ModalWrapper backClick={shrinkImage}><img src={e.target.src} className="rr-ri-modal"/></ModalWrapper>
+      <ModalWrapper backClick={shrinkImage} styles="rr-ri-modal">
+        <img src={e.target.src}/>
+      </ModalWrapper>
     );
   };
 
