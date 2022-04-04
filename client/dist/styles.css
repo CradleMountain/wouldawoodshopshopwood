@@ -1,10 +1,3 @@
-/*
-
-CSS Reset here
-
-*/
-
-
 /************************************************************************/
 /*                                Main                                  */
 /************************************************************************/
@@ -48,6 +41,43 @@ body {
 /************************************************************************/
 /*                           Ratings & Reviews                          */
 /************************************************************************/
+
+.ratings-reviews {
+  display: flex;
+  flex-direction: row;
+}
+
+.rr-reviews {
+  margin-left: 50px;
+}
+
+.rr-review {
+  /* border: 1px solid gray;
+  border-radius: 3px; */
+  background-color:rgb(250, 250, 250);
+  padding: 8px;
+  min-width: 500px;
+}
+
+.rr-review-summary {
+  font-weight: 700;
+}
+
+.rr-review-response {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-left: 15px;
+  padding: 5px;
+}
+
+.help-option {
+  text-decoration: underline;
+}
+
+.help-option:hover {
+  color: blue;
+}
 
 .rr-rb-avg-num {
   font-size: 64px;
