@@ -71,6 +71,17 @@ body {
   padding: 5px;
 }
 
+.rr-review-images {
+  display: flex;
+  flex-direction: row;
+}
+
+.rr-review-images img {
+  max-height: 50px;
+  margin: 5px;
+  border: 1px solid gray;
+}
+
 .help-option {
   text-decoration: underline;
 }

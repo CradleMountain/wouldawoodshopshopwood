@@ -15,7 +15,7 @@ const RatingBar = ({rating, qty, total}) => {
 
   return (
     <span>
-      {rating} Stars <StyledBar size={size} color="rgb(0, 160, 0)"/><StyledBar size={100 - size} color="rgb(180, 180, 180)" round="0 3px 3px 0"/> {qty}
+      {rating} Stars <StyledBar size={size * 1.5} color="rgb(0, 160, 0)"/><StyledBar size={(100 - size) * 1.5} color="rgb(180, 180, 180)" round="0 3px 3px 0"/> {qty}
     </span>
     );
 };

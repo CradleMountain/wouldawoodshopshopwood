@@ -6,31 +6,35 @@ import QuestionsAnswers from './widgets/questions-answers/questionsAnswers.js';
 import RatingsReviews from './widgets/ratings-reviews/ratingsReviews.js';
 import RelatedProducts from './widgets/related-products/relatedProducts.js';
 
+import StarRating from './components/starRating.js';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       products: [],
-      currentProduct: {}
+      currentProduct: {},
+      rating: 3.3
     }
 
     this.getProductById = this.getProductById.bind(this);
-  }
-
-  componentDidMount() {
     this.getProductById(37312);
   }
+
+  // componentDidMount() {
+  //   this.getProductById(37312);
+  // }
 
   getProductById(id) {
     axios({
       method: 'GET',
       url: `/products/${id}`
     })
-      .then(({data}) => {
+      .then(({ data }) => {
         this.setState({
           currentProduct: data
-        })
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -39,12 +43,18 @@ class App extends React.Component {
 
   render() {
     return (
+      // <>
+      //   <ProductOverview />
+      //   <RelatedProducts />
+      //   <QuestionsAnswers />
       <>
-        <ProductOverview />
-        <RelatedProducts />
-        <QuestionsAnswers />
-        <RatingsReviews />
+        <button onClick={() => { this.getProductById(37312); }}>37312</button>
+        <button onClick={() => { this.getProductById(37313); }}>37313</button>
+        <button onClick={() => { this.getProductById(37314); }}>37314</button>
+        <button onClick={() => { this.getProductById(37315); }}>37315</button>
+        <RatingsReviews product={this.state.currentProduct} />
       </>
+      // </>
     );
   }
 }

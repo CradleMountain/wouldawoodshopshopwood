@@ -4,6 +4,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 
 import StarRating from '../../../components/starRating.js';
+import ReviewImages from './reviewImages.js';
 import Helpful from './helpful.js';
 
 const Review = ({ review }) => {
@@ -24,7 +25,7 @@ const Review = ({ review }) => {
       <div className="rr-review-body">
         <p>{reviewText}</p>
         {reviewText.length > 250 ? (<span onClick={() => setReviewText(review.body)}>Show more</span>) : null}
-        <div className="rr-review-images"></div>
+        <ReviewImages images={review.photos}/>
       </div>
       {review.recommend ? (<div>
         <FontAwesomeIcon icon={faCheck}/>
