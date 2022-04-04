@@ -4,7 +4,6 @@ import CarouselItem from './CarouselItem.js';
 import CarouselArrow from './CarouselArrow'
 
 const MainCarousel = (props) => {
-
   const [index, setIndex] = useState(0);
 
   const leftArrowClick = () => {
@@ -18,13 +17,14 @@ const MainCarousel = (props) => {
     }
   };
 
+  console.log(props.styles)
   return (
     <div>
     <div className="carousel">
       <CarouselArrow leftArrowClick={leftArrowClick} rightArrowClick={rightArrowClick} />
       <div className="inner" style={{ transform: `translateX(-${index * 100}%)` }} >
-        {props.products.map(product => {
-          return <CarouselItem imageUrl={product} key={Math.random()} />
+        {props.styles.photos.map(photoObj => {
+          return <CarouselItem imageUrl={photoObj.url} key={Math.random()} />
         })}
       </div>
     </div>
