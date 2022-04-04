@@ -1,17 +1,27 @@
 import axios from 'axios';
+import 'regenerator-runtime/runtime';
 
 const apiHelpers = {
-  get: (endpoint = '') => {
-    console.log(endpoint);
-    axios
+   get: async (endpoint = '') => {
+
+    return axios
       .get(`http://localhost:3000/products${endpoint}`)
-      .then((data) => {
-        console.log("apiHelper.get DATA: ", data);
-      })
+      // .then((data) => {
+      //   return data;
+      // })
       .catch((err) => {
         console.log("apiHelper.get ERROR: ", err);
       });
+
   },
+  // get: async (endpoint = '') => {
+  //   try {
+  //     const data = await axios.get(`http://localhost:3000/products${endpoint}`);
+  //     return data;
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // },
 
   shout: () => {
     console.log('HELLO, I AM THE API HELPER!')
