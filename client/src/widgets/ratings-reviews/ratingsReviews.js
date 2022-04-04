@@ -23,6 +23,7 @@ const RatingsReviews = (props) => {
 
   const [metadata, setMetadata] = useState({});
 
+
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
       .then((data) => {
