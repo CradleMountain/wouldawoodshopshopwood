@@ -1,10 +1,10 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
-import ProductOverview from './widgets/product-overview/productOverview.js';
-import QuestionsAnswers from './widgets/questions-answers/questionsAnswers.js';
-import RatingsReviews from './widgets/ratings-reviews/ratingsReviews.js';
-import RelatedProducts from './widgets/related-products/relatedProducts.js';
+import ProductOverview from "./widgets/product-overview/productOverview.js";
+import QuestionsAnswers from "./widgets/questions-answers/questionsAnswers.js";
+import RatingsReviews from "./widgets/ratings-reviews/ratingsReviews.js";
+import RelatedProducts from "./widgets/related-products/relatedProducts.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,25 +12,25 @@ class App extends React.Component {
 
     this.state = {
       products: [],
-      currentProduct: {}
-    }
+      currentProduct: {},
+    };
 
     this.getProductById = this.getProductById.bind(this);
   }
 
   componentDidMount() {
-    this.getProductById(37312);
+    this.getProductById(37311);
   }
 
   getProductById(id) {
     axios({
-      method: 'GET',
-      url: `/products/${id}`
+      method: "GET",
+      url: `/products/${id}`,
     })
-      .then(({data}) => {
+      .then(({ data }) => {
         this.setState({
-          currentProduct: data
-        })
+          currentProduct: data,
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -40,7 +40,9 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <ProductOverview currentProduct={'37311'}/>
+        {Object.keys(this.state.currentProduct).length !== 0 && (
+          <ProductOverview currentProduct={this.state.currentProduct} />
+        )}
         {/* <RelatedProducts />
         <QuestionsAnswers />
         <RatingsReviews /> */}

@@ -6,20 +6,23 @@ import "regenerator-runtime/runtime";
 import { ProductOverviewContextProvider } from "./productOverview-context.js";
 import MainCarousel from "./carousel/MainCarousel.js";
 import VerticalCarousel from "./carousel/VerticalCarousel.js";
-import ProductDescription from './productDescription/ProductDescription.js';
+import ProductDescription from "./productDescription/ProductDescription.js";
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
   const [currentProduct, setCurrentProduct] = useState([]);
   const [productStyles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getProductData(props.currentProduct);
-    getProductStyle(props.currentProduct);
+    //getProductData(props.currentProduct.id);
+    getProductStyle(props.currentProduct.id);
   }, []);
 
   const getProductStyle = async (productId) => {
+    productId += '';
     const productStyles = await api.get(`/${productId}/styles`);
     console.log("productStyle: ", productStyles.data.results);
     setStyles(productStyles.data.results);
@@ -44,7 +47,7 @@ const ProductOverview = (props) => {
         currentProduct={currentProduct}
         currentStyle={currentStyle}
       />
-      <ProductDescription/>
+      <ProductDescription currentProduct={props.currentProduct} />
     </ProductOverviewContextProvider>
   );
 };
