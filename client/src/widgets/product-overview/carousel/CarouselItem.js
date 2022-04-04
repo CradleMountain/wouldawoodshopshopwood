@@ -4,7 +4,7 @@ const CarouselItem = (props) => {
 
   return (
     <div className="carouselItem" >
-      <img className='carouselImage' src={props.imageUrl} />
+      <img className='carouselImage' src={props.photoObj.url} />
     </div>
   );
 };
