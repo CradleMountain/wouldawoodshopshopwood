@@ -7,12 +7,13 @@ const ProductDescription = (props) => {
   let content = (
     <section>
     <div>
-      <p>Slogan</p>
-      <p>Description Paragraph</p>
+      <p>{props.currentProduct.slogan}</p>
+      <p>{props.currentProduct.description}</p>
     </div>
     <div>
-      <p>some feature</p>
-      <p>another feature</p>
+      {props.currentProduct.features.map((feature, index) => {
+        return <p key={index}>{`${feature.value} ${feature.feature}`}</p>
+      })}
     </div>
   </section>
   )

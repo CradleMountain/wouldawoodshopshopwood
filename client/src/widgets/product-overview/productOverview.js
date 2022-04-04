@@ -21,19 +21,21 @@ const ProductOverview = (props) => {
     getProductStyle(props.currentProduct.id);
   }, []);
 
-  const getProductStyle = async (productId) => {
-    productId += '';
-    const productStyles = await api.get(`/${productId}/styles`);
-    console.log("productStyle: ", productStyles.data.results);
-    setStyles(productStyles.data.results);
-    setCurrentStyle(productStyles.data.results[0].style_id);
-  };
+  const getProductStyle = useCallback( async (productId) => {
+    try {
+      const productStyles = await api.get(`/${productId}/styles`);
+      setStyles(productStyles.data.results);
+      setCurrentStyle(productStyles.data.results[0].style_id);
+    } catch (error) {
+      setError(error.message);
+    }
+  }, []);
 
-  const getProductData = async (productId) => {
-    const productData = await api.get(`/${productId}`);
-    console.log("productData: ", productData.data);
-    setCurrentProduct(productData.data);
-  };
+  // const getProductData = async (productId) => {
+  //   const productData = await api.get(`/${productId}`);
+  //   console.log("productData: ", productData.data);
+  //   setCurrentProduct(productData.data);
+  // }
 
   return (
     <ProductOverviewContextProvider>
