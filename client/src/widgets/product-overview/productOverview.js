@@ -5,6 +5,7 @@ import "regenerator-runtime/runtime";
 
 import { ProductOverviewContextProvider } from "./productOverview-context.js";
 import MainCarousel from "./carousel/MainCarousel.js";
+import VerticalCarousel from "./carousel/VerticalCarousel.js";
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
@@ -33,6 +34,11 @@ const ProductOverview = (props) => {
   return (
     <ProductOverviewContextProvider>
       <MainCarousel
+        productStyles={productStyles}
+        currentProduct={currentProduct}
+        currentStyle={currentStyle}
+      />
+      <VerticalCarousel
         productStyles={productStyles}
         currentProduct={currentProduct}
         currentStyle={currentStyle}

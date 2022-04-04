@@ -92,6 +92,35 @@ width: 100%;
 height: 100%;
 }
 
+.verticalCarousel {
+  overflow: hidden;
+  width: 75px;
+}
+.verticalInner {
+  position: relative;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.carouselThumbnail {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 60px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+.carouselThumbnailImage {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+
 /************************************************************************/
 /*                         Questions & Answers                          */
 /************************************************************************/

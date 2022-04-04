@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 
 import ProdContext from "../productOverview-context";
 import CarouselItem from "./CarouselItem.js";
@@ -6,7 +6,6 @@ import CarouselArrow from "./CarouselArrow.js";
 
 const MainCarousel = (props) => {
   const ctx = useContext(ProdContext);
-  //const [index, setIndex] = useState(0);
 
   const leftArrowClick = () => {
     if (ctx.carouselIndex > 0) {
@@ -35,12 +34,12 @@ const MainCarousel = (props) => {
           style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
         >
           {selectedStyle.length > 0 &&
-            selectedStyle[0].photos.map((photoObj, idx) => {
+            selectedStyle[0].photos.map((photoObj, index) => {
               return (
                 <CarouselItem
                   photoObj={photoObj}
-                  key={Math.random()}
-                  idx={idx}
+                  key={index}
+                  index={index}
                 />
               );
             })}
