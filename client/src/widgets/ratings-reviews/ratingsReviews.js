@@ -28,7 +28,7 @@ const RatingsReviews = (props) => {
       url: '/reviews',
       params: {
         'product_id': productId,
-        'page': 1,
+        'page': 3,
         'count': 2,
         'sort': 'relevant'
       }
