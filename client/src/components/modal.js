@@ -19,7 +19,7 @@ const ModalWrapper = (props) => {
 
   return (
     <React.Fragment>
-      {ReactDOM.createPortal(<Backdrop backClick={backClick}/>, document.getElementById('modal-root'))}
+      {ReactDOM.createPortal(<Backdrop backClick={props.backClick}/>, document.getElementById('modal-root'))}
       {ReactDOM.createPortal(<Modal styles={props.styles}>{props.children}</Modal>, document.getElementById('modal-root'))}
     </React.Fragment>
   );

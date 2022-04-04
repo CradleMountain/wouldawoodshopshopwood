@@ -8,7 +8,7 @@ import ReviewImages from './reviewImages.js';
 import Helpful from './helpful.js';
 
 const Review = ({ review }) => {
-  console.log(review);
+  //console.log(review);
   const [reviewText, setReviewText] = useState(review.body.slice(0, 250));
   var response = (
     <div className="rr-review-response">
