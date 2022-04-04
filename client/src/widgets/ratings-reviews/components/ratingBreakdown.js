@@ -15,7 +15,7 @@ const RatingBreakdown = (props) => {
     if (Math.floor(result) === result) {
       return result.toString() + '.0';
     } else {
-      return result.toString();
+      return result.toString().slice(0,3);
     }
   };
   var average = averageRating(props.metadata.ratings);
