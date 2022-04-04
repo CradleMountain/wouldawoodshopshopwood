@@ -40,10 +40,10 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <ProductOverview />
-        <RelatedProducts />
+        <ProductOverview currentProduct={'37311'}/>
+        {/* <RelatedProducts />
         <QuestionsAnswers />
-        <RatingsReviews />
+        <RatingsReviews /> */}
       </>
     );
   }

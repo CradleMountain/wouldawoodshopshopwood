@@ -16,6 +16,8 @@ const ProductOverview = (props) => {
     getProductStyle(props.currentProduct);
   }, []);
 
+
+
   const getProductStyle = async (productId) => {
     const productStyles = await api.get(`/${productId}/styles`);
     console.log('productStyle: ', productStyles.data.results);
@@ -28,9 +30,12 @@ const ProductOverview = (props) => {
     setCurrentProduct(productData.data);
   };
 
+  getProductData(props.currentProduct);
+  getProductStyle(props.currentProduct);
+
   return (
     <div>
-      {/* <MainCarousel styles={styles} currentProduct={currentProduct} /> */}
+      <MainCarousel styles={productStyles} currentProduct={currentProduct} />
     </div>
   );
 };
