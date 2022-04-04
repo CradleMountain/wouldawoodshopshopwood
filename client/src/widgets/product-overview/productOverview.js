@@ -1,18 +1,22 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 
 import axios from "axios";
 import "regenerator-runtime/runtime";
 
-import { ProductOverviewContextProvider } from "./productOverview-context.js";
+//import { ProductOverviewContextProvider } from "./productOverview-context.js";
+import ProdContext from "./productOverview-context.js";
 import MainCarousel from "./carousel/MainCarousel.js";
 import VerticalCarousel from "./carousel/VerticalCarousel.js";
 import ProductDescription from "./productDescription/ProductDescription.js";
+import StyleSelector from "./styleSelector/StyleSelector.js";
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
-  const [currentProduct, setCurrentProduct] = useState([]);
+  const ctx = useContext(ProdContext);
+
+  //const [currentProduct, setCurrentProduct] = useState([]);
   const [productStyles, setStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState(null);
+  //const [currentStyle, setCurrentStyle] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -21,13 +25,14 @@ const ProductOverview = (props) => {
     getProductStyle(props.currentProduct.id);
   }, []);
 
-  const getProductStyle = useCallback( async (productId) => {
+  const getProductStyle = useCallback(async (productId) => {
     try {
       const productStyles = await api.get(`/${productId}/styles`);
       setStyles(productStyles.data.results);
-      setCurrentStyle(productStyles.data.results[0].style_id);
+      ctx.styleChangeHandler(productStyles.data.results[0].style_id);
     } catch (error) {
       setError(error.message);
+      console.error(error);
     }
   }, []);
 
@@ -38,20 +43,26 @@ const ProductOverview = (props) => {
   // }
 
   return (
-    <ProductOverviewContextProvider>
+    <div>
       <MainCarousel
         productStyles={productStyles}
-        currentProduct={currentProduct}
-        currentStyle={currentStyle}
+        currentProduct={props.currentProduct}
+
       />
       <VerticalCarousel
         productStyles={productStyles}
-        currentProduct={currentProduct}
-        currentStyle={currentStyle}
+        currentProduct={props.currentProduct}
+
       />
       <ProductDescription currentProduct={props.currentProduct} />
-    </ProductOverviewContextProvider>
+      <StyleSelector
+        productStyles={productStyles}
+        currentProduct={props.currentProduct}
+
+      />
+    </div>
   );
 };
 
 export default ProductOverview;
+//        currentStyle={currentStyle}

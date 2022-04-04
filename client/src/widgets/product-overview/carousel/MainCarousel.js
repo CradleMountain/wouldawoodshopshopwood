@@ -19,7 +19,7 @@ const MainCarousel = (props) => {
   };
 
   const selectedStyle = props.productStyles.filter((product) => {
-    return product.style_id === props.currentStyle;
+    return product.style_id === ctx.currentStyle;
   });
 
   return (
