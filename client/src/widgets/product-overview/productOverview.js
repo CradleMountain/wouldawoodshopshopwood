@@ -6,6 +6,7 @@ import "regenerator-runtime/runtime";
 import { ProductOverviewContextProvider } from "./productOverview-context.js";
 import MainCarousel from "./carousel/MainCarousel.js";
 import VerticalCarousel from "./carousel/VerticalCarousel.js";
+import ProductDescription from './productDescription/ProductDescription.js';
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
@@ -43,6 +44,7 @@ const ProductOverview = (props) => {
         currentProduct={currentProduct}
         currentStyle={currentStyle}
       />
+      <ProductDescription/>
     </ProductOverviewContextProvider>
   );
 };

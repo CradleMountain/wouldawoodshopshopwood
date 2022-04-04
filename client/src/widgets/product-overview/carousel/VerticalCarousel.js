@@ -25,7 +25,9 @@ const VerticalCarousel = (props) => {
 
   return (
     <div>
-      {ctx.carouselIndex > 0 && <ArrowIcon direction={"up"} clickHandler={upArrowClick} />}
+      {ctx.carouselIndex > 0 && (
+        <ArrowIcon direction={"up"} clickHandler={upArrowClick} />
+      )}
       <div className="verticalCarousel">
         <div
           className="verticalInner"
