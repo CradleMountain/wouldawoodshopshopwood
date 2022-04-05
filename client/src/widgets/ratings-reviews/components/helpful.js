@@ -35,7 +35,6 @@ const Helpful = ({ id, yes }) => {
     </>
   );
   if (response) {
-    console.log(response);
     content = (
       <span>{response === 'yes' ? `You and ${qty} others found this helpful` : 'You did not find this helpful'}</span>
     );
