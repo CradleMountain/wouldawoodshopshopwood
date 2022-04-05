@@ -18,9 +18,9 @@ const MainCarousel = (props) => {
     }
   };
 
-  const selectedStyle = props.productStyles.filter((product) => {
-    return product.style_id === ctx.currentStyle;
-  });
+  // const selectedStyle = props.productStyles.filter((product) => {
+  //   return product.style_id === ctx.currentStyle;
+  // });
 
   return (
     <span className="carousel">
@@ -31,14 +31,14 @@ const MainCarousel = (props) => {
         className="inner"
         style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
       >
-        {selectedStyle.length > 0 &&
-          selectedStyle[0].photos.map((photoObj, index) => {
+        {ctx.currentStyle.style_id &&
+          ctx.currentStyle.photos.map((photoObj, index) => {
             return (
               <CarouselItem photoObj={photoObj} key={index} index={index} />
             );
           })}
       </div>
-      {(selectedStyle.length > 0 && ctx.carouselIndex < selectedStyle[0].photos.length - 1) && (
+      {(ctx.currentStyle.style_id && ctx.carouselIndex < ctx.currentStyle.photos.length - 1) && (
         <ArrowIcon direction={"right"} clickHandler={rightArrowClick} />
       )}
     </span>

@@ -19,9 +19,9 @@ const VerticalCarousel = (props) => {
     }
   };
 
-  const selectedStyle = props.productStyles.filter((product) => {
-    return product.style_id === ctx.currentStyle;
-  });
+  // const selectedStyle = props.productStyles.filter((product) => {
+  //   return product.style_id === ctx.currentStyle;
+  // });
 
   return (
     <div>
@@ -33,8 +33,8 @@ const VerticalCarousel = (props) => {
           className="verticalInner"
           style={{ transform: `translateY(-${ctx.carouselIndex * 20}%)` }}
         >
-          {selectedStyle.length > 0 &&
-            selectedStyle[0].photos.map((photoObj, index) => {
+          {ctx.currentStyle.style_id &&
+            ctx.currentStyle.photos.map((photoObj, index) => {
               return (
                 <CarouselThumbnail
                   photoObj={photoObj}
