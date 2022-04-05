@@ -7,6 +7,9 @@ const StyleDescription = (props) => {
 
   return (
     <div>
+      <div>
+        <p>Stars/Button Placeholder</p>
+      </div>
       <p>{props.currentProduct.category}</p>
       <p>{props.currentProduct.name}</p>
       <span>
@@ -18,6 +21,10 @@ const StyleDescription = (props) => {
         {ctx.currentStyle.style_id && ctx.currentStyle.sale_price && (
           <p>{`$${ctx.currentStyle.sale_price}`}</p>
         )}
+      </span>
+      <span>
+        <p>Style ></p>
+        <p>{ctx.currentStyle.name}</p>
       </span>
     </div>
   );
