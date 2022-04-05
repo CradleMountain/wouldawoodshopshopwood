@@ -5,6 +5,7 @@ import RatingBreakdown from './components/ratingBreakdown.js';
 import ProductBreakdown from './components/productBreakdown.js';
 import ReviewList from './components/reviewList.js'
 import Sorter from './components/sorter.js';
+import ReviewForm from './components/reviewForm.js';
 
 const RatingsReviews = (props) => {
   const getMetadata = (productId) => {
@@ -59,6 +60,7 @@ const RatingsReviews = (props) => {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant');
+  const [write, setWrite] = useState(false);
 
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
@@ -84,6 +86,7 @@ const RatingsReviews = (props) => {
   if (product && metadata.product_id) {
     return (
       <>
+      {write ? <ReviewForm show={setWrite} product={props.product} factors={Object.keys(metadata.characteristics)}/> : null}
       <h2>Ratings &amp; Reviews</h2>
       <div className="ratings-reviews">
         <div className="rr-breakdowns">
@@ -93,6 +96,9 @@ const RatingsReviews = (props) => {
         <div className="rr-sort-stream">
           <Sorter sort={sort} select={setSort}/>
           <ReviewList reviews={reviews} load={(loadReviews)} max={Number(metadata.recommended.true) + Number(metadata.recommended.false)}/>
+          <div>
+            <button onClick={() => setWrite(true)}>Write a Review</button>
+          </div>
         </div>
       </div>
       </>

@@ -192,3 +192,44 @@ height: 100%;
   margin-bottom: 5px;
   align-self: flex-end;
 }
+
+.rr-write-modal {
+  background-color: white;
+  width: 600px;
+  height: 550px;
+  left: 25%;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+.rr-write-stars svg:hover, path:hover {
+  position: relative;
+  bottom: 2px;
+}
+
+.rr-write-question {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.rr-write-required {
+  color: rgb(170, 0, 0);
+}
+
+.rr-wq-factor {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.rr-wq-factor div {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.rr-wq-factor-phrases {
+  font-size: 12px;
+}

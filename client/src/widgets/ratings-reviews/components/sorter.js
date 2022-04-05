@@ -8,7 +8,6 @@ const Sorter = ({ sort, select }) => {
     //select(e.target.value);
   };
 
-  console.log('sort by', selection);
   return (
     <div className="rr-sorter">
       <span>Sort by <select name="sorter" onChange={selectSort} defaultValue={selection}>
