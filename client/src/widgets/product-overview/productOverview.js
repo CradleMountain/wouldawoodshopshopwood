@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback, Fragment } from "react";
 
 import axios from "axios";
 import "regenerator-runtime/runtime";
@@ -43,7 +43,7 @@ const ProductOverview = (props) => {
   // }
 
   return (
-    <div>
+    <Fragment>
       <MainCarousel
         productStyles={productStyles}
         currentProduct={props.currentProduct}
@@ -60,7 +60,7 @@ const ProductOverview = (props) => {
         currentProduct={props.currentProduct}
 
       />
-    </div>
+    </Fragment>
   );
 };
 

@@ -72,8 +72,10 @@ Example modal css for props.css:
 /*                          Product Overview                            */
 /************************************************************************/
 .carousel {
+  display: block;
   overflow: hidden;
   width: 600px;
+  max-width: 600;
   }
 .inner {
   white-space: nowrap;
@@ -90,6 +92,7 @@ Example modal css for props.css:
 .carouselImage {
 width: 100%;
 height: 100%;
+object-fit: cover;
 }
 
 .verticalCarousel {
@@ -118,8 +121,20 @@ height: 100%;
   margin-bottom: 10px;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
+.stylesThumbnail {
+  overflow: hidden;
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+}
+.stylesThumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
+}
 
 /************************************************************************/
 /*                         Questions & Answers                          */
