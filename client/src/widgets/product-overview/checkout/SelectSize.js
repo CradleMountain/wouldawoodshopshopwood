@@ -5,14 +5,11 @@ import SizeListItem from "./SizeListItem.js";
 
 const SelectSize = (props) => {
   const ctx = useContext(ProdContext);
-
   const [isToggled, setIsToggled] = useState(false);
-  const [skus, setSkus] = useState([]);
+  const [size, setSize] = useState(null);
 
   useEffect(() => {
-    if (ctx.currentStyle.skus) {
-      setSkus(formatSkus(ctx.currentStyle.skus));
-    }
+    setSize(null);
   }, [ctx.currentStyle]);
 
   const toggleList = () => {
@@ -21,37 +18,28 @@ const SelectSize = (props) => {
 
   const sizeSelectHandler = (skuObj) => {
     toggleList();
-    console.log("ssH: ", skuObj);
-  };
-
-  const formatSkus = (skusObj) => {
-    const skusArray = [];
-    for (let sku in skusObj) {
-      const formattedSku = {
-        sku_id: sku,
-        quantity: ctx.currentStyle.skus[sku].quantity,
-        size: ctx.currentStyle.skus[sku].size,
-      };
-      skusArray.push(formattedSku);
-    }
-    return skusArray;
+    setSize(skuObj.size);
+    props.sizeToCartHandler(skuObj);
   };
 
   return (
     <div className="dropDownContainer">
       <div onClick={toggleList} className="dropDownButton">
-        Select Size
+        {size ? size : "Select Size"}
       </div>
       {isToggled && (
         <ul className="dropDownList">
-          {skus.map((skuObj, index) => {
-            return (
-              <SizeListItem
-                skuObj={skuObj}
-                sizeSelectHandler={sizeSelectHandler}
-                key={index}
-              />
-            );
+          {props.skus.map((skuObj, index) => {
+            if (skuObj.size) {
+              return (
+                <SizeListItem
+                  skuObj={skuObj}
+                  sizeSelectHandler={sizeSelectHandler}
+                  key={index}
+                />
+              );
+            }
+
           })}
         </ul>
       )}
