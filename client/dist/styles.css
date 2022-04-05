@@ -98,7 +98,7 @@ height: 100%;
 }
 
 .rr-reviews {
-  margin-left: 50px;
+  /* margin-left: 50px; */
   overflow: scroll;
   max-height: 400px;
 }
@@ -180,4 +180,15 @@ height: 100%;
   margin-left: 5px;
   font-size: 14px;
   color: rgb(30, 30, 30);
+}
+
+.rr-sort-stream {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.rr-sorter {
+  margin-bottom: 5px;
+  align-self: flex-end;
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import RatingBreakdown from './components/ratingBreakdown.js';
 import ProductBreakdown from './components/productBreakdown.js';
 import ReviewList from './components/reviewList.js'
+import Sorter from './components/sorter.js';
 
 const RatingsReviews = (props) => {
   const getMetadata = (productId) => {
@@ -22,15 +23,15 @@ const RatingsReviews = (props) => {
       });
   }
 
-  const getReviews = (productId, pg) => {
+  const getReviews = (productId, pg, sortBy = sort, count = 2) => {
     return axios({
       method: 'GET',
       url: '/reviews',
       params: {
         'product_id': productId,
         'page': pg,
-        'count': 2,
-        'sort': sort
+        'count': count,
+        'sort': sortBy
       }
     })
       .then(({data}) => {
@@ -89,7 +90,10 @@ const RatingsReviews = (props) => {
           <RatingBreakdown metadata={metadata} product={props.product} />
           <ProductBreakdown factors={metadata.characteristics} />
         </div>
-        <ReviewList reviews={reviews} load={(loadReviews)} max={Number(metadata.recommended.true) + Number(metadata.recommended.false)}/>
+        <div className="rr-sort-stream">
+          <Sorter sort={sort} select={setSort}/>
+          <ReviewList reviews={reviews} load={(loadReviews)} max={Number(metadata.recommended.true) + Number(metadata.recommended.false)}/>
+        </div>
       </div>
       </>
     );
