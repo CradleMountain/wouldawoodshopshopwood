@@ -18,6 +18,7 @@ const Helpful = ({ id, yes }) => {
     .then(() => {
       setAuthHelp(id, 'yes');
       setResponse('yes');
+      setQty(qty + 1);
     })
     .catch((err) => {
       console.error(err);
@@ -25,6 +26,7 @@ const Helpful = ({ id, yes }) => {
   };
 
   const [response, setResponse] = useState(() => { return getAuthHelp(id); });
+  const [qty, setQty] = useState(yes - 1);
   var content = (
     <>
       <span>Was this review helpful? </span>
@@ -35,7 +37,7 @@ const Helpful = ({ id, yes }) => {
   if (response) {
     console.log(response);
     content = (
-      <span>{response === 'yes' ? `You and ${yes - 1} others found this helpful` : 'You did not find this helpful'}</span>
+      <span>{response === 'yes' ? `You and ${qty} others found this helpful` : 'You did not find this helpful'}</span>
     );
   }
 
