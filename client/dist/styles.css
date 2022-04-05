@@ -99,14 +99,17 @@ height: 100%;
 
 .rr-reviews {
   margin-left: 50px;
+  overflow: scroll;
+  max-height: 400px;
 }
 
 .rr-review {
   /* border: 1px solid gray;
   border-radius: 3px; */
-  background-color:rgb(250, 250, 250);
+  background-color:rgb(245, 245, 245);
   padding: 8px;
-  min-width: 500px;
+  width: 550px;
+  margin-bottom: 20px;
 }
 
 .rr-review-summary {

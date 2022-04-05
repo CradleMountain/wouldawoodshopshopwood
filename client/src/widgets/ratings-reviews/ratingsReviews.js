@@ -22,18 +22,19 @@ const RatingsReviews = (props) => {
       });
   }
 
-  const getReviews = (productId) => {
+  const getReviews = (productId, pg) => {
     return axios({
       method: 'GET',
       url: '/reviews',
       params: {
         'product_id': productId,
-        'page': 3,
+        'page': pg,
         'count': 2,
-        'sort': 'relevant'
+        'sort': sort
       }
     })
       .then(({data}) => {
+        console.log('Data:', data);
         return data;
       })
       .catch((err) => {
@@ -41,9 +42,22 @@ const RatingsReviews = (props) => {
       })
   };
 
+  const loadReviews = (cb) => {
+    getReviews(product, page + 1)
+      .then((data) => {
+        cb(data.results);
+        setPage(page + 1);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
+
   const [product, setProduct] = useState(props.product.id);
   const [metadata, setMetadata] = useState({});
-  const [reviews, setReviews] = useState({});
+  const [reviews, setReviews] = useState([]);
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState('relevant');
 
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
@@ -56,7 +70,7 @@ const RatingsReviews = (props) => {
   }
 
   if (props.product.id && product !== props.product.id) {
-    getReviews(props.product.id)
+    getReviews(props.product.id, page)
       .then((data) => {
         setReviews(data.results);
         setProduct(Number(data.product));
@@ -66,7 +80,7 @@ const RatingsReviews = (props) => {
       });
   }
 
-  if (product) {
+  if (product && metadata.product_id) {
     return (
       <>
       <h2>Ratings &amp; Reviews</h2>
@@ -75,7 +89,7 @@ const RatingsReviews = (props) => {
           <RatingBreakdown metadata={metadata} product={props.product} />
           <ProductBreakdown factors={metadata.characteristics} />
         </div>
-        <ReviewList reviews={reviews}/>
+        <ReviewList reviews={reviews} load={(loadReviews)} max={Number(metadata.recommended.true) + Number(metadata.recommended.false)}/>
       </div>
       </>
     );
