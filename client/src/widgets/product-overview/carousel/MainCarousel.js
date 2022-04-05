@@ -27,7 +27,6 @@ const MainCarousel = (props) => {
       {ctx.carouselIndex > 0 && (
         <ArrowIcon direction={"left"} clickHandler={leftArrowClick} />
       )}
-
       <div
         className="inner"
         style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
