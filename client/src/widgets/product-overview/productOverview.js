@@ -16,6 +16,7 @@ import VerticalCarousel from "./carousel/VerticalCarousel.js";
 import ProductDescription from "./textDisplays/ProductDescription.js";
 import StyleDescription from "./textDisplays/StyleDescription.js";
 import StyleSelector from "./styleSelector/StyleSelector.js";
+import CheckoutContainer from "./checkout/CheckoutContainer.js";
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
@@ -44,6 +45,7 @@ const ProductOverview = (props) => {
 
   return (
     <Fragment>
+      <CheckoutContainer />
       <StyleDescription
         productStyles={productStyles}
         currentProduct={props.currentProduct}

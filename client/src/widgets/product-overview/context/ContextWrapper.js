@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ProductOverviewContextProvider } from "./productOverview-context.js";
-import ProductOverview from '../ProductOverview';
+import ProductOverview from '../ProductOverview.js';
 
 const ContextWrapper = (props) => {
   return (

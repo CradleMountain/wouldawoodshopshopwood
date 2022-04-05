@@ -7,6 +7,7 @@ const StyleThumbnail = (props) => {
 
   const thumbnailClickHandler = () => {
     ctx.styleChangeHandler(props.styleObj);
+    console.log(props.styleObj);
   };
   let renderCheck = ctx.currentStyle.style_id === props.styleObj.style_id;
 
