@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import ProdContext from "../productOverview-context.js";
+import ProdContext from "../context/productOverview-context.js";
 import CarouselThumbnail from "./CarouselThumbnail.js";
 import ArrowIcon from "./ArrowIcon.js";
 

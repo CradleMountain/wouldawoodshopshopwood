@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import ProdContext from "../productOverview-context.js";
+import ProdContext from "../context/productOverview-context.js";
 
 const CarouselThumbnail = (props) => {
   const ctx = useContext(ProdContext);

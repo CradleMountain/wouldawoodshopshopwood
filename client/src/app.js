@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import ContextWrapper from "./widgets/product-overview/ContextWrapper.js";
+import ContextWrapper from "./widgets/product-overview/context/ContextWrapper.js";
 import QuestionsAnswers from "./widgets/questions-answers/questionsAnswers.js";
 import RatingsReviews from "./widgets/ratings-reviews/ratingsReviews.js";
 import RelatedProducts from "./widgets/related-products/relatedProducts.js";

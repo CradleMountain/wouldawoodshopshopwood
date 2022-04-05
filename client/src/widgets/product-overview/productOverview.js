@@ -10,7 +10,7 @@ import axios from "axios";
 import "regenerator-runtime/runtime";
 
 //import { ProductOverviewContextProvider } from "./productOverview-context.js";
-import ProdContext from "./productOverview-context.js";
+import ProdContext from "./context/productOverview-context.js";
 import MainCarousel from "./carousel/MainCarousel.js";
 import VerticalCarousel from "./carousel/VerticalCarousel.js";
 import ProductDescription from "./textDisplays/ProductDescription.js";

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
-import ProdContext from "../productOverview-context";
+import ProdContext from "../context/productOverview-context";
 
 const StyleDescription = (props) => {
   const ctx = useContext(ProdContext);
