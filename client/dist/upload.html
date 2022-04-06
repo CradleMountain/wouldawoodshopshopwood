@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.response = ''
+
+      var onClose = new CustomEvent('close', { detail: {} });
+
+      var change = function(target) {
+        if (target.checkValidity() || target.value === '') {
+          response = target.value;
+        } else {
+          window.alert('Please enter a valid URL')
+        }
+      };
+    </script>
+
+    <form target="_parent" onsubmit="this.preventDefault(); window.opener.dispatchEvent(onClose); window.close();">
+      <span>Image URL: </span>
+      <input type="url" value="" onchange="change(this)">
+      <button type="button" onclick="window.opener.dispatchEvent(onClose); window.close();">Add</button>
+    </form>
+  </body>
+</html>

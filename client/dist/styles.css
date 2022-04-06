@@ -242,6 +242,33 @@ height: 100%;
   font-size: 12px;
 }
 
+.rr-up-thumbs {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.rr-up-thumbs img {
+  height: 50px;
+  width: 50px;
+}
+
+.rr-up-thumb {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  margin-right: 15px;
+  border: 1px solid gray;
+}
+
+.rr-up-remove {
+  position: relative;
+  bottom: 58px;
+  left: 42px;
+  color: red;
+  font-size: 18px;
+}
+
 .rr-write-error {
   border: 2px solid darkred;
   border-radius: 15px;

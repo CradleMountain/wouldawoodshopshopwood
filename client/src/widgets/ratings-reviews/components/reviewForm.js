@@ -22,7 +22,7 @@ const ReviewForm = ({ show, product, characteristics }) => {
   const [recommend, setRecommend] = useState(null);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
-  const [photos, setPhotos] = useState([])
+  const [photos, setPhotos] = useState([]);
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [textInputs, setTextInputs] = useState({
@@ -44,7 +44,12 @@ const ReviewForm = ({ show, product, characteristics }) => {
     summary: true,
     body: false,
     nickname: false,
-    email: false
+    email: false,
+    'photo-1': true,
+    'photo-2': true,
+    'photo-3': true,
+    'photo-4': true,
+    'photo-5': true
   });
 
   const submit = (e) => {
@@ -174,7 +179,7 @@ const ReviewForm = ({ show, product, characteristics }) => {
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Upload your photos</div>
-          <ImageLoader state={photos}/>
+          <ImageLoader state={photos} setState={setPhotos} validate={(photo, valid) => validate(photo, valid)}/>
         </div>
 
         <div className="rr-write-question">
