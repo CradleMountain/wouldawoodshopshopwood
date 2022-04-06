@@ -5,7 +5,7 @@ const ArrowIcon = (props) => {
     <div className="arrow">
       <div className={props.direction} onClick={props.clickHandler}>
       <i
-          className={`fa-solid fa-arrow-${props.direction} fa-xl`}
+          className={`fa-solid fa-${props.icon}-${props.direction} fa-xl`}
           onClick={props.clickHandler}
         ></i>
       </div>

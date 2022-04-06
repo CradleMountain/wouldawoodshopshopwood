@@ -9,10 +9,8 @@ import React, {
 import axios from "axios";
 import "regenerator-runtime/runtime";
 
-//import { ProductOverviewContextProvider } from "./productOverview-context.js";
 import ProdContext from "./context/productOverview-context.js";
 import MainCarousel from "./carousel/MainCarousel.js";
-import VerticalCarousel from "./carousel/VerticalCarousel.js";
 import ProductDescription from "./textDisplays/ProductDescription.js";
 import StyleDescription from "./textDisplays/StyleDescription.js";
 import StyleSelector from "./styleSelector/StyleSelector.js";
@@ -43,10 +41,6 @@ const ProductOverview = (props) => {
   return (
     <div className="overviewContainer">
       <MainCarousel
-        productStyles={productStyles}
-        currentProduct={props.currentProduct}
-      />
-      <VerticalCarousel
         productStyles={productStyles}
         currentProduct={props.currentProduct}
       />

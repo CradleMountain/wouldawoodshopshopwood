@@ -10,8 +10,14 @@ const CarouselThumbnail = (props) => {
   };
 
   return (
-    <div className="carouselThumbnail"
-      onClick={thumbnailClickHandler}>
+    <div
+      className={
+        props.index === ctx.carouselIndex
+          ? "carouselThumbnail highlight"
+          : "carouselThumbnail"
+      }
+      onClick={thumbnailClickHandler}
+    >
       <img
         className="carouselThumbnailImage"
         src={props.photoObj.thumbnail_url}

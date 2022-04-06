@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 
 import ProdContext from "../context/productOverview-context";
+import VerticalCarousel from "./VerticalCarousel.js";
 import CarouselItem from "./CarouselItem.js";
 import ArrowIcon from "./ArrowIcon.js";
 
@@ -23,25 +24,42 @@ const MainCarousel = (props) => {
   // });
 
   return (
-    <div className="carousel">
+    <Fragment>
       {ctx.carouselIndex > 0 && (
-        <ArrowIcon direction={"left"} clickHandler={leftArrowClick} />
+        <ArrowIcon
+          icon={"arrow"}
+          direction={"left"}
+          clickHandler={leftArrowClick}
+        />
       )}
-      <div
-        className="inner"
-        style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
-      >
-        {ctx.currentStyle.style_id &&
-          ctx.currentStyle.photos.map((photoObj, index) => {
-            return (
-              <CarouselItem photoObj={photoObj} key={index} index={index} />
-            );
-          })}
+      <div className="carouselContainer">
+        <VerticalCarousel
+          productStyles={props.productStyles}
+          currentProduct={props.currentProduct}
+        />
+        <div className="horizontalCarousel">
+          <div
+            className="horizontalInner"
+            style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
+          >
+            {ctx.currentStyle.style_id &&
+              ctx.currentStyle.photos.map((photoObj, index) => {
+                return (
+                  <CarouselItem photoObj={photoObj} key={index} index={index} />
+                );
+              })}
+          </div>
+        </div>
       </div>
-      {(ctx.currentStyle.style_id && ctx.carouselIndex < ctx.currentStyle.photos.length - 1) && (
-        <ArrowIcon direction={"right"} clickHandler={rightArrowClick} />
-      )}
-    </div>
+      {ctx.currentStyle.style_id &&
+        ctx.carouselIndex < ctx.currentStyle.photos.length - 1 && (
+          <ArrowIcon
+            icon={"arrow"}
+            direction={"right"}
+            clickHandler={rightArrowClick}
+          />
+        )}
+    </Fragment>
   );
 };
 
