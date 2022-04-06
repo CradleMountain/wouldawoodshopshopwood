@@ -24,12 +24,12 @@ export const ProductOverviewContextProvider = (props) => {
   return (
     <ProdContext.Provider
       value={{
-        carouselIndex: carouselIndex,
-        carouselIndexChangeHandler: carouselIndexChangeHandler,
-        currentStyle: currentStyle,
-        styleChangeHandler: styleChangeHandler,
-        sizeDropToggle: sizeDropToggle,
-        sizeDropToggleHandler: sizeDropToggleHandler,
+        carouselIndex,
+        carouselIndexChangeHandler,
+        currentStyle,
+        styleChangeHandler,
+        sizeDropToggle,
+        sizeDropToggleHandler,
       }}
     >
       {props.children}

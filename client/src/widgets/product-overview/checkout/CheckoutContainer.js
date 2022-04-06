@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { some } from 'underscore';
+import { some } from "underscore";
 
 import SelectSize from "./SelectSize.js";
 import SelectQuantity from "./SelectQuantity.js";
 import AddToCartButton from "./AddToCartButton.js";
 import ProdContext from "../context/productOverview-context";
+import api from '../apiHelpers.js';
 
 const CheckoutContainer = () => {
   const ctx = useContext(ProdContext);
@@ -13,20 +14,21 @@ const CheckoutContainer = () => {
   const [cart, setCart] = useState(null);
   const [quantityNums, setQuantityNums] = useState(null);
   const [inStock, setInStock] = useState(true);
+  const [sizeMessage, setSizeMessage] = useState("Size");
 
   useEffect(() => {
     // if (ctx.currentStyle.skus) {
     //   setSkus(formatSkus(ctx.currentStyle.skus));
     // }
     ctx.currentStyle.skus && setSkus(formatSkus(ctx.currentStyle.skus));
-    ;
     setCart(null);
     setQuantityNums(null);
+    setSizeMessage("Size");
   }, [ctx.currentStyle]);
 
   const sizeToCartHandler = (skuObj) => {
     setCart(skuObj);
-    createNumsArray(skuObj)
+    createNumsArray(skuObj);
   };
 
   const quantityToCartHandler = (num) => {
@@ -37,7 +39,12 @@ const CheckoutContainer = () => {
   };
 
   const addToCartHandler = () => {
-    console.log(cart)
+    if (!cart) {
+      ctx.sizeDropToggleHandler(true);
+      setSizeMessage("Please Select Size");
+    } else {
+      api.postCart(cart);
+    }
   };
 
   const createNumsArray = (skuObj) => {
@@ -50,7 +57,7 @@ const CheckoutContainer = () => {
   };
 
   const validateInStock = (skusArray) => {
-    return some(skusArray, sku => sku.quantity > 0)
+    return some(skusArray, (sku) => sku.quantity > 0);
   };
 
   const formatSkus = (skusObj) => {
@@ -62,7 +69,7 @@ const CheckoutContainer = () => {
         size: ctx.currentStyle.skus[sku].size,
         purchaseQuantity: 1,
       };
-      skusArray.push(formattedSku);
+      formattedSku.quantity > 0 && skusArray.push(formattedSku);
     }
     setInStock(validateInStock(skusArray));
     return skusArray;
@@ -70,7 +77,11 @@ const CheckoutContainer = () => {
 
   return (
     <div>
-      <SelectSize skus={skus} sizeToCartHandler={sizeToCartHandler} />
+      <SelectSize
+        skus={skus}
+        sizeToCartHandler={sizeToCartHandler}
+        sizeMessage={sizeMessage}
+      />
       <SelectQuantity
         cart={cart}
         quantityNums={quantityNums}

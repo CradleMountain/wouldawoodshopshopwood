@@ -26,7 +26,7 @@ const SelectSize = (props) => {
   return (
     <div className="dropDownContainer">
       <div onClick={toggleList} className="dropDownButton">
-        {size ? size : "Select Size"}
+        {size ? size : props.sizeMessage}
       </div>
       {ctx.sizeDropToggle && (
         <ul className="dropDownList">
