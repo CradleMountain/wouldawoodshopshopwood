@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import ModalWrapper from '../../../components/modal.js';
 import StarRating from '../../../components/starRating.js';
+import DynamicTextInput from './dynamic.js';
 
 const factorPhrases = {
   Size: ['None selected', 'A size too small', 'Half a size too small', 'Perfect', 'Half a size too big', 'A size too wide'],
@@ -15,6 +16,8 @@ const factorPhrases = {
 
 const ReviewForm = ({show, product, factors}) => {
   const [rating, setRating] = useState(0);
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
   const [factorRating, setFactorRating] = useState(() => {
     var result = {};
     for (var i = 0; i < Object.keys(factorPhrases).length; i++) {
@@ -94,6 +97,18 @@ const ReviewForm = ({show, product, factors}) => {
               </div>)
             })}
           </div>
+        </div>
+
+        <div className="rr-write-question">
+          <div className="rr-wq-header">Review summary</div>
+          <DynamicTextInput state={summary} placeholder="Example: Best purchase ever!" min="0" max="60"/>
+          {/* <input type="text" value={summary} onChange={(e) => { setSummary(e.target.value); }} maxLength="60" placeholder="Example: Best purchase ever!"/> */}
+        </div>
+
+        <div className="rr-write-question">
+          <div className="rr-wq-header">Review body {required}</div>
+          <DynamicTextInput state={body} type="textarea" min="50" max="1000" placeholder="Why did you like the product or not?"/>
+          {/* <textarea value={body} onChange={(e) => { setBody(e.target.value); }} minLength="50" maxLength="1000" placeholder="Why did you like the product or not?"/> */}
         </div>
       </form>
     </ModalWrapper>
