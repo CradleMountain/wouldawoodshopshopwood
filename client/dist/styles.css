@@ -200,6 +200,14 @@ height: 100%;
   left: 25%;
   padding: 20px;
   border-radius: 8px;
+  /* overflow-y: scroll; */
+}
+
+.rr-write-inner {
+  width: 590px;
+  height: 540px;
+  margin: 5px;
+  padding-right: 20px;
   overflow-y: scroll;
 }
 
@@ -232,4 +240,17 @@ height: 100%;
 
 .rr-wq-factor-phrases {
   font-size: 12px;
+}
+
+.rr-write-error {
+  border: 2px solid darkred;
+  border-radius: 15px;
+}
+
+.rr-write-error ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }

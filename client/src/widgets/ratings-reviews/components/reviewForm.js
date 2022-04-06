@@ -4,6 +4,7 @@ import axios from 'axios';
 import ModalWrapper from '../../../components/modal.js';
 import StarRating from '../../../components/starRating.js';
 import DynamicTextInput from './dynamic.js';
+import ImageLoader from './imageLoader.js';
 
 const factorPhrases = {
   Size: ['None selected', 'A size too small', 'Half a size too small', 'Perfect', 'Half a size too big', 'A size too wide'],
@@ -14,11 +15,14 @@ const factorPhrases = {
   Fit: ['None selected', 'Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 };
 
-const ReviewForm = ({show, product, factors}) => {
+const ReviewForm = ({ show, product, characteristics }) => {
+  const factors = Object.keys(characteristics);
+  const [showError, setShowError] = useState(false);
   const [rating, setRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
+  const [photos, setPhotos] = useState([])
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [textInputs, setTextInputs] = useState({
@@ -47,6 +51,18 @@ const ReviewForm = ({show, product, factors}) => {
     e.preventDefault();
     console.log(textInputs);
     console.log(valid);
+    var isError = false;
+    for (var field in valid) {
+      if (valid[field] === false) {
+        isError = true;
+      }
+    }
+
+    if (isError) {
+      setShowError(true);
+    } else {
+      // axios post request :)
+    }
   };
 
   const validate = (field, validated) => {
@@ -85,26 +101,41 @@ const ReviewForm = ({show, product, factors}) => {
     });
   };
 
-  const required = (<span className="rr-write-required">*</span>)
+  const required = (<span className="rr-write-required">*</span>);
 
   return (
-    <ModalWrapper styles="rr-write-modal" backClick={()=>{}}>
+    <ModalWrapper styles="rr-write-modal" backClick={() => { }}>
+      <div className="rr-write-inner">
       <h3>Write Your Review</h3>
       <h4>About the {product.name}</h4>
+      {showError
+        ? <div className="rr-write-error">
+          <p>You must enter the following:</p>
+          <ul>
+            {Object.keys(valid).map((field) => {
+              var msg = field.slice(0,1).toUpperCase().concat(field.slice(1));
+              if (field === 'recommend') {
+                msg = 'Recommendation'
+              }
+              return (<li key={field}>{msg}</li>);
+            })}
+          </ul>
+        </div>
+        : null}
       <form>
         <div className="rr-write-question">
           <div className="rr-wq-header">Overall rating {required}</div>
           <div onClick={clickStars} className="rr-write-stars">
-            <StarRating rating={rating}/>
+            <StarRating rating={rating} />
             {rating > 0 ? <span> {(['Poor', 'Average', 'Fair', 'Good', 'Great'])[rating - 1]}</span> : null}
           </div>
-          <input type="hidden" value={rating}/>
+          <input type="hidden" value={rating} />
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Do you recommend this product? {required}</div>
-          <label htmlFor="rec-yes"><input type="radio" name="recommended" value={true} onChange={(e) => {setRecommend(true); validate('recommend', e.target.checkValidity());}} id="rec-yes" checked={ recommend === null ? false : recommend } required/>Yes</label>
-          <label htmlFor="rec-no"><input type="radio" name="recommended" value={false} onChange={(e) => {setRecommend(false); validate('recommend', e.target.checkValidity());}} id="rec-no" checked={ recommend === null ? false : !recommend }required/>No</label>
+          <label htmlFor="rec-yes"><input type="radio" name="recommended" value={true} onChange={(e) => { setRecommend(true); validate('recommend', e.target.checkValidity()); }} id="rec-yes" checked={recommend === null ? false : recommend} required />Yes</label>
+          <label htmlFor="rec-no"><input type="radio" name="recommended" value={false} onChange={(e) => { setRecommend(false); validate('recommend', e.target.checkValidity()); }} id="rec-no" checked={recommend === null ? false : !recommend} required />No</label>
         </div>
 
         <div className="rr-write-question">
@@ -114,9 +145,9 @@ const ReviewForm = ({show, product, factors}) => {
               var radios = [];
               for (var i = 1; i < 6; i++) {
                 if (factorRating[factor] === i) {
-                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={true} required/>)
+                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={true} required />)
                 } else {
-                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={false} required/>);
+                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={false} required />);
                 }
               }
               return (<div key={factor} className="rr-wq-factor">
@@ -133,28 +164,28 @@ const ReviewForm = ({show, product, factors}) => {
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Review summary</div>
-          <DynamicTextInput state={textInputs.summary} setState={(response) => { setTextInput('summary', response);}} validate={(valid) => validate('summary', valid)} placeholder="Example: Best purchase ever!" min="0" max="60" required={false}/>
+          <DynamicTextInput state={textInputs.summary} setState={(response) => { setTextInput('summary', response); }} validate={(valid) => validate('summary', valid)} placeholder="Example: Best purchase ever!" min="0" max="60" required={false} />
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Review body {required}</div>
-          <DynamicTextInput state={textInputs.body} setState={(response, valid) => setTextInput('body', response)} validate={(valid) => validate('body', valid)} type="textarea" min="50" max="1000" placeholder="Why did you like the product or not?"/>
+          <DynamicTextInput state={textInputs.body} setState={(response, valid) => setTextInput('body', response)} validate={(valid) => validate('body', valid)} type="textarea" min="50" max="1000" placeholder="Why did you like the product or not?" />
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Upload your photos</div>
-          <button>Add a photo</button>
+          <ImageLoader state={photos}/>
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">What is your nickname {required}</div>
-          <DynamicTextInput state={textInputs.nickname} setState={(response) => setTextInput('nickname', response)} validate={(valid) => validate('nickname', valid)} placeholder="Example: jackson11!" max="60"/>
+          <DynamicTextInput state={textInputs.nickname} setState={(response) => setTextInput('nickname', response)} validate={(valid) => validate('nickname', valid)} placeholder="Example: jackson11!" max="60" />
           <span>For privacy reasons, do not use your full name or email address</span>
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Your email {required}</div>
-          <DynamicTextInput state={textInputs.email} setState={(response) => setTextInput('email', response)} validate={(valid) => validate('email', valid)} type="email" placeholder="Example: jackson11@email.com" max="60"/>
+          <DynamicTextInput state={textInputs.email} setState={(response) => setTextInput('email', response)} validate={(valid) => validate('email', valid)} type="email" placeholder="Example: jackson11@email.com" max="60" />
           <span>For authentication reasons, you will not be emailed</span>
         </div>
 
@@ -162,6 +193,7 @@ const ReviewForm = ({show, product, factors}) => {
           <button onClick={submit}>Submit review</button>
         </div>
       </form>
+      </div>
     </ModalWrapper>
   );
 };

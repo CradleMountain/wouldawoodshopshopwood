@@ -86,7 +86,7 @@ const RatingsReviews = (props) => {
   if (product && metadata.product_id) {
     return (
       <>
-      {write ? <ReviewForm show={setWrite} product={props.product} factors={Object.keys(metadata.characteristics)}/> : null}
+      {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics}/> : null}
       <h2>Ratings &amp; Reviews</h2>
       <div className="ratings-reviews">
         <div className="rr-breakdowns">
