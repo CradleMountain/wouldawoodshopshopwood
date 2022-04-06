@@ -5,15 +5,16 @@ import SizeListItem from "./SizeListItem.js";
 
 const SelectSize = (props) => {
   const ctx = useContext(ProdContext);
-  const [isToggled, setIsToggled] = useState(false);
+
   const [size, setSize] = useState(null);
 
   useEffect(() => {
     setSize(null);
+    ctx.sizeDropToggleHandler(false);
   }, [ctx.currentStyle]);
 
   const toggleList = () => {
-    setIsToggled(!isToggled);
+    ctx.sizeDropToggleHandler(!ctx.sizeDropToggle);
   };
 
   const sizeSelectHandler = (skuObj) => {
@@ -27,7 +28,7 @@ const SelectSize = (props) => {
       <div onClick={toggleList} className="dropDownButton">
         {size ? size : "Select Size"}
       </div>
-      {isToggled && (
+      {ctx.sizeDropToggle && (
         <ul className="dropDownList">
           {props.skus.map((skuObj, index) => {
             if (skuObj.size) {
