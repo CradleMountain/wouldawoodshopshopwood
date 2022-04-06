@@ -16,8 +16,17 @@ const factorPhrases = {
 
 const ReviewForm = ({show, product, factors}) => {
   const [rating, setRating] = useState(0);
+  const [recommend, setRecommend] = useState(null);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+  const [textInputs, setTextInputs] = useState({
+    summary: '',
+    body: '',
+    nickname: '',
+    email: ''
+  });
   const [factorRating, setFactorRating] = useState(() => {
     var result = {};
     for (var i = 0; i < Object.keys(factorPhrases).length; i++) {
@@ -25,9 +34,24 @@ const ReviewForm = ({show, product, factors}) => {
     }
     return result;
   });
+  const [valid, setValid] = useState({
+    rating: false,
+    recommend: false,
+    summary: true,
+    body: false,
+    nickname: false,
+    email: false
+  });
 
   const submit = (e) => {
     e.preventDefault();
+    console.log(textInputs);
+    console.log(valid);
+  };
+
+  const validate = (field, validated) => {
+    valid[field] = validated;
+    setValid(valid);
   };
 
   const clickStars = (e) => {
@@ -35,6 +59,7 @@ const ReviewForm = ({show, product, factors}) => {
     for (var i = 0; i < star.parentElement.children.length; i++) {
       if (star.parentElement.children[i] === star) {
         setRating(i + 1);
+        validate('rating', true);
       }
     }
   };
@@ -50,6 +75,13 @@ const ReviewForm = ({show, product, factors}) => {
         }
       }
       return result;
+    });
+  };
+
+  const setTextInput = (field, response) => {
+    setTextInputs(() => {
+      textInputs[field] = response;
+      return textInputs;
     });
   };
 
@@ -71,8 +103,8 @@ const ReviewForm = ({show, product, factors}) => {
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Do you recommend this product? {required}</div>
-          <label htmlFor="rec-yes"><input type="radio" name="recommended" value={true} id="rec-yes"/>Yes</label>
-          <label htmlFor="rec-no"><input type="radio" name="recommended" value={false} id="rec-no"/>No</label>
+          <label htmlFor="rec-yes"><input type="radio" name="recommended" value={true} onChange={(e) => {setRecommend(true); validate('recommend', e.target.checkValidity());}} id="rec-yes" checked={ recommend === null ? false : recommend } required/>Yes</label>
+          <label htmlFor="rec-no"><input type="radio" name="recommended" value={false} onChange={(e) => {setRecommend(false); validate('recommend', e.target.checkValidity());}} id="rec-no" checked={ recommend === null ? false : !recommend }required/>No</label>
         </div>
 
         <div className="rr-write-question">
@@ -82,9 +114,9 @@ const ReviewForm = ({show, product, factors}) => {
               var radios = [];
               for (var i = 1; i < 6; i++) {
                 if (factorRating[factor] === i) {
-                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={true}/>)
+                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={true} required/>)
                 } else {
-                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={false}/>);
+                  radios.push(<input type="radio" name={factor} value={i} key={i} onChange={rateFactor} checked={false} required/>);
                 }
               }
               return (<div key={factor} className="rr-wq-factor">
@@ -101,14 +133,33 @@ const ReviewForm = ({show, product, factors}) => {
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Review summary</div>
-          <DynamicTextInput state={summary} placeholder="Example: Best purchase ever!" min="0" max="60"/>
-          {/* <input type="text" value={summary} onChange={(e) => { setSummary(e.target.value); }} maxLength="60" placeholder="Example: Best purchase ever!"/> */}
+          <DynamicTextInput state={textInputs.summary} setState={(response) => { setTextInput('summary', response);}} validate={(valid) => validate('summary', valid)} placeholder="Example: Best purchase ever!" min="0" max="60" required={false}/>
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Review body {required}</div>
-          <DynamicTextInput state={body} type="textarea" min="50" max="1000" placeholder="Why did you like the product or not?"/>
-          {/* <textarea value={body} onChange={(e) => { setBody(e.target.value); }} minLength="50" maxLength="1000" placeholder="Why did you like the product or not?"/> */}
+          <DynamicTextInput state={textInputs.body} setState={(response, valid) => setTextInput('body', response)} validate={(valid) => validate('body', valid)} type="textarea" min="50" max="1000" placeholder="Why did you like the product or not?"/>
+        </div>
+
+        <div className="rr-write-question">
+          <div className="rr-wq-header">Upload your photos</div>
+          <button>Add a photo</button>
+        </div>
+
+        <div className="rr-write-question">
+          <div className="rr-wq-header">What is your nickname {required}</div>
+          <DynamicTextInput state={textInputs.nickname} setState={(response) => setTextInput('nickname', response)} validate={(valid) => validate('nickname', valid)} placeholder="Example: jackson11!" max="60"/>
+          <span>For privacy reasons, do not use your full name or email address</span>
+        </div>
+
+        <div className="rr-write-question">
+          <div className="rr-wq-header">Your email {required}</div>
+          <DynamicTextInput state={textInputs.email} setState={(response) => setTextInput('email', response)} validate={(valid) => validate('email', valid)} type="email" placeholder="Example: jackson11@email.com" max="60"/>
+          <span>For authentication reasons, you will not be emailed</span>
+        </div>
+
+        <div>
+          <button onClick={submit}>Submit review</button>
         </div>
       </form>
     </ModalWrapper>
