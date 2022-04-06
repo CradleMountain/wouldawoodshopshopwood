@@ -21,7 +21,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getProductById(37312);
-    console.log('app state ', this.state)
   }
 
   getProductById(id) {
@@ -39,11 +38,10 @@ class App extends React.Component {
       });
   }
 
-
   render() {
     return (
 
-        <QuestionsAnswers />
+        <QuestionsAnswers currentProduct={this.state.currentProduct} />
 
     );
   }

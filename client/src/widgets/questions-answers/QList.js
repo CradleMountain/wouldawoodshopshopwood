@@ -1,50 +1,89 @@
 import axios from 'axios';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Q from './Q';
 
-class QList extends React.Component {
-  constructor(props) {
-    super(props);
+// I think this is the accordion component
 
-    this.state = {
-      questions: []
-    }
+const QList = (props) => {
 
-    this.getQuestions = this.getQuestions.bind(this);
+  const [feedCount, setFeedCount] = useState(4);
 
-  }
 
-  getQuestions () {
-    axios({
-      method: 'GET',
-      url: `/qa/questions/?product_id=37313`
+  // return (
+  //   <Q />
+  // )
+  return (
+    props.data.map((datum, i) => {
+      if (i < feedCount) {
+        return (
+          <Q datum={datum}/>
+        )
+      }
     })
-      .then((data) => {
-        console.log('DATA', data.data.results)
-        this.setState({
-          questions: data.data.results
-        })
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  componentDidMount() {
-    this.getQuestions();
-  }
-
-
-  render() {
-    return (
-      <div>
-        <Q />
-      </div>
-
-
-    );
-  }
+  )
+  // <br></br>
+  // <MoreQs /><AddQ />
 }
+
+    // this.state = {
+    //   id: 55,
+    //   questions: []
+    // }
+
+    // this.getQuestions = this.getQuestions.bind(this);
+
+
+
+  // getQuestions () {
+  //   axios({
+  //     method: 'GET',
+  //     url: `/qa/questions/?product_id=37313`
+  //   })
+  //     .then((data) => {
+  //       this.setState({
+  //         questions: data.data.results
+  //       })
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
+
+  // getQuestions () {
+  //   axios({
+  //     method: 'GET',
+  //     url: `/qa/questions/?product_id=${this.props.currentProduct.id}`
+  //   })
+  //     .then((data) => {
+  //       this.setState({
+  //         questions: data.data.results
+  //       })
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
+
+  // componentDidMount() {
+  //   this.getQuestions();
+  // }
+
+  //   componentDidMount() {
+  //     console.log('fuck ', this.props.currentProduct.id)
+  //   this.setState({id: this.props.currentProduct.id})
+  // }
+
+
+//   render() {
+//     return (
+//       <div>
+//         <Q />
+//       </div>
+
+
+//     );
+//   }
+// }
 
 export default QList;
 
