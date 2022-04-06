@@ -13,7 +13,7 @@ const MainCarousel = (props) => {
     }
   };
   const rightArrowClick = () => {
-    if (ctx.carouselIndex < selectedStyle[0].photos.length - 1) {
+    if (ctx.carouselIndex < ctx.currentStyle.photos.length - 1) {
       ctx.carouselIndexChangeHandler(ctx.carouselIndex + 1);
     }
   };
@@ -23,7 +23,7 @@ const MainCarousel = (props) => {
   // });
 
   return (
-    <span className="carousel">
+    <div className="carousel">
       {ctx.carouselIndex > 0 && (
         <ArrowIcon direction={"left"} clickHandler={leftArrowClick} />
       )}
@@ -41,7 +41,7 @@ const MainCarousel = (props) => {
       {(ctx.currentStyle.style_id && ctx.carouselIndex < ctx.currentStyle.photos.length - 1) && (
         <ArrowIcon direction={"right"} clickHandler={rightArrowClick} />
       )}
-    </span>
+    </div>
   );
 };
 

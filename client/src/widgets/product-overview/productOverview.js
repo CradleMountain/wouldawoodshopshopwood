@@ -23,8 +23,6 @@ const ProductOverview = (props) => {
   const ctx = useContext(ProdContext);
 
   const [productStyles, setStyles] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
 
   useEffect(() => {
     getProductStyle(props.currentProduct.id);
@@ -34,22 +32,16 @@ const ProductOverview = (props) => {
     try {
       const productStyles = await api.get(`/${productId}/styles`);
       setStyles(productStyles.data.results);
-      ctx.styleChangeHandler(productStyles.data.results[0]);
+      ctx.styleChangeHandler(productStyles.data.results.filter(style => style['default?'])[0]);
       console.log(props.currentProduct);
       console.log(productStyles.data.results);
     } catch (error) {
-      //setError(error.message);
       console.error(error);
     }
   }, []);
 
   return (
-    <Fragment>
-      <CheckoutContainer />
-      <StyleDescription
-        productStyles={productStyles}
-        currentProduct={props.currentProduct}
-      />
+    <div className="overviewContainer">
       <MainCarousel
         productStyles={productStyles}
         currentProduct={props.currentProduct}
@@ -58,12 +50,20 @@ const ProductOverview = (props) => {
         productStyles={productStyles}
         currentProduct={props.currentProduct}
       />
-      <ProductDescription currentProduct={props.currentProduct} />
-      <StyleSelector
-        productStyles={productStyles}
-        currentProduct={props.currentProduct}
-      />
-    </Fragment>
+      <div className="outOfTheWay">
+        <StyleDescription
+          productStyles={productStyles}
+          currentProduct={props.currentProduct}
+        />
+
+        <ProductDescription currentProduct={props.currentProduct} />
+        <StyleSelector
+          productStyles={productStyles}
+          currentProduct={props.currentProduct}
+        />
+        <CheckoutContainer />
+      </div>
+    </div>
   );
 };
 

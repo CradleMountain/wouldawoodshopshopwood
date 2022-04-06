@@ -14,7 +14,7 @@ const VerticalCarousel = (props) => {
   };
 
   const downArrowClick = () => {
-    if (ctx.carouselIndex < selectedStyle[0].photos.length - 1) {
+    if (ctx.carouselIndex < ctx.currentStyle.photos.length - 1) {
       ctx.carouselIndexChangeHandler(ctx.carouselIndex + 1);
     }
   };
@@ -25,10 +25,10 @@ const VerticalCarousel = (props) => {
 
   return (
     <div>
-      {ctx.carouselIndex > 0 && (
-        <ArrowIcon direction={"up"} clickHandler={upArrowClick} />
-      )}
       <div className="verticalCarousel">
+        {ctx.carouselIndex > 0 && (
+          <ArrowIcon direction={"up"} clickHandler={upArrowClick} />
+        )}
         <div
           className="verticalInner"
           style={{ transform: `translateY(-${ctx.carouselIndex * 20}%)` }}
@@ -44,8 +44,8 @@ const VerticalCarousel = (props) => {
               );
             })}
         </div>
+        <ArrowIcon direction={"down"} clickHandler={downArrowClick} />
       </div>
-      <ArrowIcon direction={"down"} clickHandler={downArrowClick} />
     </div>
   );
 };
