@@ -88,8 +88,34 @@ const ReviewForm = ({ show, product, characteristics }) => {
 
     if (isError) {
       setShowError(true);
+      console.log(textInputs);
     } else {
-      // axios post request :)
+      var characteristicRating = {};
+      for (var factor in factorRating) {
+        var factorId = characteristics[factor].id;
+        characteristicRating[factorId] = factorRating[factor];
+      }
+      axios({
+        method: 'POST',
+        url: '/reviews',
+        data: {
+          product_id: product.id,
+          rating: rating,
+          summary: textInputs.summary,
+          body: textInputs.body,
+          recommend: recommend,
+          name: textInputs.nickname,
+          email: textInputs.email,
+          photos: photos,
+          characteristics: characteristicRating
+        }
+      })
+      .then(() => {
+        show(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
   };
 
