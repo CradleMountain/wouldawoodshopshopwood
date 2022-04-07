@@ -13,7 +13,11 @@ const StyleThumbnail = (props) => {
 
   return (
     <div className="stylesThumbnail" onClick={thumbnailClickHandler}>
-      {renderCheck && <div><i className="fa-regular fa-circle-check fa-lg"></i></div>}
+      {renderCheck && (
+        <div className="check">
+          <i className="fa-regular fa-circle-check fa-lg"></i>
+        </div>
+      )}
       <img
         className="stylesThumbnailImage"
         src={props.styleObj.photos[0].thumbnail_url}

@@ -1,9 +1,8 @@
-import axios from 'axios';
-import 'regenerator-runtime/runtime';
+import axios from "axios";
+import "regenerator-runtime/runtime";
 
 const apiHelpers = {
-   get: async (endpoint = '') => {
-
+  get: async (endpoint = "") => {
     return axios
       .get(`http://localhost:3000/products${endpoint}`)
       .catch((err) => {
@@ -12,14 +11,13 @@ const apiHelpers = {
   },
   postCart: (cart) => {
     console.log(cart);
-    for (let i = 0; i < cart.purchaseQuantity; i++) {
-      axios({
-        method: 'POST',
-        url: '/cart',
-        params: {sku_id: cart.sku_id}
-      });
-    }
-  }
+    axios({
+      method: "POST",
+      url: "/cart",
+      params: { sku_id: cart.sku_id },
+      data: { sku_id: cart.sku_id },
+    });
+  },
 };
 
 export default apiHelpers;

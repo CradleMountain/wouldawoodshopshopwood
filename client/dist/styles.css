@@ -9,7 +9,7 @@ CSS Reset here
 /************************************************************************/
 
 body {
-  /* fonts, color schemes */
+  font-family: 'Roboto', sans-serif;
 }
 
 #app {
@@ -73,32 +73,40 @@ Example modal css for props.css:
   grid-template-rows: repeat(100, 1%);
   max-height: 1000px;
 }
+
+/************************************************************************/
+
 /************************************************************************/
 .outOfTheWay {
-  grid-column: 10/ 100;
-  grid-row: 50/ 100;
+  grid-column: 80/ 100;
+  grid-row: 80/ 100;
 }
 /************************************************************************/
 .arrow {
   position: absolute;
-  color: slategrey;
+  color: rgb(69, 65, 65);
   z-index: 50;
 }
 .left {
-
-  grid-column-start: 8;
-  grid-row-start: 30;
+  /* grid-column-start: 8;
+  grid-row-start: 30; */
+  /* margin-left: 25%;
+  padding-left: 25%; */
   color: aqua;
-
 }
 .right {
-
+  color: red;
+  /* grid-column-start: 55 / 60; */
+  object-position: right;
+  margin-left: 55%;
 }
+/************************************************************************/
+
 /************************************************************************/
 .carouselContainer {
   position: relative;
-  grid-column: 8 / 70;
-  grid-row: 5 / 55;
+  grid-column: 8 / 60;
+  grid-row: 5 / 60;
   width: 100%;
   max-width: 100%;
   height: 100%;
@@ -132,9 +140,9 @@ Example modal css for props.css:
 }
 .carouselImage {
   width: 100%;
-  max-width: 667px;
+  /* max-width: 777px; */
   height: 100%;
-  max-height: 550px;
+  /* max-height: 700px; */
   object-fit: cover;
 }
 /************************************************************************/
@@ -175,23 +183,76 @@ Example modal css for props.css:
 .highlight {
   border-bottom: 3px;
 }
-
 /************************************************************************/
-.stylesThumbnailContainer {
-  height: 100px;
-  width: 100px;
+.text {
+
 }
+.sale {
+  text-decoration: line-through;
+  color: red;
+}
+.category {
+  font-weight: 600;
+}
+.name {
+  font-weight: 900;
+  font-size:xx-large;
+  margin: 16px 0px;
+}
+.price {
+  margin: 8px 3px;
+}
+.style {
+font-weight: 600;
+margin-right: 7px;
+}
+/************************************************************************/
+.stylesContainer {
+  grid-column: 62/ 95;
+  grid-row: 5 / 60;
+  color: rgb(69, 65, 65);
+}
+.span{
+  display: flex;
+}
+.fourRoundContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+/* .stylesThumbnailContainer {
+  height: 75px;
+  width: 75px;
+  margin: 2px 2px 2px 2px;
+  height: 5%;
+  width: 5%;
+} */
 .fa-circle-check {
   position: absolute;
   z-index: 25;
   object-position: right top;
   color: rgb(69, 65, 65);
+  background-color: white;
+  border-radius: inherit;
+
+}
+.check {
+  border-radius: inherit;
+  /* object-position: right; */
+  display: flex;
+  /* align-self: center; */
+  /* justify-content: flex-end; */
+  flex-direction:row-reverse;
 }
 .stylesThumbnail {
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* flex-direction: row-reverse; */
   overflow: hidden;
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
+  margin: 3px 3px 3px 3px;
+  height: 75px;
+  width: 75px;
+  border-radius: 75px;
 }
 .stylesThumbnailImage {
   position: relative;
@@ -210,6 +271,9 @@ Example modal css for props.css:
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   font-weight: 500;
   color: rgb(69, 65, 65);
+  border-style: solid;
+  border-color: rgb(69, 65, 65);
+  border-width: 1px;
   background: #ffffff;
 }
 .dropDownList {
@@ -227,9 +291,7 @@ Example modal css for props.css:
   margin-bottom: 0.8em;
 }
 
-.sale {
-  text-decoration: line-through;
-}
+
 /************************************************************************/
 /*                         Questions & Answers                          */
 /************************************************************************/

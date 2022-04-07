@@ -44,18 +44,23 @@ const ProductOverview = (props) => {
         productStyles={productStyles}
         currentProduct={props.currentProduct}
       />
-      <div className="outOfTheWay">
-        <StyleDescription
+      <div className="stylesContainer" >
+      <StyleDescription
           productStyles={productStyles}
           currentProduct={props.currentProduct}
         />
-
-        <ProductDescription currentProduct={props.currentProduct} />
-        <StyleSelector
+         <StyleSelector
           productStyles={productStyles}
           currentProduct={props.currentProduct}
         />
         <CheckoutContainer />
+      </div>
+      <div className="outOfTheWay">
+
+
+        <ProductDescription currentProduct={props.currentProduct} />
+
+
       </div>
     </div>
   );
