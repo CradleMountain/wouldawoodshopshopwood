@@ -62,6 +62,10 @@ const RatingsReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [write, setWrite] = useState(false);
 
+  useEffect(() => {
+    setPage(1);
+  }, [props.product])
+
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
       .then((data) => {
@@ -96,7 +100,7 @@ const RatingsReviews = (props) => {
         <div className="rr-sort-stream">
           <Sorter sort={sort} select={setSort}/>
           <ReviewList reviews={reviews} load={(loadReviews)} max={Number(metadata.recommended.true) + Number(metadata.recommended.false)}/>
-          <div>
+          <div className="rr-write-btn">
             <button onClick={() => setWrite(true)}>Write a Review</button>
           </div>
         </div>
