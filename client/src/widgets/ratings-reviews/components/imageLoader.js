@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'regenerator-runtime/runtime';
 
-const ImageLoader = ({state, validate}) => {
+const ImageLoader = ({state, setState, validate}) => {
   const [photos, setPhotos] = useState(state);
   const valid = true;
 
@@ -16,20 +16,21 @@ const ImageLoader = ({state, validate}) => {
 
     var url = proxy.window.response;
     if (url.length > 0) {
-      var newPhotos = photos.slice();
-      newPhotos.push(url);
-      setPhotos(newPhotos);
+      photos.push(url);
+      setPhotos(photos.slice());
+      setState(photos);
     }
   };
 
   const removePhoto = (i) => {
     validate('photo-' + (i + 1), true);
-    var newPhotos = photos.slice();
+    //var newPhotos = photos.slice();
     for (var j = i; j < photos.length; j++) {
-      newPhotos[j] = newPhotos[j + 1];
+      photos[j] = photos[j + 1];
     }
-    newPhotos.pop();
-    setPhotos(newPhotos);
+    photos.pop();
+    setPhotos(photos.slice());
+    setState(photos);
   };
 
   const invalidUrl = (i) => {
@@ -43,7 +44,12 @@ const ImageLoader = ({state, validate}) => {
         {photos.map((url, i) => {
           return (<div key={i} className="rr-up-thumb">
             <img src={url} onError={() => invalidUrl(i + 1)}/>
-            <div onClick={() => {removePhoto(i);}}><FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="rr-up-remove"/></div>
+            <div onClick={() => {removePhoto(i);}}>
+              <span className="rr-up-remove fa-layers fa-fw">
+                <FontAwesomeIcon icon="fa-solid fa-circle" className="icon-white"/>
+                <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="icon-red"/>
+              </span>
+            </div>
           </div>);
         })}
       </div>

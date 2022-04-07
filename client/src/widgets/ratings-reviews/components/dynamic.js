@@ -15,8 +15,8 @@ const DynamicTextInput = ({state, setState, validate, type = 'text', placeholder
     return (<>
       <textarea value={text} onChange={change} placeholder={placeholder} minLength={min} maxLength={max} required/>
       { text.length < 50
-      ? <span>Minimum required characters left: {50 - text.length}</span>
-      : <span>Minimum reached</span> }
+      ? <span className="rr-wq-caption">Minimum required characters left: {50 - text.length}</span>
+      : <span className="rr-wq-caption">Minimum reached</span> }
     </>);
   } else {
     return  (

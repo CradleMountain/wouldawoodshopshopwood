@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import ModalWrapper from '../../../components/modal.js';
@@ -17,6 +17,7 @@ const factorPhrases = {
 
 const ReviewForm = ({ show, product, characteristics }) => {
   const factors = Object.keys(characteristics);
+  const [submitted, setSubmitted] = useState(0);
   const [showError, setShowError] = useState(false);
   const [rating, setRating] = useState(0);
   const [recommend, setRecommend] = useState(null);
@@ -33,18 +34,20 @@ const ReviewForm = ({ show, product, characteristics }) => {
   });
   const [factorRating, setFactorRating] = useState(() => {
     var result = {};
-    for (var i = 0; i < Object.keys(factorPhrases).length; i++) {
-      result[Object.keys(factorPhrases)[i]] = 0;
+    for (var i = 0; i < factors.length; i++) {
+      result[factors[i]] = 0;
     }
     return result;
   });
   const [valid, setValid] = useState({
     rating: false,
     recommend: false,
+    characteristics: false,
     summary: true,
     body: false,
     nickname: false,
     email: false,
+    photos: true,
     'photo-1': true,
     'photo-2': true,
     'photo-3': true,
@@ -52,11 +55,31 @@ const ReviewForm = ({ show, product, characteristics }) => {
     'photo-5': true
   });
 
+  useEffect(() => {
+    validateFactors();
+  }, [factorRating]);
+
+  useEffect(() => {
+    var newState = {};
+    for (var key in valid) {
+      newState[key] = valid[key];
+    }
+    setValid(newState);
+  }, [submitted])
+
   const submit = (e) => {
     e.preventDefault();
-    console.log(textInputs);
-    console.log(valid);
-    var isError = false;
+    setSubmitted(submitted + 1);
+
+    valid.photos = true;
+    for (var i = 1; i <= photos.length; i++) {
+      var key = 'photo-' + i;
+      if (!valid[key]) {
+        valid.photos = false;
+      }
+    }
+
+    var isError = !valid.photos;
     for (var field in valid) {
       if (valid[field] === false) {
         isError = true;
@@ -73,6 +96,23 @@ const ReviewForm = ({ show, product, characteristics }) => {
   const validate = (field, validated) => {
     valid[field] = validated;
     setValid(valid);
+  };
+
+  const validateFactors = () => {
+    var validated = true;
+    for (var key in factorRating) {
+      if (factorRating[key] === 0) {
+        validated = false;
+      }
+    }
+    setValid((state) => {
+      var newState = {}
+      for (var key in state) {
+        newState[key] = state[key];
+      }
+      newState.characteristics = validated;
+      return newState;
+    });
   };
 
   const clickStars = (e) => {
@@ -115,12 +155,29 @@ const ReviewForm = ({ show, product, characteristics }) => {
       <h4>About the {product.name}</h4>
       {showError
         ? <div className="rr-write-error">
-          <p>You must enter the following:</p>
+          <span>You must enter the following:</span>
           <ul>
             {Object.keys(valid).map((field) => {
+              if (valid[field] || field.slice(0,6) === 'photo-') {
+                return null;
+              }
               var msg = field.slice(0,1).toUpperCase().concat(field.slice(1));
               if (field === 'recommend') {
-                msg = 'Recommendation'
+                msg = 'Recommendation';
+              } else if (field === 'characteristics') {
+                msg += ' (';
+                for (var factor in factorRating) {
+                  if (factorRating[factor] === 0) {
+                    msg += factor + ', '
+                  }
+                }
+                msg = msg.slice(0, msg.length - 2) + ')';
+              } else if (field === 'body') {
+                msg = 'Review body (at least 50 characters)';
+              } else if (field === 'email') {
+                msg = 'Valid email address';
+              } else if (field === 'photos') {
+                msg = 'Photos: Please remove failed uploads before submitting';
               }
               return (<li key={field}>{msg}</li>);
             })}
@@ -183,15 +240,15 @@ const ReviewForm = ({ show, product, characteristics }) => {
         </div>
 
         <div className="rr-write-question">
-          <div className="rr-wq-header">What is your nickname {required}</div>
+          <div className="rr-wq-header">What is your nickname? {required}</div>
           <DynamicTextInput state={textInputs.nickname} setState={(response) => setTextInput('nickname', response)} validate={(valid) => validate('nickname', valid)} placeholder="Example: jackson11!" max="60" />
-          <span>For privacy reasons, do not use your full name or email address</span>
+          <span className="rr-wq-caption">For privacy reasons, do not use your full name or email address</span>
         </div>
 
         <div className="rr-write-question">
           <div className="rr-wq-header">Your email {required}</div>
           <DynamicTextInput state={textInputs.email} setState={(response) => setTextInput('email', response)} validate={(valid) => validate('email', valid)} type="email" placeholder="Example: jackson11@email.com" max="60" />
-          <span>For authentication reasons, you will not be emailed</span>
+          <span className="rr-wq-caption">For authentication reasons, you will not be emailed</span>
         </div>
 
         <div>

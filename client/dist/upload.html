@@ -18,7 +18,7 @@
       };
     </script>
 
-    <form target="_parent" onsubmit="this.preventDefault(); window.opener.dispatchEvent(onClose); window.close();">
+    <form target="_parent" onsubmit="window.opener.dispatchEvent(onClose); window.close();">
       <span>Image URL: </span>
       <input type="url" value="" onchange="change(this)">
       <button type="button" onclick="window.opener.dispatchEvent(onClose); window.close();">Add</button>
