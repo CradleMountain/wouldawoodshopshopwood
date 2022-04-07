@@ -35,7 +35,7 @@ const RatingsReviews = (props) => {
         'sort': sortBy
       }
     })
-      .then(({data}) => {
+      .then(({ data }) => {
         console.log('Data:', data);
         return data;
       })
@@ -55,16 +55,51 @@ const RatingsReviews = (props) => {
       })
   };
 
+  const getListMax = (productId) => {
+    if (metadata.recommended !== undefined) {
+      var total = Number(metadata.recommended.true) + Number(metadata.recommended.false);
+      return axios({
+        method: 'GET',
+        url: '/reviews',
+        params: {
+          'product_id': productId,
+          page: 1,
+          count: total,
+          sort: sort
+        }
+      })
+        .then(({data}) => {
+          return data.results.length;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      return new Promise((reject) => reject(listMax));
+    }
+  };
+
   const [product, setProduct] = useState(props.product.id);
   const [metadata, setMetadata] = useState({});
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant');
   const [write, setWrite] = useState(false);
+  const [listMax, setListMax] = useState(100);
 
   useEffect(() => {
     setPage(1);
-  }, [props.product])
+  }, [props.product]);
+
+  useEffect(() => {
+    getListMax(product)
+      .then((max) => {
+        setListMax(max);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [product, sort]);
 
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
@@ -90,21 +125,21 @@ const RatingsReviews = (props) => {
   if (product && metadata.product_id) {
     return (
       <>
-      {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics}/> : null}
-      <h2>Ratings &amp; Reviews</h2>
-      <div className="ratings-reviews">
-        <div className="rr-breakdowns">
-          <RatingBreakdown metadata={metadata} product={props.product} />
-          <ProductBreakdown factors={metadata.characteristics} />
-        </div>
-        <div className="rr-sort-stream">
-          <Sorter sort={sort} select={setSort}/>
-          <ReviewList reviews={reviews} load={(loadReviews)} max={Number(metadata.recommended.true) + Number(metadata.recommended.false)}/>
-          <div className="rr-write-btn">
-            <button onClick={() => setWrite(true)}>Write a Review</button>
+        {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} /> : null}
+        <h2>Ratings &amp; Reviews</h2>
+        <div className="ratings-reviews">
+          <div className="rr-breakdowns">
+            <RatingBreakdown metadata={metadata} product={props.product} />
+            <ProductBreakdown factors={metadata.characteristics} />
+          </div>
+          <div className="rr-sort-stream">
+            <Sorter sort={sort} select={setSort} />
+            <ReviewList reviews={reviews} load={(loadReviews)} max={listMax} />
+            <div className="rr-write-btn">
+              <button onClick={() => setWrite(true)}>Write a Review</button>
+            </div>
           </div>
         </div>
-      </div>
       </>
     );
   } else {
