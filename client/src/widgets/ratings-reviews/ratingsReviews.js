@@ -44,19 +44,8 @@ const RatingsReviews = (props) => {
       })
   };
 
-  const loadReviews = (cb) => {
-    getReviews(product, page + 1)
-      .then((data) => {
-        cb(data.results);
-        setPage(page + 1);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-  };
-
   const getListMax = (productId) => {
-    if (metadata.recommended !== undefined) {
+    if (metadata.recommended !== undefined && productId) {
       var total = Number(metadata.recommended.true) + Number(metadata.recommended.false);
       return axios({
         method: 'GET',
@@ -69,7 +58,8 @@ const RatingsReviews = (props) => {
         }
       })
         .then(({data}) => {
-          return data.results.length;
+          console.log('All results:', data.results);
+          return filterList(data.results).length;
         })
         .catch((err) => {
           console.error(err);
@@ -79,6 +69,28 @@ const RatingsReviews = (props) => {
     }
   };
 
+  const loadReviews = (cb) => {
+    getReviews(product, page + 1)
+      .then((data) => {
+        cb(data.results);
+        setPage(page + 1);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  };
+
+  const filterList = (currentList) => {
+    var newList = [];
+    for (var i = 0; i < currentList.length; i++) {
+      var review = currentList[i];
+      if (ratingFilter[review.rating]) {
+        newList.push(review);
+      }
+    }
+    return newList;
+  };
+
   const [product, setProduct] = useState(props.product.id);
   const [metadata, setMetadata] = useState({});
   const [reviews, setReviews] = useState([]);
@@ -86,10 +98,17 @@ const RatingsReviews = (props) => {
   const [sort, setSort] = useState('relevant');
   const [write, setWrite] = useState(false);
   const [listMax, setListMax] = useState(100);
+  const [ratingFilter, setRatingFilter] = useState(() => {
+    var state = {};
+    for (var i = 1; i < 6; i++) {
+      state[i] = true;
+    }
+    return state;
+  });
 
   useEffect(() => {
     setPage(1);
-  }, [props.product]);
+  }, [props.product, sort]);
 
   useEffect(() => {
     getListMax(product)
@@ -100,6 +119,16 @@ const RatingsReviews = (props) => {
         console.error(err);
       });
   }, [product, sort]);
+
+  useEffect(() => {
+    getReviews(props.product.id, 1, sort)
+      .then((data) => {
+        setReviews(data.results);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [sort]);
 
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
@@ -129,12 +158,12 @@ const RatingsReviews = (props) => {
         <h2>Ratings &amp; Reviews</h2>
         <div className="ratings-reviews">
           <div className="rr-breakdowns">
-            <RatingBreakdown metadata={metadata} product={props.product} />
+            <RatingBreakdown metadata={metadata} product={props.product} filter={ratingFilter} setFilter={setRatingFilter}/>
             <ProductBreakdown factors={metadata.characteristics} />
           </div>
           <div className="rr-sort-stream">
             <Sorter sort={sort} select={setSort} />
-            <ReviewList reviews={reviews} load={(loadReviews)} max={listMax} />
+            <ReviewList reviews={reviews} load={(loadReviews)} max={listMax} filter={ratingFilter} filterList={filterList}/>
             <div className="rr-write-btn">
               <button onClick={() => setWrite(true)}>Write a Review</button>
             </div>

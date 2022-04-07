@@ -2,16 +2,26 @@ import React, { useState, useEffect } from 'react';
 
 import Review from './review.js';
 
-const ReviewList = ({reviews, max, load}) => {
+const ReviewList = ({reviews, max, load, filter, filterList}) => {
   const [list, setList] = useState(reviews);
+  console.log(list, reviews);
+
   useEffect(() => {
-    setList(reviews);
+    setList(filterList(reviews));
   }, [reviews]);
+
+  useEffect(() => {
+    setList(() => {
+      var filterNew = filterList(reviews);
+      var filterOld = filterList(list);
+      return filterNew.length > filterOld.length ? filterNew : filterOld;
+    });
+  }, [filter]);
 
   const clickHandler = (e) => {
     e.preventDefault();
     load((result) => {
-      setList(list.concat(result));
+      setList(list.concat(filterList(result)));
     });
   };
 

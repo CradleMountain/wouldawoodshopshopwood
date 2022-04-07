@@ -4,6 +4,53 @@ import StarRating from '../../../components/starRating.js';
 import RatingBar from './ratingBar.js';
 
 const RatingBreakdown = (props) => {
+  console.log(props.filter);
+  const countFilters = (list = props.filter) => {
+    var count = 0;
+    for (var key in list) {
+      if (list[key]) {
+        count++;
+      }
+    }
+    return count;
+  };
+
+  const resetFilter = () => {
+    var newState = {};
+    for (var i = 1; i < 6; i++) {
+      newState[i] = true;
+    }
+    return newState;
+  };
+
+  const [filterCount, setFilterCount] = useState(() => {
+    return countFilters();
+  });
+
+  useEffect(() => {
+    setFilterCount(countFilters());
+  }, [props.filter]);
+
+  const handleClick = (stars) => {
+    var newState = {};
+    if (filterCount === 5) {
+      for (var i = 1; i < 6; i++) {
+        newState[i] = false;
+      }
+      newState[stars] = true;
+    } else {
+      for (var key in props.filter) {
+       newState[key] = props.filter[key]
+      }
+      newState[stars] = !newState[stars]
+    }
+
+    if (countFilters(newState) === 0) {
+      newState = resetFilter();
+    }
+    props.setFilter(newState);
+  };
+
   var averageRating = (ratings) => {
     var sum = 0;
     var qty = 0;
@@ -29,7 +76,11 @@ const RatingBreakdown = (props) => {
       total += Number(props.metadata.ratings[rating]);
     }
     bars = Object.keys(props.metadata.ratings).map((rating) => {
-      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} />
+      var selected = '';
+      if (filterCount < 5 && props.filter[rating]) {
+        selected = "select-filter";
+      }
+      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} onClick={() => { handleClick(rating); }} selected={selected}/>
     });
     var recs = props.metadata.recommended;
     var recPct = Math.round(Number(recs.true) / (Number(recs.false) + Number(recs.true)) * 100);

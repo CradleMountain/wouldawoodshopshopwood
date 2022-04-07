@@ -180,6 +180,10 @@ height: 100%;
   margin: 5px;
 }
 
+.select-filter {
+  background-color: lightyellow;
+}
+
 .product-breakdown {
   display: flex;
   flex-direction: column;
