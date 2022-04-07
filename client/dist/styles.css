@@ -116,6 +116,23 @@ height: 100%;
   font-weight: 700;
 }
 
+.rr-review-body {
+  margin-bottom: 5px;
+}
+
+.rr-review-body p {
+  margin-bottom: 10px;
+}
+
+.rr-showmore {
+  color: blue;
+  cursor: default;
+}
+
+.rr-showmore:hover {
+  color: rgb(110, 110, 255);
+}
+
 .rr-review-response {
   background-color: white;
   border: 1px solid gray;
@@ -191,6 +208,13 @@ height: 100%;
 .rr-sorter {
   margin-bottom: 5px;
   align-self: flex-end;
+}
+
+.rr-write-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .rr-write-modal {

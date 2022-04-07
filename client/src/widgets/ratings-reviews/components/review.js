@@ -23,16 +23,18 @@ const Review = ({ review }) => {
       <span> {moment(review.date).format('MMMM DD, YYYY')}</span>
       <p className="rr-review-summary">{review.summary}</p>
       <div className="rr-review-body">
-        <p>{reviewText}</p>
-        {reviewText.length > 250 ? (<span onClick={() => setReviewText(review.body)}>Show more</span>) : null}
-        <ReviewImages images={review.photos}/>
+        <p>{reviewText}{reviewText.length <= 250 && review.body.length > 250
+          ? (<span className="rr-showmore" onClick={() => setReviewText(review.body)}>... Show more</span>)
+          : null}
+        </p>
+        <ReviewImages images={review.photos} />
       </div>
       {review.recommend ? (<div>
-        <FontAwesomeIcon icon={faCheck}/>
+        <FontAwesomeIcon icon={faCheck} />
         <span> I recommend this product</span>
       </div>) : null}
       {review.response ? response : null}
-      <Helpful id={review.review_id} yes={review.helpfulness}/>
+      <Helpful id={review.review_id} yes={review.helpfulness} />
     </div>
   );
 };
