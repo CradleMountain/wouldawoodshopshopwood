@@ -19,7 +19,8 @@ app.use('/*', (req, res) => {
       data: req.body,
       headers: {
         'Authorization': GITHUB_API_KEY
-      }
+      },
+      params: req.query
     })
       .then((response) => {
         res.set(response.headers)
