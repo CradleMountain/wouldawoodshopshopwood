@@ -79,14 +79,6 @@ Example modal css for props.css:
   left: 10px;
 }
 
-.rp-price-slash {
-  text-decoration: line-through;
-}
-
-.rp-price-sale {
-  color: red;
-}
-
 .rp-card-images {
   display: flex;
   flex-direction: row;
@@ -99,6 +91,18 @@ Example modal css for props.css:
 .rp-card-images img {
   max-height: 250px;
   max-width: 200px;
+}
+
+.rp-card-stars {
+  font-size: 14px;
+}
+
+.rp-price-slash {
+  text-decoration: line-through;
+}
+
+.rp-price-sale {
+  color: red;
 }
 
 
