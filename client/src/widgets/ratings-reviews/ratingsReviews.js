@@ -24,50 +24,25 @@ const RatingsReviews = (props) => {
       });
   }
 
-  const getReviews = (productId, sortBy = sort) => {
+  const getReviews = (productId, count = listMax) => {
     return axios({
       method: 'GET',
       url: '/reviews',
       params: {
         'product_id': productId,
         'page': 1,
-        'count': listMax,
-        'sort': sortBy
+        'count': count,
+        'sort': sort
       }
     })
       .then(({ data }) => {
-        console.log('Data:', data);
+        // console.log('Data:', data);
         return data;
       })
       .catch((err) => {
         return err;
       })
   };
-
-  // const getListMax = (productId) => {
-  //   if (metadata.recommended !== undefined && productId) {
-  //     var total = Number(metadata.recommended.true) + Number(metadata.recommended.false);
-  //     return axios({
-  //       method: 'GET',
-  //       url: '/reviews',
-  //       params: {
-  //         'product_id': productId,
-  //         page: 1,
-  //         count: total,
-  //         sort: sort
-  //       }
-  //     })
-  //       .then(({data}) => {
-  //         console.log('All results:', data.results);
-  //         return filterList(data.results).length;
-  //       })
-  //       .catch((err) => {
-  //         console.error(err);
-  //       });
-  //   } else {
-  //     return new Promise((reject) => reject(listMax));
-  //   }
-  // };
 
   const filterList = (currentList) => {
     var newList = [];
@@ -80,10 +55,8 @@ const RatingsReviews = (props) => {
     return newList;
   };
 
-  const [product, setProduct] = useState(props.product.id);
   const [metadata, setMetadata] = useState({});
   const [reviews, setReviews] = useState([]);
-  // const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant');
   const [write, setWrite] = useState(false);
   const [listMax, setListMax] = useState(100);
@@ -96,58 +69,31 @@ const RatingsReviews = (props) => {
     return state;
   });
 
-  // useEffect(() => {
-  //   setPage(1);
-  // }, [props.product, sort]);
-
-  // useEffect(() => {
-  //   getListMax(product)
-  //     .then((max) => {
-  //       setListMax(max);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }, [product, sort]);
-
   useEffect(() => {
     setFilterMax(filterList(reviews).length);
   }, [ratingFilter]);
 
   useEffect(() => {
-    getReviews(props.product.id, sort)
+    if (props.product.id) {
+      getReviews(props.product.id, 100)
       .then((data) => {
         setReviews(data.results);
         setListMax(data.results.length);
         setFilterMax(filterList(data.results).length);
       })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [props.product.id, sort]);
-
-  if (props.product.id && Number(metadata.product_id) !== props.product.id) {
-    getMetadata(props.product.id)
-      .then((data) => {
-        setMetadata(data);
+      .then(() => {
+        return getMetadata(props.product.id)
+          .then((data) => {
+            setMetadata(data);
+          });
       })
       .catch((err) => {
         console.error(err);
       });
-  }
+    }
+  }, [props.product, sort]);
 
-  if (props.product.id && product !== props.product.id) {
-    getReviews(props.product.id)
-      .then((data) => {
-        setReviews(data.results);
-        setProduct(Number(data.product));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  if (product && metadata.product_id) {
+  if (metadata.product_id) {
     return (
       <>
         {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} /> : null}
