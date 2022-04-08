@@ -35,7 +35,6 @@ const RelatedProducts = ({ product }) => {
     if (product.id) {
       getRelated(product.id)
         .then((data) => {
-          console.log('Related:', data);
           setRelated(data);
         })
         .catch((err) => {
@@ -47,7 +46,7 @@ const RelatedProducts = ({ product }) => {
   if (related[0]) {
     return (
       <div className="related-products">
-        <RelatedList list={related}/>
+        <RelatedList product={product} list={related}/>
         <OutfitList />
       </div>
     );
