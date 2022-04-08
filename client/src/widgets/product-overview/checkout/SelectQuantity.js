@@ -26,10 +26,10 @@ const SelectQuantity = (props) => {
   };
 
   return (
-    <div className="dropDownContainer">
-      <div onClick={toggleQuantityList} className="dropDownButton">
-        {props.cart ? quantity || 1 : "-"}
-      </div>
+    <div className="dropDownContainer quantity" onClick={toggleQuantityList}>
+
+       <p>{props.cart ? quantity || 1 : "-"}</p>
+
       {isToggled && (
         <ul className="dropDownList">
           {props.quantityNums.map((num) => {

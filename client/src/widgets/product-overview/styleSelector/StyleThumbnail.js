@@ -16,6 +16,7 @@ const StyleThumbnail = (props) => {
       {renderCheck && (
         <div className="check">
           <i className="fa-regular fa-circle-check fa-lg"></i>
+          {/* <i className="fa-light fa-circle-check fa-lg"></i> */}
         </div>
       )}
       <img

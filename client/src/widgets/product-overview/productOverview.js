@@ -30,7 +30,9 @@ const ProductOverview = (props) => {
     try {
       const productStyles = await api.get(`/${productId}/styles`);
       setStyles(productStyles.data.results);
-      ctx.styleChangeHandler(productStyles.data.results.filter(style => style['default?'])[0]);
+      ctx.styleChangeHandler(
+        productStyles.data.results.filter((style) => style["default?"])[0]
+      );
       console.log(props.currentProduct);
       console.log(productStyles.data.results);
     } catch (error) {
@@ -44,23 +46,19 @@ const ProductOverview = (props) => {
         productStyles={productStyles}
         currentProduct={props.currentProduct}
       />
-      <div className="stylesContainer" >
-      <StyleDescription
+      <div className="stylesContainer">
+        <StyleDescription
           productStyles={productStyles}
           currentProduct={props.currentProduct}
         />
-         <StyleSelector
+        <StyleSelector
           productStyles={productStyles}
           currentProduct={props.currentProduct}
         />
         <CheckoutContainer />
       </div>
-      <div className="outOfTheWay">
-
-
+      <div className="descriptionContainer">
         <ProductDescription currentProduct={props.currentProduct} />
-
-
       </div>
     </div>
   );

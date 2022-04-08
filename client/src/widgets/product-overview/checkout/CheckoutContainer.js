@@ -5,8 +5,9 @@ import { some } from "underscore";
 import SelectSize from "./SelectSize.js";
 import SelectQuantity from "./SelectQuantity.js";
 import AddToCartButton from "./AddToCartButton.js";
+import StarButton from "./StarButton.js";
 import ProdContext from "../context/productOverview-context";
-import api from '../apiHelpers.js';
+import api from "../apiHelpers.js";
 
 const CheckoutContainer = () => {
   const ctx = useContext(ProdContext);
@@ -23,7 +24,7 @@ const CheckoutContainer = () => {
     ctx.currentStyle.skus && setSkus(formatSkus(ctx.currentStyle.skus));
     setCart(null);
     setQuantityNums(null);
-    setSizeMessage("Size");
+    setSizeMessage("SELECT SIZE");
   }, [ctx.currentStyle]);
 
   const sizeToCartHandler = (skuObj) => {
@@ -41,7 +42,7 @@ const CheckoutContainer = () => {
   const addToCartHandler = () => {
     if (!cart) {
       ctx.sizeDropToggleHandler(true);
-      setSizeMessage("Please Select Size");
+      setSizeMessage("PLEASE SELECT SIZE");
     } else {
       api.postCart(cart);
     }
@@ -76,7 +77,7 @@ const CheckoutContainer = () => {
   };
 
   return (
-    <div>
+    <div className="checkoutContainer">
       <SelectSize
         skus={skus}
         sizeToCartHandler={sizeToCartHandler}
@@ -88,6 +89,7 @@ const CheckoutContainer = () => {
         quantityToCartHandler={quantityToCartHandler}
       />
       {inStock && <AddToCartButton addToCartHandler={addToCartHandler} />}
+      <StarButton />
     </div>
   );
 };

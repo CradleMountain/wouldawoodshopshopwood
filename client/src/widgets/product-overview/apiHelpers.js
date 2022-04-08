@@ -2,7 +2,7 @@ import axios from "axios";
 import "regenerator-runtime/runtime";
 
 const apiHelpers = {
-  get: async (endpoint = "") => {
+  get: (endpoint = "") => {
     return axios
       .get(`http://localhost:3000/products${endpoint}`)
       .catch((err) => {
@@ -18,6 +18,12 @@ const apiHelpers = {
       data: { sku_id: cart.sku_id },
     });
   },
+  getCart: () => {
+    return axios({
+      method: "GET",
+      url: "/cart"
+    })
+  }
 };
 
 export default apiHelpers;

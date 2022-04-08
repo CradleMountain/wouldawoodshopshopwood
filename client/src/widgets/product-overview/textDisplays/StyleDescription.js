@@ -26,7 +26,7 @@ const StyleDescription = (props) => {
       </span>
       <span className="span">
         <p className="text style">STYLE ></p>
-        <p>{ctx.currentStyle.name}</p>
+        <p className="styleName">{ctx.currentStyle.name}</p>
       </span>
     </div>
   );
