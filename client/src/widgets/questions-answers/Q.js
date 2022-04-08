@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import A from './A.js';
-import _ from 'underscore';
+import ModalWrapper from '../../components/modal.js';
 
 const Q = (props) => {
 
@@ -37,8 +37,6 @@ const Q = (props) => {
     setHelpfulClicked(true);
   }
 
-  
-
   return (
     <div>
       Q: {props.datum.question_body}
@@ -50,7 +48,7 @@ const Q = (props) => {
       </div>
 
       <button onClick={() => setACount(ACount + 1)}>
-        Add Answer
+        Add Answer {ACount}
       </button>
       <div>
         {Object.keys(props.datum.answers).map((key, i) => {
@@ -61,18 +59,16 @@ const Q = (props) => {
           }
         })}
       </div>
-      <div>
-        <button onClick={() => setACount(ACount + 1)}>
-          Load More Answers
-        </button>
-      </div>
-
-
+      <br></br>
+      <br></br>
     </div>
-
   )
 
-
+//   <ModalWrapper backClick={() => {}}>
+//   <p>
+//     hello modal
+//   </p>
+// </ModalWrapper>
 
   // return (
   //   <div>
@@ -84,9 +80,14 @@ const Q = (props) => {
   //       </button>
   //     </div>
 
-  //     <button onClick={() => setACount(ACount + 1)}>
-  //       Add Answer {ACount}
-  //     </button>
+      // <button id="myBtn">Open Modal</button>
+      // <div id="myModal" class="modal">
+      //   <div class="modal-content">
+      //     <span class="close">&times;</span>
+      //     <p>Some text in the Modal..</p>
+      //   </div>
+      // </div>
+
   //     <div>
   //       {Object.keys(props.datum.answers).map((key, i) => {
   //         if (i < ACount) {
@@ -96,10 +97,20 @@ const Q = (props) => {
   //         }
   //       })}
   //     </div>
+  //     <div>
+  //       <button onClick={() => setACount(ACount + 1)}>
+  //         Load More Answers
+  //       </button>
+  //     </div>
   //     <br></br>
-  //     <br></br>
+
   //   </div>
+
   // )
+
+
+
+
 
 }
 

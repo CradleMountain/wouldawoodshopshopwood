@@ -4,10 +4,13 @@ import QSearch from './QSearch.js';
 import QList from './QList.js';
 import MoreQs from './MoreQs.js';
 import AddQ from './AddQ.js';
+import ModalWrapper from '../../components/modal.js';
 
 const QuestionsAnswers = (props) => {
 
   const [data, setData] = useState([]);
+
+  const [addingQuestion, setAddingQuestion] = useState(false);
 
   const getQuestions = () => {
     axios({
@@ -34,6 +37,10 @@ const QuestionsAnswers = (props) => {
       });
   }
 
+  const exitModal = () => {
+    setAddingQuestion(false);
+  }
+
   useEffect(() => {
     getQuestions();
   }, []);
@@ -45,9 +52,30 @@ const QuestionsAnswers = (props) => {
       <QSearch />
       <br></br>
       <QList  data={data}/>
-
+      <button>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
+      {addingQuestion &&
+        <ModalWrapper backClick={() => {}}>
+          <AddQ product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
+        </ModalWrapper>
+      }
     </div>
   );
 };
 
 export default QuestionsAnswers;
+
+// {addingQuestion &&
+//   <ModalWrapper backClick={() => {}}>
+//     <p>
+//       hello modal
+//     </p>
+//   </ModalWrapper>
+// }
+
+
+
+//   <ModalWrapper backClick={() => {}}>
+//   <p>
+//     hello modal
+//   </p>
+// </ModalWrapper>
