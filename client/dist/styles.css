@@ -124,12 +124,12 @@ height: 100%;
   margin-bottom: 10px;
 }
 
-.rr-showmore {
+.rr-clickable {
   color: blue;
   cursor: default;
 }
 
-.rr-showmore:hover {
+.rr-clickable:hover {
   color: rgb(110, 110, 255);
 }
 
@@ -172,6 +172,11 @@ height: 100%;
 
 .rr-rb-avg-num {
   font-size: 64px;
+}
+
+.rr-rating-breakdown h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .rr-rb-bars {

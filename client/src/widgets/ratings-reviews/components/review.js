@@ -24,7 +24,7 @@ const Review = ({ review }) => {
       <p className="rr-review-summary">{review.summary}</p>
       <div className="rr-review-body">
         <p>{reviewText}{reviewText.length <= 250 && review.body.length > 250
-          ? (<span className="rr-showmore" onClick={() => setReviewText(review.body)}>... Show more</span>)
+          ? (<span className="rr-showmore rr-clickable" onClick={() => setReviewText(review.body)}>... Show more</span>)
           : null}
         </p>
         <ReviewImages images={review.photos} />

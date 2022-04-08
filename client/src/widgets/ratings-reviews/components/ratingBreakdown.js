@@ -4,7 +4,6 @@ import StarRating from '../../../components/starRating.js';
 import RatingBar from './ratingBar.js';
 
 const RatingBreakdown = (props) => {
-  console.log(props.filter);
   const countFilters = (list = props.filter) => {
     var count = 0;
     for (var key in list) {
@@ -40,7 +39,7 @@ const RatingBreakdown = (props) => {
       newState[stars] = true;
     } else {
       for (var key in props.filter) {
-       newState[key] = props.filter[key]
+        newState[key] = props.filter[key]
       }
       newState[stars] = !newState[stars]
     }
@@ -80,11 +79,19 @@ const RatingBreakdown = (props) => {
       if (filterCount < 5 && props.filter[rating]) {
         selected = "select-filter";
       }
-      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} onClick={() => { handleClick(rating); }} selected={selected}/>
+      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} onClick={() => { handleClick(rating); }} selected={selected} />
     });
     var recs = props.metadata.recommended;
     var recPct = Math.round(Number(recs.true) / (Number(recs.false) + Number(recs.true)) * 100);
   }
+
+  var filterLabel = '';
+  for (var key in props.filter) {
+    if (props.filter[key]) {
+      filterLabel += key + ', ';
+    }
+  }
+  filterLabel = filterLabel.slice(0, filterLabel.length - 2);
 
   return (
     <div className="rr-rating-breakdown">
@@ -93,6 +100,15 @@ const RatingBreakdown = (props) => {
         <span>{total} reviews</span>
         <div className="rr-rb-avg-num">{average || 3.0}</div>
       </div>
+      <h4>Rating Breakdown</h4>
+      {filterCount < 5
+        ? <div>
+          <span>Showing results for: </span>
+          <span>{filterLabel} stars</span>
+          <br/>
+          <span className="rr-clickable" onClick={() => { props.setFilter(resetFilter()); }}>Remove all filters</span>
+        </div>
+        : null}
       <div className="rr-rb-bars">{bars}</div>
       <div>Recommended by {recPct || 70}% of reviews</div>
     </div>

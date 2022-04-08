@@ -4,7 +4,6 @@ import Review from './review.js';
 
 const ReviewList = ({reviews, max, load, filter, filterList}) => {
   const [list, setList] = useState(reviews);
-  console.log(list, reviews);
 
   useEffect(() => {
     setList(filterList(reviews));
