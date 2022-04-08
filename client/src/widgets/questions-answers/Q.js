@@ -5,33 +5,52 @@ import _ from 'underscore';
 
 const Q = (props) => {
 
-  const [ACount, setACount] = useState(1);
+  const [ACount, setACount] = useState(2);
 
   const [helpfulnessCount, setHelpfulnessCount] = useState(props.datum.question_helpfulness)
 
-  const helpfulOnClick = () => {
-    if (localStorage.getItem('helpfulClicked' !== 'yes')) {
-      helpfulnessPut(props.datum.question_id)
-    };
+  const [helpfulClicked, setHelpfulClicked] = useState(false);
 
-    localStorage.setItem('helpulClicked', 'yes');
-  }
+  // const helpfulOnClick = () => {
+  //   if (localStorage.getItem('helpfulClicked' !== 'yes')) {
+  //     helpfulnessPut(props.datum.question_id)
+  //   };
+
+  //   localStorage.setItem('helpulClicked', 'yes');
+  // }
 
   const helpfulnessPut = id => {
-    axios({
-      method: 'PUT',
-      url: `/qa/questions/${id}/helpful`
-    })
-    .then(data => {
-      console.log('helpful success ', data)
-      setHelpfulnessCount(helpfulnessCount+1)
-
-
-    })
-    .catch(err => {
-      console.log('ERROR IN Q ', err)
-    });
+    if (!helpfulClicked) {
+      axios({
+        method: 'PUT',
+        url: `/qa/questions/${id}/helpful`
+      })
+      .then(data => {
+        console.log('helpful success ', data)
+        setHelpfulnessCount(helpfulnessCount+1)
+      })
+      .catch(err => {
+        console.log('ERROR IN Q ', err)
+      });
+    }
+    setHelpfulClicked(true);
   }
+
+  // const helpfulnessPut = id => {
+  //   axios({
+  //     method: 'PUT',
+  //     url: `/qa/questions/${id}/helpful`
+  //   })
+  //   .then(data => {
+  //     console.log('helpful success ', data)
+  //     setHelpfulnessCount(helpfulnessCount+1)
+
+
+  //   })
+  //   .catch(err => {
+  //     console.log('ERROR IN Q ', err)
+  //   });
+  // }
 
   return (
     <div>
