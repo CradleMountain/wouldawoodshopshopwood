@@ -44,40 +44,29 @@ const RatingsReviews = (props) => {
       })
   };
 
-  const getListMax = (productId) => {
-    if (metadata.recommended !== undefined && productId) {
-      var total = Number(metadata.recommended.true) + Number(metadata.recommended.false);
-      return axios({
-        method: 'GET',
-        url: '/reviews',
-        params: {
-          'product_id': productId,
-          page: 1,
-          count: total,
-          sort: sort
-        }
-      })
-        .then(({data}) => {
-          console.log('All results:', data.results);
-          return filterList(data.results).length;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    } else {
-      return new Promise((reject) => reject(listMax));
-    }
-  };
-
-  // const loadReviews = (cb) => {
-  //   getReviews(product, page + 1)
-  //     .then((data) => {
-  //       cb(data.results);
-  //       setPage(page + 1);
+  // const getListMax = (productId) => {
+  //   if (metadata.recommended !== undefined && productId) {
+  //     var total = Number(metadata.recommended.true) + Number(metadata.recommended.false);
+  //     return axios({
+  //       method: 'GET',
+  //       url: '/reviews',
+  //       params: {
+  //         'product_id': productId,
+  //         page: 1,
+  //         count: total,
+  //         sort: sort
+  //       }
   //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     })
+  //       .then(({data}) => {
+  //         console.log('All results:', data.results);
+  //         return filterList(data.results).length;
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //       });
+  //   } else {
+  //     return new Promise((reject) => reject(listMax));
+  //   }
   // };
 
   const filterList = (currentList) => {
@@ -94,10 +83,11 @@ const RatingsReviews = (props) => {
   const [product, setProduct] = useState(props.product.id);
   const [metadata, setMetadata] = useState({});
   const [reviews, setReviews] = useState([]);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [sort, setSort] = useState('relevant');
   const [write, setWrite] = useState(false);
   const [listMax, setListMax] = useState(100);
+  const [filterMax, setFilterMax] = useState(100);
   const [ratingFilter, setRatingFilter] = useState(() => {
     var state = {};
     for (var i = 1; i < 6; i++) {
@@ -106,29 +96,35 @@ const RatingsReviews = (props) => {
     return state;
   });
 
-  useEffect(() => {
-    setPage(1);
-  }, [props.product, sort]);
+  // useEffect(() => {
+  //   setPage(1);
+  // }, [props.product, sort]);
+
+  // useEffect(() => {
+  //   getListMax(product)
+  //     .then((max) => {
+  //       setListMax(max);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }, [product, sort]);
 
   useEffect(() => {
-    getListMax(product)
-      .then((max) => {
-        setListMax(max);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [product, sort]);
+    setFilterMax(filterList(reviews).length);
+  }, [ratingFilter]);
 
   useEffect(() => {
     getReviews(props.product.id, sort)
       .then((data) => {
         setReviews(data.results);
+        setListMax(data.results.length);
+        setFilterMax(filterList(data.results).length);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [sort]);
+  }, [props.product.id, sort]);
 
   if (props.product.id && Number(metadata.product_id) !== props.product.id) {
     getMetadata(props.product.id)
@@ -163,7 +159,7 @@ const RatingsReviews = (props) => {
           </div>
           <div className="rr-sort-stream">
             <Sorter sort={sort} select={setSort} />
-            <ReviewList reviews={reviews} max={listMax} filter={ratingFilter} filterList={filterList}/>
+            <ReviewList reviews={reviews} max={filterMax} filter={ratingFilter} filterList={filterList}/>
             <div className="rr-write-btn">
               <button onClick={() => setWrite(true)}>Write a Review</button>
             </div>
