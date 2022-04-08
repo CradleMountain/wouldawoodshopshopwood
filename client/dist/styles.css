@@ -98,14 +98,11 @@ height: 100%;
 }
 
 .rr-reviews {
-  /* margin-left: 50px; */
   overflow: scroll;
   max-height: 400px;
 }
 
 .rr-review {
-  /* border: 1px solid gray;
-  border-radius: 3px; */
   background-color:rgb(245, 245, 245);
   padding: 8px;
   width: 550px;
@@ -233,7 +230,6 @@ height: 100%;
   left: 25%;
   padding: 20px;
   border-radius: 8px;
-  /* overflow-y: scroll; */
 }
 
 .rr-write-inner {
@@ -242,6 +238,10 @@ height: 100%;
   margin: 5px;
   padding-right: 20px;
   overflow-y: scroll;
+}
+
+.rr-write-inner h3 {
+  margin: 0px;
 }
 
 .rr-write-stars svg:hover, path:hover {
@@ -306,7 +306,6 @@ height: 100%;
   position: relative;
   bottom: 62px;
   left: 42px;
-  /* color: rgb(220, 0, 0); */
   font-size: 18px;
 }
 
@@ -334,4 +333,16 @@ height: 100%;
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.rr-write-submit {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.rr-write-exit {
+  color: darkred;
+  text-align: right;
+  position: static;
+  font-size: 18px;
 }
