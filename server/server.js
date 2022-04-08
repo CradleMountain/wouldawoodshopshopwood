@@ -29,9 +29,13 @@ app.use('/*', (req, res) => {
       })
       .catch((err) => {
         console.error(err);
-        res.set(err.response.headers)
+        if (err) {
+          res.set(err.response.headers)
           .status(err.response.status)
           .send();
+        } else {
+          res.status(500).send();
+        }
       });
   } else {
     res.end();
