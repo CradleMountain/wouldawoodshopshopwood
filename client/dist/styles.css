@@ -54,7 +54,81 @@ Example modal css for props.css:
 /*                          Related Products                            */
 /************************************************************************/
 
+/* !! Temporary layout, replace with carousel! */
+.rp-list-related, .rp-list-outfit {
+  display: flex;
+  flex-direction: row;
+}
+/* */
 
+.rp-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  min-width: 200px;
+  border: 2px solid rgb(120, 120, 120);
+}
+
+.rp-card-action {
+  position: relative;
+  align-self: flex-end;
+  bottom: 10px;
+  left: 10px;
+}
+
+.rp-card-images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 200px;
+}
+
+.rp-card-images img {
+  max-height: 250px;
+  max-width: 200px;
+}
+
+.rp-card-stars {
+  font-size: 14px;
+}
+
+.rp-price-slash {
+  text-decoration: line-through;
+}
+
+.rp-price-sale {
+  color: red;
+}
+
+.rp-compare-modal {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.rp-compare-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  font-size: 14px;
+}
+
+.rp-compare-table div {
+  margin-bottom: 8px;
+}
+
+.rp-compare-feat, .rp-compare-title, .rp-compare-name {
+  font-weight: 700;
+}
+
+.rp-compare-title {
+  font-size: 16px;
+}
 
 /************************************************************************/
 /*                          Product Overview                            */
