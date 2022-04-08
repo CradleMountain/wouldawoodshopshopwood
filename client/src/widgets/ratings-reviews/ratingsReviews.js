@@ -24,14 +24,14 @@ const RatingsReviews = (props) => {
       });
   }
 
-  const getReviews = (productId, pg, sortBy = sort, count = 2) => {
+  const getReviews = (productId, sortBy = sort) => {
     return axios({
       method: 'GET',
       url: '/reviews',
       params: {
         'product_id': productId,
-        'page': pg,
-        'count': count,
+        'page': 1,
+        'count': listMax,
         'sort': sortBy
       }
     })
@@ -69,16 +69,16 @@ const RatingsReviews = (props) => {
     }
   };
 
-  const loadReviews = (cb) => {
-    getReviews(product, page + 1)
-      .then((data) => {
-        cb(data.results);
-        setPage(page + 1);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-  };
+  // const loadReviews = (cb) => {
+  //   getReviews(product, page + 1)
+  //     .then((data) => {
+  //       cb(data.results);
+  //       setPage(page + 1);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     })
+  // };
 
   const filterList = (currentList) => {
     var newList = [];
@@ -121,7 +121,7 @@ const RatingsReviews = (props) => {
   }, [product, sort]);
 
   useEffect(() => {
-    getReviews(props.product.id, 1, sort)
+    getReviews(props.product.id, sort)
       .then((data) => {
         setReviews(data.results);
       })
@@ -141,7 +141,7 @@ const RatingsReviews = (props) => {
   }
 
   if (props.product.id && product !== props.product.id) {
-    getReviews(props.product.id, page)
+    getReviews(props.product.id)
       .then((data) => {
         setReviews(data.results);
         setProduct(Number(data.product));
@@ -163,7 +163,7 @@ const RatingsReviews = (props) => {
           </div>
           <div className="rr-sort-stream">
             <Sorter sort={sort} select={setSort} />
-            <ReviewList reviews={reviews} load={(loadReviews)} max={listMax} filter={ratingFilter} filterList={filterList}/>
+            <ReviewList reviews={reviews} max={listMax} filter={ratingFilter} filterList={filterList}/>
             <div className="rr-write-btn">
               <button onClick={() => setWrite(true)}>Write a Review</button>
             </div>

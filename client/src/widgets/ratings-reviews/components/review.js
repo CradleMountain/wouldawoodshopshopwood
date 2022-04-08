@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
@@ -10,6 +10,10 @@ import Helpful from './helpful.js';
 const Review = ({ review }) => {
   //console.log(review);
   const [reviewText, setReviewText] = useState(review.body.slice(0, 250));
+  useEffect(() => {
+    setReviewText(review.body.slice(0, 250));
+  }, [review]);
+
   var response = (
     <div className="rr-review-response">
       <span>Response from seller</span>
