@@ -11,6 +11,7 @@ const Q = (props) => {
 
   const [helpfulClicked, setHelpfulClicked] = useState(false);
 
+
   // const helpfulOnClick = () => {
   //   if (localStorage.getItem('helpfulClicked' !== 'yes')) {
   //     helpfulnessPut(props.datum.question_id)
@@ -36,21 +37,7 @@ const Q = (props) => {
     setHelpfulClicked(true);
   }
 
-  // const helpfulnessPut = id => {
-  //   axios({
-  //     method: 'PUT',
-  //     url: `/qa/questions/${id}/helpful`
-  //   })
-  //   .then(data => {
-  //     console.log('helpful success ', data)
-  //     setHelpfulnessCount(helpfulnessCount+1)
-
-
-  //   })
-  //   .catch(err => {
-  //     console.log('ERROR IN Q ', err)
-  //   });
-  // }
+  
 
   return (
     <div>
@@ -63,7 +50,7 @@ const Q = (props) => {
       </div>
 
       <button onClick={() => setACount(ACount + 1)}>
-        Add Answer {ACount}
+        Add Answer
       </button>
       <div>
         {Object.keys(props.datum.answers).map((key, i) => {
@@ -74,9 +61,15 @@ const Q = (props) => {
           }
         })}
       </div>
-      <br></br>
-      <br></br>
+      <div>
+        <button onClick={() => setACount(ACount + 1)}>
+          Load More Answers
+        </button>
+      </div>
+
+
     </div>
+
   )
 
 
