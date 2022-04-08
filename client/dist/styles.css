@@ -1,10 +1,3 @@
-/*
-
-CSS Reset here
-
-*/
-
-
 /************************************************************************/
 /*                                Main                                  */
 /************************************************************************/
@@ -42,7 +35,6 @@ body {
 .modal {
   position: fixed;
   z-index: 50;
-
 }
 
 /*
@@ -100,14 +92,101 @@ height: 100%;
 /*                           Ratings & Reviews                          */
 /************************************************************************/
 
+.ratings-reviews {
+  display: flex;
+  flex-direction: row;
+}
+
+.rr-reviews {
+  /* margin-left: 50px; */
+  overflow: scroll;
+  max-height: 400px;
+}
+
+.rr-review {
+  /* border: 1px solid gray;
+  border-radius: 3px; */
+  background-color:rgb(245, 245, 245);
+  padding: 8px;
+  width: 550px;
+  margin-bottom: 20px;
+}
+
+.rr-review-summary {
+  font-weight: 700;
+}
+
+.rr-review-body {
+  margin-bottom: 5px;
+}
+
+.rr-review-body p {
+  margin-bottom: 10px;
+}
+
+.rr-clickable {
+  color: blue;
+  cursor: default;
+}
+
+.rr-clickable:hover {
+  color: rgb(110, 110, 255);
+}
+
+.rr-review-response {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-left: 15px;
+  padding: 5px;
+}
+
+.rr-review-images {
+  display: flex;
+  flex-direction: row;
+}
+
+.rr-review-images img {
+  max-height: 50px;
+  margin: 5px;
+  border: 1px solid gray;
+}
+
+.rr-ri-modal {
+  position: fixed;
+  top: 15%;
+  left: 20%;
+}
+
+.rr-ri-modal img {
+  max-height: 500px;
+}
+
+.help-option {
+  text-decoration: underline;
+}
+
+.help-option:hover {
+  color: blue;
+}
+
 .rr-rb-avg-num {
   font-size: 64px;
+}
+
+.rr-rating-breakdown h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .rr-rb-bars {
   display: flex;
   flex-direction: column;
   margin: 5px;
+}
+
+.select-filter {
+  background-color: lightyellow;
 }
 
 .product-breakdown {
@@ -127,4 +206,132 @@ height: 100%;
   margin-left: 5px;
   font-size: 14px;
   color: rgb(30, 30, 30);
+}
+
+.rr-sort-stream {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.rr-sorter {
+  margin-bottom: 5px;
+  align-self: flex-end;
+}
+
+.rr-write-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.rr-write-modal {
+  background-color: white;
+  width: 600px;
+  height: 550px;
+  left: 25%;
+  padding: 20px;
+  border-radius: 8px;
+  /* overflow-y: scroll; */
+}
+
+.rr-write-inner {
+  width: 590px;
+  height: 540px;
+  margin: 5px;
+  padding-right: 20px;
+  overflow-y: scroll;
+}
+
+.rr-write-stars svg:hover, path:hover {
+  position: relative;
+  bottom: 2px;
+}
+
+.rr-write-question {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.rr-wq-header {
+  font-weight: 700;
+}
+
+.rr-write-required {
+  color: rgb(170, 0, 0);
+}
+
+.rr-wq-factor {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.rr-wq-factor div {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.rr-wq-factor-phrases {
+  font-size: 12px;
+}
+
+.rr-wq-caption {
+  font-size: 14px;
+}
+
+.rr-up-thumbs {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.rr-up-thumbs img {
+  height: 50px;
+  width: 50px;
+}
+
+.rr-up-thumb {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  margin-right: 15px;
+  border: 1px solid gray;
+}
+
+.rr-up-remove {
+  position: relative;
+  bottom: 62px;
+  left: 42px;
+  /* color: rgb(220, 0, 0); */
+  font-size: 18px;
+}
+
+.rr-up-remove:hover {
+  font-size: 19px;
+}
+
+.icon-red {
+  color: rgb(220, 0, 0);
+}
+
+.icon-white {
+  color: white;
+}
+
+.rr-write-error {
+  border: 2px solid darkred;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.rr-write-error ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
