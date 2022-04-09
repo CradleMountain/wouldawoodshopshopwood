@@ -2,14 +2,13 @@ import React, { Fragment, useContext, useState } from "react";
 
 import ProdContext from "../context/productOverview-context";
 import VerticalCarousel from "./VerticalCarousel.js";
-import CarouselItem from "./CarouselItem.js";
+import EnlargedCarouselItem from "./EnlargedCarouselItem.js";
 import ArrowIcon from "./ArrowIcon.js";
-import ExpandButton from "./ExpandButton.js";
-import ExpandedView from "./ExpandedView.js";
+import CollapseButton from "./collapseButton.js";
 
-const MainCarousel = (props) => {
+
+const ExpandedView = (props) => {
   const ctx = useContext(ProdContext);
-  // const [showExpanded, setShowExpanded] = useState(false);
 
   const leftArrowClick = () => {
     if (ctx.carouselIndex > 0) {
@@ -22,34 +21,23 @@ const MainCarousel = (props) => {
     }
   };
 
-  // const expandHandler = () => {
-  //   setShowExpanded(true);
-  // };
+  const expandHandler = () => {
+    setShowExpanded(true);
+  };
 
-  // const collapseHandler = () => {
-  //   setShowExpanded(false);
-  // };
+  const collapseHandler = () => {
+    setShowExpanded(false);
+  };
 
   return (
     <Fragment>
-      {/* {showExpanded && (
-        <ExpandedView
-          productStyles={props.productStyles}
-          currentProduct={props.currentProduct}
-          collapseHandler={collapseHandler}
-        />
-      )} */}
-
-      <div className="carouselContainer">
-        <VerticalCarousel
-          productStyles={props.productStyles}
-          currentProduct={props.currentProduct}
-        />
+      <div className="po-expanded-view-backdrop" onClick={collapseHandler} />
+      <div className="po-expanded-view-container">
         {ctx.carouselIndex > 0 && (
           <ArrowIcon
             icon={"arrow"}
             direction={"left"}
-            alt={""}
+            alt={"alt-left"}
             clickHandler={leftArrowClick}
           />
         )}
@@ -61,7 +49,7 @@ const MainCarousel = (props) => {
             {ctx.currentStyle.style_id &&
               ctx.currentStyle.photos.map((photoObj, index) => {
                 return (
-                  <CarouselItem photoObj={photoObj} key={index} index={index} />
+                  <EnlargedCarouselItem photoObj={photoObj} key={index} index={index} />
                 );
               })}
           </div>
@@ -74,10 +62,10 @@ const MainCarousel = (props) => {
               clickHandler={rightArrowClick}
             />
           )}
-        <ExpandButton expandHandler={props.expandHandler} />
+        <CollapseButton collapseHandler={props.collapseHandler} />
       </div>
     </Fragment>
   );
 };
 
-export default MainCarousel;
+export default ExpandedView;

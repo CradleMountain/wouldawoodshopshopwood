@@ -67,7 +67,7 @@ Example modal css for props.css:
 /************************************************************************/
 /*                          Product Overview                            */
 /************************************************************************/
-.overviewContainer {
+.po-overview-container {
   display: grid;
   grid-template-columns: repeat(100, 1%);
   grid-template-rows: repeat(100, 1%);
@@ -80,9 +80,28 @@ Example modal css for props.css:
 
 /************************************************************************/
 
-
 /************************************************************************/
+.po-expanded-view-container {
+  position: relative;
+  grid-column: 8 / 92;
+  grid-row: 5 / 98;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
+.po-expanded-view-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.80);
+}
 /************************************************************************/
 .carouselContainer {
   position: relative;
@@ -92,10 +111,12 @@ Example modal css for props.css:
   max-width: 100%;
   height: 100%;
   max-height: 100%;
-  /* display: flex;
-  align-items: center; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .horizontalCarousel {
+  /* position: relative; */
   display: block;
   overflow: hidden;
   width: 100%;
@@ -117,53 +138,84 @@ Example modal css for props.css:
   max-height: 100%;
   display: inline-flex;
   align-items: center;
-  color: black;
+}
+.po-enlarged-carousel-item {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 .carouselImage {
   width: 100%;
-  /* max-width: 777px; */
   height: 100%;
-  /* max-height: 700px; */
   object-fit: cover;
 }
 /************************************************************************/
-.arrow {
-  /* position: absolute; */
-  color: rgb(69, 65, 65);
-  z-index: 10;
+.po-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(111, 102, 102);
+  height: 40px;
+  width: 0px;
+  z-index: 20;
+  cursor: pointer;
 }
+.po-expand-button-container {
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  color: rgb(111, 102, 102);
+  width: 0px;
+  z-index: 20;
+  cursor: zoom-in;
+}
+.po-expand-button {
+  position: absolute;
+  z-index: 20;
+  /* padding-right: 70px; */
+  margin-right: 70px;
+  margin-top: 25px;
+}
+.hidden {
+  visibility: hidden;
+}
+
 .left {
-  /* grid-column-start: 8;
-  grid-row-start: 30; */
-  /* margin-left: 25%;
-  padding-left: 25%; */
-  color: aqua;
+  position: absolute;
+  margin-left: 255px;
+}
+.alt-left {
+  position: absolute;
+  margin-left: 70px;
 }
 .right {
-  color: red;
-  /* grid-column-start: 55 / 60; */
-  object-position: right;
-  margin-left: 55%;
+  position: absolute;
+  margin-right: 70px;
 }
 .up {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* margin-top: 10px; */
+  /* margin-bottom: 10px; */
 }
 .down {
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* position: relative; */
+  margin-top: 10px;
+  margin-bottom: 10px;
   align-self: flex-end;
 }
-.po-outer-vertical-container{
+.po-outer-vertical-container {
   position: absolute;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  width: 75px;
+  justify-content: flex-start;
+  width: 70px;
   height: inherit;
   padding-left: 25px;
+  padding-top: 12px;
   z-index: 10;
 }
 .verticalCarousel {
@@ -172,10 +224,8 @@ Example modal css for props.css:
   grid-row: 8 / 47; */
   /* z-index: 10; */
   overflow: hidden;
-  width: 75px;
+  width: 68px;
   /* padding-left: 25px; */
-  /* padding-top: 35px; */
-
 }
 .verticalInner {
   /* position: relative; */
@@ -189,16 +239,15 @@ Example modal css for props.css:
   align-items: center;
   overflow: hidden;
   width: 100%;
-  height: 85px;
+  height: 70px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  cursor: pointer;
 }
 .carouselThumbnailImage {
-  /* padding-top: 10px; */
-  /* margin-bottom: 10px; */
-  margin-top: 12.5px;
+  margin-top: 6px;
+  margin-bottom: 6px;
   width: 97%;
   height: 97%;
   object-fit: cover;
@@ -208,15 +257,17 @@ Example modal css for props.css:
   /* border-bottom-width: 2px; */
 }
 .highlight {
-  bord;
+  border-bottom: 4px solid;
+  border-color: rgb(69, 65, 65);
 }
 /************************************************************************/
-.descriptionContainer {
+.po-description-container {
   grid-column: 12 / 92;
-  grid-row: 74 / 99;
+  grid-row: 74 / 98;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: rgb(69, 65, 65);
 }
 .po-product-text-container-left {
   width: 65%;
@@ -268,7 +319,7 @@ Example modal css for props.css:
   margin-right: 7px;
 }
 /************************************************************************/
-.stylesContainer {
+.po-styles-container {
   grid-column: 62/ 95;
   grid-row: 5 / 60;
   color: rgb(69, 65, 65);

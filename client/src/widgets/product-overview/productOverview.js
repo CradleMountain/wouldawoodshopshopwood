@@ -15,12 +15,22 @@ import ProductDescription from "./textDisplays/ProductDescription.js";
 import StyleDescription from "./textDisplays/StyleDescription.js";
 import StyleSelector from "./styleSelector/StyleSelector.js";
 import CheckoutContainer from "./checkout/CheckoutContainer.js";
+import ExpandedView from "./carousel/ExpandedView.js";
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
   const ctx = useContext(ProdContext);
 
   const [productStyles, setStyles] = useState([]);
+  const [showExpanded, setShowExpanded] = useState(false);
+
+  const expandHandler = () => {
+    setShowExpanded(true);
+  };
+
+  const collapseHandler = () => {
+    setShowExpanded(false);
+  };
 
   useEffect(() => {
     getProductStyle(props.currentProduct.id);
@@ -41,28 +51,39 @@ const ProductOverview = (props) => {
   }, []);
 
   return (
-    <div className="overviewContainer">
-      <MainCarousel
-        productStyles={productStyles}
-        currentProduct={props.currentProduct}
-      />
-      <div className="stylesContainer">
-        <StyleDescription
+    <div className="po-overview-container">
+      {showExpanded && (
+        <ExpandedView
           productStyles={productStyles}
           currentProduct={props.currentProduct}
+          collapseHandler={collapseHandler}
         />
-        <StyleSelector
-          productStyles={productStyles}
-          currentProduct={props.currentProduct}
-        />
-        <CheckoutContainer />
-      </div>
-      <div className="descriptionContainer">
-        <ProductDescription currentProduct={props.currentProduct} />
-      </div>
+      )}
+      {!showExpanded && (
+        <Fragment>
+          <MainCarousel
+            productStyles={productStyles}
+            currentProduct={props.currentProduct}
+            expandHandler={expandHandler}
+          />
+          <div className="po-styles-container">
+            <StyleDescription
+              productStyles={productStyles}
+              currentProduct={props.currentProduct}
+            />
+            <StyleSelector
+              productStyles={productStyles}
+              currentProduct={props.currentProduct}
+            />
+            <CheckoutContainer />
+          </div>
+          <div className="po-description-container">
+            <ProductDescription currentProduct={props.currentProduct} />
+          </div>
+        </Fragment>
+      )}
     </div>
   );
 };
 
 export default ProductOverview;
-//        currentStyle={currentStyle}
