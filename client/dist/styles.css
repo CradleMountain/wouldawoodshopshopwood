@@ -102,7 +102,7 @@ height: 100%;
   max-height: 400px;
 }
 
-.rr-review {
+.rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
   padding: 8px;
   width: 550px;

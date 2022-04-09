@@ -45,11 +45,27 @@ const RatingsReviews = (props) => {
       })
   };
 
+  const filterByKeyword = (text) => {
+    if (searchFilter === null) {
+      return true;
+    }
+
+    if (Array.isArray(text)) {
+      var newText = '';
+      for (var i = 0; i < text.length; i++) {
+        newText += text[i];
+      }
+      text = newText;
+    }
+
+    return (text.toLowerCase().includes(searchFilter.toLowerCase()));
+  };
+
   const filterList = (currentList) => {
     var newList = [];
     for (var i = 0; i < currentList.length; i++) {
       var review = currentList[i];
-      if (ratingFilter[review.rating]) {
+      if (ratingFilter[review.rating] && filterByKeyword([review.body, review.summary])) {
         newList.push(review);
       }
     }
@@ -73,7 +89,7 @@ const RatingsReviews = (props) => {
 
   useEffect(() => {
     setFilterMax(filterList(reviews).length);
-  }, [ratingFilter]);
+  }, [ratingFilter, searchFilter]);
 
   useEffect(() => {
     if (props.product.id) {
@@ -106,9 +122,9 @@ const RatingsReviews = (props) => {
             <ProductBreakdown factors={metadata.characteristics} />
           </div>
           <div className="rr-sort-stream">
-            <SearchBar filter={searchFilter} setFilter={setSearchFilter}/>
+            <SearchBar setFilter={setSearchFilter}/>
             <Sorter sort={sort} select={setSort} />
-            <ReviewList reviews={reviews} max={filterMax} filter={ratingFilter} filterList={filterList}/>
+            <ReviewList reviews={reviews} max={filterMax} filter={ratingFilter} searchFilter={searchFilter} filterList={filterList}/>
             <div className="rr-write-btn">
               <button onClick={() => setWrite(true)}>Write a Review</button>
             </div>
