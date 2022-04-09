@@ -155,7 +155,7 @@ height: 100%;
 
 .rr-reviews {
   overflow: scroll;
-  max-height: 400px;
+  max-height: 455px;
 }
 
 .rr-review, .rr-reviews-empty {
