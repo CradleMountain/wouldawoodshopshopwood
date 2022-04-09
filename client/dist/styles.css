@@ -177,6 +177,10 @@ height: 100%;
   margin-bottom: 10px;
 }
 
+.rr-review .keyword {
+  background-color: yellow;
+}
+
 .rr-clickable {
   color: blue;
   cursor: default;

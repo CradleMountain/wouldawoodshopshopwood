@@ -20,7 +20,7 @@ const ReviewList = ({ reviews, max, filter, searchFilter, filterList }) => {
     <div className="rr-reviews">
       <div className="rr-reviews-list">
         {list.length > 0
-          ? list.map((review, i) => { return <Review key={i} review={review} />; })
+          ? list.map((review, i) => { return <Review key={i} review={review} keyword={searchFilter}/>; })
           : <div className="rr-reviews-empty">0 results found</div>
         }
       </div>
