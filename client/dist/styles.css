@@ -75,12 +75,6 @@ Example modal css for props.css:
 }
 
 /************************************************************************/
-
-/************************************************************************/
-
-/************************************************************************/
-
-/************************************************************************/
 .po-expanded-view-container {
   position: relative;
   grid-column: 8 / 92;
@@ -93,7 +87,6 @@ Example modal css for props.css:
   flex-direction: row;
   align-items: center;
 }
-
 .po-expanded-view-backdrop {
   position: fixed;
   top: 0;
@@ -103,7 +96,7 @@ Example modal css for props.css:
   background-color: rgba(0, 0, 0, 0.80);
 }
 /************************************************************************/
-.carouselContainer {
+.po-carousel-container {
   position: relative;
   grid-column: 8 / 60;
   grid-row: 5 / 70;
@@ -115,8 +108,7 @@ Example modal css for props.css:
   flex-direction: row;
   align-items: center;
 }
-.horizontalCarousel {
-  /* position: relative; */
+.po-horizontal-carousel {
   display: block;
   overflow: hidden;
   width: 100%;
@@ -124,13 +116,13 @@ Example modal css for props.css:
   height: 100%;
   max-height: inherit;
 }
-.horizontalInner {
+.po-horizontal-inner {
   white-space: nowrap;
   transition: transform 0.3s;
   height: 100%;
   max-height: 100%;
 }
-.carouselItem {
+.po-carousel-item {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
@@ -148,7 +140,7 @@ Example modal css for props.css:
   display: inline-flex;
   align-items: center;
 }
-.carouselImage {
+.po-carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -176,15 +168,14 @@ Example modal css for props.css:
 .po-expand-button {
   position: absolute;
   z-index: 20;
-  /* padding-right: 70px; */
   margin-right: 70px;
   margin-top: 25px;
 }
-.hidden {
+.po-hidden {
   visibility: hidden;
 }
 
-.left {
+.po-left {
   position: absolute;
   margin-left: 255px;
 }
@@ -192,17 +183,14 @@ Example modal css for props.css:
   position: absolute;
   margin-left: 70px;
 }
-.right {
+.po-right {
   position: absolute;
   margin-right: 70px;
 }
-.up {
-  /* margin-top: 10px; */
-  /* margin-bottom: 10px; */
+.po-up {
 }
-.down {
-  /* position: relative; */
-  margin-top: 10px;
+.po-down {
+  margin-top: 12px;
   margin-bottom: 10px;
   align-self: flex-end;
 }
@@ -218,23 +206,16 @@ Example modal css for props.css:
   padding-top: 12px;
   z-index: 10;
 }
-.verticalCarousel {
-  /* position: absolute; */
-  /* grid-column: 12 / 24;
-  grid-row: 8 / 47; */
-  /* z-index: 10; */
+.po-vertical-carousel {
   overflow: hidden;
   width: 68px;
-  /* padding-left: 25px; */
 }
-.verticalInner {
-  /* position: relative; */
+.po-vertical-inner {
   transition: transform 0.3s;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
 }
-.carouselThumbnail {
+.po-carousel-thumbnail {
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -245,7 +226,7 @@ Example modal css for props.css:
   align-items: center;
   cursor: pointer;
 }
-.carouselThumbnailImage {
+.po-carousel-thumbnail-image {
   margin-top: 6px;
   margin-bottom: 6px;
   width: 97%;
@@ -254,9 +235,8 @@ Example modal css for props.css:
   border-style: solid;
   border-color: rgb(69, 65, 65);
   border-width: 1px;
-  /* border-bottom-width: 2px; */
 }
-.highlight {
+.po-highlight {
   border-bottom: 4px solid;
   border-color: rgb(69, 65, 65);
 }
@@ -273,8 +253,6 @@ Example modal css for props.css:
   width: 65%;
   height: 75%;
   padding-right: 17px;
-  /* border-right: 91px solid;
-  border-color: rgb(69, 65, 65); */
 }
 .po-product-text-container-right {
   width: 35%;
@@ -333,13 +311,6 @@ Example modal css for props.css:
   flex-direction: row;
   flex-wrap: wrap;
 }
-/* .stylesThumbnailContainer {
-  height: 75px;
-  width: 75px;
-  margin: 2px 2px 2px 2px;
-  height: 5%;
-  width: 5%;
-} */
 .fa-circle-check {
   position: absolute;
   z-index: 25;
@@ -350,18 +321,11 @@ Example modal css for props.css:
 }
 .check {
   border-radius: inherit;
-  /* object-position: right; */
   display: flex;
-  /* align-self: center; */
-  /* justify-content: flex-end; */
   flex-direction: row-reverse;
 }
 .stylesThumbnail {
-  /* display: flex; */
-  /* justify-content: flex-end; */
-  /* flex-direction: row-reverse; */
   overflow: hidden;
-  /* margin: 3px 3px 3px 3px; */
   margin-right: 25px;
   margin-bottom: 25px;
   height: 75px;
@@ -379,7 +343,7 @@ Example modal css for props.css:
   object-fit: cover;
 }
 /************************************************************************/
-.checkoutContainer {
+.po-checkout-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -405,10 +369,6 @@ Example modal css for props.css:
   height: inherit;
   width: 100%;
   margin-bottom: 0.8em;
-  /* margin-right: 5%; */
-  /* padding: 0.4em 2em 0.4em 1em; */
-  /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15); */
-
   background: #ffffff;
 }
 .size {

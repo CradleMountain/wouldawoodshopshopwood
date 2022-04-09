@@ -21,8 +21,8 @@ const ArrowIcon = (props) => {
       <div
         className={
           isHidden
-            ? `${props.direction} hidden`
-            : `${props.direction} ${props.alt}`
+            ? `${props.direction} po-hidden`
+            : `po-${props.direction} ${props.alt}`
         }
         onClick={props.clickHandler}
       >

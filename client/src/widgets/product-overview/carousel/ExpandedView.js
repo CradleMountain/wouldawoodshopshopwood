@@ -41,9 +41,9 @@ const ExpandedView = (props) => {
             clickHandler={leftArrowClick}
           />
         )}
-        <div className="horizontalCarousel">
+        <div className="po-horizontal-carousel">
           <div
-            className="horizontalInner"
+            className="po-horizontal-inner"
             style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
           >
             {ctx.currentStyle.style_id &&

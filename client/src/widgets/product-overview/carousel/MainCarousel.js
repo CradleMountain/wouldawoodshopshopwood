@@ -5,11 +5,9 @@ import VerticalCarousel from "./VerticalCarousel.js";
 import CarouselItem from "./CarouselItem.js";
 import ArrowIcon from "./ArrowIcon.js";
 import ExpandButton from "./ExpandButton.js";
-import ExpandedView from "./ExpandedView.js";
 
 const MainCarousel = (props) => {
   const ctx = useContext(ProdContext);
-  // const [showExpanded, setShowExpanded] = useState(false);
 
   const leftArrowClick = () => {
     if (ctx.carouselIndex > 0) {
@@ -22,25 +20,9 @@ const MainCarousel = (props) => {
     }
   };
 
-  // const expandHandler = () => {
-  //   setShowExpanded(true);
-  // };
-
-  // const collapseHandler = () => {
-  //   setShowExpanded(false);
-  // };
-
   return (
     <Fragment>
-      {/* {showExpanded && (
-        <ExpandedView
-          productStyles={props.productStyles}
-          currentProduct={props.currentProduct}
-          collapseHandler={collapseHandler}
-        />
-      )} */}
-
-      <div className="carouselContainer">
+      <div className="po-carousel-container">
         <VerticalCarousel
           productStyles={props.productStyles}
           currentProduct={props.currentProduct}
@@ -53,9 +35,9 @@ const MainCarousel = (props) => {
             clickHandler={leftArrowClick}
           />
         )}
-        <div className="horizontalCarousel">
+        <div className="po-horizontal-carousel">
           <div
-            className="horizontalInner"
+            className="po-horizontal-inner"
             style={{ transform: `translateX(-${ctx.carouselIndex * 100}%)` }}
           >
             {ctx.currentStyle.style_id &&

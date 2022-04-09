@@ -19,9 +19,6 @@ const CheckoutContainer = () => {
   const [addToCartMessage, setAddToCartMessage] = useState("ADD TO BAG");
 
   useEffect(() => {
-    // if (ctx.currentStyle.skus) {
-    //   setSkus(formatSkus(ctx.currentStyle.skus));
-    // }
     ctx.currentStyle.skus && setSkus(formatSkus(ctx.currentStyle.skus));
     setCart(null);
     setQuantityNums(null);
@@ -80,7 +77,7 @@ const CheckoutContainer = () => {
   };
 
   return (
-    <div className="checkoutContainer">
+    <div className="po-checkout-container">
       <SelectSize
         skus={skus}
         sizeToCartHandler={sizeToCartHandler}

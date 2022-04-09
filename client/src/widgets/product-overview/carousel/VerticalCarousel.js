@@ -38,9 +38,9 @@ const VerticalCarousel = (props) => {
           clickHandler={upArrowClick}
         />
       )}
-      <div className="verticalCarousel">
+      <div className="po-vertical-carousel">
         <div
-          className="verticalInner"
+          className="po-vertical-inner"
           style={{
             transform: `translateY(-${
               ctx.carouselIndex * 14.28 * shiftCarousel
