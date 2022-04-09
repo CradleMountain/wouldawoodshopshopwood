@@ -175,6 +175,7 @@ height: 100%;
 
 .rr-review-body p {
   margin-bottom: 10px;
+  overflow-wrap: break-word;
 }
 
 .rr-review .keyword {
