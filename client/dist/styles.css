@@ -4,11 +4,16 @@
 
 body {
   /* fonts, color schemes */
+  margin: 0;
 }
 
 #app {
   display: flex;
   flex-direction: column;
+}
+
+.widgets-main {
+  margin: 0 15px 20px 15px;
 }
 
 /************************************************************************/
@@ -50,6 +55,57 @@ Example modal css for props.css:
 }
 
 */
+
+/************************************************************************/
+/*                           Navigation Bar                             */
+/************************************************************************/
+
+.nav-bar {
+  background-color: rgb(41, 53, 87);
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.nav-header {
+  margin: 8px;
+  font-size: 24px;
+}
+
+.nav-search {
+  margin: 8px;
+}
+
+.nav-search input {
+  border: 0px;
+  background-color: rgb(41, 53, 87);
+  color: white;
+  height: 90%;
+  width: 200px;
+  border-bottom: 2px solid white;
+}
+
+.nav-search input::placeholder {
+  color:rgb(199, 216, 221);
+}
+
+.nav-search input:focus {
+  outline: none;
+}
+
+.nav-search .icon {
+  position: fixed;
+  right: 16px;
+  top: 12px;
+}
+
+.nav-search .icon:hover {
+  color: aqua;
+}
+
 /************************************************************************/
 /*                          Related Products                            */
 /************************************************************************/
