@@ -7,7 +7,7 @@ const StarButton = (props) => {
 
   return (
     <div className="dropDownContainer star">
-      <i class="fa-regular fa-star fa-lg"></i>
+      <i className="fa-regular fa-star fa-lg"></i>
       {/* <div className="dropDownButton" onClick={clickHandler}>
         <p>/p>
       </div> */}

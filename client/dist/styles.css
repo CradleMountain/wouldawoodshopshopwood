@@ -278,7 +278,9 @@ Example modal css for props.css:
 .dropDownContainer {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 
   width: 10.5em;
   height: 60px;
