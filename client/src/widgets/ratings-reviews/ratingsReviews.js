@@ -6,6 +6,7 @@ import ProductBreakdown from './components/productBreakdown.js';
 import ReviewList from './components/reviewList.js'
 import Sorter from './components/sorter.js';
 import ReviewForm from './components/reviewForm.js';
+import SearchBar from './components/searchBar.js';
 
 const RatingsReviews = (props) => {
   const getMetadata = (productId) => {
@@ -61,6 +62,7 @@ const RatingsReviews = (props) => {
   const [write, setWrite] = useState(false);
   const [listMax, setListMax] = useState(100);
   const [filterMax, setFilterMax] = useState(100);
+  const [searchFilter, setSearchFilter] = useState(null);
   const [ratingFilter, setRatingFilter] = useState(() => {
     var state = {};
     for (var i = 1; i < 6; i++) {
@@ -104,6 +106,7 @@ const RatingsReviews = (props) => {
             <ProductBreakdown factors={metadata.characteristics} />
           </div>
           <div className="rr-sort-stream">
+            <SearchBar filter={searchFilter} setFilter={setSearchFilter}/>
             <Sorter sort={sort} select={setSort} />
             <ReviewList reviews={reviews} max={filterMax} filter={ratingFilter} filterList={filterList}/>
             <div className="rr-write-btn">

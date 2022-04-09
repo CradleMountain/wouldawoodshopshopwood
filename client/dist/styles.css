@@ -216,6 +216,10 @@ height: 100%;
   align-self: flex-end;
 }
 
+.rr-searchbar input {
+  width: 60%;
+}
+
 .rr-write-btn {
   display: flex;
   flex-direction: row;
