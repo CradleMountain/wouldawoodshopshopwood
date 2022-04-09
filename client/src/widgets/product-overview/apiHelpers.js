@@ -15,15 +15,18 @@ const apiHelpers = {
       method: "POST",
       url: "/cart",
       params: { sku_id: cart.sku_id },
-      data: { sku_id: cart.sku_id },
+      data: {
+        sku_id: cart.sku_id,
+        quantity: cart.purchaseQuantity,
+      },
     });
   },
   getCart: () => {
     return axios({
       method: "GET",
-      url: "/cart"
-    })
-  }
+      url: "/cart",
+    });
+  },
 };
 
 export default apiHelpers;

@@ -16,6 +16,7 @@ const CheckoutContainer = () => {
   const [quantityNums, setQuantityNums] = useState(null);
   const [inStock, setInStock] = useState(true);
   const [sizeMessage, setSizeMessage] = useState("Size");
+  const [addToCartMessage, setAddToCartMessage] = useState("ADD TO BAG");
 
   useEffect(() => {
     // if (ctx.currentStyle.skus) {
@@ -25,6 +26,7 @@ const CheckoutContainer = () => {
     setCart(null);
     setQuantityNums(null);
     setSizeMessage("SELECT SIZE");
+    setAddToCartMessage("ADD TO BAG");
   }, [ctx.currentStyle]);
 
   const sizeToCartHandler = (skuObj) => {
@@ -45,6 +47,7 @@ const CheckoutContainer = () => {
       setSizeMessage("PLEASE SELECT SIZE");
     } else {
       api.postCart(cart);
+      setAddToCartMessage("ITEM ADDED TO CART");
     }
   };
 
@@ -88,7 +91,12 @@ const CheckoutContainer = () => {
         quantityNums={quantityNums}
         quantityToCartHandler={quantityToCartHandler}
       />
-      {inStock && <AddToCartButton addToCartHandler={addToCartHandler} />}
+      {inStock && (
+        <AddToCartButton
+          addToCartMessage={addToCartMessage}
+          addToCartHandler={addToCartHandler}
+        />
+      )}
       <StarButton />
     </div>
   );

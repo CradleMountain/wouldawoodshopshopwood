@@ -10,7 +10,7 @@ const AddToCartButton = (props) => {
   return (
     <div className="dropDownContainer addToCart" onClick={clickHandler}>
 
-        <p>ADD TO BAG</p> <i className="fa-solid fa-plus fa-lg"></i>
+        <p>{props.addToCartMessage}</p> <i className="fa-solid fa-plus fa-lg"></i>
 
     </div>
   );

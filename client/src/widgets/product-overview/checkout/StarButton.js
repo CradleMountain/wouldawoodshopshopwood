@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+
+import ProdContext from "../context/productOverview-context";
 
 const StarButton = (props) => {
+  const ctx = useContext(ProdContext);
+  const [isStar, setIsStar] = useState(false);
+
   const clickHandler = () => {
-    console.log("I am a star!");
+    setIsStar(!isStar);
   };
 
   return (
-    <div className="dropDownContainer star">
-      <i className="fa-regular fa-star fa-lg"></i>
+    <div className="dropDownContainer star" onClick={clickHandler}>
+      {isStar && <div><i className="fa-solid fa-star fa-lg"></i></div>}
+      {!isStar && <div><i className="fa-regular fa-star fa-lg"></i></div>}
       {/* <div className="dropDownButton" onClick={clickHandler}>
         <p>/p>
       </div> */}

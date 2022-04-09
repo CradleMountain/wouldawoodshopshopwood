@@ -71,7 +71,7 @@ Example modal css for props.css:
   display: grid;
   grid-template-columns: repeat(100, 1%);
   grid-template-rows: repeat(100, 1%);
-  max-height: 1000px;
+  max-height: 925px;
 }
 
 /************************************************************************/
@@ -98,10 +98,7 @@ Example modal css for props.css:
   margin-left: 55%;
 }
 /************************************************************************/
-.descriptionContainer {
-  grid-column: 20 / 80;
-  grid-row: 75 / 95;
-}
+
 /************************************************************************/
 .carouselContainer {
   position: relative;
@@ -189,7 +186,42 @@ Example modal css for props.css:
   -ms-text-underline-position: under;
 }
 /************************************************************************/
-.text {
+.descriptionContainer {
+  grid-column: 12 / 92;
+  grid-row: 74 / 99;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.po-product-text-container-left {
+  width: 65%;
+  height: 75%;
+  padding-right: 17px;
+  /* border-right: 91px solid;
+  border-color: rgb(69, 65, 65); */
+}
+.po-product-text-container-right {
+  width: 35%;
+  height: 75%;
+  padding-left: 15px;
+  border-left: 2px solid;
+  border-color: rgb(69, 65, 65);
+}
+.po-product-slogan {
+  font-weight: 800;
+  font-size: 18px;
+}
+.po-product-description {
+  font-weight: 300;
+  font-size: 14px;
+}
+.po-attribute-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.fa-check {
+  margin-right: 10px;
 }
 .sale {
   text-decoration: line-through;
@@ -294,7 +326,6 @@ Example modal css for props.css:
   color: rgb(69, 65, 65);
 }
 .dropDownButton {
-
   height: inherit;
   width: 100%;
   margin-bottom: 0.8em;
@@ -311,14 +342,14 @@ Example modal css for props.css:
   width: 30%;
 }
 .addToCart {
-  width: 74%;
+  width: 72%;
 }
 .star {
-  width: 11%;
+  width: 13%;
 }
 .dropDownList {
   position: absolute;
-  width: inherit;
+  width: 75px;
   z-index: 12;
   padding: 0;
   margin: 0;
