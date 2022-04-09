@@ -70,16 +70,17 @@ const RatingBreakdown = (props) => {
   var total = 0;
   var bars = [];
   var ratings = props.metadata.ratings;
+  console.log(props.metadata);
   if (ratings) {
     for (var rating in ratings) {
-      total += Number(props.metadata.ratings[rating]);
+      total += Number(ratings[rating]);
     }
-    bars = Object.keys(props.metadata.ratings).map((rating) => {
+    bars = ([1,2,3,4,5]).map((rating) => {
       var selected = '';
       if (filterCount < 5 && props.filter[rating]) {
         selected = "select-filter";
       }
-      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating])} total={total} key={rating} onClick={() => { handleClick(rating); }} selected={selected} />
+      return <RatingBar rating={rating} qty={Number(props.metadata.ratings[rating]) || 0} total={total} key={rating} onClick={() => { handleClick(rating); }} selected={selected} />
     });
     var recs = props.metadata.recommended;
     var recPct = Math.round(Number(recs.true) / (Number(recs.false) + Number(recs.true)) * 100);
