@@ -24,12 +24,12 @@ const SelectSize = (props) => {
   };
 
   return (
-    <div className="dropDownContainer size" onClick={toggleList}>
+    <div className="po-drop-down-container po-size" onClick={toggleList}>
       <p>{size ? size : props.sizeMessage}</p>
       <i className="fa-solid fa-chevron-down"></i>
 
       {ctx.sizeDropToggle && (
-        <ul className="dropDownList">
+        <ul className="po-drop-down-list">
           {props.skus.map((skuObj, index) => {
             if (skuObj.size) {
               return (

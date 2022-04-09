@@ -8,10 +8,11 @@ const AddToCartButton = (props) => {
   };
 
   return (
-    <div className="dropDownContainer addToCart" onClick={clickHandler}>
-
-        <p>{props.addToCartMessage}</p> <i className="fa-solid fa-plus fa-lg"></i>
-
+    <div
+      className="po-drop-down-container po-add-to-cart"
+      onClick={clickHandler}
+    >
+      <p>{props.addToCartMessage}</p> <i className="fa-solid fa-plus fa-lg"></i>
     </div>
   );
 };

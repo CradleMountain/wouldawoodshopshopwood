@@ -6,7 +6,7 @@ const SizeListItem = (props) => {
   };
 
   return (
-    <li className="listItem" onClick={clickHandler}>
+    <li className="po-list-item" onClick={clickHandler}>
       {props.skuObj.size}
     </li>
   );

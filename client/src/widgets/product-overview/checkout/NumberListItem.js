@@ -7,7 +7,7 @@ const NumberListItem = (props) => {
   };
 
   return (
-    <li className="listItem" onClick={clickHandler}>
+    <li className="po-list-item" onClick={clickHandler}>
       {props.num}
     </li>
   );

@@ -12,15 +12,14 @@ const StyleThumbnail = (props) => {
   let renderCheck = ctx.currentStyle.style_id === props.styleObj.style_id;
 
   return (
-    <div className="stylesThumbnail" onClick={thumbnailClickHandler}>
+    <div className="po-style-thumbnail" onClick={thumbnailClickHandler}>
       {renderCheck && (
-        <div className="check">
+        <div className="po-check">
           <i className="fa-regular fa-circle-check fa-lg"></i>
-          {/* <i className="fa-light fa-circle-check fa-lg"></i> */}
         </div>
       )}
       <img
-        className="stylesThumbnailImage"
+        className="po-style-thumbnail-image"
         src={props.styleObj.photos[0].thumbnail_url}
       />
     </div>

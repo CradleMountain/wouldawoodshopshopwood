@@ -10,23 +10,23 @@ const StyleDescription = (props) => {
       <div>
         <p>Stars/Button Placeholder</p>
       </div>
-      <p className="text category">
+      <p className="po-category">
         {props.currentProduct.category.toUpperCase()}
       </p>
-      <p className="text name">{props.currentProduct.name}</p>
-      <span className="span">
+      <p className="po-name">{props.currentProduct.name}</p>
+      <span className="po-span">
         {ctx.currentStyle.style_id && (
           <p
-            className={ctx.currentStyle.sale_price ? "sale price" : "price"}
+            className={ctx.currentStyle.sale_price ? "po-sale po-price" : "po-price"}
           >{`$${ctx.currentStyle.original_price}`}</p>
         )}
         {ctx.currentStyle.style_id && ctx.currentStyle.sale_price && (
-          <p className="price">{`$${ctx.currentStyle.sale_price}`}</p>
+          <p className="po-price">{`$${ctx.currentStyle.sale_price}`}</p>
         )}
       </span>
-      <span className="span">
-        <p className="text style">STYLE ></p>
-        <p className="styleName">{ctx.currentStyle.name}</p>
+      <span className="po-span">
+        <p className="po-style">STYLE ></p>
+        <p>{ctx.currentStyle.name}</p>
       </span>
     </div>
   );

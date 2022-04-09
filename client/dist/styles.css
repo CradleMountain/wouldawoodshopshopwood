@@ -277,22 +277,22 @@ Example modal css for props.css:
 .fa-check {
   margin-right: 10px;
 }
-.sale {
+.po-sale {
   text-decoration: line-through;
   color: red;
 }
-.category {
+.po-category {
   font-weight: 600;
 }
-.name {
+.po-name {
   font-weight: 900;
   font-size: xxx-large;
   margin: 16px 0px;
 }
-.price {
+.po-price {
   margin: 8px 3px;
 }
-.style {
+.po-style {
   font-weight: 600;
   margin-right: 7px;
 }
@@ -302,10 +302,10 @@ Example modal css for props.css:
   grid-row: 5 / 60;
   color: rgb(69, 65, 65);
 }
-.span {
+.po-span {
   display: flex;
 }
-.fourRoundContainer {
+.po-four-round-container {
   max-width: 425px;
   display: flex;
   flex-direction: row;
@@ -319,12 +319,12 @@ Example modal css for props.css:
   background-color: white;
   border-radius: inherit;
 }
-.check {
+.po-check {
   border-radius: inherit;
   display: flex;
   flex-direction: row-reverse;
 }
-.stylesThumbnail {
+.po-style-thumbnail {
   overflow: hidden;
   margin-right: 25px;
   margin-bottom: 25px;
@@ -335,7 +335,7 @@ Example modal css for props.css:
   border-color: rgb(69, 65, 65);
   border-width: 1px;
 }
-.stylesThumbnailImage {
+.po-style-thumbnail-image {
   position: relative;
   z-index: 0;
   width: 100%;
@@ -347,7 +347,7 @@ Example modal css for props.css:
   display: flex;
   flex-wrap: wrap;
 }
-.dropDownContainer {
+.po-drop-down-container {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -365,25 +365,25 @@ Example modal css for props.css:
   font-weight: 500;
   color: rgb(69, 65, 65);
 }
-.dropDownButton {
+/* .dropDownButton {
   height: inherit;
   width: 100%;
   margin-bottom: 0.8em;
   background: #ffffff;
-}
-.size {
+} */
+.po-size {
   width: 55%;
 }
-.quantity {
+.po-quantity {
   width: 30%;
 }
-.addToCart {
+.po-add-to-cart {
   width: 72%;
 }
-.star {
+.po-star {
   width: 13%;
 }
-.dropDownList {
+.po-drop-down-list {
   position: absolute;
   width: 75px;
   z-index: 12;
@@ -399,7 +399,8 @@ Example modal css for props.css:
   border-color: rgb(69, 65, 65);
   border-width: 1px;
 }
-.listItem {
+.po-list-item {
+  cursor: pointer;
   list-style: none;
   margin-bottom: 0.8em;
 }
