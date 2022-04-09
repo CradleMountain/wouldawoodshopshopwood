@@ -53,11 +53,11 @@ const AddQ = (props) => {
       <br></br>
       <div>
         <form>
-          <label>Your Question (mandatory)</label><br></br>
+          <label>Your Question (*mandatory)</label><br></br>
           <textarea onChange={handleChange} name='body' type='text'></textarea><br></br>
-          <label>What is your nickname? (mandatory)</label><br></br>
+          <label>What is your nickname? (*mandatory)</label><br></br>
           <input onChange={handleChange} name='name' placeholder='Example: jackson11!' type='text'></input>
-          <label>Your email (mandatory)</label><br></br>
+          <label>Your email (*mandatory)</label><br></br>
           <textarea onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='text'></textarea>
           <input onSubmit={handleSubmit} type="submit" value="Submit"></input>
         </form>

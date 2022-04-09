@@ -2,8 +2,11 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import A from './A.js';
 import ModalWrapper from '../../components/modal.js';
+import AddA from './AddA.js';
 
 const Q = (props) => {
+
+  const [addingAnswer, setAddingAnswer] = useState(false)
 
   const [ACount, setACount] = useState(2);
 
@@ -47,8 +50,8 @@ const Q = (props) => {
         </button>
       </div>
 
-      <button onClick={() => setACount(ACount + 1)}>
-        Add Answer {ACount}
+      <button onClick={() => setAddingAnswer(true)}>
+        Add Answer
       </button>
       <div>
         {Object.keys(props.datum.answers).map((key, i) => {
@@ -60,6 +63,11 @@ const Q = (props) => {
         })}
       </div>
       <br></br>
+      {addingAnswer &&
+        <ModalWrapper backClick={() => {}}>
+          <AddA question_body={props.datum.question_body} product_name={props.currentProduct.name}/>
+        </ModalWrapper>
+      }
       <br></br>
     </div>
   )

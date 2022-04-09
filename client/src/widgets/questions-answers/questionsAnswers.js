@@ -51,7 +51,7 @@ const QuestionsAnswers = (props) => {
       <br></br>
       <QSearch />
       <br></br>
-      <QList  data={data}/>
+      <QList currentProduct={props.currentProduct} data={data}/>
       <button>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
       {addingQuestion &&
         <ModalWrapper backClick={() => {}}>

@@ -10,7 +10,7 @@ const QList = (props) => {
     props.data.map((datum, i) => {
       if (i < feedCount) {
         return (
-          <Q datum={datum}/>
+          <Q currentProduct={props.currentProduct} datum={datum}/>
         )
       }
     })
