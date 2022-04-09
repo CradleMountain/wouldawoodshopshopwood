@@ -16,7 +16,7 @@ const factorPhrases = {
   Fit: ['None selected', 'Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 };
 
-const ReviewForm = ({ show, product, characteristics }) => {
+const ReviewForm = ({ show, product, characteristics, setPost }) => {
   const factors = Object.keys(characteristics);
   const [submitted, setSubmitted] = useState(0);
   const [showError, setShowError] = useState(false);
@@ -89,7 +89,6 @@ const ReviewForm = ({ show, product, characteristics }) => {
 
     if (isError) {
       setShowError(true);
-      console.log(textInputs);
     } else {
       var characteristicRating = {};
       for (var factor in factorRating) {
@@ -112,6 +111,7 @@ const ReviewForm = ({ show, product, characteristics }) => {
         }
       })
         .then(() => {
+          setPost(true);
           show(false);
         })
         .catch((err) => {

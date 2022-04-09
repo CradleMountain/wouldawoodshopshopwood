@@ -76,6 +76,7 @@ const RatingsReviews = (props) => {
   const [reviews, setReviews] = useState([]);
   const [sort, setSort] = useState('relevant');
   const [write, setWrite] = useState(false);
+  const [post, setPost] = useState(false);
   const [listMax, setListMax] = useState(100);
   const [filterMax, setFilterMax] = useState(100);
   const [searchFilter, setSearchFilter] = useState(null);
@@ -92,7 +93,7 @@ const RatingsReviews = (props) => {
   }, [ratingFilter, searchFilter]);
 
   useEffect(() => {
-    if (props.product.id) {
+    if (props.product.id || post) {
       getReviews(props.product.id, 100)
       .then((data) => {
         setReviews(data.results);
@@ -107,14 +108,19 @@ const RatingsReviews = (props) => {
       })
       .catch((err) => {
         console.error(err);
+      })
+      .finally(() => {
+        if (post) {
+          setPost(false);
+        }
       });
     }
-  }, [props.product, sort]);
+  }, [props.product, sort, post]);
 
   if (metadata.product_id) {
     return (
       <>
-        {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} /> : null}
+        {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} setPost={setPost}/> : null}
         <h2>Ratings &amp; Reviews</h2>
         <div className="ratings-reviews">
           <div className="rr-breakdowns">
