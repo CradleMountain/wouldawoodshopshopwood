@@ -79,24 +79,8 @@ Example modal css for props.css:
 /************************************************************************/
 
 /************************************************************************/
-.arrow {
-  position: absolute;
-  color: rgb(69, 65, 65);
-  z-index: 50;
-}
-.left {
-  /* grid-column-start: 8;
-  grid-row-start: 30; */
-  /* margin-left: 25%;
-  padding-left: 25%; */
-  color: aqua;
-}
-.right {
-  color: red;
-  /* grid-column-start: 55 / 60; */
-  object-position: right;
-  margin-left: 55%;
-}
+
+
 /************************************************************************/
 
 /************************************************************************/
@@ -143,14 +127,55 @@ Example modal css for props.css:
   object-fit: cover;
 }
 /************************************************************************/
-.verticalCarousel {
+.arrow {
+  /* position: absolute; */
+  color: rgb(69, 65, 65);
+  z-index: 10;
+}
+.left {
+  /* grid-column-start: 8;
+  grid-row-start: 30; */
+  /* margin-left: 25%;
+  padding-left: 25%; */
+  color: aqua;
+}
+.right {
+  color: red;
+  /* grid-column-start: 55 / 60; */
+  object-position: right;
+  margin-left: 55%;
+}
+.up {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.down {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-self: flex-end;
+}
+.po-outer-vertical-container{
   position: absolute;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 75px;
+  height: inherit;
+  padding-left: 25px;
+  z-index: 10;
+}
+.verticalCarousel {
+  /* position: absolute; */
   /* grid-column: 12 / 24;
   grid-row: 8 / 47; */
-  z-index: 10;
+  /* z-index: 10; */
   overflow: hidden;
   width: 75px;
-  padding-left: 25px;
+  /* padding-left: 25px; */
+  /* padding-top: 35px; */
+
 }
 .verticalInner {
   /* position: relative; */
@@ -183,7 +208,7 @@ Example modal css for props.css:
   /* border-bottom-width: 2px; */
 }
 .highlight {
-  -ms-text-underline-position: under;
+  bord;
 }
 /************************************************************************/
 .descriptionContainer {

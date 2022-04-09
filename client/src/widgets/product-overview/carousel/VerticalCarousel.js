@@ -14,7 +14,6 @@ const VerticalCarousel = (props) => {
       ctx.currentStyle.photos.length - ctx.carouselIndex > 7
         ? setShiftCarousel(1)
         : setShiftCarousel(0);
-
     }
   }, [ctx.carouselIndex]);
 
@@ -31,7 +30,7 @@ const VerticalCarousel = (props) => {
   };
 
   return (
-    <div className="verticalCarousel">
+    <div className="po-outer-vertical-container">
       {ctx.carouselIndex > 0 && (
         <ArrowIcon
           icon={"chevron"}
@@ -39,33 +38,35 @@ const VerticalCarousel = (props) => {
           clickHandler={upArrowClick}
         />
       )}
-      <div
-        className="verticalInner"
-        style={{
-          transform: `translateY(-${
-            ctx.carouselIndex * 14.28 * shiftCarousel
-          }%)`,
-        }}
-      >
-        {ctx.currentStyle.style_id &&
-          ctx.currentStyle.photos.map((photoObj, index) => {
-            return (
-              <CarouselThumbnail
-                photoObj={photoObj}
-                key={index}
-                index={index}
-              />
-            );
-          })}
-        {ctx.currentStyle.photos &&
-          ctx.carouselIndex < ctx.currentStyle.photos.length - 1 && (
-            <ArrowIcon
-              icon={"chevron"}
-              direction={"down"}
-              clickHandler={downArrowClick}
-            />
-          )}
+      <div className="verticalCarousel">
+        <div
+          className="verticalInner"
+          style={{
+            transform: `translateY(-${
+              ctx.carouselIndex * 14.28 * shiftCarousel
+            }%)`,
+          }}
+        >
+          {ctx.currentStyle.style_id &&
+            ctx.currentStyle.photos.map((photoObj, index) => {
+              return (
+                <CarouselThumbnail
+                  photoObj={photoObj}
+                  key={index}
+                  index={index}
+                />
+              );
+            })}
+        </div>
       </div>
+      {ctx.currentStyle.photos &&
+        ctx.carouselIndex < ctx.currentStyle.photos.length - 1 && (
+          <ArrowIcon
+            icon={"chevron"}
+            direction={"down"}
+            clickHandler={downArrowClick}
+          />
+        )}
     </div>
   );
 };
