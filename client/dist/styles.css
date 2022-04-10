@@ -143,12 +143,12 @@ Example modal css for props.css:
   z-index: 20;
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-self: flex-start;
 }
 .po-icon-item {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 75px;
+  margin-left: 25px;
+
+  margin-top: 25px;
   color: rgb(111, 102, 102);
 }
 /************************************************************************/
