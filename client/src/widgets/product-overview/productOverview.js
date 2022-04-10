@@ -35,7 +35,6 @@ const ProductOverview = (props) => {
   useEffect(() => {
     getProductStyle(props.currentProduct.id);
     ctx.carouselIndexChangeHandler(0);
-
   }, [props.currentProduct]);
 
   const getProductStyle = useCallback(async (productId) => {
@@ -79,7 +78,13 @@ const ProductOverview = (props) => {
             />
             <CheckoutContainer />
           </div>
-          <div className="po-description-container">
+          <div
+            className={
+              productStyles.length > 8
+                ? "po-description-container-alt"
+                : "po-description-container"
+            }
+          >
             <ProductDescription currentProduct={props.currentProduct} />
           </div>
         </Fragment>
