@@ -1,11 +1,11 @@
 import React, { Fragment, useContext, useState } from "react";
 
 import ProdContext from "../context/productOverview-context";
-import VerticalCarousel from "./VerticalCarousel.js";
+import VerticalCarousel from "../carousel/VerticalCarousel.js";
 import EnlargedCarouselItem from "./EnlargedCarouselItem.js";
-import ArrowIcon from "./ArrowIcon.js";
+import IconCarousel from "./iconCarousel";
+import ArrowIcon from "../carousel/ArrowIcon.js";
 import CollapseButton from "./collapseButton.js";
-
 
 const ExpandedView = (props) => {
   const ctx = useContext(ProdContext);
@@ -20,18 +20,17 @@ const ExpandedView = (props) => {
       ctx.carouselIndexChangeHandler(ctx.carouselIndex + 1);
     }
   };
-
-  const expandHandler = () => {
-    setShowExpanded(true);
-  };
-
-  const collapseHandler = () => {
-    setShowExpanded(false);
+  const iconClickHandler = (index) => {
+    console.log("ICON CLICK: ", index);
+    ctx.carouselIndexChangeHandler(index);
   };
 
   return (
     <Fragment>
-      <div className="po-expanded-view-backdrop" onClick={collapseHandler} />
+      <div
+        className="po-expanded-view-backdrop"
+        onClick={props.collapseHandler}
+      />
       <div className="po-expanded-view-container">
         {ctx.carouselIndex > 0 && (
           <ArrowIcon
@@ -49,11 +48,16 @@ const ExpandedView = (props) => {
             {ctx.currentStyle.style_id &&
               ctx.currentStyle.photos.map((photoObj, index) => {
                 return (
-                  <EnlargedCarouselItem photoObj={photoObj} key={index} index={index} />
+                  <EnlargedCarouselItem
+                    photoObj={photoObj}
+                    key={index}
+                    index={index}
+                  />
                 );
               })}
           </div>
         </div>
+        <IconCarousel iconClickHandler={iconClickHandler} />
         {ctx.currentStyle.style_id &&
           ctx.carouselIndex < ctx.currentStyle.photos.length - 1 && (
             <ArrowIcon
