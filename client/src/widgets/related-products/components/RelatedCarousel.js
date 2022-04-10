@@ -28,6 +28,15 @@ const RelatedCarousel = ({ product, list, getProductById }) => {
 
   return (
     <div className="rp-carousel-container">
+      {showModal ? (
+        <Comparison
+          product={product}
+          related={related}
+          close={() => {
+            setShowModal(false);
+          }}
+        />
+      ) : null}
       {carouselIndex > 0 && (
         <Arrow
           icon={"arrow"}
@@ -63,16 +72,6 @@ const RelatedCarousel = ({ product, list, getProductById }) => {
           clickHandler={rightArrowClick}
         />
       )}
-
-      {/* {showModal ? (
-        <Comparison
-          product={product}
-          related={related}
-          close={() => {
-            setShowModal(false);
-          }}
-        />
-      ) : null} */}
     </div>
   );
 };
