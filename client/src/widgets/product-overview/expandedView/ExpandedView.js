@@ -21,6 +21,7 @@ const ExpandedView = (props) => {
     }
   };
   const iconClickHandler = (index) => {
+    console.log("ICON CLICK: ", index);
     ctx.carouselIndexChangeHandler(index);
   };
 
