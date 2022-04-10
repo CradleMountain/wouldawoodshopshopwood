@@ -21,17 +21,9 @@ const ExpandedView = (props) => {
     }
   };
 
-  const expandHandler = () => {
-    setShowExpanded(true);
-  };
-
-  const collapseHandler = () => {
-    setShowExpanded(false);
-  };
-
   return (
     <Fragment>
-      <div className="po-expanded-view-backdrop" onClick={collapseHandler} />
+      <div className="po-expanded-view-backdrop" onClick={props.collapseHandler} />
       <div className="po-expanded-view-container">
         {ctx.carouselIndex > 0 && (
           <ArrowIcon
