@@ -8,7 +8,7 @@ const AddQ = (props) => {
 
 
   const handleSubmit = e => {
-
+    e.preventDefault();
     axios({
       method: 'POST',
       url: '/qa/questions',
@@ -25,9 +25,6 @@ const AddQ = (props) => {
     .catch(err => {
       console.log('FAIL AddQ', err)
     })
-
-    e.preventDefault();
-
   }
 
   const handleChange = e => {
@@ -40,12 +37,10 @@ const AddQ = (props) => {
     if (e.target.name === 'email') {
       setQEmail(e.target.value);
     }
-
     e.preventDefault();
-
-
-
   }
+
+
 
   return (
     <div class='white-box'>
@@ -65,7 +60,6 @@ const AddQ = (props) => {
       <br></br>
       <button onClick={() => props.exitModal()}>Exit</button>
     </div>
-
   );
 }
 

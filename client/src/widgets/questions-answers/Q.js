@@ -14,15 +14,6 @@ const Q = (props) => {
 
   const [helpfulClicked, setHelpfulClicked] = useState(false);
 
-
-  // const helpfulOnClick = () => {
-  //   if (localStorage.getItem('helpfulClicked' !== 'yes')) {
-  //     helpfulnessPut(props.datum.question_id)
-  //   };
-
-  //   localStorage.setItem('helpulClicked', 'yes');
-  // }
-
   const helpfulnessPut = id => {
     if (!helpfulClicked) {
       axios({

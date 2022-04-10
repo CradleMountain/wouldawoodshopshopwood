@@ -6,9 +6,11 @@ const QList = (props) => {
 
   const [feedCount, setFeedCount] = useState(4);
 
+  
+
   return (
     props.data.map((datum, i) => {
-      if (i < feedCount) {
+      if (i <= feedCount) {
         return (
           <Q currentProduct={props.currentProduct} datum={datum}/>
         )

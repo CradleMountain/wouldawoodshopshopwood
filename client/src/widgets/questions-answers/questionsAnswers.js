@@ -15,9 +15,10 @@ const QuestionsAnswers = (props) => {
   const getQuestions = () => {
     axios({
       method: 'GET',
-      url: `/qa/questions/?product_id=37313`
+      url: `/qa/questions/?product_id=37324`
     })
       .then((data) => {
+        console.log('GET DATA', data.data.results)
         var newState = [];
         var order = data.data.results.map(result => {
           return result.question_helpfulness
