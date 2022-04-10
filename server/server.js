@@ -8,11 +8,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/upload', express.static(path.join(__dirname, '../client/dist/upload.html')));
+
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/*', (req, res) => {
   req.url = req.baseUrl;
-  if (req.url !== '/' && req.url !== '/favicon.ico') {
+  if (!(['/', '/favicon.ico', '/upload']).includes(req.url)) {
     axios({
       method: req.method,
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe${req.url}`,
@@ -29,9 +31,13 @@ app.use('/*', (req, res) => {
       })
       .catch((err) => {
         console.error(err);
-        res.set(err.response.headers)
+        if (err) {
+          res.set(err.response.headers)
           .status(err.response.status)
           .send();
+        } else {
+          res.status(500).send();
+        }
       });
   } else {
     res.end();

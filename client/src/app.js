@@ -2,9 +2,11 @@ import React from "react";
 import axios from "axios";
 
 import ContextWrapper from "./widgets/product-overview/context/ContextWrapper.js";
-import QuestionsAnswers from "./widgets/questions-answers/questionsAnswers.js";
-import RatingsReviews from "./widgets/ratings-reviews/ratingsReviews.js";
-import RelatedProducts from "./widgets/related-products/relatedProducts.js";
+import QuestionsAnswers from './widgets/questions-answers/questionsAnswers.js';
+import RatingsReviews from './widgets/ratings-reviews/ratingsReviews.js';
+import RelatedProducts from './widgets/related-products/relatedProducts.js';
+import NavBar from './widgets/navigation-bar/navBar.js';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +14,7 @@ class App extends React.Component {
 
     this.state = {
       products: [],
-      currentProduct: {},
+      currentProduct: {}
     };
 
     this.getProductById = this.getProductById.bind(this);
@@ -29,7 +31,7 @@ class App extends React.Component {
     })
       .then(({ data }) => {
         this.setState({
-          currentProduct: data,
+          currentProduct: data
         });
       })
       .catch((err) => {
@@ -40,12 +42,15 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {Object.keys(this.state.currentProduct).length !== 0 && (
-          <ContextWrapper currentProduct={this.state.currentProduct} />
-        )}
-        {/* <RelatedProducts />
-        <QuestionsAnswers />
-        <RatingsReviews /> */}
+        <NavBar />
+        <div className="widgets-main">
+          {Object.keys(this.state.currentProduct).length !== 0 && (
+            <ContextWrapper currentProduct={this.state.currentProduct} />
+          )}
+          {/* <RelatedProducts product={this.state.currentProduct}/> */}
+          {/* <QuestionsAnswers /> */}
+          <RatingsReviews product={this.state.currentProduct} />
+        </div>
       </>
     );
   }

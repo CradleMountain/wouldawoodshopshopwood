@@ -1,15 +1,12 @@
-/*
-
-CSS Reset here
-
-*/
 
 /************************************************************************/
 /*                                Main                                  */
 /************************************************************************/
 
+/* fonts, color schemes */
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif; 
+  margin: 0;
 }
 
 #app {
@@ -17,17 +14,17 @@ body {
   flex-direction: column;
 }
 
+.widgets-main {
+  margin: 0 15px 20px 15px;
+}
+
 /************************************************************************/
 /*                          Shared Components                           */
 /************************************************************************/
 
 /*--- Stars ---*/
-.one-fourth {
-  clip-path: polygon(40% 0%, 40% 100%, 0% 100%, 0% 0%);
-}
-
-.three-fourths {
-  clip-path: polygon(60% 0%, 60% 100%, 0% 100%, 0% 0%);
+.star-rating .fa-fw {
+  margin: 0 -.5px;
 }
 
 /*-- Modal --*/
@@ -60,9 +57,55 @@ Example modal css for props.css:
 }
 
 */
+
 /************************************************************************/
-/*                          Related Products                            */
+/*                           Navigation Bar                             */
 /************************************************************************/
+.nav-bar {
+  background-color: rgb(41, 53, 87);
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.nav-header {
+  margin: 8px;
+  font-size: 24px;
+}
+
+.nav-search {
+  margin: 8px;
+}
+
+.nav-search input {
+  border: 0px;
+  background-color: rgb(41, 53, 87);
+  color: white;
+  height: 90%;
+  width: 200px;
+  border-bottom: 2px solid white;
+}
+
+.nav-search input::placeholder {
+  color:rgb(199, 216, 221);
+}
+
+.nav-search input:focus {
+  outline: none;
+}
+
+.nav-search .icon {
+  position: fixed;
+  right: 16px;
+  top: 12px;
+}
+
+.nav-search .icon:hover {
+  color: aqua;
+}
 
 /************************************************************************/
 /*                          Product Overview                            */
@@ -96,6 +139,7 @@ Example modal css for props.css:
   background-color: rgba(0, 0, 0, 0.80);
 }
 /************************************************************************/
+
 .po-carousel-container {
   position: relative;
   grid-column: 8 / 60;
@@ -146,6 +190,7 @@ Example modal css for props.css:
   object-fit: cover;
 }
 /************************************************************************/
+
 .po-arrow-container {
   display: flex;
   justify-content: center;
@@ -173,7 +218,6 @@ Example modal css for props.css:
 }
 .po-hidden {
   visibility: hidden;
-}
 
 .po-left {
   position: absolute;
@@ -241,6 +285,7 @@ Example modal css for props.css:
   border-color: rgb(69, 65, 65);
 }
 /************************************************************************/
+
 .po-description-container {
   grid-column: 12 / 92;
   grid-row: 74 / 98;
@@ -296,7 +341,6 @@ Example modal css for props.css:
   font-weight: 600;
   margin-right: 7px;
 }
-/************************************************************************/
 .po-styles-container {
   grid-column: 62/ 95;
   grid-row: 5 / 60;
@@ -343,6 +387,7 @@ Example modal css for props.css:
   object-fit: cover;
 }
 /************************************************************************/
+  
 .po-checkout-container {
   display: flex;
   flex-wrap: wrap;
@@ -353,7 +398,6 @@ Example modal css for props.css:
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-
   width: 10.5em;
   height: 60px;
   margin-right: 25px;
@@ -361,16 +405,9 @@ Example modal css for props.css:
   border-style: solid;
   border-color: rgb(69, 65, 65);
   border-width: 1px;
-
   font-weight: 500;
   color: rgb(69, 65, 65);
 }
-/* .dropDownButton {
-  height: inherit;
-  width: 100%;
-  margin-bottom: 0.8em;
-  background: #ffffff;
-} */
 .po-size {
   width: 55%;
 }
@@ -404,6 +441,86 @@ Example modal css for props.css:
   list-style: none;
   margin-bottom: 0.8em;
 }
+/************************************************************************/
+/*                          Related Products                            */
+/************************************************************************/
+
+
+/* !! Temporary layout, replace with carousel! */
+.rp-list-related, .rp-list-outfit {
+  display: flex;
+  flex-direction: row;
+}
+/* */
+
+.rp-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  min-width: 200px;
+  border: 2px solid rgb(120, 120, 120);
+}
+
+.rp-card-action {
+  position: relative;
+  align-self: flex-end;
+  bottom: 10px;
+  left: 10px;
+}
+
+.rp-card-images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 200px;
+}
+
+.rp-card-images img {
+  max-height: 250px;
+  max-width: 200px;
+}
+
+.rp-card-stars {
+  font-size: 14px;
+}
+
+.rp-price-slash {
+  text-decoration: line-through;
+}
+
+.rp-price-sale {
+  color: red;
+}
+
+.rp-compare-modal {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.rp-compare-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  font-size: 14px;
+}
+
+.rp-compare-table div {
+  margin-bottom: 8px;
+}
+
+.rp-compare-feat, .rp-compare-title, .rp-compare-name {
+  font-weight: 700;
+}
+
+.rp-compare-title {
+  font-size: 16px;
+}
 
 /************************************************************************/
 /*                         Questions & Answers                          */
@@ -412,3 +529,267 @@ Example modal css for props.css:
 /************************************************************************/
 /*                           Ratings & Reviews                          */
 /************************************************************************/
+
+.ratings-reviews {
+  display: flex;
+  flex-direction: row;
+}
+
+.rr-reviews {
+  overflow: scroll;
+  max-height: 455px;
+}
+
+.rr-review, .rr-reviews-empty {
+  background-color:rgb(245, 245, 245);
+  padding: 8px;
+  width: 550px;
+  margin-bottom: 20px;
+}
+
+.rr-review-summary {
+  font-weight: 700;
+}
+
+.rr-review-body {
+  margin-bottom: 5px;
+}
+
+.rr-review-body p {
+  margin-bottom: 10px;
+}
+
+.rr-review .keyword {
+  background-color: yellow;
+}
+
+.rr-clickable {
+  color: blue;
+  cursor: default;
+}
+
+.rr-clickable:hover {
+  color: rgb(110, 110, 255);
+}
+
+.rr-review-response {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 10px 0;
+  margin-left: 15px;
+  padding: 5px;
+}
+
+.rr-review-images {
+  display: flex;
+  flex-direction: row;
+}
+
+.rr-review-images img {
+  max-height: 50px;
+  margin: 5px;
+  border: 1px solid gray;
+}
+
+.rr-ri-modal {
+  position: fixed;
+  top: 15%;
+  left: 20%;
+}
+
+.rr-ri-modal img {
+  max-height: 500px;
+}
+
+.help-option {
+  text-decoration: underline;
+}
+
+.help-option:hover {
+  color: blue;
+}
+
+.rr-rb-avg-num {
+  font-size: 64px;
+}
+
+.rr-rating-breakdown h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rr-rb-bars {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.select-filter {
+  background-color: lightyellow;
+}
+
+.product-breakdown {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.rr-pr-factor {
+  margin-top: 10px;
+}
+
+.rr-pr-phrases {
+  display: flex;
+  justify-content: space-between;
+  width: 180px;
+  margin-left: 5px;
+  font-size: 14px;
+  color: rgb(30, 30, 30);
+}
+
+.rr-sort-stream {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.rr-sorter {
+  margin-bottom: 5px;
+  align-self: flex-end;
+}
+
+.rr-searchbar input {
+  width: 60%;
+}
+
+.rr-write-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.rr-write-modal {
+  background-color: white;
+  width: 600px;
+  height: 550px;
+  left: 25%;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.rr-write-inner {
+  width: 590px;
+  height: 540px;
+  margin: 5px;
+  padding-right: 20px;
+  overflow-y: scroll;
+}
+
+.rr-write-inner h3 {
+  margin: 0px;
+}
+
+.rr-write-stars svg:hover, path:hover {
+  position: relative;
+  bottom: 2px;
+}
+
+.rr-write-question {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.rr-wq-header {
+  font-weight: 700;
+}
+
+.rr-write-required {
+  color: rgb(170, 0, 0);
+}
+
+.rr-wq-factor {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.rr-wq-factor div {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.rr-wq-factor-phrases {
+  font-size: 12px;
+}
+
+.rr-wq-caption {
+  font-size: 14px;
+}
+
+.rr-up-thumbs {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.rr-up-thumbs img {
+  height: 50px;
+  width: 50px;
+}
+
+.rr-up-thumb {
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  margin-right: 15px;
+  border: 1px solid gray;
+}
+
+.rr-up-remove {
+  position: relative;
+  bottom: 62px;
+  left: 42px;
+  font-size: 18px;
+}
+
+.rr-up-remove:hover {
+  font-size: 19px;
+}
+
+.icon-red {
+  color: rgb(220, 0, 0);
+}
+
+.icon-white {
+  color: white;
+}
+
+.rr-write-error {
+  border: 2px solid darkred;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.rr-write-error ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.rr-write-submit {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.rr-write-exit {
+  color: darkred;
+  text-align: right;
+  position: static;
+  font-size: 18px;
+}
