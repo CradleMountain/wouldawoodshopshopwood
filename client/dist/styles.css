@@ -113,7 +113,7 @@ Example modal css for props.css:
 .po-overview-container {
   display: grid;
   grid-template-columns: repeat(100, 1%);
-  grid-template-rows: repeat(100, 1%);
+  grid-template-rows: repeat(90, 1.11%);
   max-height: 925px;
 }
 
@@ -288,7 +288,7 @@ Example modal css for props.css:
 
 .po-description-container {
   grid-column: 12 / 92;
-  grid-row: 74 / 98;
+  grid-row: 74 / 90;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -451,8 +451,53 @@ Example modal css for props.css:
   display: flex;
   flex-direction: row;
 }
-/* */
-
+.rp-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(120, 120, 120);;
+  height: 40px;
+  width: 0px;
+  /* z-index: 20; */
+  cursor: pointer;
+}
+.rp-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height:400px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rp-horizontal-carousel {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
+  max-height: inherit;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+.rp-horizontal-inner {
+  display: flex;
+  justify-content: space-around;
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height: inherit;
+  max-height: inherit;
+}
+.rp-carousel-item {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
 .rp-product-card {
   display: flex;
   flex-direction: column;
@@ -461,7 +506,8 @@ Example modal css for props.css:
   margin: 10px;
   padding: 10px;
   min-width: 200px;
-  border: 2px solid rgb(120, 120, 120);
+  max-width: 200px;
+  border: 1px solid rgb(120, 120, 120);
 }
 
 .rp-card-action {
@@ -476,6 +522,7 @@ Example modal css for props.css:
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  object-fit: cover;
   height: 250px;
   width: 200px;
 }

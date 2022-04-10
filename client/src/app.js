@@ -47,7 +47,7 @@ class App extends React.Component {
           {Object.keys(this.state.currentProduct).length !== 0 && (
             <ContextWrapper currentProduct={this.state.currentProduct} />
           )}
-          {/* <RelatedProducts product={this.state.currentProduct}/> */}
+          <RelatedProducts product={this.state.currentProduct}/>
           {/* <QuestionsAnswers /> */}
           <RatingsReviews product={this.state.currentProduct} />
         </div>
