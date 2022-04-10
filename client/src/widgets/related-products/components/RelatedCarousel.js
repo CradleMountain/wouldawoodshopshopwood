@@ -21,7 +21,7 @@ const RelatedCarousel = ({ product, list, getProductById }) => {
     }
   };
   const rightArrowClick = () => {
-    if (carouselIndex < related.length - 1) {
+    if (carouselIndex < list.length - 1) {
       setCarouselIndex(carouselIndex + 1);
     }
   };
@@ -38,8 +38,10 @@ const RelatedCarousel = ({ product, list, getProductById }) => {
 
       <div className="rp-horizontal-carousel">
         <div
-          className="rp-horizontal-inner"
-          style={{ transform: `translateX(-${carouselIndex * 25}%)` }}
+          className={
+            list.length < 5 ? "rp-horizontal-inner-alt" : "rp-horizontal-inner"
+          }
+          style={{ transform: `translateX(-${carouselIndex * 17}%)` }}
         >
           {list.map((product, i) => {
             return (
@@ -54,7 +56,7 @@ const RelatedCarousel = ({ product, list, getProductById }) => {
           })}
         </div>
       </div>
-      {related.length - carouselIndex > 4 && (
+      {list.length > 5 && list.length - carouselIndex > 5 && (
         <Arrow
           icon={"arrow"}
           direction={"right"}

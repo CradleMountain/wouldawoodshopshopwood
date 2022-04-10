@@ -466,8 +466,16 @@ Example modal css for props.css:
   color: rgb(120, 120, 120);;
   height: 40px;
   width: 0px;
-  /* z-index: 20; */
+  /* position: absolute;
+  z-index: 29; */
   cursor: pointer;
+}
+.rp-left {
+
+  margin-left: 90px;
+}
+.rp-right {
+  margin-right: 90px;
 }
 .rp-carousel-container {
   position: relative;
@@ -477,10 +485,11 @@ Example modal css for props.css:
   max-height:400px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 .rp-horizontal-carousel {
-  display: block;
+  display: flex;
   overflow: hidden;
   width: 100%;
   max-width: inherit;
@@ -492,6 +501,15 @@ Example modal css for props.css:
 .rp-horizontal-inner {
   display: flex;
   justify-content: flex-start;
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height: inherit;
+  max-height: inherit;
+}
+.rp-horizontal-inner-alt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   white-space: nowrap;
   transition: transform 0.3s;
   height: inherit;
