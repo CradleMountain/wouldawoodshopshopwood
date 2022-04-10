@@ -34,7 +34,9 @@ const ProductOverview = (props) => {
 
   useEffect(() => {
     getProductStyle(props.currentProduct.id);
-  }, []);
+    ctx.carouselIndexChangeHandler(0);
+
+  }, [props.currentProduct]);
 
   const getProductStyle = useCallback(async (productId) => {
     try {
@@ -43,12 +45,12 @@ const ProductOverview = (props) => {
       ctx.styleChangeHandler(
         productStyles.data.results.filter((style) => style["default?"])[0]
       );
-      console.log(props.currentProduct);
-      console.log(productStyles.data.results);
+      // console.log(props.currentProduct);
+      // console.log(productStyles.data.results);
     } catch (error) {
       console.error(error);
     }
-  }, []);
+  });
 
   return (
     <div className="po-overview-container">
