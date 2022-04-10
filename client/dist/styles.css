@@ -1,9 +1,11 @@
+
 /************************************************************************/
 /*                                Main                                  */
 /************************************************************************/
 
+/* fonts, color schemes */
 body {
-  /* fonts, color schemes */
+  font-family: "Roboto", sans-serif; 
   margin: 0;
 }
 
@@ -59,7 +61,6 @@ Example modal css for props.css:
 /************************************************************************/
 /*                           Navigation Bar                             */
 /************************************************************************/
-
 .nav-bar {
   background-color: rgb(41, 53, 87);
   color: white;
@@ -107,8 +108,343 @@ Example modal css for props.css:
 }
 
 /************************************************************************/
+/*                          Product Overview                            */
+/************************************************************************/
+.po-overview-container {
+  display: grid;
+  grid-template-columns: repeat(100, 1%);
+  grid-template-rows: repeat(100, 1%);
+  max-height: 925px;
+}
+
+/************************************************************************/
+.po-expanded-view-container {
+  position: relative;
+  grid-column: 8 / 92;
+  grid-row: 5 / 98;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.po-expanded-view-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.80);
+}
+/************************************************************************/
+
+.po-carousel-container {
+  position: relative;
+  grid-column: 8 / 60;
+  grid-row: 5 / 70;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.po-horizontal-carousel {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
+  max-height: inherit;
+}
+.po-horizontal-inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height: 100%;
+  max-height: 100%;
+}
+.po-carousel-item {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+.po-enlarged-carousel-item {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+.po-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/************************************************************************/
+
+.po-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(111, 102, 102);
+  height: 40px;
+  width: 0px;
+  z-index: 20;
+  cursor: pointer;
+}
+.po-expand-button-container {
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  color: rgb(111, 102, 102);
+  width: 0px;
+  z-index: 20;
+  cursor: zoom-in;
+}
+.po-expand-button {
+  position: absolute;
+  z-index: 20;
+  margin-right: 70px;
+  margin-top: 25px;
+}
+.po-hidden {
+  visibility: hidden;
+
+.po-left {
+  position: absolute;
+  margin-left: 255px;
+}
+.alt-left {
+  position: absolute;
+  margin-left: 70px;
+}
+.po-right {
+  position: absolute;
+  margin-right: 70px;
+}
+.po-up {
+}
+.po-down {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  align-self: flex-end;
+}
+.po-outer-vertical-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 70px;
+  height: inherit;
+  padding-left: 25px;
+  padding-top: 12px;
+  z-index: 10;
+}
+.po-vertical-carousel {
+  overflow: hidden;
+  width: 68px;
+}
+.po-vertical-inner {
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.po-carousel-thumbnail {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 70px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.po-carousel-thumbnail-image {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  width: 97%;
+  height: 97%;
+  object-fit: cover;
+  border-style: solid;
+  border-color: rgb(69, 65, 65);
+  border-width: 1px;
+}
+.po-highlight {
+  border-bottom: 4px solid;
+  border-color: rgb(69, 65, 65);
+}
+/************************************************************************/
+
+.po-description-container {
+  grid-column: 12 / 92;
+  grid-row: 74 / 98;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgb(69, 65, 65);
+}
+.po-product-text-container-left {
+  width: 65%;
+  height: 75%;
+  padding-right: 17px;
+}
+.po-product-text-container-right {
+  width: 35%;
+  height: 75%;
+  padding-left: 15px;
+  border-left: 2px solid;
+  border-color: rgb(69, 65, 65);
+}
+.po-product-slogan {
+  font-weight: 800;
+  font-size: 18px;
+}
+.po-product-description {
+  font-weight: 300;
+  font-size: 14px;
+}
+.po-attribute-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.fa-check {
+  margin-right: 10px;
+}
+.po-sale {
+  text-decoration: line-through;
+  color: red;
+}
+.po-category {
+  font-weight: 600;
+}
+.po-name {
+  font-weight: 900;
+  font-size: xxx-large;
+  margin: 16px 0px;
+}
+.po-price {
+  margin: 8px 3px;
+}
+.po-style {
+  font-weight: 600;
+  margin-right: 7px;
+}
+.po-styles-container {
+  grid-column: 62/ 95;
+  grid-row: 5 / 60;
+  color: rgb(69, 65, 65);
+}
+.po-span {
+  display: flex;
+}
+.po-four-round-container {
+  max-width: 425px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.fa-circle-check {
+  position: absolute;
+  z-index: 25;
+  object-position: right top;
+  color: rgb(69, 65, 65);
+  background-color: white;
+  border-radius: inherit;
+}
+.po-check {
+  border-radius: inherit;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.po-style-thumbnail {
+  overflow: hidden;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  height: 75px;
+  width: 75px;
+  border-radius: 75px;
+  border-style: solid;
+  border-color: rgb(69, 65, 65);
+  border-width: 1px;
+}
+.po-style-thumbnail-image {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/************************************************************************/
+  
+.po-checkout-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.po-drop-down-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 10.5em;
+  height: 60px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  border-style: solid;
+  border-color: rgb(69, 65, 65);
+  border-width: 1px;
+  font-weight: 500;
+  color: rgb(69, 65, 65);
+}
+.po-size {
+  width: 55%;
+}
+.po-quantity {
+  width: 30%;
+}
+.po-add-to-cart {
+  width: 72%;
+}
+.po-star {
+  width: 13%;
+}
+.po-drop-down-list {
+  position: absolute;
+  width: 75px;
+  z-index: 12;
+  padding: 0;
+  margin: 0;
+  padding-left: 1em;
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  box-sizing: border-box;
+  color: rgb(69, 65, 65);
+  font-weight: 500;
+  border-style: solid;
+  border-color: rgb(69, 65, 65);
+  border-width: 1px;
+}
+.po-list-item {
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: 0.8em;
+}
+/************************************************************************/
 /*                          Related Products                            */
 /************************************************************************/
+
 
 /* !! Temporary layout, replace with carousel! */
 .rp-list-related, .rp-list-outfit {
@@ -187,36 +523,8 @@ Example modal css for props.css:
 }
 
 /************************************************************************/
-/*                          Product Overview                            */
-/************************************************************************/
-.carousel {
-  overflow: hidden;
-  width: 300px;
-  }
-.inner {
-  white-space: nowrap;
-  transition: transform 0.3s;
-}
-.carouselItem {
-  overflow:hidden;
-  width: 100%;
-  height: 200px;
-  display: inline-flex;
-  align-items: center;
-  border: 2px solid;
-  border-color: black;
-  color: black;
-}
-.carouselImage {
-width: 100%;
-height: 100%;
-}
-
-/************************************************************************/
 /*                         Questions & Answers                          */
 /************************************************************************/
-
-
 
 /************************************************************************/
 /*                           Ratings & Reviews                          */
