@@ -11,9 +11,7 @@ const ReviewList = ({ reviews, max, filter, searchFilter, filterList }) => {
 
   const clickHandler = (e) => {
     e.preventDefault();
-    var start = list.length;
-    var newList = list.concat(filterList(reviews).slice(start, start + 2));
-    setList(newList);
+    setList(filterList(reviews));
   };
 
   return (
