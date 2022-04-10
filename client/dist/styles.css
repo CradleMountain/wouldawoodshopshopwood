@@ -231,8 +231,6 @@ Example modal css for props.css:
   position: absolute;
   margin-right: 70px;
 }
-.po-up {
-}
 .po-down {
   margin-top: 12px;
   margin-bottom: 10px;
@@ -549,6 +547,7 @@ Example modal css for props.css:
   align-items: center;
   justify-content: center;
   object-fit: cover;
+  overflow: hidden;
   height: 250px;
   width: 200px;
 }
@@ -557,7 +556,20 @@ Example modal css for props.css:
   max-height: 250px;
   max-width: 200px;
 }
-
+.rp-name {
+  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.rp-category {
+  font-weight: 300;
+  font-size: 14px;
+}
+.rp-price {
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 5px;
+}
 .rp-card-stars {
   font-size: 14px;
 }

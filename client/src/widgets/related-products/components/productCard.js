@@ -74,16 +74,18 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
           />
         </div>
         <div className="rp-card-info">
-          <div>{product.category}</div>
-          <div onClick={changeProductHandler}>{product.name}</div>
+          <div className="rp-category">{product.category}</div>
+          <div className="rp-name" onClick={changeProductHandler}>
+            {product.name}
+          </div>
           <div className="rp-card-images" onClick={changeProductHandler}>
             <img src={defaultStyle.photos[0].thumbnail_url} />
           </div>
           <div>
             {defaultStyle.sale_price ? (
               <>
-                <div className="rp-price-sale">${defaultStyle.sale_price}</div>
-                <div className="rp-price-slash">${product.default_price}</div>
+                <div className="rp-price rp-price-sale">${defaultStyle.sale_price}</div>
+                <div className="rp-price rp-price-slash">${product.default_price}</div>
               </>
             ) : (
               <div>${product.default_price}</div>
