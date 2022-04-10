@@ -4,7 +4,7 @@ import ProdContext from "../context/productOverview-context";
 import VerticalCarousel from "./VerticalCarousel.js";
 import CarouselItem from "./CarouselItem.js";
 import ArrowIcon from "./ArrowIcon.js";
-import ExpandButton from "./ExpandButton.js";
+import ExpandButton from "../expandedView/ExpandButton.js";
 
 const MainCarousel = (props) => {
   const ctx = useContext(ProdContext);

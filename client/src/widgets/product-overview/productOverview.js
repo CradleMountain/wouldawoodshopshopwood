@@ -15,7 +15,7 @@ import ProductDescription from "./textDisplays/ProductDescription.js";
 import StyleDescription from "./textDisplays/StyleDescription.js";
 import StyleSelector from "./styleSelector/StyleSelector.js";
 import CheckoutContainer from "./checkout/CheckoutContainer.js";
-import ExpandedView from "./carousel/ExpandedView.js";
+import ExpandedView from "./expandedView/ExpandedView.js";
 import api from "./apiHelpers.js";
 
 const ProductOverview = (props) => {
