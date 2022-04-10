@@ -5,7 +5,7 @@
 
 /* fonts, color schemes */
 body {
-  font-family: "Roboto", sans-serif; 
+  font-family: "Roboto", sans-serif;
   margin: 0;
 }
 
@@ -113,7 +113,7 @@ Example modal css for props.css:
 .po-overview-container {
   display: grid;
   grid-template-columns: repeat(100, 1%);
-  grid-template-rows: repeat(100, 1%);
+  grid-template-rows: repeat(90, 1.11%);
   max-height: 925px;
 }
 
@@ -121,7 +121,7 @@ Example modal css for props.css:
 .po-expanded-view-container {
   position: relative;
   grid-column: 8 / 92;
-  grid-row: 5 / 98;
+  grid-row: 5 / 88;
   width: 100%;
   max-width: 100%;
   height: 100%;
@@ -218,7 +218,7 @@ Example modal css for props.css:
 }
 .po-hidden {
   visibility: hidden;
-
+}
 .po-left {
   position: absolute;
   margin-left: 255px;
@@ -230,8 +230,6 @@ Example modal css for props.css:
 .po-right {
   position: absolute;
   margin-right: 70px;
-}
-.po-up {
 }
 .po-down {
   margin-top: 12px;
@@ -288,7 +286,15 @@ Example modal css for props.css:
 
 .po-description-container {
   grid-column: 12 / 92;
-  grid-row: 74 / 98;
+  grid-row: 74 / 90;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgb(69, 65, 65);
+}
+.po-description-container-alt {
+  grid-column: 12 / 60;
+  grid-row: 74 / 91;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -387,7 +393,7 @@ Example modal css for props.css:
   object-fit: cover;
 }
 /************************************************************************/
-  
+
 .po-checkout-container {
   display: flex;
   flex-wrap: wrap;
@@ -451,8 +457,71 @@ Example modal css for props.css:
   display: flex;
   flex-direction: row;
 }
-/* */
+.rp-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(120, 120, 120);;
+  height: 40px;
+  width: 0px;
+  /* position: absolute;
+  z-index: 29; */
+  cursor: pointer;
+}
+.rp-left {
 
+  margin-left: 90px;
+}
+.rp-right {
+  margin-right: 90px;
+}
+.rp-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height:400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.rp-horizontal-carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
+  max-height: inherit;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+.rp-horizontal-inner {
+  display: flex;
+  justify-content: flex-start;
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height: inherit;
+  max-height: inherit;
+}
+.rp-horizontal-inner-alt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  white-space: nowrap;
+  transition: transform 0.3s;
+  height: inherit;
+  max-height: inherit;
+}
+.rp-carousel-item {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
 .rp-product-card {
   display: flex;
   flex-direction: column;
@@ -461,7 +530,8 @@ Example modal css for props.css:
   margin: 10px;
   padding: 10px;
   min-width: 200px;
-  border: 2px solid rgb(120, 120, 120);
+  max-width: 200px;
+  border: 1px solid rgb(120, 120, 120);
 }
 
 .rp-card-action {
@@ -476,6 +546,8 @@ Example modal css for props.css:
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  object-fit: cover;
+  overflow: hidden;
   height: 250px;
   width: 200px;
 }
@@ -484,7 +556,20 @@ Example modal css for props.css:
   max-height: 250px;
   max-width: 200px;
 }
-
+.rp-name {
+  font-weight: 400;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.rp-category {
+  font-weight: 300;
+  font-size: 14px;
+}
+.rp-price {
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 5px;
+}
 .rp-card-stars {
   font-size: 14px;
 }
