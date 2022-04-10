@@ -483,7 +483,7 @@ Example modal css for props.css:
 }
 .rp-horizontal-inner {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   white-space: nowrap;
   transition: transform 0.3s;
   height: inherit;

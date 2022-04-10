@@ -4,7 +4,7 @@ import ProductCard from "./productCard.js";
 import Comparison from "./comparison.js";
 import Arrow from "./Arrow.js";
 
-const RelatedCarousel = ({ product, list }) => {
+const RelatedCarousel = ({ product, list, getProductById }) => {
   const [showModal, setShowModal] = useState(false);
   const [related, setRelated] = useState({});
   const [carouselIndex, setCarouselIndex] = useState(0);
@@ -48,6 +48,7 @@ const RelatedCarousel = ({ product, list }) => {
                 key={i}
                 icon="fa-regular fa-star"
                 onClick={compare}
+                getProductById={getProductById}
               />
             );
           })}

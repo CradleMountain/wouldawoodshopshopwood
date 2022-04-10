@@ -4,7 +4,7 @@ import axios from 'axios';
 import RelatedCarousel from './components/RelatedCarousel.js';
 import OutfitList from './components/outfitList.js';
 
-const RelatedProducts = ({ product }) => {
+const RelatedProducts = ({ product, getProductById }) => {
   const getProduct = (productId) => {
     return axios({
       method: 'GET',
@@ -47,7 +47,7 @@ const RelatedProducts = ({ product }) => {
   if (related[0]) {
     return (
       <div className="rp-related-products-container">
-        <RelatedCarousel product={product} list={related}/>
+        <RelatedCarousel product={product} list={related} getProductById={getProductById}/>
         <OutfitList />
       </div>
     );
