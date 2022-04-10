@@ -138,6 +138,19 @@ Example modal css for props.css:
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.80);
 }
+.po-icon-carousel {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+.po-icon-item {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 75px;
+  color: rgb(111, 102, 102);
+}
 /************************************************************************/
 
 .po-carousel-container {
