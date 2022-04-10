@@ -4,11 +4,16 @@
 
 body {
   /* fonts, color schemes */
+  margin: 0;
 }
 
 #app {
   display: flex;
   flex-direction: column;
+}
+
+.widgets-main {
+  margin: 0 15px 20px 15px;
 }
 
 /************************************************************************/
@@ -50,6 +55,57 @@ Example modal css for props.css:
 }
 
 */
+
+/************************************************************************/
+/*                           Navigation Bar                             */
+/************************************************************************/
+
+.nav-bar {
+  background-color: rgb(41, 53, 87);
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.nav-header {
+  margin: 8px;
+  font-size: 24px;
+}
+
+.nav-search {
+  margin: 8px;
+}
+
+.nav-search input {
+  border: 0px;
+  background-color: rgb(41, 53, 87);
+  color: white;
+  height: 90%;
+  width: 200px;
+  border-bottom: 2px solid white;
+}
+
+.nav-search input::placeholder {
+  color:rgb(199, 216, 221);
+}
+
+.nav-search input:focus {
+  outline: none;
+}
+
+.nav-search .icon {
+  position: fixed;
+  right: 16px;
+  top: 12px;
+}
+
+.nav-search .icon:hover {
+  color: aqua;
+}
+
 /************************************************************************/
 /*                          Related Products                            */
 /************************************************************************/
@@ -172,14 +228,11 @@ height: 100%;
 }
 
 .rr-reviews {
-  /* margin-left: 50px; */
   overflow: scroll;
-  max-height: 400px;
+  max-height: 455px;
 }
 
-.rr-review {
-  /* border: 1px solid gray;
-  border-radius: 3px; */
+.rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
   padding: 8px;
   width: 550px;
@@ -198,6 +251,10 @@ height: 100%;
   margin-bottom: 10px;
 }
 
+.rr-review .keyword {
+  background-color: yellow;
+}
+
 .rr-clickable {
   color: blue;
   cursor: default;
@@ -211,6 +268,7 @@ height: 100%;
   background-color: white;
   border: 1px solid gray;
   border-radius: 5px;
+  margin: 10px 0;
   margin-left: 15px;
   padding: 5px;
 }
@@ -293,6 +351,10 @@ height: 100%;
   align-self: flex-end;
 }
 
+.rr-searchbar input {
+  width: 60%;
+}
+
 .rr-write-btn {
   display: flex;
   flex-direction: row;
@@ -307,7 +369,6 @@ height: 100%;
   left: 25%;
   padding: 20px;
   border-radius: 8px;
-  /* overflow-y: scroll; */
 }
 
 .rr-write-inner {
@@ -316,6 +377,10 @@ height: 100%;
   margin: 5px;
   padding-right: 20px;
   overflow-y: scroll;
+}
+
+.rr-write-inner h3 {
+  margin: 0px;
 }
 
 .rr-write-stars svg:hover, path:hover {
@@ -380,7 +445,6 @@ height: 100%;
   position: relative;
   bottom: 62px;
   left: 42px;
-  /* color: rgb(220, 0, 0); */
   font-size: 18px;
 }
 
@@ -408,4 +472,16 @@ height: 100%;
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.rr-write-submit {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.rr-write-exit {
+  color: darkred;
+  text-align: right;
+  position: static;
+  font-size: 18px;
 }
