@@ -5,7 +5,7 @@
 
 /* fonts, color schemes */
 body {
-  font-family: "Roboto", sans-serif; 
+  font-family: "Roboto", sans-serif;
   margin: 0;
 }
 
@@ -218,7 +218,7 @@ Example modal css for props.css:
 }
 .po-hidden {
   visibility: hidden;
-
+}
 .po-left {
   position: absolute;
   margin-left: 255px;
@@ -387,7 +387,7 @@ Example modal css for props.css:
   object-fit: cover;
 }
 /************************************************************************/
-  
+
 .po-checkout-container {
   display: flex;
   flex-wrap: wrap;
