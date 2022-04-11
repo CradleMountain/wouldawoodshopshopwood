@@ -8,14 +8,45 @@ import ModalWrapper from '../../components/modal.js';
 
 const QuestionsAnswers = (props) => {
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  console.log('search term', searchTerm)
+
   const [data, setData] = useState([]);
 
   const [addingQuestion, setAddingQuestion] = useState(false);
 
+  const [feedCount, setFeedCount] = useState(2);
+
+
+  const QPOST = (body, name, email) => {
+
+    axios({
+      method: 'POST',
+      url: '/qa/questions',
+      data: {
+        body: body,
+        name: name,
+        email: email,
+        product_id: props.currentProduct.id
+      }
+    })
+    .then(res => {
+      console.log('QPOST SUCCESS', res)
+    })
+    .catch(err => {
+      console.log('FAIL QPOST', err)
+    })
+  }
+
   const getQuestions = () => {
     axios({
       method: 'GET',
-      url: `/qa/questions/?product_id=37324`
+      url: `/qa/questions/?product_id=37313`,
+      params: {
+        count: 22,
+        page: 1
+      }
     })
       .then((data) => {
         console.log('GET DATA', data.data.results)
@@ -50,13 +81,13 @@ const QuestionsAnswers = (props) => {
     <div>
       <div>Questions and Answers</div>
       <br></br>
-      <QSearch />
+      <QSearch setSearchTerm={setSearchTerm}/>
       <br></br>
-      <QList currentProduct={props.currentProduct} data={data}/>
-      <button>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
+      <QList feedCount={feedCount} currentProduct={props.currentProduct} data={data}/>
+      <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
       {addingQuestion &&
         <ModalWrapper backClick={() => {}}>
-          <AddQ product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
+          <AddQ QPOST={QPOST} product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
         </ModalWrapper>
       }
     </div>
