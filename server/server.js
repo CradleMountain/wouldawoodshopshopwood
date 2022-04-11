@@ -30,8 +30,7 @@ app.use('/*', (req, res) => {
           .send(response.data);
       })
       .catch((err) => {
-        console.error(err);
-        if (err) {
+        if (err.response) {
           res.set(err.response.headers)
           .status(err.response.status)
           .send();
