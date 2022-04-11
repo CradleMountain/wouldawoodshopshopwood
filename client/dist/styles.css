@@ -211,7 +211,7 @@ Example modal css for props.css:
   color: rgb(111, 102, 102);
   height: 40px;
   width: 0px;
-  /* z-index: 20; */
+  z-index: 20;
   cursor: pointer;
 }
 .po-expand-button-container {
