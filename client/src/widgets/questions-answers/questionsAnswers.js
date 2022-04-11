@@ -18,7 +18,6 @@ const QuestionsAnswers = (props) => {
 
   const [feedCount, setFeedCount] = useState(2);
 
-
   const QPOST = (body, name, email) => {
 
     axios({
@@ -42,31 +41,31 @@ const QuestionsAnswers = (props) => {
   const getQuestions = () => {
     axios({
       method: 'GET',
-      url: `/qa/questions/?product_id=37313`,
+      url: `/qa/questions/?product_id=37322`,
       params: {
         count: 22,
         page: 1
       }
     })
-      .then((data) => {
-        console.log('GET DATA', data.data.results)
-        var newState = [];
-        var order = data.data.results.map(result => {
-          return result.question_helpfulness
-        })
-        order.sort();
-        order.forEach(rating => {
-          data.data.results.forEach(result => {
-            if (result.question_helpfulness === rating) {
-              newState.push(result);
-            }
-          });
-        });
-        setData(data.data.results);
+    .then((data) => {
+      console.log('GET DATA', data.data.results)
+      var newState = [];
+      var order = data.data.results.map(result => {
+        return result.question_helpfulness
       })
-      .catch((err) => {
-        console.error(err);
+      order.sort();
+      order.forEach(rating => {
+        data.data.results.forEach(result => {
+          if (result.question_helpfulness === rating) {
+            newState.push(result);
+          }
+        });
       });
+      setData(data.data.results);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   }
 
   const exitModal = () => {
@@ -83,7 +82,9 @@ const QuestionsAnswers = (props) => {
       <br></br>
       <QSearch setSearchTerm={setSearchTerm}/>
       <br></br>
-      <QList searchTerm={searchTerm} feedCount={feedCount} currentProduct={props.currentProduct} data={data}/>
+      <div class='accordion'>
+        <QList searchTerm={searchTerm} feedCount={feedCount} currentProduct={props.currentProduct} data={data}/>
+      </div>
       <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
       {addingQuestion &&
         <ModalWrapper backClick={() => {}}>
@@ -95,19 +96,3 @@ const QuestionsAnswers = (props) => {
 };
 
 export default QuestionsAnswers;
-
-// {addingQuestion &&
-//   <ModalWrapper backClick={() => {}}>
-//     <p>
-//       hello modal
-//     </p>
-//   </ModalWrapper>
-// }
-
-
-
-//   <ModalWrapper backClick={() => {}}>
-//   <p>
-//     hello modal
-//   </p>
-// </ModalWrapper>

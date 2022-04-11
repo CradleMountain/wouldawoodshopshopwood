@@ -6,6 +6,8 @@ import AddA from './AddA.js';
 
 const Q = (props) => {
 
+  const [answersExpanded, setAnswersExpanded] = useState(false)
+
   const [addingAnswer, setAddingAnswer] = useState(false)
 
   const [ACount, setACount] = useState(2);
@@ -15,6 +17,32 @@ const Q = (props) => {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
 
   const [reportClicked, setReportClicked] = useState(false);
+
+  const moreAnswersElement = () => {
+
+    if (Object.keys(props.datum.answers).length > 2 && !answersExpanded) {
+
+      return (
+        <button onClick={() => {setACount(7); setAnswersExpanded(true);}}>
+          See more answers
+        </button>
+      )
+
+    } else if (answersExpanded) {
+      console.log('ANSWERS EXPANDED')
+      // setAnswersExpanded(false);
+      return (
+        <button onClick={() => {setACount(2); setAnswersExpanded(false);} }>
+          Collapse answers
+        </button>
+      )
+
+
+    } else {
+      return null;
+    }
+
+  }
 
   const helpfulnessPut = id => {
     if (!helpfulClicked) {
@@ -50,28 +78,10 @@ const Q = (props) => {
     } else {
       console.log('NEED TO switch button to static Reported')
     }
-
   }
 
-  // const QPOST = (body, name, email) => {
 
-  //   axios({
-  //     method: 'POST',
-  //     url: '/qa/questions',
-  //     data: {
-  //       body: body,
-  //       name: name,
-  //       email: email,
-  //       product_id: props.currentProduct.id
-  //     }
-  //   })
-  //   .then(res => {
-  //     console.log('QPOST SUCCESS', res)
-  //   })
-  //   .catch(err => {
-  //     console.log('FAIL QPOST', err)
-  //   })
-  // }
+
 
 
   return (
@@ -83,9 +93,12 @@ const Q = (props) => {
           Yes {helpfulnessCount}
         </button>
         <br></br>
+        {!reportClicked ?
         <button onClick={QReportPUT}>
           Report
         </button>
+        : <div>Reported</div>
+        }
       </div>
 
       <button onClick={() => setAddingAnswer(true)}>
@@ -94,16 +107,14 @@ const Q = (props) => {
       <div>
         {Object.keys(props.datum.answers).map((key, i) => {
           if (i < ACount) {
-            return(
-                <A answer={props.datum.answers[key]}/>
+            return (
+                <A ATotal={Object.keys(props.datum.answers).length} answer={props.datum.answers[key]}/>
             )
           }
         })}
       </div>
       <div>
-        <button onClick={() => setACount(ACount+1)}>
-          See more answers
-        </button>
+        {moreAnswersElement()}
       </div>
       <br></br>
 
@@ -115,56 +126,89 @@ const Q = (props) => {
       <br></br>
     </div>
   )
+
+
+  // <button onClick={() => setACount(ACount+1)}>
+  //   See more answers
+  // </button>
+
+
+
+
+
+
+
+  // return (
+  //   <div>
+  //     Q: {props.datum.question_body}
+  //     <div>
+  //       Helpful?
+  //       <button onClick={() => helpfulnessPut(props.datum.question_id)}>
+  //         Yes {helpfulnessCount}
+  //       </button>
+  //       <br></br>
+  //       {!reportClicked ?
+  //       <button onClick={QReportPUT}>
+  //         Report
+  //       </button>
+  //       : <div>Reported</div>
+  //       }
+  //     </div>
+
+  //     <button onClick={() => setAddingAnswer(true)}>
+  //       Add Answer
+  //     </button>
+  //     <div>
+  //       {Object.keys(props.datum.answers).map((key, i) => {
+  //         if (i < ACount) {
+  //           return(
+  //               <A answer={props.datum.answers[key]}/>
+  //           )
+  //         }
+  //       })}
+  //     </div>
+  //     <div>
+  //       <button onClick={() => setACount(ACount+1)}>
+  //         See more answers
+  //       </button>
+  //     </div>
+  //     <br></br>
+
+  //     {addingAnswer &&
+  //       <ModalWrapper backClick={() => {}}>
+  //         <AddA question_body={props.datum.question_body} product_name={props.currentProduct.name}/>
+  //       </ModalWrapper>
+  //     }
+  //     <br></br>
+  //   </div>
+  // )
+
+
+
 }
-
-
 
 export default Q;
 
-// NEED TO IMPLEMENT LOCAL STORAGE TO LIMIT HELPFULNESS VOTES TO ONE PER USER PER QUESTION
-
-// PUT /qa/questions/:question_id/helpful
 
 
-// I think this goes here because this is where the As are propagated... A is where they are formed.
+// {
 
-// By default only two answers will show. The rest should be hidden. If more than two answers exist for the question, a link to “See more answers” should display below the list. Clicking on this link should expand the area below the question and display the remainder of the list.
+//   <someFunc />
+
+// }
 
 
-// return (
-//   <div>
-//     Q: {props.datum.question_body}
-//     <div>
-//       Helpful?
-//       <button onClick={() => helpfulnessPut(props.datum.question_id)}>
-//         Yes {helpfulnessCount}
-//       </button>
-//     </div>
+// somefunc {
 
-//     <button onClick={() => setAddingAnswer(true)}>
-//       Add Answer
-//     </button>
-//     <div>
-//       {Object.keys(props.datum.answers).map((key, i) => {
-//         if (i < ACount) {
-//           return(
-//               <A answer={props.datum.answers[key]}/>
-//           )
-//         }
-//       })}
-//     </div>
-//     <div>
-//       <button onClick={() => setACount(ACount+1)}>
-//         See more answers
-//       </button>
-//     </div>
-//     <br></br>
+//   if
 
-//     {addingAnswer &&
-//       <ModalWrapper backClick={() => {}}>
-//         <AddA question_body={props.datum.question_body} product_name={props.currentProduct.name}/>
-//       </ModalWrapper>
-//     }
-//     <br></br>
-//   </div>
-// )
+//   if hookBoolean
+
+//     <buttonA func=
+
+
+//     else
+
+//     <buttonB
+
+// }
