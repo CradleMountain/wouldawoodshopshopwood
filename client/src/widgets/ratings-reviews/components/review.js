@@ -53,7 +53,7 @@ const Review = ({ review, keyword }) => {
       </div>
       {review.recommend ? (<div>
         <FontAwesomeIcon icon={faCheck} />
-        <span> I recommend this product</span>
+        <span>I recommend this product</span>
       </div>) : null}
       {review.response
         ? <div className="rr-review-response">

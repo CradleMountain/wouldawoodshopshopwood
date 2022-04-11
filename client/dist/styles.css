@@ -16,6 +16,8 @@ body {
 
 .widgets-main {
   margin: 0 15px 20px 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 /************************************************************************/
@@ -29,6 +31,13 @@ body {
 
 /*-- Modal --*/
 
+#modal-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-content: center;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -41,6 +50,9 @@ body {
 
 .modal {
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 50;
 }
 
@@ -630,19 +642,38 @@ Example modal css for props.css:
 
 .ratings-reviews {
   display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.rr-page {
+  display: flex;
   flex-direction: row;
+  justify-items: space-between;
+}
+
+.rr-breakdowns {
+  width: 20em;
 }
 
 .rr-reviews {
-  overflow: scroll;
-  max-height: 455px;
+  overflow-y: scroll;
+  overflow-x: visible;
+  /* max-height: 455px; */
+  height: 34em;
+  max-height: 34em;
+  width: 50em;
 }
 
 .rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
-  padding: 8px;
-  width: 550px;
-  margin-bottom: 20px;
+  /* padding: 8px; */
+  padding: 1.5%;
+  /* width: 550px; */
+  /* width: 100% */
+  /* width: 100%; */
+  /* margin-bottom: 20px; */
+  margin-bottom: 2%;
 }
 
 .rr-review-summary {
@@ -674,10 +705,10 @@ Example modal css for props.css:
 .rr-review-response {
   background-color: white;
   border: 1px solid gray;
-  border-radius: 5px;
-  margin: 10px 0;
-  margin-left: 15px;
-  padding: 5px;
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  margin-left: 1em;
+  padding: 0.5em;
 }
 
 .rr-review-images {
@@ -689,12 +720,6 @@ Example modal css for props.css:
   max-height: 50px;
   margin: 5px;
   border: 1px solid gray;
-}
-
-.rr-ri-modal {
-  position: fixed;
-  top: 15%;
-  left: 20%;
 }
 
 .rr-ri-modal img {
@@ -724,6 +749,10 @@ Example modal css for props.css:
   margin: 5px;
 }
 
+.rr-rb-bar {
+  display: inline-block;
+}
+
 .select-filter {
   background-color: lightyellow;
 }
@@ -750,44 +779,83 @@ Example modal css for props.css:
 .rr-sort-stream {
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
+  /* margin-left: 50px; */
+  margin-left: 5%;
+}
+
+.rr-ss-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .rr-sorter {
-  margin-bottom: 5px;
   align-self: flex-end;
 }
 
-.rr-searchbar input {
+.rr-sorter select {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  font-size: inherit;
+}
+
+.rr-sorter select:focus {
+  background-color: rgb(218, 226, 255);
+}
+
+.rr-searchbar {
   width: 60%;
+}
+
+.rr-searchbar input {
+  height: 2em;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.rr-searchbar input:focus {
+  background-color: rgb(218, 226, 255);
 }
 
 .rr-write-btn {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 2%;
 }
 
 .rr-write-modal {
-  background-color: white;
+  /* background-color: white;
   width: 600px;
   height: 550px;
   left: 25%;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 8px; */
+  background-color: white;
+  height: 80%;
+  padding: 2%;
+  border-radius: 0.8em;
 }
 
 .rr-write-inner {
-  width: 590px;
+  /* width: 590px;
   height: 540px;
   margin: 5px;
   padding-right: 20px;
+  overflow-y: scroll; */
+  width: 35em;
+  height: 33em;
+  padding-right: 1em;
   overflow-y: scroll;
 }
 
 .rr-write-inner h3 {
-  margin: 0px;
+  margin: 0;
 }
 
 .rr-write-stars svg:hover, path:hover {
@@ -823,6 +891,11 @@ Example modal css for props.css:
 
 .rr-wq-factor-phrases {
   font-size: 12px;
+}
+
+.rr-write-question textarea {
+  resize: vertical;
+  font-family: inherit;
 }
 
 .rr-wq-caption {
@@ -891,4 +964,15 @@ Example modal css for props.css:
   text-align: right;
   position: static;
   font-size: 18px;
+}
+
+.ratings-reviews button, .rr-write-modal button {
+  background-color: white;
+  border: 1px solid rgb(98, 98, 98);
+  height: 2em;
+  font-size: 14px;
+}
+
+.ratings-reviews button:hover, .rr-write-modal button:hover {
+  background-color: rgb(210, 210, 210);
 }
