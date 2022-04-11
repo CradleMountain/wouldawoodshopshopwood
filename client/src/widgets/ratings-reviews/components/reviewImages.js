@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import ModalWrapper from '../../../components/modal.js';
+import Image from '../../../components/image.js';
 
 const ReviewImages = ({ images }) => {
   const [modalView, setModalView] = useState(null);
@@ -19,7 +20,7 @@ const ReviewImages = ({ images }) => {
 
   var gallery = images.map((img) => {
     return (
-      <img key={img.id} src={img.url} onClick={enlargeImage} />
+      <Image key={img.id} url={img.url} onClick={enlargeImage}/>
     );
   });
 

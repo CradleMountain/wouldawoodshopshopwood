@@ -24,7 +24,7 @@ const VerticalCarousel = (props) => {
   };
 
   const downArrowClick = () => {
-    if (ctx.currentStyle.photos.length - ctx.carouselIndex > 7) {
+    if (ctx.carouselIndex < ctx.currentStyle.photos.length - 1) {
       ctx.carouselIndexChangeHandler(ctx.carouselIndex + 1);
     }
   };

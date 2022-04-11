@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import RelatedList from './components/relatedList.js';
+import RelatedCarousel from './components/RelatedCarousel.js';
 import OutfitList from './components/outfitList.js';
 
-const RelatedProducts = ({ product }) => {
+const RelatedProducts = ({ product, getProductById }) => {
   const getProduct = (productId) => {
     return axios({
       method: 'GET',
@@ -36,6 +36,7 @@ const RelatedProducts = ({ product }) => {
       getRelated(product.id)
         .then((data) => {
           setRelated(data);
+          console.log(data)
         })
         .catch((err) => {
           console.error(err);
@@ -45,13 +46,13 @@ const RelatedProducts = ({ product }) => {
 
   if (related[0]) {
     return (
-      <div className="related-products">
-        <RelatedList product={product} list={related}/>
+      <div className="rp-related-products-container">
+        <RelatedCarousel product={product} list={related} getProductById={getProductById}/>
         <OutfitList />
       </div>
     );
   } else {
-    return (<div className="related-products"></div>);
+    return (<div className="rp-related-products-container"></div>);
   }
 };
 
