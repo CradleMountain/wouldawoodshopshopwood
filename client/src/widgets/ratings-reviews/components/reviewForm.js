@@ -143,6 +143,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
   };
 
   const clickStars = (e) => {
+    e.preventDefault();
     var star = e.target.tagName === 'path' ? e.target.viewportElement : e.target;
     for (var i = 0; i < star.parentElement.children.length; i++) {
       if (star.parentElement.children[i] === star) {
@@ -153,6 +154,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
   };
 
   const rateFactor = (e) => {
+    e.preventDefault();
     setFactorRating((state) => {
       var result = {};
       for (var key in state) {

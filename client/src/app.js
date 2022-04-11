@@ -42,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
+        <NavBar currentProduct={this.state.currentProduct.name} setProduct={this.getProductById}/>
         <div className="widgets-main">
           {/* <ProductOverview /> */}
           {/* <RelatedProducts product={this.state.currentProduct}/> */}
