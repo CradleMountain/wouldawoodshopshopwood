@@ -1,43 +1,52 @@
 import React, {useState, useEffect}  from 'react';
+import axios from 'axios';
 
 const AddQ = (props) => {
 
   const [QBody, setQBody] = useState('');
   const [QName, setQName] = useState('');
   const [QEmail, setQEmail] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
 
 
   const QPOST = (e) => {
 
     e.preventDefault();
 
-    // console.log('QEmai', QEmail)
+    let errorMessage = 'You must enter the following:'
 
-    // console.log("E.target", e.target)
+    if (!QBody) {
+      errorMessage += '\nYour Question';
+    }
+    if (!QName) {
+      errorMessage += '\nYour nickname';
+    }
+    if  (!validEmail || !QEmail) {
+      errorMessage += '\nValid Email Address';
+    }
 
-    // axios({
-    //   method: 'POST',
-    //   url: '/qa/questions',
-    //   data: {
-    //     body: body,
-    //     name: name,
-    //     email: email,
-    //     product_id: props.currentProduct.id
-    //   }
-    // })
-    // .then(res => {
-    //   console.log('QPOST SUCCESS', res)
-    // })
-    // .catch(err => {
-    //   console.log('FAIL QPOST', err)
-    // })
+    if (errorMessage.length > 30) {
+      alert(errorMessage);
+    } else {
+      axios({
+        method: 'POST',
+        url: '/qa/questions',
+        data: {
+          body: QBody,
+          name: QName,
+          email: QEmail,
+          product_id: props.product_id
+        }
+      })
+      .then(res => {
+        console.log('QPOST SUCCESS', res)
+      })
+      .catch(err => {
+        console.log('FAIL QPOST', err)
+      })
+      props.exitModal();
+    }
   }
-
-  // const handleSubmit = e => {
-  //   console.log(QBody, QName, QEmail)
-  //   e.preventDefault();
-  //   props.QPOST(QBody, QName, QEmail);
-  // }
 
   const handleChange = e => {
     if (e.target.name === 'body') {
@@ -48,8 +57,7 @@ const AddQ = (props) => {
     }
     if (e.target.name === 'email') {
       setQEmail(e.target.value);
-      console.log('validity', e.target.value.checkValidity())
-      // console.log('event.target email', e.target)
+      setValidEmail(e.target.checkValidity());
     }
     e.preventDefault();
   }
@@ -67,7 +75,7 @@ const AddQ = (props) => {
           <input onChange={handleChange} name='name' placeholder='Example: jackson11!' type='text' required></input>
           <div>For privacy reasons, do not use your full name or email address</div>
           <label>*Your email (mandatory)</label><br></br>
-          <textarea onChange={handleChange} type='email' name='email' placeholder='Why did you like the product or not?' required></textarea>
+          <input onChange={handleChange} type='email' name='email' placeholder='Why did you like the product or not?' required></input>
           <input onClick={QPOST} type="submit" value="Submit"></input>
         </form>
       </div>
@@ -80,4 +88,4 @@ const AddQ = (props) => {
 export default AddQ;
 
 
-{/* <div>For authentication reasons, you will not be emailed</div> */}
+// For authentication reasons, you will not be emailed
