@@ -877,6 +877,10 @@ Example modal css for props.css:
   color: rgb(170, 0, 0);
 }
 
+.rr-wq-factors {
+  width: 50%;
+}
+
 .rr-wq-factor {
   margin: 10px;
   display: grid;
@@ -889,8 +893,17 @@ Example modal css for props.css:
   grid-column-end: 6;
 }
 
+.rr-wq-factor-radios {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .rr-wq-factor-phrases {
   font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .rr-write-question textarea {
@@ -941,17 +954,18 @@ Example modal css for props.css:
 }
 
 .rr-write-error {
+  background-color: rgb(255, 200, 200);
   border: 2px solid darkred;
-  border-radius: 15px;
-  padding: 5px;
-  margin: 5px;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  font-size: 14px;
 }
 
 .rr-write-error ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  margin-block-end: 0;
 }
 
 .rr-write-submit {
