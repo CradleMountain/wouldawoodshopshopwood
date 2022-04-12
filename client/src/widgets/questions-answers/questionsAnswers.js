@@ -18,25 +18,27 @@ const QuestionsAnswers = (props) => {
 
   const [feedCount, setFeedCount] = useState(2);
 
-  const QPOST = (body, name, email) => {
+  // const QPOST = (body, name, email) => {
 
-    axios({
-      method: 'POST',
-      url: '/qa/questions',
-      data: {
-        body: body,
-        name: name,
-        email: email,
-        product_id: props.currentProduct.id
-      }
-    })
-    .then(res => {
-      console.log('QPOST SUCCESS', res)
-    })
-    .catch(err => {
-      console.log('FAIL QPOST', err)
-    })
-  }
+  //   axios({
+  //     method: 'POST',
+  //     url: '/qa/questions',
+  //     data: {
+  //       body: body,
+  //       name: name,
+  //       email: email,
+  //       product_id: props.currentProduct.id
+  //     }
+  //   })
+  //   .then(res => {
+  //     console.log('QPOST SUCCESS', res)
+  //   })
+  //   .catch(err => {
+  //     console.log('FAIL QPOST', err)
+  //   })
+  // }
+
+
 
   const getQuestions = () => {
     axios({
@@ -88,7 +90,7 @@ const QuestionsAnswers = (props) => {
       <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
       {addingQuestion &&
         <ModalWrapper backClick={() => {}}>
-          <AddQ QPOST={QPOST} product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
+          <AddQ product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
         </ModalWrapper>
       }
     </div>
