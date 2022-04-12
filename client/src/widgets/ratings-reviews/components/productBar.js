@@ -30,15 +30,15 @@ const FactorPointer = styled.div`
 `;
 
 const ProductBar = ({factor, data}) => {
-  var point = 150 / data.value;
+  var point = 200 / data.value;
   return (
     <div className="rr-pr-factor">
       <div>{factor}</div>
       <div>
         <span>
-          <FactorBar margin="20px" size={point - 3} round="3px 0 0 3px"/>
+          <FactorBar size={point - 3} round="3px 0 0 3px"/>
           <FactorPointer/>
-          <FactorBar size={150 - point - 3} round="0 3px 3px 0"/>
+          <FactorBar size={200 - point - 3} round="0 3px 3px 0"/>
         </span>
       </div>
       <div className="rr-pr-phrases">
