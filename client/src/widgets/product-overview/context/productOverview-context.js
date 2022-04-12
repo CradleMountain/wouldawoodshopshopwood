@@ -16,6 +16,7 @@ export const ProductOverviewContextProvider = (props) => {
   };
   const styleChangeHandler = (styleObj) => {
     setCurrentStyle(styleObj);
+    setCarouselIndex(0);
   };
   const sizeDropToggleHandler = (bool) => {
     setSizeDropToggle(bool);

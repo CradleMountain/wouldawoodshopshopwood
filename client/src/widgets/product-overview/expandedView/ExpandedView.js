@@ -9,6 +9,7 @@ import CollapseButton from "./collapseButton.js";
 
 const ExpandedView = (props) => {
   const ctx = useContext(ProdContext);
+  const [zoom, setZoom] = useState(false);
 
   const leftArrowClick = () => {
     if (ctx.carouselIndex > 0) {
@@ -21,8 +22,11 @@ const ExpandedView = (props) => {
     }
   };
   const iconClickHandler = (index) => {
-    console.log("ICON CLICK: ", index);
     ctx.carouselIndexChangeHandler(index);
+  };
+
+  const zoomHandler = () => {
+    setZoom(!zoom);
   };
 
   return (
@@ -31,7 +35,12 @@ const ExpandedView = (props) => {
         className="po-expanded-view-backdrop"
         onClick={props.collapseHandler}
       />
-      <div className="po-expanded-view-container">
+      <div
+        className={
+          zoom ? "po-expanded-view-container-alt" : "po-expanded-view-container"
+        }
+        onClick={zoomHandler}
+      >
         {ctx.carouselIndex > 0 && (
           <ArrowIcon
             icon={"arrow"}
