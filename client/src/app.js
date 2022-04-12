@@ -89,7 +89,7 @@ const App = () => {
           <ContextWrapper currentProduct={currentProduct} />
         )}
         <RelatedProducts product={currentProduct} getProductById={getProductById}/>
-        {/* <QuestionsAnswers /> */}
+        <QuestionsAnswers currentProduct={currentProduct} />
         <RatingsReviews product={currentProduct} />
       </div>
     </div>
