@@ -5,7 +5,7 @@ import VerticalCarousel from "../carousel/VerticalCarousel.js";
 import EnlargedCarouselItem from "./EnlargedCarouselItem.js";
 import IconCarousel from "./iconCarousel";
 import ArrowIcon from "../carousel/ArrowIcon.js";
-import CollapseButton from "./collapseButton.js";
+import CollapseButton from "./CollapseButton.js";
 
 const ExpandedView = (props) => {
   const ctx = useContext(ProdContext);
