@@ -668,12 +668,7 @@ Example modal css for props.css:
 
 .rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
-  /* padding: 8px; */
   padding: 1.5%;
-  /* width: 550px; */
-  /* width: 100% */
-  /* width: 100%; */
-  /* margin-bottom: 20px; */
   margin-bottom: 2%;
 }
 
@@ -780,7 +775,6 @@ Example modal css for props.css:
 .rr-sort-stream {
   display: flex;
   flex-direction: column;
-  /* margin-left: 50px; */
   margin-left: 5%;
 }
 
@@ -831,26 +825,16 @@ Example modal css for props.css:
 }
 
 .rr-write-modal {
-  /* background-color: white;
-  width: 600px;
-  height: 550px;
-  left: 25%;
-  padding: 20px;
-  border-radius: 8px; */
   background-color: white;
-  height: 80%;
+  height: 80vh;
   padding: 2%;
   border-radius: 0.8em;
+  overflow-y: hidden;
 }
 
 .rr-write-inner {
-  /* width: 590px;
-  height: 540px;
-  margin: 5px;
-  padding-right: 20px;
-  overflow-y: scroll; */
   width: 35em;
-  height: 33em;
+  height: 76vh;
   padding-right: 1em;
   overflow-y: scroll;
 }
