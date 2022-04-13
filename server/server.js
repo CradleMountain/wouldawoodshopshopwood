@@ -33,6 +33,7 @@ app.use("/*", (req, res) => {
       data: req.body,
       headers: {
         Authorization: GITHUB_API_KEY,
+        "Access-Control-Request-Private-Network": true,
       },
       params: req.query,
     })
