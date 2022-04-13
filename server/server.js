@@ -6,13 +6,7 @@ const { GITHUB_API_KEY } = require("../config.js");
 
 const app = express();
 
-const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "PUT"],
-  "Access-Control-Request-Private-Network": false,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

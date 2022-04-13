@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useCallback,
-  Fragment,
-} from "react";
+import React, { useState, useEffect, useContext, Fragment } from "react";
 
 import axios from "axios";
 import "regenerator-runtime/runtime";
@@ -31,19 +25,6 @@ const ProductOverview = (props) => {
     ctx.carouselIndexChangeHandler(0);
   }, [props.currentProduct]);
 
-  // const getProductStyle = useCallback(async (productId) => {
-  //   try {
-  //     const productStyles = await api.get(`/${productId}/styles`);
-  //     setStyles(productStyles.data.results);
-
-  //     let defaultStyle = productStyles.data.results.filter(
-  //       (style) => style["default?"]
-  //     )[0];
-  //     ctx.styleChangeHandler(defaultStyle || productStyles.data.results[0]);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // });
   const getProductStyle = (productId) => {
     api
       .get(`/${productId}/styles`)
