@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const axios = require('axios');
 const { GITHUB_API_KEY } = require('../config.js');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,7 +33,7 @@ app.use('/*', (req, res) => {
       })
       .catch((err) => {
         console.error(err);
-        if (err) {
+        if (err.response) {
           res.set(err.response.headers)
           .status(err.response.status)
           .send();
