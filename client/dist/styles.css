@@ -480,8 +480,10 @@ Example modal css for props.css:
 /*                          Related Products                            */
 /************************************************************************/
 
+.related-products {
+  color: rgb(69, 65, 65);
+}
 
-/* !! Temporary layout, replace with carousel! */
 .rp-list-related, .rp-list-outfit {
   display: flex;
   flex-direction: row;
@@ -560,7 +562,7 @@ Example modal css for props.css:
   padding: 10px;
   min-width: 200px;
   max-width: 200px;
-  border: 1px solid rgb(120, 120, 120);
+  border: 1px solid rgb(69, 65, 65);
 }
 
 .rp-card-action {
@@ -593,6 +595,7 @@ Example modal css for props.css:
 .rp-category {
   font-weight: 300;
   font-size: 14px;
+  text-transform: uppercase;
 }
 .rp-price {
   font-weight: 400;
@@ -601,6 +604,7 @@ Example modal css for props.css:
 }
 .rp-card-stars {
   font-size: 14px;
+  color:rgb(40, 38, 38);
 }
 
 .rp-price-slash {
@@ -675,7 +679,6 @@ Example modal css for props.css:
 }
 
 .rr-review .star-rating, .rr-review-name {
-  /* color: rgb(52, 49, 49); */
   color: rgb(40, 38, 38);
   font-weight: 700;
 }

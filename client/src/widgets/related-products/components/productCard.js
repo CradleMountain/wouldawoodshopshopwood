@@ -7,6 +7,7 @@ import StarRating from "../../../components/starRating.js";
 const ProductCard = ({ product, icon, onClick, getProductById }) => {
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState(0);
+  const [actionHover, setActionHover] = useState(false);
 
   useEffect(() => {
     getRating()
@@ -67,10 +68,12 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
       <div className="rp-product-card">
         <div className="rp-card-action">
           <FontAwesomeIcon
-            icon={icon}
+            icon={actionHover ? 'fa-solid fa-star' : icon}
             onClick={() => {
               onClick(product);
             }}
+            onMouseEnter={() => { setActionHover(true); }}
+            onMouseLeave={() => { setActionHover(false); }}
           />
         </div>
         <div className="rp-card-info">
