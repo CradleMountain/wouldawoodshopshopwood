@@ -648,6 +648,7 @@ Example modal css for props.css:
   display: flex;
   flex-direction: column;
   align-self: center;
+  color: rgb(69, 65, 65);
 }
 
 .rr-page {
@@ -673,8 +674,15 @@ Example modal css for props.css:
   margin-bottom: 2%;
 }
 
+.rr-review .star-rating, .rr-review-name {
+  /* color: rgb(52, 49, 49); */
+  color: rgb(40, 38, 38);
+  font-weight: 700;
+}
+
 .rr-review-summary {
   font-weight: 700;
+  color: black;
 }
 
 .rr-review-body {
@@ -684,6 +692,7 @@ Example modal css for props.css:
 .rr-review-body p {
   margin-bottom: 10px;
   overflow-wrap: break-word;
+  color: black;
 }
 
 .rr-review .keyword {
@@ -697,15 +706,6 @@ Example modal css for props.css:
 
 .rr-clickable:hover {
   color: rgb(110, 110, 255);
-}
-
-.rr-review-response {
-  background-color: white;
-  border: 1px solid gray;
-  border-radius: 0.5em;
-  margin: 0.5em 0;
-  margin-left: 1em;
-  padding: 0.5em;
 }
 
 .rr-review-images {
@@ -723,12 +723,34 @@ Example modal css for props.css:
   max-height: 500px;
 }
 
+.rr-review-rec {
+  color: black;
+}
+
+.rr-review-response {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  margin-left: 1em;
+  padding: 0.5em;
+}
+
+.rr-review-response span {
+  color: black;
+}
+
+.rr-review-helpful {
+  margin-top: 1em;
+  font-size: 14px;
+}
+
 .help-option {
   text-decoration: underline;
 }
 
 .help-option:hover {
-  color: blue;
+  color: rgb(110, 110, 255);
 }
 
 .rr-rb-avg-num {
@@ -774,7 +796,7 @@ Example modal css for props.css:
   width: 180px;
   margin-left: 5px;
   font-size: 14px;
-  color: rgb(30, 30, 30);
+  /* color: rgb(30, 30, 30); */
 }
 
 .rr-sort-stream {
@@ -795,8 +817,9 @@ Example modal css for props.css:
 }
 
 .rr-sorter select {
+  /* color: rgb(69, 65, 65); */
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(69, 65, 65);
   outline: none;
   font-size: inherit;
 }
@@ -815,7 +838,7 @@ Example modal css for props.css:
   width: 100%;
   outline: none;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(69, 65, 65);
 }
 
 .rr-searchbar input:focus {
@@ -970,9 +993,15 @@ Example modal css for props.css:
   font-size: 18px;
 }
 
+.ratings-reviews button {
+  color: rgb(69, 65, 65);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .ratings-reviews button, .rr-write-modal button {
   background-color: white;
-  border: 1px solid rgb(98, 98, 98);
+  border: 1px solid rgb(69, 65, 65);
   height: 2em;
   font-size: 14px;
 }
