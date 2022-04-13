@@ -26,22 +26,27 @@ const SelectQuantity = (props) => {
   };
 
   return (
-    <div className="po-drop-down-container po-quantity" onClick={toggleQuantityList}>
+    <div
+      className="po-drop-down-container po-quantity"
+      onClick={toggleQuantityList}
+    >
       <p>{props.cart ? quantity || 1 : "---"}</p>
+      <div>
+        {isToggled && (
+          <ul className="po-drop-down-list">
+            {props.quantityNums.map((num) => {
+              return (
+                <NumberListItem
+                  num={num}
+                  quantitySelectHandler={quantitySelectHandler}
+                  key={num}
+                />
+              );
+            })}
+          </ul>
+        )}
+      </div>
       <i className="fa-solid fa-chevron-down"></i>
-      {isToggled && (
-        <ul className="po-drop-down-list">
-          {props.quantityNums.map((num) => {
-            return (
-              <NumberListItem
-                num={num}
-                quantitySelectHandler={quantitySelectHandler}
-                key={num}
-              />
-            );
-          })}
-        </ul>
-      )}
     </div>
   );
 };

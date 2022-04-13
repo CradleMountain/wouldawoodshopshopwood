@@ -26,23 +26,24 @@ const SelectSize = (props) => {
   return (
     <div className="po-drop-down-container po-size" onClick={toggleList}>
       <p>{size ? size : props.sizeMessage}</p>
+      <div>
+        {ctx.sizeDropToggle && (
+          <ul className="po-drop-down-list">
+            {props.skus.map((skuObj, index) => {
+              if (skuObj.size) {
+                return (
+                  <SizeListItem
+                    skuObj={skuObj}
+                    sizeSelectHandler={sizeSelectHandler}
+                    key={index}
+                  />
+                );
+              }
+            })}
+          </ul>
+        )}
+      </div>
       <i className="fa-solid fa-chevron-down"></i>
-
-      {ctx.sizeDropToggle && (
-        <ul className="po-drop-down-list">
-          {props.skus.map((skuObj, index) => {
-            if (skuObj.size) {
-              return (
-                <SizeListItem
-                  skuObj={skuObj}
-                  sizeSelectHandler={sizeSelectHandler}
-                  key={index}
-                />
-              );
-            }
-          })}
-        </ul>
-      )}
     </div>
   );
 };
