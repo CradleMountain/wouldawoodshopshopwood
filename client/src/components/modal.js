@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 const ModalWrapper = (props) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return function cleanup() {
+      document.body.style.overflow = 'unset';
+    }
+  });
 
   const Backdrop = (props) => {
     return <div className="backdrop" onClick={props.backClick}/>
