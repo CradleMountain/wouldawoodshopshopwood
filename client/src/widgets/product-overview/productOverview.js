@@ -27,7 +27,7 @@ const ProductOverview = (props) => {
 
   useEffect(() => {
     getProductStyle(props.currentProduct.id);
-    getRating(props.currentProduct.id)
+    getRating(props.currentProduct.id);
     ctx.carouselIndexChangeHandler(0);
   }, [props.currentProduct]);
 
@@ -35,16 +35,19 @@ const ProductOverview = (props) => {
     try {
       const productStyles = await api.get(`/${productId}/styles`);
       setStyles(productStyles.data.results);
-      ctx.styleChangeHandler(
-        productStyles.data.results.filter((style) => style["default?"])[0]
-      );
+
+      let defaultStyle = productStyles.data.results.filter(
+        (style) => style["default?"]
+      )[0];
+      ctx.styleChangeHandler(defaultStyle || productStyles.data.results[0]);
     } catch (error) {
       console.error(error);
     }
   });
 
   const getRating = (id) => {
-    api.getRatings(id)
+    api
+      .getRatings(id)
       .then((ratings) => {
         var sum = 0;
         var total = 0;

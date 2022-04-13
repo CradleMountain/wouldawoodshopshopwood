@@ -232,7 +232,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
 
           <div className="rr-write-question">
             <div className="rr-wq-header">Characteristics {required}</div>
-            <div>
+            <div className="rr-wq-factors">
               {factors.map((factor) => {
                 var radios = [];
                 for (var i = 1; i < 6; i++) {
@@ -244,7 +244,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
                 }
                 return (<div key={factor} className="rr-wq-factor">
                   <div><span className="rr-wq-factor-label">{factor}:</span><span> {factorPhrases[factor][factorRating[factor]]}</span></div>
-                  <div>{radios}</div>
+                  <div className="rr-wq-factor-radios">{radios}</div>
                   <div className="rr-wq-factor-phrases">
                     <span>{factorPhrases[factor][1]}</span>
                     <span>{factorPhrases[factor][5]}</span>
