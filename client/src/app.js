@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react"; 
 import axios from "axios";
 
 import ContextWrapper from "./widgets/product-overview/context/ContextWrapper.js";

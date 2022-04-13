@@ -8,6 +8,20 @@ const AddA = (props) => {
   const [AName, setAName] = useState('');
   const [AEmail, setAEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
+  const [photos, setPhotos] = useState('');
+
+
+  const uploader = (e) => {
+
+    e.preventDefault();
+
+    var url = prompt('Image URL:')
+
+
+
+    setPhotos(url)
+
+  }
 
 
   const APOST = (e) => {
@@ -54,6 +68,9 @@ const AddA = (props) => {
     //   props.exitModal();
     }
 
+
+    console.log('PHOTO', photos)
+
   const handleChange = e => {
     if (e.target.name === 'body') {
       setABody(e.target.value);
@@ -87,6 +104,9 @@ const AddA = (props) => {
           <label>*Your email (mandatory)</label>
           <input onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='email' required></input>
           <div>For authentication reasons, you will not be emailed</div>
+          <button onClick={uploader}>
+            Upload Photos
+          </button>
           <input onClick={APOST} type="submit" value="Submit"></input>
         </form>
       </div>
