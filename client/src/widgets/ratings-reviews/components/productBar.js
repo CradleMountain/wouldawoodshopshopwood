@@ -35,7 +35,7 @@ const ProductBar = ({factor, data}) => {
     <div className="rr-pr-factor">
       <div>{factor}</div>
       <div>
-        <span>
+        <span className="rr-pr-bar">
           <FactorBar size={point - 3} round="3px 0 0 3px"/>
           <FactorPointer/>
           <FactorBar size={200 - point - 3} round="0 3px 3px 0"/>

@@ -743,8 +743,12 @@ Example modal css for props.css:
   margin: 5px;
 }
 
-.rr-rb-bar {
+.rr-rb-bar, .rr-pr-bar {
   display: inline-block;
+}
+
+.rr-pr-bar {
+  width: 100%;
 }
 
 .select-filter {
