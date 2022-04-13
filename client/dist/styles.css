@@ -3,7 +3,10 @@
 /*                                Main                                  */
 /************************************************************************/
 
-/* fonts, color schemes */
+html {
+  overflow-x: clip;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -680,30 +683,23 @@ Example modal css for props.css:
 .rr-page {
   display: flex;
   flex-direction: row;
-  justify-items: space-between;
+  width: 100%;
 }
 
 .rr-breakdowns {
-  width: 20em;
+  width: 25vw;
 }
 
 .rr-reviews {
   overflow-y: scroll;
-  overflow-x: visible;
-  /* max-height: 455px; */
   height: 34em;
   max-height: 34em;
-  width: 50em;
+  width: 50vw;
 }
 
 .rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
-  /* padding: 8px; */
   padding: 1.5%;
-  /* width: 550px; */
-  /* width: 100% */
-  /* width: 100%; */
-  /* margin-bottom: 20px; */
   margin-bottom: 2%;
 }
 
@@ -780,8 +776,12 @@ Example modal css for props.css:
   margin: 5px;
 }
 
-.rr-rb-bar {
+.rr-rb-bar, .rr-pr-bar {
   display: inline-block;
+}
+
+.rr-pr-bar {
+  width: 100%;
 }
 
 .select-filter {
@@ -810,7 +810,6 @@ Example modal css for props.css:
 .rr-sort-stream {
   display: flex;
   flex-direction: column;
-  /* margin-left: 50px; */
   margin-left: 5%;
 }
 
@@ -861,26 +860,16 @@ Example modal css for props.css:
 }
 
 .rr-write-modal {
-  /* background-color: white;
-  width: 600px;
-  height: 550px;
-  left: 25%;
-  padding: 20px;
-  border-radius: 8px; */
   background-color: white;
-  height: 80%;
+  height: 80vh;
   padding: 2%;
   border-radius: 0.8em;
+  overflow-y: hidden;
 }
 
 .rr-write-inner {
-  /* width: 590px;
-  height: 540px;
-  margin: 5px;
-  padding-right: 20px;
-  overflow-y: scroll; */
   width: 35em;
-  height: 33em;
+  height: 76vh;
   padding-right: 1em;
   overflow-y: scroll;
 }
