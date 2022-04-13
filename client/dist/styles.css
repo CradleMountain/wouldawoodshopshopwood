@@ -3,7 +3,10 @@
 /*                                Main                                  */
 /************************************************************************/
 
-/* fonts, color schemes */
+html {
+  overflow-x: clip;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
