@@ -138,7 +138,7 @@ Example modal css for props.css:
 /************************************************************************/
 .po-expanded-view-container {
   position: relative;
-  grid-column: 12 / 88;
+  grid-column: 14 / 86;
   grid-row: 5 / 80;
   width: 100%;
   max-width: 100%;
