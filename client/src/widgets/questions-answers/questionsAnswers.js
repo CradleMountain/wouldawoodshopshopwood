@@ -7,38 +7,10 @@ import AddQ from './AddQ.js';
 import ModalWrapper from '../../components/modal.js';
 
 const QuestionsAnswers = (props) => {
-
   const [searchTerm, setSearchTerm] = useState('');
-
-  console.log('search term', searchTerm)
-
   const [data, setData] = useState([]);
-
   const [addingQuestion, setAddingQuestion] = useState(false);
-
   const [feedCount, setFeedCount] = useState(2);
-
-  // const QPOST = (body, name, email) => {
-
-  //   axios({
-  //     method: 'POST',
-  //     url: '/qa/questions',
-  //     data: {
-  //       body: body,
-  //       name: name,
-  //       email: email,
-  //       product_id: props.currentProduct.id
-  //     }
-  //   })
-  //   .then(res => {
-  //     console.log('QPOST SUCCESS', res)
-  //   })
-  //   .catch(err => {
-  //     console.log('FAIL QPOST', err)
-  //   })
-  // }
-
-
 
   const getQuestions = () => {
     axios({
@@ -84,7 +56,7 @@ const QuestionsAnswers = (props) => {
       <br></br>
       <QSearch setSearchTerm={setSearchTerm}/>
       <br></br>
-      <div class='accordion'>
+      <div className='accordion'>
         <QList searchTerm={searchTerm} feedCount={feedCount} currentProduct={props.currentProduct} data={data}/>
       </div>
       <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>

@@ -1,28 +1,25 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import 'regenerator-runtime/runtime';
 import React, {useState, useEffect}  from 'react';
 import axios from 'axios';
 
 
 const AddA = (props) => {
-
   const [ABody, setABody] = useState('');
   const [AName, setAName] = useState('');
   const [AEmail, setAEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
-  const [photos, setPhotos] = useState('');
-
+  const [photos, setPhotos] = useState([]);
 
   const uploader = (e) => {
-
     e.preventDefault();
-
     var url = prompt('Image URL:')
-
-
-
-    setPhotos(url)
-
+    var newPhotos = photos.slice();
+    if (url) {
+      newPhotos.push(url)
+    }
+    setPhotos(newPhotos)
   }
-
 
   const APOST = (e) => {
 
@@ -40,36 +37,34 @@ const AddA = (props) => {
       errorMessage += '\nValid Email Address';
     }
 
-
-
     if (errorMessage.length > 30) {
       alert(errorMessage);
-
     } else {
-      console.log('APOST READY')
+      axios({
+        method: 'POST',
+        url: `/qa/questions/${props.question_id}/answers`,
+        data: {
+          body: ABody,
+          name: AName,
+          email: AEmail,
+          photos: photos
+        }
+      })
+      .then(res => {
+        console.log('APOST SUCCESS', res)
+      })
+      .catch(err => {
+        console.log('FAIL APOST', err)
+      })
     }
-    // } else {
-    //   axios({
-    //     method: 'POST',
-    //     url: '/qa/questions',
-    //     data: {
-    //       body: QBody,
-    //       name: QName,
-    //       email: QEmail,
-    //       product_id: props.product_id
-    //     }
-    //   })
-    //   .then(res => {
-    //     console.log('QPOST SUCCESS', res)
-    //   })
-    //   .catch(err => {
-    //     console.log('FAIL QPOST', err)
-    //   })
-    //   props.exitModal();
-    }
+      props.exitModal();
+  }
 
-
-    console.log('PHOTO', photos)
+  const remove = (url) => {
+    var newPhotos = photos.slice();
+    newPhotos = newPhotos.filter(photo => photo !== url);
+    setPhotos(newPhotos);
+  }
 
   const handleChange = e => {
     if (e.target.name === 'body') {
@@ -85,10 +80,13 @@ const AddA = (props) => {
     e.preventDefault();
   }
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-
-  // }
+  const removePhoto = (i) => {
+    for (var j = i; j < photos.length; j++) {
+      photos[j] = photos[j + 1];
+    }
+    photos.pop();
+    setPhotos(photos.slice());
+  };
 
   return (
     <div class='white-box'>
@@ -104,12 +102,26 @@ const AddA = (props) => {
           <label>*Your email (mandatory)</label>
           <input onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='email' required></input>
           <div>For authentication reasons, you will not be emailed</div>
-          <button onClick={uploader}>
-            Upload Photos
-          </button>
+          <div className="rr-up-photos">
+            {photos.length < 6 ? <button onClick={uploader}>Add photo</button> : null }
+            <div className="rr-up-thumbs">
+              {photos.map((url, i) => {
+                return (<div key={i} className="rr-up-thumb">
+                  <img src={url} onError={() => {remove(url); alert('Please enter a valid URL')}}/>
+                  <div onClick={() => {removePhoto(i);}}>
+                    <span className="rr-up-remove fa-layers fa-fw">
+                      <FontAwesomeIcon icon="fa-solid fa-circle" className="icon-white"/>
+                      <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="icon-red"/>
+                    </span>
+                  </div>
+                </div>);
+              })}
+            </div>
+          </div>
           <input onClick={APOST} type="submit" value="Submit"></input>
         </form>
       </div>
+      <button onClick={() => props.exitModal()}>Exit</button>
     </div>
   )
 }
