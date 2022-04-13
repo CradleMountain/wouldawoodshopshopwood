@@ -9,11 +9,10 @@ const app = express();
 const corsOptions = {
   origin: "*",
   methods: ["GET", "POST", "PUT"],
-  "Access-Control-Request-Private-Network": "true",
+  "Access-Control-Request-Private-Network": false,
 };
 
 app.use(cors(corsOptions));
-// app.options('*', cors(options))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
