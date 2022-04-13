@@ -9,7 +9,7 @@ const app = express();
 const corsOptions = {
   origin: "*",
   methods: ["GET", "POST", "PUT"],
-  "Access-Control-Request-Private-Network": true,
+  "Access-Control-Request-Private-Network": "true",
 };
 
 app.use(cors(corsOptions));
@@ -33,7 +33,6 @@ app.use("/*", (req, res) => {
       data: req.body,
       headers: {
         Authorization: GITHUB_API_KEY,
-        "Access-Control-Request-Private-Network": true,
       },
       params: req.query,
     })
