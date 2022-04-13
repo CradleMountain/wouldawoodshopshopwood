@@ -93,6 +93,19 @@ Example modal css for props.css:
   font-size: 24px;
 }
 
+.nav-header:hover {
+  color: rgb(147, 151, 164);
+  /* background: linear-gradient(white, rgb(147, 151, 164));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.nav-header:hover svg {
+  color: rgb(147, 151, 164);
+  transform: rotate(180deg);
+}
+
 .nav-search {
   margin: 8px;
 }
