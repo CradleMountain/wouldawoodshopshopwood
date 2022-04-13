@@ -31,19 +31,34 @@ const ProductOverview = (props) => {
     ctx.carouselIndexChangeHandler(0);
   }, [props.currentProduct]);
 
-  const getProductStyle = useCallback(async (productId) => {
-    try {
-      const productStyles = await api.get(`/${productId}/styles`);
-      setStyles(productStyles.data.results);
+  // const getProductStyle = useCallback(async (productId) => {
+  //   try {
+  //     const productStyles = await api.get(`/${productId}/styles`);
+  //     setStyles(productStyles.data.results);
 
-      let defaultStyle = productStyles.data.results.filter(
-        (style) => style["default?"]
-      )[0];
-      ctx.styleChangeHandler(defaultStyle || productStyles.data.results[0]);
-    } catch (error) {
-      console.error(error);
-    }
-  });
+  //     let defaultStyle = productStyles.data.results.filter(
+  //       (style) => style["default?"]
+  //     )[0];
+  //     ctx.styleChangeHandler(defaultStyle || productStyles.data.results[0]);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // });
+  const getProductStyle = (productId) => {
+    api
+      .get(`/${productId}/styles`)
+      .then((data) => {
+        setStyles(data.data.results);
+
+        let defaultStyle = data.data.results.filter(
+          (style) => style["default?"]
+        )[0];
+        ctx.styleChangeHandler(defaultStyle || data.data.results[0]);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   const getRating = (id) => {
     api
