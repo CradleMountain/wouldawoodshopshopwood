@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
@@ -15,6 +15,8 @@ const factorPhrases = {
   Length: ['None selected', 'Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
   Fit: ['None selected', 'Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 };
+
+let scroll = 0;
 
 const ReviewForm = ({ show, product, characteristics, setPost }) => {
   const factors = Object.keys(characteristics);
@@ -54,6 +56,18 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
     'photo-3': true,
     'photo-4': true,
     'photo-5': true
+  });
+
+  const handleScroll = (e) => {
+    scroll = e.target.scrollTop;
+  };
+
+  useEffect(() => {
+    scroll = 0;
+  }, []);
+
+  useLayoutEffect(() => {
+    document.getElementById('rr-modal-scrollable').scrollTop = scroll;
   });
 
   useEffect(() => {
@@ -180,7 +194,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
       <div className="rr-write-exit" onClick={() => { show(false); }}>
         <FontAwesomeIcon icon="fa-solid fa-xmark" />
       </div>
-      <div className="rr-write-inner">
+      <div className="rr-write-inner" id="rr-modal-scrollable" onScroll={handleScroll}>
         <h3>Write Your Review</h3>
         <h4>About the {product.name}</h4>
         {showError
