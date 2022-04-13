@@ -650,20 +650,18 @@ Example modal css for props.css:
 .rr-page {
   display: flex;
   flex-direction: row;
-  justify-items: space-between;
+  width: 100%;
 }
 
 .rr-breakdowns {
-  width: 20em;
+  width: 25vw;
 }
 
 .rr-reviews {
   overflow-y: scroll;
-  overflow-x: visible;
-  /* max-height: 455px; */
   height: 34em;
   max-height: 34em;
-  width: 50em;
+  width: 50vw;
 }
 
 .rr-review, .rr-reviews-empty {
