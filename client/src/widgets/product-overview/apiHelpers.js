@@ -27,6 +27,21 @@ const apiHelpers = {
       url: "/cart",
     });
   },
+  getRatings: (id) => {
+    return axios({
+      method: 'GET',
+      url: '/reviews/meta',
+      params: {
+        product_id: id
+      }
+    })
+      .then(({data}) => {
+        return data.ratings;
+      })
+      .catch (err => {
+        console.error(err);
+      });
+  }
 };
 
 export default apiHelpers;

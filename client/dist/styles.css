@@ -59,6 +59,11 @@ body {
   z-index: 50;
 }
 
+.white-box {
+  background-color: white;
+  color: black;
+}
+
 /*
 Example modal css for props.css:
 
@@ -152,7 +157,7 @@ Example modal css for props.css:
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.80);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 .po-icon-carousel {
   position: absolute;
@@ -271,15 +276,15 @@ Example modal css for props.css:
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 70px;
+  width: 75px;
   height: inherit;
   padding-left: 25px;
-  padding-top: 12px;
+  padding-top: 15px;
   z-index: 10;
 }
 .po-vertical-carousel {
   overflow: hidden;
-  width: 68px;
+  width: 73px;
 }
 .po-vertical-inner {
   transition: transform 0.3s;
@@ -291,7 +296,7 @@ Example modal css for props.css:
   align-items: center;
   overflow: hidden;
   width: 100%;
-  height: 70px;
+  height: 75px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -300,8 +305,8 @@ Example modal css for props.css:
 .po-carousel-thumbnail-image {
   margin-top: 6px;
   margin-bottom: 6px;
-  width: 97%;
-  height: 97%;
+  width: 98%;
+  height: 98%;
   object-fit: cover;
   border-style: solid;
   border-color: rgb(69, 65, 65);
@@ -639,6 +644,18 @@ Example modal css for props.css:
 /************************************************************************/
 /*                         Questions & Answers                          */
 /************************************************************************/
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
 
 /************************************************************************/
 /*                           Ratings & Reviews                          */

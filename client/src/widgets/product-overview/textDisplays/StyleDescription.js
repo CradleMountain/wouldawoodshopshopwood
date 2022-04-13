@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import ProdContext from "../context/productOverview-context";
+import StarRating from "../../../components/starRating.js";
 
 const StyleDescription = (props) => {
   const ctx = useContext(ProdContext);
@@ -8,7 +9,7 @@ const StyleDescription = (props) => {
   return (
     <div>
       <div>
-        <p>Stars/Button Placeholder</p>
+        <StarRating rating={props.rating} />
       </div>
       <p className="po-category">
         {props.currentProduct.category.toUpperCase()}
@@ -17,7 +18,9 @@ const StyleDescription = (props) => {
       <span className="po-span">
         {ctx.currentStyle.style_id && (
           <p
-            className={ctx.currentStyle.sale_price ? "po-sale po-price" : "po-price"}
+            className={
+              ctx.currentStyle.sale_price ? "po-sale po-price" : "po-price"
+            }
           >{`$${ctx.currentStyle.original_price}`}</p>
         )}
         {ctx.currentStyle.style_id && ctx.currentStyle.sale_price && (
