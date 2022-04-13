@@ -10,6 +10,7 @@ app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST", "PUT"],
+    "Access-Control-Request-Private-Network": true,
   })
 );
 app.use(express.json());
