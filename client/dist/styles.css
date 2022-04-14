@@ -1037,6 +1037,11 @@ Example modal css for props.css:
   overflow-y: hidden;
 }
 
+.rr-wm-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .rr-write-inner {
   width: 35em;
   height: 76vh;
@@ -1168,6 +1173,7 @@ Example modal css for props.css:
   text-align: right;
   position: static;
   font-size: 18px;
+  align-self: flex-end;
 }
 
 .ratings-reviews button {
