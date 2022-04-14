@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <NavBar setProduct={setCurrentProduct}/>
+      <NavBar setProduct={getProductById}/>
       <div className="widgets-main">
         {Object.keys(currentProduct).length !== 0 && (
           <ContextWrapper currentProduct={currentProduct} />
