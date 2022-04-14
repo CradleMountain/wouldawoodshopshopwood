@@ -43,7 +43,12 @@ const MainCarousel = (props) => {
             {ctx.currentStyle.style_id &&
               ctx.currentStyle.photos.map((photoObj, index) => {
                 return (
-                  <CarouselItem photoObj={photoObj} key={index} index={index} />
+                  <CarouselItem
+                    photoObj={photoObj}
+                    key={index}
+                    index={index}
+                    expandHandler={props.expandHandler}
+                  />
                 );
               })}
           </div>
