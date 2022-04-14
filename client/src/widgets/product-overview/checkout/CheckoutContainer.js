@@ -15,7 +15,7 @@ const CheckoutContainer = () => {
   const [cart, setCart] = useState(null);
   const [quantityNums, setQuantityNums] = useState(null);
   const [inStock, setInStock] = useState(true);
-  const [sizeMessage, setSizeMessage] = useState("Size");
+  const [sizeMessage, setSizeMessage] = useState("SELECT SIZE");
   const [addToCartMessage, setAddToCartMessage] = useState("ADD TO BAG");
   const [size, setSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -54,7 +54,12 @@ const CheckoutContainer = () => {
       setSizeMessage("PLEASE SELECT SIZE");
     } else {
       api.postCart(cart);
+
+      setSizeMessage("SELECT SIZE")
       setAddToCartMessage("ITEM ADDED TO CART");
+      setTimeout(() => {
+        setAddToCartMessage("ADD TO BAG");
+      }, 4000)
       setSize(null);
       setQuantity(null);
       setCart(null);

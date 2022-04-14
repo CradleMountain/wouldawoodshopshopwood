@@ -18,6 +18,7 @@ const apiHelpers = {
       data: {
         sku_id: cart.sku_id,
         quantity: cart.purchaseQuantity,
+        count: cart.purchaseQuantity
       },
     });
   },

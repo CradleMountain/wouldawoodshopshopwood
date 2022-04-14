@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import ProdContext from "../context/productOverview-context";
+import api from "../apiHelpers.js";
+
 
 const StarButton = (props) => {
   const ctx = useContext(ProdContext);
@@ -8,6 +10,10 @@ const StarButton = (props) => {
 
   const clickHandler = () => {
     setIsStar(!isStar);
+    api.getCart()
+      .then(data => {
+        console.log('Cart Data: ', {data})
+      })
   };
 
   return (
