@@ -64,24 +64,24 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
   };
 
   const isValid = (styleObj) => {
-    return (
-      styleObj &&
-      styleObj.style_id &&
-      styleObj.photos[0].url
-    );
-  }
+    return styleObj && styleObj.style_id && styleObj.photos[0].url;
+  };
 
   if (isValid(defaultStyle)) {
     return (
       <div className="rp-product-card">
         <div className="rp-card-action">
           <FontAwesomeIcon
-            icon={actionHover ? 'fa-solid fa-star' : icon}
+            icon={actionHover ? "fa-solid fa-star" : icon}
             onClick={() => {
               onClick(product);
             }}
-            onMouseEnter={() => { setActionHover(true); }}
-            onMouseLeave={() => { setActionHover(false); }}
+            onMouseEnter={() => {
+              setActionHover(true);
+            }}
+            onMouseLeave={() => {
+              setActionHover(false);
+            }}
           />
         </div>
         <div className="rp-card-info">
@@ -90,7 +90,10 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
             {product.name}
           </div>
           <div className="rp-card-images" onClick={changeProductHandler}>
-            <img src={defaultStyle.photos[0].thumbnail_url} />
+            <img
+              src={defaultStyle.photos[0].thumbnail_url}
+              alt="a clothing product for sale"
+            />
           </div>
           <div>
             {defaultStyle.sale_price ? (
