@@ -11,7 +11,11 @@ const SelectSize = (props) => {
   };
 
   return (
-    <div className="po-drop-down-container po-size" onClick={toggleList}>
+    <div
+      className="po-drop-down-container po-size"
+      tabIndex="0"
+      onClick={toggleList}
+    >
       <p>{props.size ? props.size : props.sizeMessage}</p>
       <div>
         {ctx.sizeDropToggle && (

@@ -69,7 +69,7 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
 
   if (isValid(defaultStyle)) {
     return (
-      <div className="rp-product-card">
+      <div className="rp-product-card" tabIndex="0">
         <div className="rp-card-action">
           <FontAwesomeIcon
             icon={actionHover ? "fa-solid fa-star" : icon}
@@ -84,7 +84,7 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
             }}
           />
         </div>
-        <div className="rp-card-info">
+        <div className="rp-card-info" >
           <div className="rp-category">{product.category}</div>
           <div className="rp-name" onClick={changeProductHandler}>
             {product.name}
