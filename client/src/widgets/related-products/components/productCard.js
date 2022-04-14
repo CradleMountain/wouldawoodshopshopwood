@@ -95,15 +95,16 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
           <div>
             {defaultStyle.sale_price ? (
               <>
-                <div className="rp-price rp-price-sale">
-                  ${defaultStyle.sale_price}
-                </div>
-                <div className="rp-price rp-price-slash">
+                <span className="rp-price rp-price-slash">
                   ${product.default_price}
-                </div>
+                </span>
+                <span> </span>
+                <span className="rp-price rp-price-sale">
+                  ${defaultStyle.sale_price}
+                </span>
               </>
             ) : (
-              <div>${product.default_price}</div>
+              <span>${product.default_price}</span>
             )}
           </div>
           <div className="rp-card-stars">
