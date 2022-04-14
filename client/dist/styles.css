@@ -821,12 +821,13 @@ Example modal css for props.css:
   flex-direction: column;
   align-self: center;
   color: rgb(69, 65, 65);
+  width: 80vw;
 }
 
 .rr-page {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  align-self: center;
 }
 
 .rr-breakdowns {
@@ -837,7 +838,7 @@ Example modal css for props.css:
   overflow-y: scroll;
   height: 34em;
   max-height: 34em;
-  width: 50vw;
+  width: 55vw;
 }
 
 .rr-review, .rr-reviews-empty {
@@ -967,7 +968,6 @@ Example modal css for props.css:
   width: 180px;
   margin-left: 5px;
   font-size: 14px;
-  /* color: rgb(30, 30, 30); */
 }
 
 .rr-sort-stream {
@@ -988,7 +988,6 @@ Example modal css for props.css:
 }
 
 .rr-sorter select {
-  /* color: rgb(69, 65, 65); */
   border: none;
   border-bottom: 1px solid rgb(69, 65, 65);
   outline: none;

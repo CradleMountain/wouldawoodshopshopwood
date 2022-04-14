@@ -8,7 +8,6 @@ import ReviewImages from './reviewImages.js';
 import Helpful from './helpful.js';
 
 const Review = ({ review, keyword }) => {
-  //console.log(review);
   const [reviewText, setReviewText] = useState(review.body.slice(0, 250));
   useEffect(() => {
     setReviewText(review.body.slice(0, 250));
