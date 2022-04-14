@@ -642,6 +642,13 @@ Example modal css for props.css:
 /*                         Questions & Answers                          */
 /************************************************************************/
 
+.questions-answers {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 80vw;
+}
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -654,6 +661,16 @@ Example modal css for props.css:
   transition: 0.4s;
 }
 
+.qa-header {
+
+}
+
+.qa-question {
+  background-color:rgb(245, 245, 245);
+  padding: 1.5%;
+  margin-bottom: 2%;
+}
+
 /************************************************************************/
 /*                           Ratings & Reviews                          */
 /************************************************************************/
@@ -662,6 +679,7 @@ Example modal css for props.css:
   display: flex;
   flex-direction: column;
   align-self: center;
+  width: 80vw;
 }
 
 .rr-page {

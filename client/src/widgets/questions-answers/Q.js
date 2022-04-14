@@ -79,7 +79,7 @@ const Q = (props) => {
   }
 
   return (
-    <div>
+    <div className="qa-question">
       Q: {props.datum.question_body}
       <div>
         Helpful?
