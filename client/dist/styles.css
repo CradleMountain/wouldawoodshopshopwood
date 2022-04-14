@@ -500,6 +500,12 @@ Example modal css for props.css:
 
 .related-products {
   color: rgb(69, 65, 65);
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-header {
+  align-self: center;
 }
 
 .rp-list-related, .rp-list-outfit {
@@ -518,7 +524,6 @@ Example modal css for props.css:
   cursor: pointer;
 }
 .rp-left {
-
   margin-left: 90px;
 }
 .rp-right {
