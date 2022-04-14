@@ -20,7 +20,7 @@ const ReviewImages = ({ images }) => {
 
   var gallery = images.map((img) => {
     return (
-      <Image key={img.id} url={img.url} onClick={enlargeImage} alt="Image uploaded by reviewer"/>
+      <Image tabIndex="0" key={img.id} url={img.url} onClick={enlargeImage} alt="Image uploaded by reviewer"/>
     );
   });
 
