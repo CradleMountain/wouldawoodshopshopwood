@@ -59,10 +59,11 @@ const CheckoutContainer = () => {
       setAddToCartMessage("ITEM ADDED TO CART");
       setTimeout(() => {
         setAddToCartMessage("ADD TO BAG");
-      }, 4000)
-      setSize(null);
-      setQuantity(null);
-      setCart(null);
+        setSize(null);
+        setQuantity(null);
+        setCart(null);
+      }, 3000)
+
     }
   };
 

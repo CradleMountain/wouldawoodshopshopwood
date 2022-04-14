@@ -10,7 +10,6 @@ const apiHelpers = {
       });
   },
   postCart: (cart) => {
-    console.log(cart);
     axios({
       method: "POST",
       url: "/cart",
@@ -18,7 +17,6 @@ const apiHelpers = {
       data: {
         sku_id: cart.sku_id,
         quantity: cart.purchaseQuantity,
-        count: cart.purchaseQuantity
       },
     });
   },
