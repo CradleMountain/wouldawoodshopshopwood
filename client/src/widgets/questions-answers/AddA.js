@@ -9,12 +9,12 @@ const AddA = (props) => {
   const [AName, setAName] = useState('');
   const [AEmail, setAEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
-  const [photos, setPhotos] = useState([]);
+  const [APhotos, setPhotos] = useState([]);
 
   const uploader = (e) => {
     e.preventDefault();
     var url = prompt('Image URL:')
-    var newPhotos = photos.slice();
+    var newPhotos = APhotos.slice();
     if (url) {
       newPhotos.push(url)
     }
@@ -47,7 +47,7 @@ const AddA = (props) => {
           body: ABody,
           name: AName,
           email: AEmail,
-          photos: photos
+          photos: APhotos
         }
       })
       .then(res => {
@@ -61,7 +61,7 @@ const AddA = (props) => {
   }
 
   const remove = (url) => {
-    var newPhotos = photos.slice();
+    var newPhotos = APhotos.slice();
     newPhotos = newPhotos.filter(photo => photo !== url);
     setPhotos(newPhotos);
   }
@@ -81,11 +81,11 @@ const AddA = (props) => {
   }
 
   const removePhoto = (i) => {
-    for (var j = i; j < photos.length; j++) {
-      photos[j] = photos[j + 1];
+    for (var j = i; j < APhotos.length; j++) {
+      APhotos[j] = APhotos[j + 1];
     }
-    photos.pop();
-    setPhotos(photos.slice());
+    APhotos.pop();
+    setPhotos(APhotos.slice());
   };
 
   return (
@@ -103,9 +103,9 @@ const AddA = (props) => {
           <input onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='email' required></input>
           <div>For authentication reasons, you will not be emailed</div>
           <div className="rr-up-photos">
-            {photos.length < 6 ? <button onClick={uploader}>Add photo</button> : null }
+            {APhotos.length < 6 ? <button onClick={uploader}>Add photo</button> : null }
             <div className="rr-up-thumbs">
-              {photos.map((url, i) => {
+              {APhotos.map((url, i) => {
                 return (<div key={i} className="rr-up-thumb">
                   <img src={url} onError={() => {remove(url); alert('Please enter a valid URL')}}/>
                   <div onClick={() => {removePhoto(i);}}>

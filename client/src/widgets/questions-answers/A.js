@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
 const A = (props) => {
 
@@ -17,8 +18,7 @@ const A = (props) => {
         url: `/qa/answers/${props.answer.id}/helpful`
       })
       .then(data => {
-        console.log('AHelpfulnessPUT SUCCESS ', data.response)
-        setHelpfulnessCount(helpfulnessCount+1)
+        console.log('AHelpfulnessPUT SUCCESS ', data)
       })
       .catch(err => {
         console.log('ERROR IN AHelpfulnessPUT ', err)
@@ -34,11 +34,10 @@ const A = (props) => {
       url: `/qa/answers/${props.answer.id}/report`
     })
     .then(data => {
-      console.log('reportPUT SUCCESS ', data.response)
-      setHelpfulnessCount(helpfulnessCount+1)
+      console.log('reportPUT SUCCESS ', data)
     })
     .catch(err => {
-      console.log('ERROR IN reportPUT ', err)
+      console.log('ERROR IN reportPUT ', err);
     });
   }
 

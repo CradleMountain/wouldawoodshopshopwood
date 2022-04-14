@@ -114,7 +114,7 @@ const Q = (props) => {
 
       {addingAnswer &&
         <ModalWrapper backClick={() => {}}>
-          <AddA question_id={props.currentProduct.question_id} product_id={props.currentProduct.id} exitModal={exitModal} question_body={props.datum.question_body} product_name={props.currentProduct.name}/>
+          <AddA question_id={props.datum.question_id} product_id={props.currentProduct.id} exitModal={exitModal} question_body={props.datum.question_body} product_name={props.currentProduct.name}/>
         </ModalWrapper>
       }
       <br></br>

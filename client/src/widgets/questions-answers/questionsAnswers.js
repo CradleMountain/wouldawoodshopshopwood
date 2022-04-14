@@ -17,12 +17,11 @@ const QuestionsAnswers = (props) => {
       method: 'GET',
       url: `/qa/questions/?product_id=37322`,
       params: {
-        count: 22,
+        count: 7,
         page: 1
       }
     })
     .then((data) => {
-      console.log('GET DATA', data.data.results)
       var newState = [];
       var order = data.data.results.map(result => {
         return result.question_helpfulness
@@ -51,12 +50,12 @@ const QuestionsAnswers = (props) => {
   }, []);
 
   return (
-    <div>
-      <div>Questions and Answers</div>
+    <div className='questions-answers'>
+      <div className="qa-header">Questions and Answers</div>
       <br></br>
       <QSearch setSearchTerm={setSearchTerm}/>
       <br></br>
-      <div className='accordion'>
+      <div>
         <QList searchTerm={searchTerm} feedCount={feedCount} currentProduct={props.currentProduct} data={data}/>
       </div>
       <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
