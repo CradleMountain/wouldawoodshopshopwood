@@ -3,7 +3,10 @@
 /*                                Main                                  */
 /************************************************************************/
 
-/* fonts, color schemes */
+html {
+  overflow-x: clip;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -93,6 +96,19 @@ Example modal css for props.css:
   font-size: 24px;
 }
 
+.nav-header:hover {
+  color: rgb(147, 151, 164);
+  /* background: linear-gradient(white, rgb(147, 151, 164));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.nav-header:hover svg {
+  color: rgb(147, 151, 164);
+  transform: rotate(180deg);
+}
+
 .nav-search {
   margin: 8px;
 }
@@ -116,7 +132,7 @@ Example modal css for props.css:
 }
 
 .nav-search .icon {
-  position: fixed;
+  position: absolute;
   right: 16px;
   top: 12px;
 }
@@ -482,8 +498,10 @@ Example modal css for props.css:
 /*                          Related Products                            */
 /************************************************************************/
 
+.related-products {
+  color: rgb(69, 65, 65);
+}
 
-/* !! Temporary layout, replace with carousel! */
 .rp-list-related, .rp-list-outfit {
   display: flex;
   flex-direction: row;
@@ -562,7 +580,7 @@ Example modal css for props.css:
   padding: 10px;
   min-width: 200px;
   max-width: 200px;
-  border: 1px solid rgb(120, 120, 120);
+  border: 1px solid rgb(69, 65, 65);
 }
 
 .rp-card-action {
@@ -595,6 +613,7 @@ Example modal css for props.css:
 .rp-category {
   font-weight: 300;
   font-size: 14px;
+  text-transform: uppercase;
 }
 .rp-price {
   font-weight: 400;
@@ -603,6 +622,7 @@ Example modal css for props.css:
 }
 .rp-card-stars {
   font-size: 14px;
+  color:rgb(40, 38, 38);
 }
 
 .rp-price-slash {
@@ -679,41 +699,40 @@ Example modal css for props.css:
   display: flex;
   flex-direction: column;
   align-self: center;
-  width: 80vw;
+  color: rgb(69, 65, 65);
 }
 
 .rr-page {
   display: flex;
   flex-direction: row;
-  justify-items: space-between;
+  width: 100%;
 }
 
 .rr-breakdowns {
-  width: 20em;
+  width: 25vw;
 }
 
 .rr-reviews {
   overflow-y: scroll;
-  overflow-x: visible;
-  /* max-height: 455px; */
   height: 34em;
   max-height: 34em;
-  width: 50em;
+  width: 50vw;
 }
 
 .rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
-  /* padding: 8px; */
   padding: 1.5%;
-  /* width: 550px; */
-  /* width: 100% */
-  /* width: 100%; */
-  /* margin-bottom: 20px; */
   margin-bottom: 2%;
+}
+
+.rr-review .star-rating, .rr-review-name {
+  color: rgb(40, 38, 38);
+  font-weight: 700;
 }
 
 .rr-review-summary {
   font-weight: 700;
+  color: black;
 }
 
 .rr-review-body {
@@ -723,6 +742,7 @@ Example modal css for props.css:
 .rr-review-body p {
   margin-bottom: 10px;
   overflow-wrap: break-word;
+  color: black;
 }
 
 .rr-review .keyword {
@@ -736,15 +756,6 @@ Example modal css for props.css:
 
 .rr-clickable:hover {
   color: rgb(110, 110, 255);
-}
-
-.rr-review-response {
-  background-color: white;
-  border: 1px solid gray;
-  border-radius: 0.5em;
-  margin: 0.5em 0;
-  margin-left: 1em;
-  padding: 0.5em;
 }
 
 .rr-review-images {
@@ -762,12 +773,34 @@ Example modal css for props.css:
   max-height: 500px;
 }
 
+.rr-review-rec {
+  color: black;
+}
+
+.rr-review-response {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  margin-left: 1em;
+  padding: 0.5em;
+}
+
+.rr-review-response span {
+  color: black;
+}
+
+.rr-review-helpful {
+  margin-top: 1em;
+  font-size: 14px;
+}
+
 .help-option {
   text-decoration: underline;
 }
 
 .help-option:hover {
-  color: blue;
+  color: rgb(110, 110, 255);
 }
 
 .rr-rb-avg-num {
@@ -785,8 +818,12 @@ Example modal css for props.css:
   margin: 5px;
 }
 
-.rr-rb-bar {
+.rr-rb-bar, .rr-pr-bar {
   display: inline-block;
+}
+
+.rr-pr-bar {
+  width: 100%;
 }
 
 .select-filter {
@@ -809,13 +846,12 @@ Example modal css for props.css:
   width: 180px;
   margin-left: 5px;
   font-size: 14px;
-  color: rgb(30, 30, 30);
+  /* color: rgb(30, 30, 30); */
 }
 
 .rr-sort-stream {
   display: flex;
   flex-direction: column;
-  /* margin-left: 50px; */
   margin-left: 5%;
 }
 
@@ -831,8 +867,9 @@ Example modal css for props.css:
 }
 
 .rr-sorter select {
+  /* color: rgb(69, 65, 65); */
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(69, 65, 65);
   outline: none;
   font-size: inherit;
 }
@@ -851,7 +888,7 @@ Example modal css for props.css:
   width: 100%;
   outline: none;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(69, 65, 65);
 }
 
 .rr-searchbar input:focus {
@@ -866,26 +903,16 @@ Example modal css for props.css:
 }
 
 .rr-write-modal {
-  /* background-color: white;
-  width: 600px;
-  height: 550px;
-  left: 25%;
-  padding: 20px;
-  border-radius: 8px; */
   background-color: white;
-  height: 80%;
+  height: 80vh;
   padding: 2%;
   border-radius: 0.8em;
+  overflow-y: hidden;
 }
 
 .rr-write-inner {
-  /* width: 590px;
-  height: 540px;
-  margin: 5px;
-  padding-right: 20px;
-  overflow-y: scroll; */
   width: 35em;
-  height: 33em;
+  height: 76vh;
   padding-right: 1em;
   overflow-y: scroll;
 }
@@ -1016,9 +1043,15 @@ Example modal css for props.css:
   font-size: 18px;
 }
 
+.ratings-reviews button {
+  color: rgb(69, 65, 65);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .ratings-reviews button, .rr-write-modal button {
   background-color: white;
-  border: 1px solid rgb(98, 98, 98);
+  border: 1px solid rgb(69, 65, 65);
   height: 2em;
   font-size: 14px;
 }

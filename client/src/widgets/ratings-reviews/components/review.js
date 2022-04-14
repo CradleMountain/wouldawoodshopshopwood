@@ -41,7 +41,7 @@ const Review = ({ review, keyword }) => {
   return (
     <div className="rr-review">
       <StarRating rating={review.rating} />
-      <span> {review.reviewer_name}</span>
+      <span className="rr-review-name"> {review.reviewer_name}</span>
       <span> {moment(review.date).format('MMMM DD, YYYY')}</span>
       <p className="rr-review-summary">{summary}</p>
       <div className="rr-review-body">
@@ -51,7 +51,7 @@ const Review = ({ review, keyword }) => {
         </p>
         <ReviewImages images={review.photos} />
       </div>
-      {review.recommend ? (<div>
+      {review.recommend ? (<div className="rr-review-rec">
         <FontAwesomeIcon icon={faCheck} />
         <span>I recommend this product</span>
       </div>) : null}

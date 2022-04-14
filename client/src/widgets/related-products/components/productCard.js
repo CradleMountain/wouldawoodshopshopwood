@@ -7,6 +7,7 @@ import StarRating from "../../../components/starRating.js";
 const ProductCard = ({ product, icon, onClick, getProductById }) => {
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState(0);
+  const [actionHover, setActionHover] = useState(false);
 
   useEffect(() => {
     getRating()
@@ -62,15 +63,25 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
     });
   };
 
-  if (defaultStyle && defaultStyle.style_id) {
+  const isValid = (styleObj) => {
+    return (
+      styleObj &&
+      styleObj.style_id &&
+      styleObj.photos[0].url
+    );
+  }
+
+  if (isValid(defaultStyle)) {
     return (
       <div className="rp-product-card">
         <div className="rp-card-action">
           <FontAwesomeIcon
-            icon={icon}
+            icon={actionHover ? 'fa-solid fa-star' : icon}
             onClick={() => {
               onClick(product);
             }}
+            onMouseEnter={() => { setActionHover(true); }}
+            onMouseLeave={() => { setActionHover(false); }}
           />
         </div>
         <div className="rp-card-info">
@@ -84,8 +95,12 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
           <div>
             {defaultStyle.sale_price ? (
               <>
-                <div className="rp-price rp-price-sale">${defaultStyle.sale_price}</div>
-                <div className="rp-price rp-price-slash">${product.default_price}</div>
+                <div className="rp-price rp-price-sale">
+                  ${defaultStyle.sale_price}
+                </div>
+                <div className="rp-price rp-price-slash">
+                  ${product.default_price}
+                </div>
               </>
             ) : (
               <div>${product.default_price}</div>
@@ -96,13 +111,9 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
           </div>
         </div>
       </div>
-      // category
-      // product name
-      // price of default style (sale price)
-      // star rating
     );
   } else {
-    return <div className="rp-product-card"></div>;
+    return null;
   }
 };
 
