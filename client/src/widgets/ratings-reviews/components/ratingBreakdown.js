@@ -106,11 +106,11 @@ const RatingBreakdown = (props) => {
           <span>Showing results for: </span>
           <span>{filterLabel} stars</span>
           <br/>
-          <span className="rr-clickable" onClick={() => { props.setFilter(resetFilter()); }}>Remove all filters</span>
+          <span tabIndex="0" className="rr-clickable" ononClick={() => { props.setFilter(resetFilter()); }}>Remove all filters</span>
         </div>
         : <span>Filter reviews by rating:</span>}
       <div className="rr-rb-bars">{bars}</div>
-      <div>Recommended by {recPct || 70}% of reviews</div>
+      <div>Recommended by {recPct}% of reviews</div>
     </div>
   );
 };
