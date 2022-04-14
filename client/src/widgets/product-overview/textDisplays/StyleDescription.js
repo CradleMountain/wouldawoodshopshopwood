@@ -8,9 +8,12 @@ const StyleDescription = (props) => {
 
   return (
     <div>
-      <div>
-        <StarRating rating={props.rating} />
-      </div>
+      {props.numReviews > 0 && (
+        <div className="po-stars-container">
+          <StarRating rating={props.rating} />
+          <p className="po-stars-text" >{`Read all ${props.numReviews} reviews`}</p>
+        </div>
+      )}
       <p className="po-category">
         {props.currentProduct.category.toUpperCase()}
       </p>

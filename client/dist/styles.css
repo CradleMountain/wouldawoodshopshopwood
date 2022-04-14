@@ -1,4 +1,3 @@
-
 /************************************************************************/
 /*                                Main                                  */
 /************************************************************************/
@@ -29,7 +28,7 @@ body {
 
 /*--- Stars ---*/
 .star-rating .fa-fw {
-  margin: 0 -.5px;
+  margin: 0 -0.5px;
 }
 
 /*-- Modal --*/
@@ -123,7 +122,7 @@ Example modal css for props.css:
 }
 
 .nav-search input::placeholder {
-  color:rgb(199, 216, 221);
+  color: rgb(199, 216, 221);
 }
 
 .nav-search input:focus {
@@ -313,8 +312,13 @@ Example modal css for props.css:
   content: " ";
   width: 29px;
   height: 29px;
-  background-image:
-    -webkit-gradient(linear, left top, left bottom, from(#222), to(#222)),
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#222),
+      to(#222)
+    ),
     -webkit-gradient(linear, left top, left bottom, from(#222), to(#222));
   background-image: linear-gradient(#222, #222), linear-gradient(#222, #222);
   background-size: 100% 1px, 1px 100%;
@@ -536,6 +540,16 @@ Example modal css for props.css:
   grid-row: 5 / 60;
   color: rgb(69, 65, 65);
 }
+.po-stars-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.po-stars-text {
+  font-weight: 300;
+  font-size: 12px;
+  margin-left: 6px
+}
 .po-span {
   display: flex;
 }
@@ -640,7 +654,8 @@ Example modal css for props.css:
   color: rgb(69, 65, 65);
 }
 
-.rp-list-related, .rp-list-outfit {
+.rp-list-related,
+.rp-list-outfit {
   display: flex;
   flex-direction: row;
 }
@@ -648,7 +663,7 @@ Example modal css for props.css:
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(120, 120, 120);;
+  color: rgb(120, 120, 120);
   height: 40px;
   width: 0px;
   /* position: absolute;
@@ -656,7 +671,6 @@ Example modal css for props.css:
   cursor: pointer;
 }
 .rp-left {
-
   margin-left: 90px;
 }
 .rp-right {
@@ -667,7 +681,7 @@ Example modal css for props.css:
   width: 100%;
   max-width: 100%;
   height: 100%;
-  max-height:400px;
+  max-height: 400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -760,7 +774,7 @@ Example modal css for props.css:
 }
 .rp-card-stars {
   font-size: 14px;
-  color:rgb(40, 38, 38);
+  color: rgb(40, 38, 38);
 }
 
 .rp-price-slash {
@@ -788,7 +802,9 @@ Example modal css for props.css:
   margin-bottom: 8px;
 }
 
-.rp-compare-feat, .rp-compare-title, .rp-compare-name {
+.rp-compare-feat,
+.rp-compare-title,
+.rp-compare-name {
   font-weight: 700;
 }
 
@@ -841,13 +857,15 @@ Example modal css for props.css:
   width: 55vw;
 }
 
-.rr-review, .rr-reviews-empty {
-  background-color:rgb(245, 245, 245);
+.rr-review,
+.rr-reviews-empty {
+  background-color: rgb(245, 245, 245);
   padding: 1.5%;
   margin-bottom: 2%;
 }
 
-.rr-review .star-rating, .rr-review-name {
+.rr-review .star-rating,
+.rr-review-name {
   color: rgb(40, 38, 38);
   font-weight: 700;
 }
@@ -940,7 +958,8 @@ Example modal css for props.css:
   margin: 5px;
 }
 
-.rr-rb-bar, .rr-pr-bar {
+.rr-rb-bar,
+.rr-pr-bar {
   display: inline-block;
 }
 
@@ -1041,7 +1060,8 @@ Example modal css for props.css:
   margin: 0;
 }
 
-.rr-write-stars svg:hover, path:hover {
+.rr-write-stars svg:hover,
+path:hover {
   position: relative;
   bottom: 2px;
 }
@@ -1169,13 +1189,15 @@ Example modal css for props.css:
   font-weight: bold;
 }
 
-.ratings-reviews button, .rr-write-modal button {
+.ratings-reviews button,
+.rr-write-modal button {
   background-color: white;
   border: 1px solid rgb(69, 65, 65);
   height: 2em;
   font-size: 14px;
 }
 
-.ratings-reviews button:hover, .rr-write-modal button:hover {
+.ratings-reviews button:hover,
+.rr-write-modal button:hover {
   background-color: rgb(210, 210, 210);
 }
