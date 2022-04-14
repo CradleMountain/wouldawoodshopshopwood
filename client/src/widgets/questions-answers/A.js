@@ -52,7 +52,7 @@ const A = (props) => {
       <div>
         Helpful?
         <button onClick={AHelpfulnessPUT}>
-          Yes {AHelpfulnessCount}
+          Yes ({AHelpfulnessCount})
         </button>
       </div>
       <div>

@@ -30,8 +30,6 @@ const Q = (props) => {
         </button>
       )
     } else if (answersExpanded) {
-      console.log('ANSWERS EXPANDED')
-      // setAnswersExpanded(false);
       return (
         <button onClick={() => {setACount(2); setAnswersExpanded(false);} }>
           Collapse answers
@@ -80,19 +78,19 @@ const Q = (props) => {
 
   return (
     <div className="qa-question">
-      Q: {props.datum.question_body}
-      <div>
-        Helpful?
-        <button onClick={() => helpfulnessPut(props.datum.question_id)}>
-          Yes {helpfulnessCount}
-        </button>
-        <br></br>
+      <span className="qa-question-title">Q: {props.datum.question_body}</span>
+      <div className="qa-help-report">
         {!reportClicked ?
-        <button onClick={QReportPUT}>
-          Report
-        </button>
-        : <div>Reported</div>
+          <span className="qa-report-btn" onClick={QReportPUT}>
+            Report
+          </span>
+          : <span>Reported</span>
         }
+        <span> | </span>
+        <span>Helpful? </span>
+        <span className="qa-help-btn" onClick={() => helpfulnessPut(props.datum.question_id)}>
+          Yes ({helpfulnessCount})
+        </span>
       </div>
 
       <button onClick={() => setAddingAnswer(true)}>
