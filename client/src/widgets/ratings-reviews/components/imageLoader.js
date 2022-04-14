@@ -24,7 +24,6 @@ const ImageLoader = ({state, setState, validate}) => {
 
   const removePhoto = (i) => {
     validate('photo-' + (i + 1), true);
-    //var newPhotos = photos.slice();
     for (var j = i; j < photos.length; j++) {
       photos[j] = photos[j + 1];
     }
