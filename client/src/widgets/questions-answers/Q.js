@@ -100,7 +100,7 @@ const Q = (props) => {
         {Object.keys(props.datum.answers).map((key, i) => {
           if (i < ACount) {
             return (
-                <A ATotal={Object.keys(props.datum.answers).length} answer={props.datum.answers[key]}/>
+                <A key={i} ATotal={Object.keys(props.datum.answers).length} answer={props.datum.answers[key]}/>
             )
           }
         })}

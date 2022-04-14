@@ -98,7 +98,7 @@ const AddA = (props) => {
           <textarea onChange={handleChange} name='body' type='text'></textarea><br></br>
           <label>*What is your nickname? (mandatory)</label><br></br>
           <input onChange={handleChange} name='name' placeholder='Example: jack543!' type='text'></input>
-          <div>For privacy reasons, do not use your full name or email address</div>
+          <div className="qa-help-report">For privacy reasons, do not use your full name or email address</div>
           <label>*Your email (mandatory)</label>
           <input onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='email' required></input>
           <div>For authentication reasons, you will not be emailed</div>
