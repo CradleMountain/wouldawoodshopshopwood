@@ -17,6 +17,8 @@ const CheckoutContainer = () => {
   const [inStock, setInStock] = useState(true);
   const [sizeMessage, setSizeMessage] = useState("Size");
   const [addToCartMessage, setAddToCartMessage] = useState("ADD TO BAG");
+  const [size, setSize] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     ctx.currentStyle.skus && setSkus(formatSkus(ctx.currentStyle.skus));
@@ -24,9 +26,16 @@ const CheckoutContainer = () => {
     setQuantityNums(null);
     setSizeMessage("SELECT SIZE");
     setAddToCartMessage("ADD TO BAG");
+    setSize(null);
+    setQuantity(null);
+    ctx.sizeDropToggleHandler(false);
   }, [ctx.currentStyle]);
 
-  const sizeToCartHandler = (skuObj) => {
+
+  const sizeSelectHandler = (skuObj) => {
+    ctx.sizeDropToggleHandler(!ctx.sizeDropToggle);
+    setQuantity(null);
+    setSize(skuObj.size);
     setCart(skuObj);
     createNumsArray(skuObj);
   };
@@ -36,6 +45,7 @@ const CheckoutContainer = () => {
       ...cart,
       purchaseQuantity: num,
     });
+    setQuantity(num);
   };
 
   const addToCartHandler = () => {
@@ -45,6 +55,9 @@ const CheckoutContainer = () => {
     } else {
       api.postCart(cart);
       setAddToCartMessage("ITEM ADDED TO CART");
+      setSize(null);
+      setQuantity(null);
+      setCart(null);
     }
   };
 
@@ -76,14 +89,18 @@ const CheckoutContainer = () => {
     return skusArray;
   };
 
+
+
   return (
     <div className="po-checkout-container">
       <SelectSize
+        size={size}
         skus={skus}
-        sizeToCartHandler={sizeToCartHandler}
+        sizeSelectHandler={sizeSelectHandler}
         sizeMessage={sizeMessage}
       />
       <SelectQuantity
+        quantity={quantity}
         cart={cart}
         quantityNums={quantityNums}
         quantityToCartHandler={quantityToCartHandler}
