@@ -61,7 +61,7 @@ const QuestionsAnswers = (props) => {
       </div>
       <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
       {addingQuestion &&
-        <ModalWrapper backClick={() => {}}>
+        <ModalWrapper styles="rr-write-modal" backClick={() => {}}>
           <AddQ product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
         </ModalWrapper>
       }

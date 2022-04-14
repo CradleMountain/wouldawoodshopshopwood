@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 const A = (props) => {
 
@@ -41,33 +42,32 @@ const A = (props) => {
     });
   }
 
+
+
+
   return (
-    <div>
-      <div>
+    <div className="qa-question">
+      <span className="qa-question-title">
         A: {props.answer.body}
-      </div>
+      </span>
       <div>
-        by {props.answer.answerer_name}, {props.answer.date}
+        by {props.answer.answerer_name}, {moment(props.answer.date).format('MMMM DD, YYYY')}
       </div>
-      <div>
-        Helpful?
-        <button onClick={AHelpfulnessPUT}>
-          Yes ({AHelpfulnessCount})
-        </button>
-      </div>
-      <div>
+      <div className="qa-help-report">
         {reportClicked ?
           "Reported" :
-          <button onClick={reportPUT}>
+          <span className="qa-help-btn" onClick={reportPUT}>
             Report
-          </button>
+          </span>
         }
+        <span> | </span>
+        <span>Helpful? </span>
+        <span className="qa-help-btn" onClick={AHelpfulnessPUT}>
+          Yes ({AHelpfulnessCount})
+        </span>
       </div>
     </div>
   )
 }
 
 export default A;
-
-
-// SELLER TAG UNFINISHED!!!

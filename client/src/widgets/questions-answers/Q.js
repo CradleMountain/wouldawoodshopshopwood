@@ -111,7 +111,7 @@ const Q = (props) => {
       <br></br>
 
       {addingAnswer &&
-        <ModalWrapper backClick={() => {}}>
+        <ModalWrapper styles="rr-write-modal" backClick={() => {}}>
           <AddA question_id={props.datum.question_id} product_id={props.currentProduct.id} exitModal={exitModal} question_body={props.datum.question_body} product_name={props.currentProduct.name}/>
         </ModalWrapper>
       }
