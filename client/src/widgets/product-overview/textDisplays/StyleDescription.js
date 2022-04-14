@@ -6,10 +6,14 @@ import StarRating from "../../../components/starRating.js";
 const StyleDescription = (props) => {
   const ctx = useContext(ProdContext);
 
+  const goToReviewsHandler = () => {
+    document.getElementById('ratings-reviews').scrollIntoView();
+  };
+
   return (
     <div>
       {props.numReviews > 0 && (
-        <div className="po-stars-container">
+        <div className="po-stars-container" onClick={goToReviewsHandler}>
           <StarRating rating={props.rating} />
           <p className="po-stars-text" >{`Read all ${props.numReviews} reviews`}</p>
         </div>

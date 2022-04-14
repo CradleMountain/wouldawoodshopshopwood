@@ -544,6 +544,7 @@ Example modal css for props.css:
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 .po-stars-text {
   font-weight: 300;
