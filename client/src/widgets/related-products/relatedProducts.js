@@ -36,7 +36,6 @@ const RelatedProducts = ({ product, getProductById }) => {
       getRelated(product.id)
         .then((data) => {
           setRelated(data);
-          console.log(data)
         })
         .catch((err) => {
           console.error(err);

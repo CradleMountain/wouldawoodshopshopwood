@@ -4,13 +4,13 @@ import ProductCard from "./productCard.js";
 import Comparison from "./comparison.js";
 import Arrow from "./Arrow.js";
 
+
 const RelatedCarousel = ({ product, list, getProductById }) => {
   const [showModal, setShowModal] = useState(false);
   const [related, setRelated] = useState({});
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   const compare = (clickedProduct) => {
-    console.log("CLICK ITS CAM JANSEN");
     setRelated(clickedProduct);
     setShowModal(true);
   };
@@ -25,6 +25,7 @@ const RelatedCarousel = ({ product, list, getProductById }) => {
       setCarouselIndex(carouselIndex + 1);
     }
   };
+
 
   return (
     <div className="rp-carousel-container">

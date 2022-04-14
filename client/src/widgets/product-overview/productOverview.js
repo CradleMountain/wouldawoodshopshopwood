@@ -23,6 +23,45 @@ const ProductOverview = (props) => {
 
   const [productStyles, setStyles] = useState([]);
   const [showExpanded, setShowExpanded] = useState(false);
+  const [rating, setRating] = useState(0);
+
+  useEffect(() => {
+    getProductStyle(props.currentProduct.id);
+    getRating(props.currentProduct.id);
+    ctx.carouselIndexChangeHandler(0);
+  }, [props.currentProduct]);
+
+  const getProductStyle = useCallback(async (productId) => {
+    try {
+      const productStyles = await api.get(`/${productId}/styles`);
+      setStyles(productStyles.data.results);
+
+      let defaultStyle = productStyles.data.results.filter(
+        (style) => style["default?"]
+      )[0];
+      ctx.styleChangeHandler(defaultStyle || productStyles.data.results[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  const getRating = (id) => {
+    api
+      .getRatings(id)
+      .then((ratings) => {
+        var sum = 0;
+        var total = 0;
+        for (var rating in ratings) {
+          sum += Number(rating) * Number(ratings[rating]);
+          total += Number(ratings[rating]);
+        }
+        var result = Math.round((sum / total) * 10) * 0.1;
+        setRating(result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   const expandHandler = () => {
     setShowExpanded(true);
@@ -31,25 +70,6 @@ const ProductOverview = (props) => {
   const collapseHandler = () => {
     setShowExpanded(false);
   };
-
-  useEffect(() => {
-    getProductStyle(props.currentProduct.id);
-    ctx.carouselIndexChangeHandler(0);
-  }, [props.currentProduct]);
-
-  const getProductStyle = useCallback(async (productId) => {
-    try {
-      const productStyles = await api.get(`/${productId}/styles`);
-      setStyles(productStyles.data.results);
-      ctx.styleChangeHandler(
-        productStyles.data.results.filter((style) => style["default?"])[0]
-      );
-      // console.log(props.currentProduct);
-      // console.log(productStyles.data.results);
-    } catch (error) {
-      console.error(error);
-    }
-  });
 
   return (
     <div className="po-overview-container">
@@ -71,6 +91,7 @@ const ProductOverview = (props) => {
             <StyleDescription
               productStyles={productStyles}
               currentProduct={props.currentProduct}
+              rating={rating}
             />
             <StyleSelector
               productStyles={productStyles}
