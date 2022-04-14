@@ -10,7 +10,6 @@ const apiHelpers = {
       });
   },
   postCart: (cart) => {
-    console.log(cart);
     axios({
       method: "POST",
       url: "/cart",

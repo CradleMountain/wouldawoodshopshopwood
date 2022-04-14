@@ -597,6 +597,7 @@ Example modal css for props.css:
   border-width: 1px;
   font-weight: 500;
   color: rgb(69, 65, 65);
+  cursor: pointer;
 }
 .po-size {
   width: 55%;
@@ -615,7 +616,7 @@ Example modal css for props.css:
   width: 75px;
   z-index: 12;
   padding: 0;
-  margin: 0;
+  margin-top: 15px;
   padding-left: 1em;
   background: #ffffff;
   border: 2px solid #e5e5e5;
