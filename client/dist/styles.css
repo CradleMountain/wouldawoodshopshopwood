@@ -800,7 +800,6 @@ Example modal css for props.css:
   width: 180px;
   margin-left: 5px;
   font-size: 14px;
-  /* color: rgb(30, 30, 30); */
 }
 
 .rr-sort-stream {
@@ -821,7 +820,6 @@ Example modal css for props.css:
 }
 
 .rr-sorter select {
-  /* color: rgb(69, 65, 65); */
   border: none;
   border-bottom: 1px solid rgb(69, 65, 65);
   outline: none;
