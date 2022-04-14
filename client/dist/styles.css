@@ -708,6 +708,14 @@ Example modal css for props.css:
   color: rgb(110, 110, 255);
 }
 
+.qa-AddQ-modal {
+  background-color: white;
+  /* height: 60vh; */
+  padding: 2%;
+  border-radius: 0.8em;
+  overflow-y: hidden;
+}
+
 /************************************************************************/
 /*                           Ratings & Reviews                          */
 /************************************************************************/

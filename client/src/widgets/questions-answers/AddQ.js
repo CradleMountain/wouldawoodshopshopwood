@@ -76,7 +76,9 @@ const AddQ = (props) => {
           <div>For privacy reasons, do not use your full name or email address</div>
           <label>*Your email (mandatory)</label><br></br>
           <input onChange={handleChange} type='email' name='email' placeholder='Why did you like the product or not?' required></input>
+          <span></span>
           <input onClick={QPOST} type="submit" value="Submit"></input>
+
         </form>
       </div>
       <br></br>
