@@ -100,7 +100,7 @@ const RatingBreakdown = (props) => {
         <span>{total} reviews</span>
         <div className="rr-rb-avg-num">{average || 3.0}</div>
       </div>
-      <h4>Rating Breakdown</h4>
+      <div className="rr-rb-header">Rating Breakdown</div>
       {filterCount < 5
         ? <div>
           <span>Showing results for: </span>

@@ -934,7 +934,9 @@ Example modal css for props.css:
   font-size: 64px;
 }
 
-.rr-rating-breakdown h4 {
+.rr-rb-header {
+  font-size: 16px;
+  font-weight: 700;
   margin-top: 10px;
   margin-bottom: 10px;
 }
