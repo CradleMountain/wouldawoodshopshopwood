@@ -37,7 +37,6 @@ const RatingsReviews = (props) => {
       }
     })
       .then(({ data }) => {
-        // console.log('Data:', data);
         return data;
       })
       .catch((err) => {
