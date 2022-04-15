@@ -27,26 +27,6 @@ const App = () => {
       .catch((err) => {
         console.error(err);
       });
-<<<<<<< HEAD
-  }
-
-  render() {
-    return (
-      <>
-        <NavBar currentProduct={this.state.currentProduct.name} setProduct={this.getProductById}/>
-        <div className="widgets-main">
-          {/* <ProductOverview /> */}
-          {/* <RelatedProducts product={this.state.currentProduct}/> */}
-          {/* <QuestionsAnswers /> */}
-          <RatingsReviews product={this.state.currentProduct} />
-        </div>
-      </>
-    );
-  }
-}
-
-export default App;
-=======
   };
 
   const postInteraction = (element, widget, time) => {
@@ -118,4 +98,3 @@ export default App;
 };
 
 export default App;
->>>>>>> 44bd3964e7733ee1747eb5ff98fd5e4cff96584a
