@@ -14,7 +14,10 @@ const StyleThumbnail = (props) => {
     <div className="po-style-thumbnail" onClick={thumbnailClickHandler}>
       {renderCheck && (
         <div className="po-check">
-          <i className="fa-regular fa-circle-check fa-lg"></i>
+          <i
+            className="fa-regular fa-circle-check fa-lg"
+            alt="a clothing product for sale"
+          ></i>
         </div>
       )}
       <img

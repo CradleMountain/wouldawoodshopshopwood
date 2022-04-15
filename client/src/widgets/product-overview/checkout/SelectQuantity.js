@@ -28,6 +28,7 @@ const SelectQuantity = (props) => {
   return (
     <div
       className="po-drop-down-container po-quantity"
+      tabIndex="0"
       onClick={toggleQuantityList}
     >
       <p>{props.cart ? props.quantity || 1 : "---"}</p>

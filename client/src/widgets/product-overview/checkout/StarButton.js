@@ -13,9 +13,21 @@ const StarButton = (props) => {
   };
 
   return (
-    <div className="po-drop-down-container po-star" onClick={clickHandler}>
-      {isStar && <div><i className="fa-solid fa-star fa-lg"></i></div>}
-      {!isStar && <div><i className="fa-regular fa-star fa-lg"></i></div>}
+    <div
+      className="po-drop-down-container po-star"
+      tabIndex="0"
+      onClick={clickHandler}
+    >
+      {isStar && (
+        <div>
+          <i className="fa-solid fa-star fa-lg"></i>
+        </div>
+      )}
+      {!isStar && (
+        <div>
+          <i className="fa-regular fa-star fa-lg"></i>
+        </div>
+      )}
     </div>
   );
 };

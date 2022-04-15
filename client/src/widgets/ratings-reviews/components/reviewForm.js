@@ -102,6 +102,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
     }
 
     if (isError) {
+      scroll = 0;
       setShowError(true);
     } else {
       var characteristicRating = {};
@@ -191,7 +192,8 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
 
   return (
     <ModalWrapper styles="rr-write-modal" backClick={() => { }}>
-      <div className="rr-write-exit" onClick={() => { show(false); }}>
+      <div className="rr-wm-box">
+      <div aria-label="Cancel and close" tabIndex="0" className="rr-write-exit" onClick={() => { show(false); }}>
         <FontAwesomeIcon icon="fa-solid fa-xmark" />
       </div>
       <div className="rr-write-inner" id="rr-modal-scrollable" onScroll={handleScroll}>
@@ -299,6 +301,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
             <button onClick={submit}>Submit review</button>
           </div>
         </form>
+      </div>
       </div>
     </ModalWrapper>
   );

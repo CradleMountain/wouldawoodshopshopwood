@@ -30,8 +30,8 @@ const Helpful = ({ id, yes }) => {
   var content = (
     <>
       <span>Was this review helpful? </span>
-      <span className="help-option" onClick={rateHelpful}>Yes ({yes}) </span>
-      <span className="help-option" onClick={() => { setAuthHelp(id, 'no'); setResponse('no'); } }>No (0)</span>
+      <span tabIndex="0" className="help-option" onClick={rateHelpful}>Yes ({yes}) </span>
+      <span tabIndex="0" className="help-option" onClick={() => { setAuthHelp(id, 'no'); setResponse('no'); } }>No (0)</span>
     </>
   );
   if (response) {
