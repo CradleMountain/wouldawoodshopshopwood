@@ -4,26 +4,10 @@ import ProdContext from "../context/productOverview-context";
 import VerticalCarousel from "../carousel/VerticalCarousel.js";
 import EnlargedCarouselItem from "./EnlargedCarouselItem.js";
 import IconCarousel from "./iconCarousel";
-import ArrowIcon from "../carousel/ArrowIcon.js";
 import CollapseButton from "./CollapseButton.js";
 
 const ExpandedView = (props) => {
   const ctx = useContext(ProdContext);
-
-  const leftArrowClick = () => {
-    if (ctx.carouselIndex > 0) {
-      ctx.carouselIndexChangeHandler(ctx.carouselIndex - 1);
-    }
-  };
-  const rightArrowClick = () => {
-    if (ctx.carouselIndex < ctx.currentStyle.photos.length - 1) {
-      ctx.carouselIndexChangeHandler(ctx.carouselIndex + 1);
-    }
-  };
-  const iconClickHandler = (index) => {
-    console.log("ICON CLICK: ", index);
-    ctx.carouselIndexChangeHandler(index);
-  };
 
   return (
     <Fragment>
@@ -32,14 +16,6 @@ const ExpandedView = (props) => {
         onClick={props.collapseHandler}
       />
       <div className="po-expanded-view-container">
-        {ctx.carouselIndex > 0 && (
-          <ArrowIcon
-            icon={"arrow"}
-            direction={"left"}
-            alt={"alt-left"}
-            clickHandler={leftArrowClick}
-          />
-        )}
         <div className="po-horizontal-carousel">
           <div
             className="po-horizontal-inner"
@@ -57,15 +33,8 @@ const ExpandedView = (props) => {
               })}
           </div>
         </div>
-        <IconCarousel iconClickHandler={iconClickHandler} />
-        {ctx.currentStyle.style_id &&
-          ctx.carouselIndex < ctx.currentStyle.photos.length - 1 && (
-            <ArrowIcon
-              icon={"arrow"}
-              direction={"right"}
-              clickHandler={rightArrowClick}
-            />
-          )}
+        <IconCarousel  />
+
         <CollapseButton collapseHandler={props.collapseHandler} />
       </div>
     </Fragment>

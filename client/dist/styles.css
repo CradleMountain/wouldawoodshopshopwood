@@ -368,6 +368,10 @@ Example modal css for props.css:
   align-items: center;
   justify-content: center;
 }
+.po-expanded-arrow-container {
+
+  width: 40px;
+}
 .po-carousel-image {
   width: 100%;
   height: 100%;
