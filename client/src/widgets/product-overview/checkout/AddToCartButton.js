@@ -10,6 +10,7 @@ const AddToCartButton = (props) => {
   return (
     <div
       className="po-drop-down-container po-add-to-cart"
+      tabIndex="0"
       onClick={clickHandler}
     >
       <p>{props.addToCartMessage}</p> <i className="fa-solid fa-plus fa-lg"></i>

@@ -82,6 +82,7 @@ const App = () => {
   };
 
   return (
+
     <div onClick={trackClick}>
       <NavBar setProduct={getProductById}/>
       <div className="widgets-main">

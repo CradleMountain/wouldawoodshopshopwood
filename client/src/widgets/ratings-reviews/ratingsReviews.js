@@ -37,7 +37,6 @@ const RatingsReviews = (props) => {
       }
     })
       .then(({ data }) => {
-        // console.log('Data:', data);
         return data;
       })
       .catch((err) => {
@@ -121,7 +120,7 @@ const RatingsReviews = (props) => {
     return (
       <>
         {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} setPost={setPost} /> : null}
-        <div className="ratings-reviews">
+        <div className="ratings-reviews" id="ratings-reviews">
           <h2>Ratings &amp; Reviews</h2>
           <div className="rr-page">
             <div className="rr-breakdowns">

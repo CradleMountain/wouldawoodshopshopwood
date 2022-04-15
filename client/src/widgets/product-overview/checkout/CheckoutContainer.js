@@ -9,14 +9,16 @@ import StarButton from "./StarButton.js";
 import ProdContext from "../context/productOverview-context";
 import api from "../apiHelpers.js";
 
-const CheckoutContainer = () => {
+const CheckoutContainer = (props) => {
   const ctx = useContext(ProdContext);
   const [skus, setSkus] = useState([]);
   const [cart, setCart] = useState(null);
   const [quantityNums, setQuantityNums] = useState(null);
   const [inStock, setInStock] = useState(true);
-  const [sizeMessage, setSizeMessage] = useState("Size");
+  const [sizeMessage, setSizeMessage] = useState("SELECT SIZE");
   const [addToCartMessage, setAddToCartMessage] = useState("ADD TO BAG");
+  const [size, setSize] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     ctx.currentStyle.skus && setSkus(formatSkus(ctx.currentStyle.skus));
@@ -24,9 +26,17 @@ const CheckoutContainer = () => {
     setQuantityNums(null);
     setSizeMessage("SELECT SIZE");
     setAddToCartMessage("ADD TO BAG");
-  }, [ctx.currentStyle]);
+    setSize(null);
+    setQuantity(null);
+    ctx.sizeDropToggleHandler(false);
+    ctx.carouselIndexChangeHandler(0);
+  }, [ctx.currentStyle, props.currentProduct]);
 
-  const sizeToCartHandler = (skuObj) => {
+
+  const sizeSelectHandler = (skuObj) => {
+    ctx.sizeDropToggleHandler(!ctx.sizeDropToggle);
+    setQuantity(null);
+    setSize(skuObj.size);
     setCart(skuObj);
     createNumsArray(skuObj);
   };
@@ -36,6 +46,7 @@ const CheckoutContainer = () => {
       ...cart,
       purchaseQuantity: num,
     });
+    setQuantity(num);
   };
 
   const addToCartHandler = () => {
@@ -44,7 +55,16 @@ const CheckoutContainer = () => {
       setSizeMessage("PLEASE SELECT SIZE");
     } else {
       api.postCart(cart);
+
+      setSizeMessage("SELECT SIZE")
       setAddToCartMessage("ITEM ADDED TO CART");
+      setTimeout(() => {
+        setAddToCartMessage("ADD TO BAG");
+        setSize(null);
+        setQuantity(null);
+        setCart(null);
+      }, 3000)
+
     }
   };
 
@@ -76,14 +96,18 @@ const CheckoutContainer = () => {
     return skusArray;
   };
 
+
+
   return (
     <div className="po-checkout-container">
       <SelectSize
+        size={size}
         skus={skus}
-        sizeToCartHandler={sizeToCartHandler}
+        sizeSelectHandler={sizeSelectHandler}
         sizeMessage={sizeMessage}
       />
       <SelectQuantity
+        quantity={quantity}
         cart={cart}
         quantityNums={quantityNums}
         quantityToCartHandler={quantityToCartHandler}

@@ -4,13 +4,12 @@ import "regenerator-runtime/runtime";
 const apiHelpers = {
   get: (endpoint = "") => {
     return axios
-      .get(`http://localhost:3000/products${endpoint}`)
+      .get(`/products${endpoint}`)
       .catch((err) => {
         console.error(err);
       });
   },
   postCart: (cart) => {
-    console.log(cart);
     axios({
       method: "POST",
       url: "/cart",

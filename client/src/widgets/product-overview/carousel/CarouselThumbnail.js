@@ -20,6 +20,7 @@ const CarouselThumbnail = (props) => {
     >
       <img
         className="po-carousel-thumbnail-image"
+        alt="a clothing product for sale"
         src={props.photoObj.thumbnail_url}
       />
     </div>

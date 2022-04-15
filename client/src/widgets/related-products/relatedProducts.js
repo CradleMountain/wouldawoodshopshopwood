@@ -46,6 +46,7 @@ const RelatedProducts = ({ product, getProductById }) => {
   if (related[0]) {
     return (
       <div className="related-products">
+        <h2 className="rp-header">Related Products</h2>
         <RelatedCarousel product={product} list={related} getProductById={getProductById}/>
         <OutfitList />
       </div>

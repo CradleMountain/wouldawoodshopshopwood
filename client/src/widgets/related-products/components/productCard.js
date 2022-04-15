@@ -7,6 +7,7 @@ import StarRating from "../../../components/starRating.js";
 const ProductCard = ({ product, icon, onClick, getProductById }) => {
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState(0);
+  const [actionHover, setActionHover] = useState(false);
 
   useEffect(() => {
     getRating()
@@ -63,44 +64,50 @@ const ProductCard = ({ product, icon, onClick, getProductById }) => {
   };
 
   const isValid = (styleObj) => {
-    return (
-      styleObj &&
-      styleObj.style_id &&
-      styleObj.photos[0].url
-    );
-  }
+    return styleObj && styleObj.style_id && styleObj.photos[0].url;
+  };
 
   if (isValid(defaultStyle)) {
     return (
-      <div className="rp-product-card">
+      <div className="rp-product-card" tabIndex="0">
         <div className="rp-card-action">
           <FontAwesomeIcon
-            icon={icon}
+            icon={actionHover ? "fa-solid fa-star" : icon}
             onClick={() => {
               onClick(product);
             }}
+            onMouseEnter={() => {
+              setActionHover(true);
+            }}
+            onMouseLeave={() => {
+              setActionHover(false);
+            }}
           />
         </div>
-        <div className="rp-card-info">
+        <div className="rp-card-info" >
           <div className="rp-category">{product.category}</div>
           <div className="rp-name" onClick={changeProductHandler}>
             {product.name}
           </div>
           <div className="rp-card-images" onClick={changeProductHandler}>
-            <img src={defaultStyle.photos[0].thumbnail_url} />
+            <img
+              src={defaultStyle.photos[0].thumbnail_url}
+              alt="a clothing product for sale"
+            />
           </div>
           <div>
             {defaultStyle.sale_price ? (
               <>
-                <div className="rp-price rp-price-sale">
-                  ${defaultStyle.sale_price}
-                </div>
-                <div className="rp-price rp-price-slash">
+                <span className="rp-price rp-price-slash">
                   ${product.default_price}
-                </div>
+                </span>
+                <span> </span>
+                <span className="rp-price rp-price-sale">
+                  ${defaultStyle.sale_price}
+                </span>
               </>
             ) : (
-              <div>${product.default_price}</div>
+              <span>${product.default_price}</span>
             )}
           </div>
           <div className="rp-card-stars">

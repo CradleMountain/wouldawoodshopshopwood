@@ -24,13 +24,15 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "axios": "^0.26.1",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "moment": "^2.29.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "underscore": "^1.13.2",
+    "react-inner-image-zoom": "^3.0.0",
     "regenerator-runtime": "^0.13.9",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "underscore": "^1.13.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

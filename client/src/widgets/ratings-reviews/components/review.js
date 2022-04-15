@@ -8,7 +8,6 @@ import ReviewImages from './reviewImages.js';
 import Helpful from './helpful.js';
 
 const Review = ({ review, keyword }) => {
-  //console.log(review);
   const [reviewText, setReviewText] = useState(review.body.slice(0, 250));
   useEffect(() => {
     setReviewText(review.body.slice(0, 250));
@@ -41,17 +40,17 @@ const Review = ({ review, keyword }) => {
   return (
     <div className="rr-review">
       <StarRating rating={review.rating} />
-      <span> {review.reviewer_name}</span>
+      <span className="rr-review-name"> {review.reviewer_name}</span>
       <span> {moment(review.date).format('MMMM DD, YYYY')}</span>
       <p className="rr-review-summary">{summary}</p>
       <div className="rr-review-body">
         <p>{body}{reviewText.length <= 250 && review.body.length > 250
-          ? (<span className="rr-showmore rr-clickable" onClick={() => setReviewText(review.body)}>... Show more</span>)
+          ? (<span tabIndex="0" className="rr-showmore rr-clickable" onClick={() => setReviewText(review.body)}>... Show more</span>)
           : null}
         </p>
         <ReviewImages images={review.photos} />
       </div>
-      {review.recommend ? (<div>
+      {review.recommend ? (<div className="rr-review-rec">
         <FontAwesomeIcon icon={faCheck} />
         <span>I recommend this product</span>
       </div>) : null}

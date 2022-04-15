@@ -3,7 +3,10 @@
 /*                                Main                                  */
 /************************************************************************/
 
-/* fonts, color schemes */
+html {
+  overflow-x: clip;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -93,6 +96,19 @@ Example modal css for props.css:
   font-size: 24px;
 }
 
+.nav-header:hover {
+  color: rgb(147, 151, 164);
+  /* background: linear-gradient(white, rgb(147, 151, 164));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.nav-header:hover svg {
+  color: rgb(147, 151, 164);
+  transform: rotate(180deg);
+}
+
 .nav-search {
   margin: 8px;
 }
@@ -116,7 +132,7 @@ Example modal css for props.css:
 }
 
 .nav-search .icon {
-  position: fixed;
+  position: absolute;
   right: 16px;
   top: 12px;
 }
@@ -138,8 +154,8 @@ Example modal css for props.css:
 /************************************************************************/
 .po-expanded-view-container {
   position: relative;
-  grid-column: 8 / 92;
-  grid-row: 5 / 88;
+  grid-column: 14 / 86;
+  grid-row: 5 / 80;
   width: 100%;
   max-width: 100%;
   height: 100%;
@@ -155,6 +171,7 @@ Example modal css for props.css:
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
 }
 .po-icon-carousel {
   position: absolute;
@@ -168,6 +185,142 @@ Example modal css for props.css:
 
   margin-top: 25px;
   color: rgb(111, 102, 102);
+}
+/************************************************************************/
+.iiz {
+  max-width: 100%;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
+.iiz--drag .iiz__zoom-img--visible {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.iiz__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+.iiz__img--hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.iiz__img--abs {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.iiz__zoom-img {
+  width: auto !important;
+  max-width: none !important;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+}
+
+.iiz__zoom-img--visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+.iiz__zoom-portal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.iiz__btn {
+  background: rgba(255, 255, 255, 0.8);
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.iiz__btn:before {
+  content: " ";
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.iiz__hint {
+  bottom: 10px;
+  right: 10px;
+  pointer-events: none;
+}
+
+.iiz__hint:before {
+  content: " ";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 19.9 19.9'%3E%3Cpath d='M13.9 7.4C13.9 3.8 11 .9 7.4.9S.9 3.8.9 7.4s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5zm5.3 12.5l-6.7-7.2c-1.4 1.3-3.2 2.1-5.1 2.1-4.1 0-7.4-3.3-7.4-7.4S3.3 0 7.4 0s7.4 3.3 7.4 7.4c0 1.7-.6 3.4-1.7 4.7l6.8 7.2-.7.6z' fill='%23000222'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+}
+
+.iiz__close {
+  top: 10px;
+  right: 10px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.iiz__close--visible {
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.iiz__close::before {
+  content: " ";
+  width: 29px;
+  height: 29px;
+  background-image:
+    -webkit-gradient(linear, left top, left bottom, from(#222), to(#222)),
+    -webkit-gradient(linear, left top, left bottom, from(#222), to(#222));
+  background-image: linear-gradient(#222, #222), linear-gradient(#222, #222);
+  background-size: 100% 1px, 1px 100%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 /************************************************************************/
 
@@ -206,7 +359,7 @@ Example modal css for props.css:
   display: inline-flex;
   align-items: center;
 }
-.po-enlarged-carousel-item {
+.po-expanded-carousel-item {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
@@ -214,11 +367,16 @@ Example modal css for props.css:
   max-height: 100%;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+}
+.po-expanded-arrow-container {
+  width: 40px;
 }
 .po-carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: zoom-in;
 }
 /************************************************************************/
 
@@ -239,7 +397,16 @@ Example modal css for props.css:
   color: rgb(111, 102, 102);
   width: 0px;
   z-index: 20;
-  cursor: zoom-in;
+  cursor: pointer;
+}
+.po-collapse-button-container {
+  display: flex;
+  height: inherit;
+  justify-content: center;
+  color: rgb(111, 102, 102);
+  width: 0px;
+  z-index: 20;
+  cursor: pointer;
 }
 .po-expand-button {
   position: absolute;
@@ -285,6 +452,7 @@ Example modal css for props.css:
 }
 .po-vertical-inner {
   transition: transform 0.3s;
+  height: 535px;
   display: flex;
   flex-direction: column;
 }
@@ -294,14 +462,15 @@ Example modal css for props.css:
   overflow: hidden;
   width: 100%;
   height: 75px;
+  min-height: 75px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
 }
 .po-carousel-thumbnail-image {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 98%;
   height: 98%;
   object-fit: cover;
@@ -359,9 +528,8 @@ Example modal css for props.css:
 .fa-check {
   margin-right: 10px;
 }
-.po-sale {
+.po-original-price {
   text-decoration: line-through;
-  color: red;
 }
 .po-category {
   font-weight: 600;
@@ -373,6 +541,9 @@ Example modal css for props.css:
 }
 .po-price {
   margin: 8px 3px;
+}
+.po-sale-price {
+  color: red;
 }
 .po-style {
   font-weight: 600;
@@ -444,6 +615,7 @@ Example modal css for props.css:
   border-width: 1px;
   font-weight: 500;
   color: rgb(69, 65, 65);
+  cursor: pointer;
 }
 .po-size {
   width: 55%;
@@ -457,12 +629,22 @@ Example modal css for props.css:
 .po-star {
   width: 13%;
 }
+.po-stars-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.po-stars-text {
+  font-weight: 300;
+  font-size: 13px;
+  margin-left: 8px;
+}
 .po-drop-down-list {
   position: absolute;
   width: 75px;
   z-index: 12;
   padding: 0;
-  margin: 0;
+  margin-top: 15px;
   padding-left: 1em;
   background: #ffffff;
   border: 2px solid #e5e5e5;
@@ -482,8 +664,16 @@ Example modal css for props.css:
 /*                          Related Products                            */
 /************************************************************************/
 
+.related-products {
+  color: rgb(69, 65, 65);
+  display: flex;
+  flex-direction: column;
+}
 
-/* !! Temporary layout, replace with carousel! */
+.rp-header {
+  align-self: center;
+}
+
 .rp-list-related, .rp-list-outfit {
   display: flex;
   flex-direction: row;
@@ -500,7 +690,6 @@ Example modal css for props.css:
   cursor: pointer;
 }
 .rp-left {
-
   margin-left: 90px;
 }
 .rp-right {
@@ -562,7 +751,7 @@ Example modal css for props.css:
   padding: 10px;
   min-width: 200px;
   max-width: 200px;
-  border: 1px solid rgb(120, 120, 120);
+  border: 1px solid rgb(69, 65, 65);
 }
 
 .rp-card-action {
@@ -586,15 +775,18 @@ Example modal css for props.css:
 .rp-card-images img {
   max-height: 250px;
   max-width: 200px;
+  cursor: pointer;
 }
 .rp-name {
   font-weight: 400;
   font-size: 15px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .rp-category {
   font-weight: 300;
   font-size: 14px;
+  text-transform: uppercase;
 }
 .rp-price {
   font-weight: 400;
@@ -603,6 +795,7 @@ Example modal css for props.css:
 }
 .rp-card-stars {
   font-size: 14px;
+  color:rgb(40, 38, 38);
 }
 
 .rp-price-slash {
@@ -662,40 +855,41 @@ Example modal css for props.css:
   display: flex;
   flex-direction: column;
   align-self: center;
+  color: rgb(69, 65, 65);
+  width: 80vw;
 }
 
 .rr-page {
   display: flex;
   flex-direction: row;
-  justify-items: space-between;
+  align-self: center;
 }
 
 .rr-breakdowns {
-  width: 20em;
+  width: 25vw;
 }
 
 .rr-reviews {
   overflow-y: scroll;
-  overflow-x: visible;
-  /* max-height: 455px; */
   height: 34em;
   max-height: 34em;
-  width: 50em;
+  width: 55vw;
 }
 
 .rr-review, .rr-reviews-empty {
   background-color:rgb(245, 245, 245);
-  /* padding: 8px; */
   padding: 1.5%;
-  /* width: 550px; */
-  /* width: 100% */
-  /* width: 100%; */
-  /* margin-bottom: 20px; */
   margin-bottom: 2%;
+}
+
+.rr-review .star-rating, .rr-review-name {
+  color: rgb(40, 38, 38);
+  font-weight: 700;
 }
 
 .rr-review-summary {
   font-weight: 700;
+  color: black;
 }
 
 .rr-review-body {
@@ -705,6 +899,7 @@ Example modal css for props.css:
 .rr-review-body p {
   margin-bottom: 10px;
   overflow-wrap: break-word;
+  color: black;
 }
 
 .rr-review .keyword {
@@ -720,15 +915,6 @@ Example modal css for props.css:
   color: rgb(110, 110, 255);
 }
 
-.rr-review-response {
-  background-color: white;
-  border: 1px solid gray;
-  border-radius: 0.5em;
-  margin: 0.5em 0;
-  margin-left: 1em;
-  padding: 0.5em;
-}
-
 .rr-review-images {
   display: flex;
   flex-direction: row;
@@ -738,18 +924,42 @@ Example modal css for props.css:
   max-height: 50px;
   margin: 5px;
   border: 1px solid gray;
+  cursor: pointer;
 }
 
 .rr-ri-modal img {
   max-height: 500px;
 }
 
+.rr-review-rec {
+  color: black;
+}
+
+.rr-review-response {
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 0.5em;
+  margin: 0.5em 0;
+  margin-left: 1em;
+  padding: 0.5em;
+}
+
+.rr-review-response span {
+  color: black;
+}
+
+.rr-review-helpful {
+  margin-top: 1em;
+  font-size: 14px;
+}
+
 .help-option {
   text-decoration: underline;
+  cursor: default;
 }
 
 .help-option:hover {
-  color: blue;
+  color: rgb(110, 110, 255);
 }
 
 .rr-rb-avg-num {
@@ -767,8 +977,25 @@ Example modal css for props.css:
   margin: 5px;
 }
 
+.rr-rb-line {
+  cursor: pointer;
+}
+
+.rr-rb-line:hover {
+  text-decoration: underline;
+}
+
 .rr-rb-bar {
+  margin: 0 0.5em;
+}
+
+.rr-rb-bar,
+.rr-pr-bar {
   display: inline-block;
+}
+
+.rr-pr-bar {
+  width: 100%;
 }
 
 .select-filter {
@@ -791,13 +1018,11 @@ Example modal css for props.css:
   width: 180px;
   margin-left: 5px;
   font-size: 14px;
-  color: rgb(30, 30, 30);
 }
 
 .rr-sort-stream {
   display: flex;
   flex-direction: column;
-  /* margin-left: 50px; */
   margin-left: 5%;
 }
 
@@ -814,7 +1039,7 @@ Example modal css for props.css:
 
 .rr-sorter select {
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(69, 65, 65);
   outline: none;
   font-size: inherit;
 }
@@ -833,7 +1058,7 @@ Example modal css for props.css:
   width: 100%;
   outline: none;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(69, 65, 65);
 }
 
 .rr-searchbar input:focus {
@@ -848,26 +1073,16 @@ Example modal css for props.css:
 }
 
 .rr-write-modal {
-  /* background-color: white;
-  width: 600px;
-  height: 550px;
-  left: 25%;
-  padding: 20px;
-  border-radius: 8px; */
   background-color: white;
-  height: 80%;
+  height: 80vh;
   padding: 2%;
   border-radius: 0.8em;
+  overflow-y: hidden;
 }
 
 .rr-write-inner {
-  /* width: 590px;
-  height: 540px;
-  margin: 5px;
-  padding-right: 20px;
-  overflow-y: scroll; */
   width: 35em;
-  height: 33em;
+  height: 76vh;
   padding-right: 1em;
   overflow-y: scroll;
 }
@@ -998,9 +1213,15 @@ Example modal css for props.css:
   font-size: 18px;
 }
 
+.ratings-reviews button {
+  color: rgb(69, 65, 65);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
 .ratings-reviews button, .rr-write-modal button {
   background-color: white;
-  border: 1px solid rgb(98, 98, 98);
+  border: 1px solid rgb(69, 65, 65);
   height: 2em;
   font-size: 14px;
 }
