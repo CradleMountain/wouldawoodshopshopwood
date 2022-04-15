@@ -375,6 +375,7 @@ Example modal css for props.css:
   width: 100%;
   height: 100%;
   object-fit: cover;
+  cursor: zoom-in;
 }
 /************************************************************************/
 
@@ -395,7 +396,7 @@ Example modal css for props.css:
   color: rgb(111, 102, 102);
   width: 0px;
   z-index: 20;
-  cursor: zoom-in;
+  cursor: pointer;
 }
 .po-collapse-button-container {
   display: flex;
@@ -526,9 +527,8 @@ Example modal css for props.css:
 .fa-check {
   margin-right: 10px;
 }
-.po-sale {
+.po-original-price {
   text-decoration: line-through;
-  color: red;
 }
 .po-category {
   font-weight: 600;
@@ -540,6 +540,9 @@ Example modal css for props.css:
 }
 .po-price {
   margin: 8px 3px;
+}
+.po-sale-price {
+  color: red;
 }
 .po-style {
   font-weight: 600;
