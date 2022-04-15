@@ -9,7 +9,7 @@ import StarButton from "./StarButton.js";
 import ProdContext from "../context/productOverview-context";
 import api from "../apiHelpers.js";
 
-const CheckoutContainer = () => {
+const CheckoutContainer = (props) => {
   const ctx = useContext(ProdContext);
   const [skus, setSkus] = useState([]);
   const [cart, setCart] = useState(null);
@@ -30,7 +30,7 @@ const CheckoutContainer = () => {
     setQuantity(null);
     ctx.sizeDropToggleHandler(false);
     ctx.carouselIndexChangeHandler(0);
-  }, [ctx.currentStyle]);
+  }, [ctx.currentStyle, props.currentProduct]);
 
 
   const sizeSelectHandler = (skuObj) => {
