@@ -100,7 +100,7 @@ const ProductOverview = (props) => {
               productStyles={productStyles}
               currentProduct={props.currentProduct}
             />
-            <CheckoutContainer />
+            <CheckoutContainer currentProduct={props.currentProduct}/>
           </div>
           <div
             className={

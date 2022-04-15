@@ -1,3 +1,4 @@
+
 /************************************************************************/
 /*                                Main                                  */
 /************************************************************************/
@@ -28,7 +29,7 @@ body {
 
 /*--- Stars ---*/
 .star-rating .fa-fw {
-  margin: 0 -0.5px;
+  margin: 0 -.5px;
 }
 
 /*-- Modal --*/
@@ -122,7 +123,7 @@ Example modal css for props.css:
 }
 
 .nav-search input::placeholder {
-  color: rgb(199, 216, 221);
+  color:rgb(199, 216, 221);
 }
 
 .nav-search input:focus {
@@ -178,10 +179,10 @@ Example modal css for props.css:
   display: flex;
   justify-content: center;
   align-self: flex-start;
-  cursor: pointer;
 }
 .po-icon-item {
   margin-left: 25px;
+
   margin-top: 25px;
   color: rgb(111, 102, 102);
 }
@@ -313,13 +314,8 @@ Example modal css for props.css:
   content: " ";
   width: 29px;
   height: 29px;
-  background-image: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(#222),
-      to(#222)
-    ),
+  background-image:
+    -webkit-gradient(linear, left top, left bottom, from(#222), to(#222)),
     -webkit-gradient(linear, left top, left bottom, from(#222), to(#222));
   background-image: linear-gradient(#222, #222), linear-gradient(#222, #222);
   background-size: 100% 1px, 1px 100%;
@@ -374,14 +370,13 @@ Example modal css for props.css:
   justify-content: center;
 }
 .po-expanded-arrow-container {
-
   width: 40px;
 }
 .po-carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  cursor:zoom-in;
+  cursor: zoom-in;
 }
 /************************************************************************/
 
@@ -457,6 +452,7 @@ Example modal css for props.css:
 }
 .po-vertical-inner {
   transition: transform 0.3s;
+  height: 535px;
   display: flex;
   flex-direction: column;
 }
@@ -466,14 +462,15 @@ Example modal css for props.css:
   overflow: hidden;
   width: 100%;
   height: 75px;
+  min-height: 75px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
 }
 .po-carousel-thumbnail-image {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   width: 98%;
   height: 98%;
   object-fit: cover;
@@ -531,14 +528,8 @@ Example modal css for props.css:
 .fa-check {
   margin-right: 10px;
 }
-.po-sale-price {
-  color: red;
-}
 .po-original-price {
   text-decoration: line-through;
-}
-.po-price {
-  margin: 8px 3px;
 }
 .po-category {
   font-weight: 600;
@@ -548,6 +539,12 @@ Example modal css for props.css:
   font-size: xxx-large;
   margin: 16px 0px;
 }
+.po-price {
+  margin: 8px 3px;
+}
+.po-sale-price {
+  color: red;
+}
 .po-style {
   font-weight: 600;
   margin-right: 7px;
@@ -556,17 +553,6 @@ Example modal css for props.css:
   grid-column: 62/ 95;
   grid-row: 5 / 60;
   color: rgb(69, 65, 65);
-}
-.po-stars-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  cursor: pointer;
-}
-.po-stars-text {
-  font-weight: 300;
-  font-size: 12px;
-  margin-left: 6px
 }
 .po-span {
   display: flex;
@@ -643,6 +629,16 @@ Example modal css for props.css:
 .po-star {
   width: 13%;
 }
+.po-stars-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.po-stars-text {
+  font-weight: 300;
+  font-size: 13px;
+  margin-left: 8px;
+}
 .po-drop-down-list {
   position: absolute;
   width: 75px;
@@ -678,8 +674,7 @@ Example modal css for props.css:
   align-self: center;
 }
 
-.rp-list-related,
-.rp-list-outfit {
+.rp-list-related, .rp-list-outfit {
   display: flex;
   flex-direction: row;
 }
@@ -687,7 +682,7 @@ Example modal css for props.css:
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(120, 120, 120);
+  color: rgb(120, 120, 120);;
   height: 40px;
   width: 0px;
   /* position: absolute;
@@ -705,7 +700,7 @@ Example modal css for props.css:
   width: 100%;
   max-width: 100%;
   height: 100%;
-  max-height: 400px;
+  max-height:400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -780,11 +775,13 @@ Example modal css for props.css:
 .rp-card-images img {
   max-height: 250px;
   max-width: 200px;
+  cursor: pointer;
 }
 .rp-name {
   font-weight: 400;
   font-size: 15px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .rp-category {
   font-weight: 300;
@@ -798,7 +795,7 @@ Example modal css for props.css:
 }
 .rp-card-stars {
   font-size: 14px;
-  color: rgb(40, 38, 38);
+  color:rgb(40, 38, 38);
 }
 
 .rp-price-slash {
@@ -826,9 +823,7 @@ Example modal css for props.css:
   margin-bottom: 8px;
 }
 
-.rp-compare-feat,
-.rp-compare-title,
-.rp-compare-name {
+.rp-compare-feat, .rp-compare-title, .rp-compare-name {
   font-weight: 700;
 }
 
@@ -881,15 +876,13 @@ Example modal css for props.css:
   width: 55vw;
 }
 
-.rr-review,
-.rr-reviews-empty {
-  background-color: rgb(245, 245, 245);
+.rr-review, .rr-reviews-empty {
+  background-color:rgb(245, 245, 245);
   padding: 1.5%;
   margin-bottom: 2%;
 }
 
-.rr-review .star-rating,
-.rr-review-name {
+.rr-review .star-rating, .rr-review-name {
   color: rgb(40, 38, 38);
   font-weight: 700;
 }
@@ -973,9 +966,7 @@ Example modal css for props.css:
   font-size: 64px;
 }
 
-.rr-rb-header {
-  font-size: 16px;
-  font-weight: 700;
+.rr-rating-breakdown h4 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -1089,11 +1080,6 @@ Example modal css for props.css:
   overflow-y: hidden;
 }
 
-.rr-wm-box {
-  display: flex;
-  flex-direction: column;
-}
-
 .rr-write-inner {
   width: 35em;
   height: 76vh;
@@ -1105,8 +1091,7 @@ Example modal css for props.css:
   margin: 0;
 }
 
-.rr-write-stars svg:hover,
-path:hover {
+.rr-write-stars svg:hover, path:hover {
   position: relative;
   bottom: 2px;
 }
@@ -1226,7 +1211,6 @@ path:hover {
   text-align: right;
   position: static;
   font-size: 18px;
-  align-self: flex-end;
 }
 
 .ratings-reviews button {
@@ -1235,15 +1219,13 @@ path:hover {
   font-weight: bold;
 }
 
-.ratings-reviews button,
-.rr-write-modal button {
+.ratings-reviews button, .rr-write-modal button {
   background-color: white;
   border: 1px solid rgb(69, 65, 65);
   height: 2em;
   font-size: 14px;
 }
 
-.ratings-reviews button:hover,
-.rr-write-modal button:hover {
+.ratings-reviews button:hover, .rr-write-modal button:hover {
   background-color: rgb(210, 210, 210);
 }
