@@ -102,7 +102,6 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
     }
 
     if (isError) {
-      scroll = 0;
       setShowError(true);
     } else {
       var characteristicRating = {};
