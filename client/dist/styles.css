@@ -931,6 +931,7 @@ Example modal css for props.css:
   max-height: 50px;
   margin: 5px;
   border: 1px solid gray;
+  cursor: pointer;
 }
 
 .rr-ri-modal img {
