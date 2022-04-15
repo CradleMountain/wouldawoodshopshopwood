@@ -950,6 +950,7 @@ Example modal css for props.css:
 
 .help-option {
   text-decoration: underline;
+  cursor: default;
 }
 
 .help-option:hover {
@@ -971,6 +972,18 @@ Example modal css for props.css:
   display: flex;
   flex-direction: column;
   margin: 5px;
+}
+
+.rr-rb-line {
+  cursor: pointer;
+}
+
+.rr-rb-line:hover {
+  text-decoration: underline;
+}
+
+.rr-rb-bar {
+  margin: 0 0.5em;
 }
 
 .rr-rb-bar,
