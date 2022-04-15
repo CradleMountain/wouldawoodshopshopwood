@@ -37,7 +37,6 @@ const RatingsReviews = (props) => {
       }
     })
       .then(({ data }) => {
-        // console.log('Data:', data);
         return data;
       })
       .catch((err) => {
@@ -95,44 +94,48 @@ const RatingsReviews = (props) => {
   useEffect(() => {
     if (props.product.id || post) {
       getReviews(props.product.id, 100)
-      .then((data) => {
-        setReviews(data.results);
-        setListMax(data.results.length);
-        setFilterMax(filterList(data.results).length);
-      })
-      .then(() => {
-        return getMetadata(props.product.id)
-          .then((data) => {
-            setMetadata(data);
-          });
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        if (post) {
-          setPost(false);
-        }
-      });
+        .then((data) => {
+          setReviews(data.results);
+          setListMax(data.results.length);
+          setFilterMax(filterList(data.results).length);
+        })
+        .then(() => {
+          return getMetadata(props.product.id)
+            .then((data) => {
+              setMetadata(data);
+            });
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          if (post) {
+            setPost(false);
+          }
+        });
     }
   }, [props.product, sort, post]);
 
   if (metadata.product_id) {
     return (
       <>
-        {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} setPost={setPost}/> : null}
-        <h2>Ratings &amp; Reviews</h2>
-        <div className="ratings-reviews">
-          <div className="rr-breakdowns">
-            <RatingBreakdown metadata={metadata} product={props.product} filter={ratingFilter} setFilter={setRatingFilter}/>
-            <ProductBreakdown factors={metadata.characteristics} />
-          </div>
-          <div className="rr-sort-stream">
-            <SearchBar setFilter={setSearchFilter}/>
-            <Sorter sort={sort} select={setSort} />
-            <ReviewList reviews={reviews} max={filterMax} filter={ratingFilter} searchFilter={searchFilter} filterList={filterList}/>
-            <div className="rr-write-btn">
-              <button onClick={() => setWrite(true)}>Write a Review</button>
+        {write ? <ReviewForm show={setWrite} product={props.product} characteristics={metadata.characteristics} setPost={setPost} /> : null}
+        <div className="ratings-reviews" id="ratings-reviews">
+          <h2>Ratings &amp; Reviews</h2>
+          <div className="rr-page">
+            <div className="rr-breakdowns">
+              <RatingBreakdown metadata={metadata} product={props.product} filter={ratingFilter} setFilter={setRatingFilter} />
+              <ProductBreakdown factors={metadata.characteristics} />
+            </div>
+            <div className="rr-sort-stream">
+              <div className="rr-ss-top">
+                <SearchBar setFilter={setSearchFilter} />
+                <Sorter sort={sort} select={setSort} />
+              </div>
+              <ReviewList reviews={reviews} max={filterMax} filter={ratingFilter} searchFilter={searchFilter} filterList={filterList} />
+              <div className="rr-write-btn">
+                <button onClick={() => setWrite(true)}>Write a Review</button>
+              </div>
             </div>
           </div>
         </div>

@@ -14,8 +14,8 @@ const RatingBar = ({rating, qty, total, onClick, selected}) => {
   var size = Math.round(pct * 100);
 
   return (
-    <span className={selected} onClick={onClick}>
-      {rating} Stars <StyledBar size={size * 1.5} color="rgb(0, 160, 0)" round="3px 0 0 3px"/><StyledBar size={(100 - size) * 1.5} color="rgb(180, 180, 180)" round="0 3px 3px 0"/> {qty}
+    <span className={selected.concat(' rr-rb-line')} onClick={onClick} tabIndex="0">
+      {rating} Stars<span className="rr-rb-bar"><StyledBar size={size * 1.5} color="rgb(0, 160, 0)" round="3px 0 0 3px"/><StyledBar size={(100 - size) * 1.5} color="rgb(180, 180, 180)" round="0 3px 3px 0"/></span>{qty}
     </span>
     );
 };

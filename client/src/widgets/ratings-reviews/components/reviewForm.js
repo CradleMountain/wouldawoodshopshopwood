@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
@@ -15,6 +15,8 @@ const factorPhrases = {
   Length: ['None selected', 'Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
   Fit: ['None selected', 'Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 };
+
+let scroll = 0;
 
 const ReviewForm = ({ show, product, characteristics, setPost }) => {
   const factors = Object.keys(characteristics);
@@ -56,6 +58,18 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
     'photo-5': true
   });
 
+  const handleScroll = (e) => {
+    scroll = e.target.scrollTop;
+  };
+
+  useEffect(() => {
+    scroll = 0;
+  }, []);
+
+  useLayoutEffect(() => {
+    document.getElementById('rr-modal-scrollable').scrollTop = scroll;
+  });
+
   useEffect(() => {
     validateFactors();
   }, [factorRating]);
@@ -88,6 +102,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
     }
 
     if (isError) {
+      scroll = 0;
       setShowError(true);
     } else {
       var characteristicRating = {};
@@ -179,10 +194,11 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
 
   return (
     <ModalWrapper styles="rr-write-modal" backClick={() => { }}>
-      <div className="rr-write-exit" onClick={() => { show(false); }}>
+      <div className="rr-wm-box">
+      <div aria-label="Cancel and close" tabIndex="0" className="rr-write-exit" onClick={() => { show(false); }}>
         <FontAwesomeIcon icon="fa-solid fa-xmark" />
       </div>
-      <div className="rr-write-inner">
+      <div className="rr-write-inner" id="rr-modal-scrollable" onScroll={handleScroll}>
         <h3>Write Your Review</h3>
         <h4>About the {product.name}</h4>
         {showError
@@ -234,7 +250,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
 
           <div className="rr-write-question">
             <div className="rr-wq-header">Characteristics {required}</div>
-            <div>
+            <div className="rr-wq-factors">
               {factors.map((factor) => {
                 var radios = [];
                 for (var i = 1; i < 6; i++) {
@@ -246,7 +262,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
                 }
                 return (<div key={factor} className="rr-wq-factor">
                   <div><span className="rr-wq-factor-label">{factor}:</span><span> {factorPhrases[factor][factorRating[factor]]}</span></div>
-                  <div>{radios}</div>
+                  <div className="rr-wq-factor-radios">{radios}</div>
                   <div className="rr-wq-factor-phrases">
                     <span>{factorPhrases[factor][1]}</span>
                     <span>{factorPhrases[factor][5]}</span>
@@ -287,6 +303,7 @@ const ReviewForm = ({ show, product, characteristics, setPost }) => {
             <button onClick={submit}>Submit review</button>
           </div>
         </form>
+      </div>
       </div>
     </ModalWrapper>
   );
