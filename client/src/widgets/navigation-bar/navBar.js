@@ -6,7 +6,7 @@ const NavBar = ({setProduct}) => {
   const [term, setTerm] = useState('');
   return (
     <div className="nav-bar">
-      <span className="nav-header" onClick={() => {setProduct(37314);}}>
+      <span className="nav-header" onClick={() => {setProduct(37311);}}>
        <FontAwesomeIcon icon={faTornado}/> I AM A SHARK TORNADO
       </span>
       <div className="nav-search">

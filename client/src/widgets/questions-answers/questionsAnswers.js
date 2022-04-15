@@ -8,25 +8,50 @@ import ModalWrapper from '../../components/modal.js';
 
 
 const QuestionsAnswers = (props) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [data, setData] = useState([]);
-  const [addingQuestion, setAddingQuestion] = useState(false);
-  const [feedCount, setFeedCount] = useState(2);
-  const [product, setProduct] = useState(null);
 
-  // ${props.currentProduct.id}
+  const [searchTerm, setSearchTerm] = useState('');
+
+  console.log('search term', searchTerm)
+
+  const [data, setData] = useState([]);
+
+  const [addingQuestion, setAddingQuestion] = useState(false);
+
+  const [feedCount, setFeedCount] = useState(2);
+
+  // const QPOST = (body, name, email) => {
+
+  //   axios({
+  //     method: 'POST',
+  //     url: '/qa/questions',
+  //     data: {
+  //       body: body,
+  //       name: name,
+  //       email: email,
+  //       product_id: props.currentProduct.id
+  //     }
+  //   })
+  //   .then(res => {
+  //     console.log('QPOST SUCCESS', res)
+  //   })
+  //   .catch(err => {
+  //     console.log('FAIL QPOST', err)
+  //   })
+  // }
+
+
 
   const getQuestions = () => {
     axios({
       method: 'GET',
-      url: `/qa/questions/?product_id=${props.currentProduct.id}`,
+      url: `/qa/questions/?product_id=37322`,
       params: {
-        // product_id: props.currentProduct.id,
-        count: 7,
+        count: 22,
         page: 1
       }
     })
     .then((data) => {
+      console.log('GET DATA', data.data.results)
       var newState = [];
       var order = data.data.results.map(result => {
         return result.question_helpfulness
@@ -51,24 +76,21 @@ const QuestionsAnswers = (props) => {
   }
 
   useEffect(() => {
-    if (props.currentProduct.id && props.currentProduct.id !== product) {
-      setProduct(props.currentProduct.id);
-      getQuestions();
-    }
-  }, [props.currentProduct]);
+    getQuestions();
+  }, []);
 
   return (
-    <div className='questions-answers'>
-      <div className="qa-header">Questions and Answers</div>
+    <div>
+      <div>Questions and Answers</div>
       <br></br>
       <QSearch setSearchTerm={setSearchTerm}/>
       <br></br>
-      <div className='qa-QList'>
+      <div class='accordion'>
         <QList searchTerm={searchTerm} feedCount={feedCount} currentProduct={props.currentProduct} data={data}/>
       </div>
-      <button onClick={() => setFeedCount(feedCount+2)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
+      <button onClick={() => setFeedCount(feedCount+1)}>More Answered Questions</button><button onClick={() => setAddingQuestion(!addingQuestion)}>Add a Question +</button>
       {addingQuestion &&
-        <ModalWrapper styles="qa-AddQ-modal" backClick={() => {}}>
+        <ModalWrapper backClick={() => {}}>
           <AddQ product_id={props.currentProduct.id} product_name={props.currentProduct.name} exitModal={exitModal}/>
         </ModalWrapper>
       }

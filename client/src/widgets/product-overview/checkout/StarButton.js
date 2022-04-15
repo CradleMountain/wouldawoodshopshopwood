@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from "react";
 import ProdContext from "../context/productOverview-context";
 import api from "../apiHelpers.js";
 
-
 const StarButton = (props) => {
   const ctx = useContext(ProdContext);
   const [isStar, setIsStar] = useState(false);
