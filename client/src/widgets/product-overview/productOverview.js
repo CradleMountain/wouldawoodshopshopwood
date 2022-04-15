@@ -24,6 +24,7 @@ const ProductOverview = (props) => {
   const [productStyles, setStyles] = useState([]);
   const [showExpanded, setShowExpanded] = useState(false);
   const [rating, setRating] = useState(0);
+  const [numReviews, setNumReviews] = useState(0);
 
   useEffect(() => {
     getProductStyle(props.currentProduct.id);
@@ -57,6 +58,7 @@ const ProductOverview = (props) => {
         }
         var result = Math.round((sum / total) * 10) * 0.1;
         setRating(result);
+        setNumReviews(total);
       })
       .catch((err) => {
         console.error(err);
@@ -92,6 +94,7 @@ const ProductOverview = (props) => {
               productStyles={productStyles}
               currentProduct={props.currentProduct}
               rating={rating}
+              numReviews={numReviews}
             />
             <StyleSelector
               productStyles={productStyles}
