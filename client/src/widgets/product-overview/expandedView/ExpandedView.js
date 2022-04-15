@@ -33,8 +33,7 @@ const ExpandedView = (props) => {
               })}
           </div>
         </div>
-        <IconCarousel  />
-
+        <IconCarousel />
         <CollapseButton collapseHandler={props.collapseHandler} />
       </div>
     </Fragment>
