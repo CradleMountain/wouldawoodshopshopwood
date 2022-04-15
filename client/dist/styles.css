@@ -775,11 +775,13 @@ Example modal css for props.css:
 .rp-card-images img {
   max-height: 250px;
   max-width: 200px;
+  cursor: pointer;
 }
 .rp-name {
   font-weight: 400;
   font-size: 15px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .rp-category {
   font-weight: 300;
