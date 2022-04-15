@@ -88,20 +88,33 @@ const AddA = (props) => {
     setPhotos(APhotos.slice());
   };
 
+
+
+
   return (
     <div class='white-box'>
-      Submit your Answer for {props.product_name} : {props.question_body}
+      <div>
+      Submit your Answer for&nbsp;
+      <span className='qa-question-title'>{props.product_name} : {props.question_body}</span>
+      </div>
       <br></br>
       <div>
         <form>
-          <label>*Your Answer (mandatory)</label><br></br>
-          <textarea onChange={handleChange} name='body' type='text'></textarea><br></br>
-          <label>*What is your nickname? (mandatory)</label><br></br>
-          <input onChange={handleChange} name='name' placeholder='Example: jack543!' type='text'></input>
+          <div>
+            <label>*Your Answer</label><br></br>
+            <textarea onChange={handleChange} name='body' type='text'></textarea>
+          </div>
+          <br></br>
+          <div>
+            <label>*What is your nickname? &nbsp;</label>
+            <input onChange={handleChange} name='name' placeholder='Example: jack543!' type='text'></input>
+          </div>
           <div className="qa-help-report">For privacy reasons, do not use your full name or email address</div>
-          <label>*Your email (mandatory)</label>
-          <input onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='email' required></input>
-          <div>For authentication reasons, you will not be emailed</div>
+          <br></br>
+          <label>*Your email &nbsp;</label>
+          <input onChange={handleChange} name='email' type='email' required></input>
+          <div className="qa-help-report">For authentication reasons, you will not be emailed</div>
+          <br></br>
           <div className="rr-up-photos">
             {APhotos.length < 6 ? <button onClick={uploader}>Add photo</button> : null }
             <div className="rr-up-thumbs">
@@ -118,12 +131,58 @@ const AddA = (props) => {
               })}
             </div>
           </div>
+          <br></br>
+          <div>
+            *Mandatory
+          </div>
+          <br></br>
           <input onClick={APOST} type="submit" value="Submit"></input>
         </form>
       </div>
       <button onClick={() => props.exitModal()}>Exit</button>
     </div>
   )
+
+
+
+
+
+  // return (
+  //   <div class='white-box'>
+  //     Submit your Answer for {props.product_name} : {props.question_body}
+  //     <br></br>
+  //     <div>
+  //       <form>
+  //         <label>*Your Answer (mandatory)</label><br></br>
+  //         <textarea onChange={handleChange} name='body' type='text'></textarea><br></br>
+  //         <label>*What is your nickname? (mandatory)</label><br></br>
+  //         <input onChange={handleChange} name='name' placeholder='Example: jack543!' type='text'></input>
+  //         <div className="qa-help-report">For privacy reasons, do not use your full name or email address</div>
+  //         <label>*Your email (mandatory)</label>
+  //         <input onChange={handleChange} name='email' placeholder='Why did you like the product or not?' type='email' required></input>
+  //         <div>For authentication reasons, you will not be emailed</div>
+  //         <div className="rr-up-photos">
+  //           {APhotos.length < 6 ? <button onClick={uploader}>Add photo</button> : null }
+  //           <div className="rr-up-thumbs">
+  //             {APhotos.map((url, i) => {
+  //               return (<div key={i} className="rr-up-thumb">
+  //                 <img src={url} onError={() => {remove(url); alert('Please enter a valid URL')}}/>
+  //                 <div onClick={() => {removePhoto(i);}}>
+  //                   <span className="rr-up-remove fa-layers fa-fw">
+  //                     <FontAwesomeIcon icon="fa-solid fa-circle" className="icon-white"/>
+  //                     <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="icon-red"/>
+  //                   </span>
+  //                 </div>
+  //               </div>);
+  //             })}
+  //           </div>
+  //         </div>
+  //         <input onClick={APOST} type="submit" value="Submit"></input>
+  //       </form>
+  //     </div>
+  //     <button onClick={() => props.exitModal()}>Exit</button>
+  //   </div>
+  // )
 }
 
 export default AddA;

@@ -12,12 +12,16 @@ const QuestionsAnswers = (props) => {
   const [data, setData] = useState([]);
   const [addingQuestion, setAddingQuestion] = useState(false);
   const [feedCount, setFeedCount] = useState(2);
+  const [product, setProduct] = useState(null);
+
+  // ${props.currentProduct.id}
 
   const getQuestions = () => {
     axios({
       method: 'GET',
-      url: `/qa/questions/?product_id=37322`,
+      url: `/qa/questions/?product_id=${props.currentProduct.id}`,
       params: {
+        // product_id: props.currentProduct.id,
         count: 7,
         page: 1
       }
@@ -47,8 +51,11 @@ const QuestionsAnswers = (props) => {
   }
 
   useEffect(() => {
-    getQuestions();
-  }, []);
+    if (props.currentProduct.id && props.currentProduct.id !== product) {
+      setProduct(props.currentProduct.id);
+      getQuestions();
+    }
+  }, [props.currentProduct]);
 
   return (
     <div className='questions-answers'>
