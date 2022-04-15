@@ -835,6 +835,14 @@ Example modal css for props.css:
 /*                         Questions & Answers                          */
 /************************************************************************/
 
+.questions-answers {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 80vw;
+  color: rgb(69, 65, 65);
+}
+
 .accordion {
   background-color: #eee;
   color: #444;
@@ -845,6 +853,47 @@ Example modal css for props.css:
   border: none;
   outline: none;
   transition: 0.4s;
+}
+
+.qa-QList {
+  overflow-y: scroll;
+  height: 29em;
+  max-height: 70em;
+  /* width: 55vw; */
+}
+
+.qa-header {
+  font-size: 24px;
+}
+
+.qa-question {
+  background-color:rgb(245, 245, 245);
+  padding: 1.5%;
+  margin-bottom: 2%;
+}
+
+.qa-question-title {
+  font-weight: 700;
+}
+
+.qa-help-report {
+  font-size: 14px;
+}
+
+.qa-help-btn, .qa-report-btn {
+  text-decoration: underline;
+}
+
+.qa-help-btn:hover, .qa-report-btn:hover {
+  color: rgb(110, 110, 255);
+}
+
+.qa-AddQ-modal {
+  background-color: white;
+  /* height: 60vh; */
+  padding: 2%;
+  border-radius: 0.8em;
+  overflow-y: hidden;
 }
 
 /************************************************************************/
