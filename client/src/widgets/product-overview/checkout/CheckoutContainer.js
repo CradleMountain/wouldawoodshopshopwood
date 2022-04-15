@@ -29,6 +29,7 @@ const CheckoutContainer = () => {
     setSize(null);
     setQuantity(null);
     ctx.sizeDropToggleHandler(false);
+    ctx.carouselIndexChangeHandler(0);
   }, [ctx.currentStyle]);
 
 
