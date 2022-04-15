@@ -171,6 +171,7 @@ Example modal css for props.css:
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
 }
 .po-icon-carousel {
   position: absolute;
@@ -627,6 +628,16 @@ Example modal css for props.css:
 }
 .po-star {
   width: 13%;
+}
+.po-stars-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.po-stars-text {
+  font-weight: 300;
+  font-size: 13px;
+  margin-left: 8px;
 }
 .po-drop-down-list {
   position: absolute;
