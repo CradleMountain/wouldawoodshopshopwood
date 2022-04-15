@@ -9,7 +9,6 @@ const NavBar = ({setProduct}) => {
       <span className="nav-header" onClick={() => {setProduct(37311);}}>
        <FontAwesomeIcon icon={faTornado}/> I AM A SHARK TORNADO
       </span>
-      <div>{currentProduct}</div>
       <div className="nav-search">
         <input type="text" value={term} onChange={(e) => {setTerm(e.target.value);}} placeholder="Looking for something?"/>
         <span className="icon"><FontAwesomeIcon icon={faSearch} onClick={() => {setProduct(term);}}/></span>
