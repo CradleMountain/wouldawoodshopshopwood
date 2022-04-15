@@ -512,9 +512,14 @@ Example modal css for props.css:
 .fa-check {
   margin-right: 10px;
 }
-.po-sale {
-  text-decoration: line-through;
+.po-sale-price {
   color: red;
+}
+.po-original-price {
+  text-decoration: line-through;
+}
+.po-price {
+  margin: 8px 3px;
 }
 .po-category {
   font-weight: 600;
@@ -523,9 +528,6 @@ Example modal css for props.css:
   font-weight: 900;
   font-size: xxx-large;
   margin: 16px 0px;
-}
-.po-price {
-  margin: 8px 3px;
 }
 .po-style {
   font-weight: 600;

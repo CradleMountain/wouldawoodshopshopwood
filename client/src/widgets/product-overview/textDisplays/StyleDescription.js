@@ -19,12 +19,12 @@ const StyleDescription = (props) => {
         {ctx.currentStyle.style_id && (
           <p
             className={
-              ctx.currentStyle.sale_price ? "po-sale po-price" : "po-price"
+              ctx.currentStyle.sale_price ? "po-original-price po-price" : "po-price"
             }
           >{`$${ctx.currentStyle.original_price}`}</p>
         )}
         {ctx.currentStyle.style_id && ctx.currentStyle.sale_price && (
-          <p className="po-price">{`$${ctx.currentStyle.sale_price}`}</p>
+          <p className="po-price po-sale-price">{`$${ctx.currentStyle.sale_price}`}</p>
         )}
       </span>
       <span className="po-span">
