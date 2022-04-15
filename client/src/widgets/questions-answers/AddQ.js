@@ -64,24 +64,38 @@ const AddQ = (props) => {
 
   return (
     <div className='white-box'>
-      Ask Your Question About the {props.product_name}
+      <div>
+      Ask Your Question About: the
+      <span className='qa-question-title'> {props.product_name}</span>
+      </div>
       <br></br>
       <div>
         <form>
-          <label>*Your Question (mandatory)</label><br></br>
-          <textarea onChange={handleChange} name='body' type='text' required></textarea><br></br>
-          <label>*What is your nickname? (mandatory)</label>
+          <div>
+            <label>*Your Question</label><br></br>
+            <textarea max='1000' onChange={handleChange} name='body' type='text' required></textarea>
+          </div>
           <br></br>
-          <input onChange={handleChange} name='name' placeholder='Example: jackson11!' type='text' required></input>
-          <div>For privacy reasons, do not use your full name or email address</div>
-          <label>*Your email (mandatory)</label><br></br>
-          <input onChange={handleChange} type='email' name='email' placeholder='Why did you like the product or not?' required></input>
-          <span></span>
-          <input onClick={QPOST} type="submit" value="Submit"></input>
-
+          <div>
+            <div>*What is your nickname?</div>
+            <input max='60' onChange={handleChange} name='name' placeholder='Example: jackson11!' type='text' required></input>
+          </div>
+          <div className="qa-help-report">For privacy reasons, do not use your full name or email address</div>
+          <br></br>
+          <div>*Your email</div>
+          <div>
+            <input onChange={handleChange} type='email' name='email' required></input>
+          </div>
+          <br></br>
+          <div>
+            *Mandatory
+          </div>
+          <br></br>
+          <div>
+            <input onClick={QPOST} type="submit" value="Submit"></input>
+          </div>
         </form>
       </div>
-      <br></br>
       <button onClick={() => props.exitModal()}>Exit</button>
     </div>
   );
