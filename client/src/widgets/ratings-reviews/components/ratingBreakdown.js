@@ -100,17 +100,17 @@ const RatingBreakdown = (props) => {
         <span>{total} reviews</span>
         <div className="rr-rb-avg-num">{average || 3.0}</div>
       </div>
-      <h4>Rating Breakdown</h4>
+      <div className="rr-rb-header">Rating Breakdown</div>
       {filterCount < 5
         ? <div>
           <span>Showing results for: </span>
           <span>{filterLabel} stars</span>
           <br/>
-          <span className="rr-clickable" onClick={() => { props.setFilter(resetFilter()); }}>Remove all filters</span>
+          <span tabIndex="0" className="rr-clickable" ononClick={() => { props.setFilter(resetFilter()); }}>Remove all filters</span>
         </div>
         : <span>Filter reviews by rating:</span>}
       <div className="rr-rb-bars">{bars}</div>
-      <div>Recommended by {recPct || 70}% of reviews</div>
+      <div>Recommended by {recPct}% of reviews</div>
     </div>
   );
 };

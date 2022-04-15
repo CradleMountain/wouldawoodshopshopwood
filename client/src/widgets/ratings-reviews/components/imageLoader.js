@@ -42,8 +42,8 @@ const ImageLoader = ({state, setState, validate}) => {
       <div className="rr-up-thumbs">
         {photos.map((url, i) => {
           return (<div key={i} className="rr-up-thumb">
-            <img src={url} onError={() => invalidUrl(i + 1)}/>
-            <div onClick={() => {removePhoto(i);}}>
+            <img src={url} onError={() => invalidUrl(i + 1)} alt="Uploaded image thumbnail"/>
+            <div aria-label="Remove image" tabIndex="0" onClick={() => {removePhoto(i);}}>
               <span className="rr-up-remove fa-layers fa-fw">
                 <FontAwesomeIcon icon="fa-solid fa-circle" className="icon-white"/>
                 <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="icon-red"/>

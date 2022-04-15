@@ -960,7 +960,9 @@ Example modal css for props.css:
   font-size: 64px;
 }
 
-.rr-rating-breakdown h4 {
+.rr-rb-header {
+  font-size: 16px;
+  font-weight: 700;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -1060,6 +1062,11 @@ Example modal css for props.css:
   padding: 2%;
   border-radius: 0.8em;
   overflow-y: hidden;
+}
+
+.rr-wm-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .rr-write-inner {
@@ -1194,6 +1201,7 @@ path:hover {
   text-align: right;
   position: static;
   font-size: 18px;
+  align-self: flex-end;
 }
 
 .ratings-reviews button {

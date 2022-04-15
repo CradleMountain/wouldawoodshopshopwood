@@ -9,7 +9,7 @@ const ReviewImages = ({ images }) => {
   const enlargeImage = (e) => {
     setModalView(
       <ModalWrapper backClick={shrinkImage} styles="rr-ri-modal">
-        <img src={e.target.src}/>
+        <img src={e.target.src} alt="Expanded image"/>
       </ModalWrapper>
     );
   };
@@ -20,7 +20,7 @@ const ReviewImages = ({ images }) => {
 
   var gallery = images.map((img) => {
     return (
-      <Image key={img.id} url={img.url} onClick={enlargeImage}/>
+      <Image tabIndex="0" key={img.id} url={img.url} onClick={enlargeImage} alt="Image uploaded by reviewer"/>
     );
   });
 
