@@ -28,7 +28,7 @@ const VerticalCarousel = (props) => {
           clickHandler={upArrowClick}
         />
       ) : (
-        <div className="po-arrow-container" />
+        <div className="po-expanded-arrow-container" />
       )}
       <div className="po-vertical-carousel">
         <div

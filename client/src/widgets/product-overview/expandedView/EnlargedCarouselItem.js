@@ -13,6 +13,7 @@ const EnlargedCarouselItem = (props) => {
         hideCloseButton={true}
         className="po-carousel-image"
         src={props.photoObj.url}
+        alt="a clothing product for sale"
       />
     </div>
   );
