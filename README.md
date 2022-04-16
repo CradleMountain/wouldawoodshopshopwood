@@ -3,7 +3,7 @@
 A mock e-commerce page designed, implemented, and deployed in roughly three weeks and intended to demonstrate front-end development skills.
 
 ## Table of contents
-\1. [Description](#description)
+1 [Description](#description)
 
 1.1 [Product Overview](#product-overview)
 
@@ -13,8 +13,8 @@ A mock e-commerce page designed, implemented, and deployed in roughly three week
 
 1.4. [Ratings and Reviews](#ratings-reviews)
 
-2. [Screenshots](#screenshots)
-3. [Installation and Startup](#installation)
+2 [Screenshots](#screenshots)
+3 [Installation and Startup](#installation)
 
 ## Description <a name=”description”></a>
 The Front End Capstone represents roughly three weeks of planning and development toward a single product page for an e-commerce website. It was designed from a plain-language specifications document by a team of three as part of the Hack Reactor Software Engineering Immersive.
