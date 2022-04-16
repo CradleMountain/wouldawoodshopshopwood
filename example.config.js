@@ -1,0 +1,1 @@
+module.exports.GITHUB_API_KEY = 'YOUR_GITHUB_API_TOKEN';
