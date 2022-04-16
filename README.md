@@ -21,6 +21,8 @@ The **Questions and Answers** widget displays user-submitted questions relating 
 The **Ratings and Reviews** widget displays user-created product reviews in a list format. Metadata derived from the reviews, including average rating, are displayed to the side. The reviews may be filtered by rating and sorted by newest, most relevant, and most helpful. Users have the ability to mark a review as helpful and view attached images, as well as write and post a new review.
 
 ## Screenshots <a name=”screenshots></a>
+
+**Scrolling Carousels and Image Zoom**
 ![image](images/fecGif.gif)
 
 ![image](images/productOverview.png)
