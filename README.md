@@ -25,7 +25,7 @@ The **Ratings and Reviews** widget displays user-created product reviews in a li
 
 ![image](images/productOverview.png)
 
-##UI Wireframe Model and Final Product
+**UI Wireframe Model and Final Product**
 ![image](images/comparison.jpg)
 
 ## Installation and Startup <a name=”installation”></a>
