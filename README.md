@@ -4,10 +4,15 @@ A mock e-commerce page designed, implemented, and deployed in roughly three week
 
 ## Table of contents
 1. [Description](#description)
-1.1. [Product Overview](#product-overview)
-1.2. [Related Products](#related-products)
+
+1.1 [Product Overview](#product-overview)
+
+1.2 [Related Products](#related-products)
+
 1.3. [Questions and Answers](#questions-answers)
+
 1.4. [Ratings and Reviews](#ratings-reviews)
+
 2. [Screenshots](#screenshots)
 3. [Installation and Startup](#installation)
 
