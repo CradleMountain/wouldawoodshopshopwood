@@ -3,7 +3,7 @@
 A mock e-commerce page designed, implemented, and deployed in roughly three weeks and intended to demonstrate front-end development skills.
 
 ## Table of contents
-1 [Description](#description)
+1) [Description](#description)
 
 1.1 [Product Overview](#product-overview)
 
